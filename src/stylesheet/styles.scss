@@ -1,0 +1,544 @@
+//@import "reset";
+
+@import 'variables';
+
+@import 'mobile';
+
+@import 'desktop';
+
+html {
+  min-height: 100%;
+  background-color: $backgroundColor;
+  font-size: 16px;
+  color: $navMorkGra;
+}
+
+.pagewrapper {
+    padding-bottom: $xlSpacing;
+}
+
+.infoside {
+  background-color: $backgroundColorInfo;
+  padding-bottom: 0.5rem;
+}
+
+.soknadsKort {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.soknadsKort > div:last-child {
+    margin-left: auto;
+    padding-right: 1rem;
+}
+
+
+.pagewrapper {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+.banner {
+  height: 3.5rem;
+  background-color: $navLimeGronnLighten60;
+  border-bottom: 4px solid $navLimeGronnLighten40;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feilbanner {
+  height: 3.5rem;
+  background-color: $navGra60;
+  border-bottom: 4px solid $navGra40;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner .typo-sidetittel {
+  font-size: 1.5rem;
+}
+
+.infobanner {
+  height: 7rem;
+  background-color: $navLimeGronnLighten60;
+  border-bottom: 4px solid $navLimeGronnLighten40;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bekreftPanel {
+  border: 1px solid $navOransje;
+  
+}
+
+.customPanel.feilside .nav-veileder__frame {
+  background: transparent;
+  height: 100%;
+}
+
+.editLink {
+  color: $navBla;
+  cursor: pointer;
+}
+
+.centeredElement {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ExpandableSubContentBlock {
+  margin-bottom: $sSpacing;
+}
+
+.brukerTextBlock {
+  margin-bottom: $xlSpacing;
+}
+
+.panel .infoBlock {
+  margin-bottom: $lSpacing;
+}
+
+.panel .infoBlock:last-of-type,
+.panel .infoBlock p:last-of-type {
+  margin-bottom: 0;
+}
+
+.panel .infoBlock p:first-of-type {
+  margin-top: 0;
+}
+
+.infoBlock .typo-undertittel {
+  margin-bottom: $xsSpacing;
+}
+
+.contentBlock,
+.contentBlock.typo-element,
+.contentBlock.typo-normal {
+  margin-bottom: $lSpacing;
+}
+
+.indentedContentBlock {
+  margin-bottom: $sSpacing;
+  margin-left: $xlSpacing;
+}
+
+.contentBlock.typo-undertittel {
+  margin-bottom: $mSpacing;
+}
+
+.smallContentBlock .typo-element,
+.smallContentBlock .typo-normal {
+  margin-bottom: $xsSpacing;
+}
+
+.hmlenke,
+.hmlenke.typo-normal {
+  margin-top: $xsSpacing;
+}
+
+.stegIndikator {
+  margin-top: $xlSpacing;
+  padding-bottom: $xlSpacing;
+}
+
+.titleCenter {
+  text-align: center;
+  margin-bottom: $xlSpacing;
+}
+
+.titleCenter.typo-innholdstittel,
+.titleCenter.typo-systemtittel {
+  margin-bottom: $sSpacing;
+}
+
+.infoTitle {
+  margin-bottom: $xsSpacing;
+  margin-top: $xsSpacing;
+}
+
+.knappepanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $sSpacing;
+}
+
+.bottomBtn {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  margin-bottom: $sSpacing;
+}
+
+.customModal {
+  .knappepanel {
+    margin-top: 1rem;
+  }
+}
+
+@mixin flex-grid-items($cols) {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    $item-width: 100% / $cols;
+    width: $item-width;
+    box-sizing: border-box;
+  }
+}
+
+.helpIcon {
+  margin-left: $xsSpacing;
+  vertical-align: bottom;
+}
+
+fieldset {
+  border: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+.hjelpemiddel-search-results > div {
+  width: 100%;
+}
+
+.hjelpemiddel-search-results-line1 {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+}
+
+.hjelpemiddel-search-results-line1 > p.typo-etikett-liten {
+  flex-grow: 1;
+  flex-basis: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  padding-right: 10em;
+}
+
+.chip {
+  display: flex;
+}
+
+.chip > p.typo-normal {
+  min-width: 24px;
+  min-height: 24px;
+  text-align: center;
+  padding: 1px;
+  border-radius: 50%;
+  background-color: $navGra20;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.rank1 > p.typo-normal {
+  background-color: $navGronnLighten60;
+  font-weight: bold;
+}
+
+.hjelpemiddel-search-results-line2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.hjelpemiddel-search-results-line2 > element {
+  word-break: break-word;
+}
+
+.hjelpemiddel-list-meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hjelpemiddel-list-meta > p {
+  padding-left: 1rem;
+}
+
+.tilbehoer-search-results-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.tilbehoer-list-hms {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.tilbehoer-list-beskrivelse {
+  display: flex;
+}
+
+.tilbehoer-list-meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.no-wrap {
+  flex-shrink: 0;
+}
+
+.hjelpemiddel-list-meta > p {
+  padding-left: 1rem;
+}
+
+.noSpaceWrap {
+  white-space: pre;
+}
+
+.small-media-reverse-wrap {
+  flex-wrap: wrap-reverse;
+}
+
+@media (min-width: 50rem) {
+  .small-media-reverse-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+#search-icon {
+  stroke: $navBla;
+  fill: $navBla;
+  height: 24px;
+  width: 24px;
+}
+
+button.search-button > #search-icon > g {
+  stroke-width: 0.6;
+}
+
+button.search-button:hover > #search-icon > g {
+  stroke-width: 1.5;
+}
+
+button.search-button:active > #search-icon > g {
+  stroke-width: 2.3;
+}
+
+button.search-button {
+  padding-left: 24px;
+  padding-right: 0;
+  border: 0;
+  background: transparent;
+}
+
+button.search-button:focus {
+  outline: none;
+}
+
+#add-icon {
+  stroke: $navBla;
+  height: 24px;
+  width: 24px;
+  margin-top: 3px;
+}
+
+button.add-button > #add-icon > g {
+  stroke-width: 1.3;
+}
+
+button.add-button:hover > #add-icon > g {
+  stroke-width: 2.3;
+}
+
+button.add-button:focus > #add-icon > g {
+  stroke-width: 2.3;
+}
+
+button.add-button:active > #add-icon > g {
+  stroke-width: 3;
+}
+
+button.add-button {
+  padding-left: 24px;
+  padding-right: 0;
+  border: 0;
+  background: transparent;
+}
+
+button.add-button:focus {
+  outline: none;
+}
+
+#remove-icon {
+  stroke: #c86151;
+  height: 24px;
+  width: 24px;
+  margin-top: 3px;
+}
+
+button.remove-button > #remove-icon > g {
+  stroke-width: 1.3;
+}
+
+button.remove-button:hover > #remove-icon > g {
+  stroke-width: 2.3;
+}
+
+button.remove-button:focus > #remove-icon > g {
+  stroke-width: 2.3;
+}
+
+button.remove-button:active > #remove-icon > g {
+  stroke-width: 3;
+}
+
+button.remove-button {
+  padding-left: 24px;
+  padding-right: 0;
+  border: 0;
+  background: transparent;
+}
+
+button.remove-button:focus {
+  outline: none;
+}
+
+#add-icon-bold > path {
+  stroke-width: 1.3px;
+  stroke: white;
+}
+
+.categoryRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radiogroup {
+  margin: 1rem 0 1rem !important;
+}
+
+.radiogruppe > span > div {
+  margin-right: 16px;
+}
+
+.bekreftCheckboksPanel {
+    margin-left: $xlSpacing;
+    margin-right: $xlSpacing;
+}
+
+
+
+.allerede-utlevert {
+  color: $navDypBla;
+}
+
+.techdata {
+  flex-grow: 1;
+  flex-basis: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  padding-right: 10em;
+}
+
+main {
+  margin-bottom: 2rem;
+}
+
+// Not .typo-sidetittel, .typo-innholdstittel, .typo-systemtittel, .typo-ingress in the beginning
+.typo-undertittel,
+.typo-element,
+.typo-feilmelding,
+.typo-normal,
+.typo-etikett-liten,
+.typo-undertekst {
+  overflow: hidden;
+  // max-width: 80ch;
+}
+
+.infoTable {
+  display: table;
+  width: 100%;
+}
+
+.infoRow {
+  display: table-row;
+  width: 100%;
+}
+
+.infoRowCell,
+.infoRowCellHms {
+  display: table-cell;
+}
+
+.radioButtonMargin:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.bekreftCheckboksPanel--checked .BekreftFlereCheckboks .checkboks:not(:checked) + .skjemaelement__label::before {
+  background-image: none;
+  background-color: white;
+}
+
+.decorator-utils-container {
+  background: #dade99;
+}
+
+.brukerOppslag {
+  background-color: $navLimeGronnLighten80 !important;
+  padding: $sSpacing;
+}
+
+.brukerOppslag > .typo-ingress {
+  margin-bottom: $sSpacing;
+}
+
+.brukerOppslag > .alertstripe {
+  margin-top: $sSpacing;
+}
+
+.brukerOppslagAdresse {
+  background-color: $navLimeGronnLighten80 !important;
+  display: flex;
+  margin-left: $xlSpacing;
+  padding: $sSpacing;
+  margin-bottom: $sSpacing;
+}
+
+.brukerOppslagOppsummering {
+  background-color: $navLimeGronnLighten80 !important;
+  display: flex;
+  flex-direction: column;
+  padding: $xsSpacing $xsSpacing $xsSpacing $sSpacing;
+  margin-left: -$sSpacing;
+  margin-bottom: $sSpacing;
+}
+
+.floatRight {
+  float: right;
+}
+
+.brukerOppslagAdresse > div:first-child {
+  flex: 1;
+}

@@ -1,0 +1,56 @@
+apiVersion: 'nais.io/v1alpha1'
+kind: 'Application'
+metadata:
+  name: hm-formidler
+  namespace: teamdigihot
+  labels:
+    team: teamdigihot
+spec:
+  image: {{image}}
+  team: teamdigihot
+  port: 5000
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 90
+  liveness:
+    path: /hjelpemidler/formidler/internal/isAlive
+    initialDelay: 5
+  readiness:
+    path: /hjelpemidler/formidler/internal/isReady
+    initialDelay: 5
+  prometheus:
+    enabled: true
+    path: /hjelpemidler/formidler/internal/metrics
+  envFrom:
+    - secret: redis-password
+    - secret: session-encrypt-key
+  ingresses:
+    - https://www.nav.no/hjelpemidler/formidler
+  tokenx:
+    enabled: true
+  idporten:
+    enabled: true
+    redirectURI: "https://www.nav.no/hjelpemidler/formidler/oauth2/callback"
+    frontchannelLogoutURI: "https://www.nav.no/hjelpemidler/formidler/logout"
+  env:
+    - name: API_URL
+      value: http://hm-soknadsbehandling.teamdigihot.svc.cluster.local
+    - name: DECORATOR_URL
+      value: https://www.nav.no/dekoratoren/
+    - name: SOKNADSBEHANDLING_AUDIENCE
+      value: prod-gcp:teamdigihot:hm-soknadsbehandling
+    - name: REDIS_HOST
+      value: soknad-redis.teamdigihot.svc.cluster.local
+    - name: LOGINSERVICE_URL
+      value: "https://loginservice.nav.no/login?redirect=https://www.nav.no/hjelpemidler/formidler"
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
+        - host: loginservice.nav.no
+        - host: dekoratoren.nav.no
+        - host: tokendings.prod-gcp.nais.io
+      rules:
+        - application: soknad-redis
+        - application: hm-soknadsbehandling

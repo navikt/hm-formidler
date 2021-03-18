@@ -1,0 +1,6 @@
+*
+!build
+!server
+!package.json
+!yarn.lock
+!init.sh

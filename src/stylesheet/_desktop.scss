@@ -1,0 +1,295 @@
+/* Desktop devices */
+@media only screen and (min-width: 801px) {
+  .header {
+    background-color: #dce2a6;
+    height: 200px;
+    width: 100%;
+  }
+
+  .infoDescBanner {
+    min-width: 90%;
+    background-color: white;
+    padding: $xlSpacing;
+  }
+
+  .ingressBox {
+    width: 50rem;
+    text-align: center;
+    margin: auto;
+    padding-top: 1rem;
+  }
+
+  .expandablePanel {
+    max-width: 100%;
+  }
+
+  .content {
+    margin-bottom: $lSpacing;
+  }
+
+  .fnrOppslagForm {
+    margin: auto 0;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    padding-bottom: $sSpacing;
+    align-items: flex-start;
+  }
+
+  .fnrOppslagInput > label {
+    display: block;
+  }
+
+  .oppslagButton {
+    margin-left: $sSpacing;
+    margin-top: 2rem;
+  }
+
+  .contactPersonForm {
+    margin: auto 0;
+    flex-direction: row;
+    display: flex;
+    padding-bottom: $sSpacing;
+  }
+
+  .contactPersonForm:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .contactPersonForm .skjemaelement {
+    margin-right: $sSpacing;
+    flex-grow: 1;
+  }
+
+  .noFlexGrow {
+    flex-grow: 0 !important;
+  }
+
+  .skjemagruppe.inputPanelGruppe {
+    padding-bottom: $xlSpacing;
+  }
+
+  .skjemagruppe.radiogruppe {
+    padding-bottom: $xsSpacing;
+  }
+
+  .skjemagruppe.radiogruppe:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .contactPersonForm .skjemaelement:last-of-type {
+    margin-right: 0;
+  }
+
+  .hjelpetekst .hjelpetekst__innhold {
+    max-width: 30rem;
+    white-space: pre-line;
+  }
+
+  // Handlekurv
+  .nav-veilederpanel .handlekurv {
+    position: absolute;
+    top: $sSpacing;
+    right: $sSpacing;
+  }
+
+  .handlekurv .knapp {
+    font-weight: normal;
+    letter-spacing: normal;
+    color: black;
+    text-transform: none;
+  }
+
+  #handlekurvCount {
+    background-color: $navLimeGronnLighten40;
+    margin-left: 0.3rem;
+    padding: 0.2rem 0.8rem;
+    font-weight: bolder;
+    font-size: larger;
+    border-radius: 0.3rem;
+  }
+
+  .typo-normal.hjelpemiddelVilkaroverskrift {
+    font-weight: bolder;
+  }
+
+  .smallContentBlock .lenkepanel {
+    margin-bottom: $xsSpacing;
+  }
+
+  .smallContentBlock .textAlignRight {
+    text-align: right;
+    padding-right: $sSpacing;
+  }
+
+  .smallContentBlock .textIndent {
+    text-indent: $sSpacing;
+  }
+
+  .singleRow {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .singleRow .singleRowElementGrow {
+    flex-grow: 1;
+    word-break: break-word;
+    padding-right: $sSpacing;
+  }
+
+  .singleRow .singleRowElementGrowEllipsis {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  .singleRow .singleRowElementFixed {
+    flex: 0 0 5rem;
+    text-align: right;
+  }
+
+  .singleRow .singleRowElementFixedWidth {
+    flex: 0 0 12rem;
+  }
+
+  .fixedWidthLabel {
+    width: 12em;
+  }
+
+  .alignRight {
+    text-align: right;
+  }
+
+  .singleRow .breakLongWords {
+    word-break: break-word;
+  }
+
+  .rightAlignedRowOneElement {
+    text-align: right;
+    width: 100%;
+  }
+
+  #ellipsisLink {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .centerButtons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .spaceBetweenTwoButtons {
+    margin-right: $xlSpacing;
+  }
+
+  .spaceBetweenTwoVerticalButtons {
+    margin-bottom: 1rem;
+  }
+
+  #ekstrainfo {
+    padding-top: 1rem;
+  }
+
+  .infoPanel {
+    width: 50rem;
+    margin: $xlSpacing auto;
+  }
+
+  .tilbakeknappTopp {
+      margin-top: $sSpacing;
+      margin-left: 20rem;
+      width: 58rem;
+  }
+
+  .customPanel {
+    width: 50rem;
+    margin: 0 auto $lSpacing;
+  }
+
+  .customPanel:last-of-type {
+    width: 40rem;
+    margin: 0 auto $lSpacing;
+  }
+
+  .customPanel .panel {
+    padding: $xlSpacing;
+  }
+
+  .customModal {
+    padding: $xlSpacing;
+    width: 40rem;
+  }
+
+  .produktModal {
+    padding: $xlSpacing;
+    width: 48rem;
+  }
+
+  //Avatar
+  .customPanel .nav-veilederpanel--plakat .nav-veileder {
+    transform: scale(0.85);
+  }
+
+  .insidePanel {
+    padding: $lSpacing $xxlSpacing;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .row .kategori {
+    width: 25%;
+    padding: $xsSpacing;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+  }
+
+  .modal {
+    padding: 0 !important;
+  }
+
+  .input.m {
+    width: 100%;
+    max-width: 170px;
+  }
+
+  .institusjonInfo {
+    margin: 1% 5% 5%;
+  }
+
+  .editLink {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  #hentesPaaHjelpemiddelsentralenMerknad {
+    margin-bottom: $xsSpacing;
+  }
+
+  #forklaringstekstLevering {
+    margin-bottom: $xsSpacing;
+    margin-top: $xsSpacing;
+  }
+
+  #formidlernavn {
+    margin-bottom: $sSpacing;
+  }
+
+  #formidlernavn .typo-element {
+    margin-bottom: $xsSpacing;
+  }
+
+  .radioButtonMargin:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
