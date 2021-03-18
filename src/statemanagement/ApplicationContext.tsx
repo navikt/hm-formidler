@@ -11,21 +11,16 @@ export const initialState = {
 const ApplicationContext = React.createContext({
   state: initialState,
   setState: (state: SoknadInfo) => {},
-  isSavingUserDecision: false,
-  setIsSavingUserDecision: (isSavingUserDecision: boolean) => {},
 })
 
 const ApplicationProvider = (props: any) => {
   const [state, setState] = useState(initialState)
-  const [isSavingUserDecision, setIsSavingUserDecision] = useState(false)
 
   return (
     <ApplicationContext.Provider
       value={{
         state,
         setState,
-        isSavingUserDecision: isSavingUserDecision,
-        setIsSavingUserDecision: setIsSavingUserDecision,
       }}
     >
       {props.children}
