@@ -11,7 +11,7 @@ type BannerProps = {
 const Banner = (props: BannerProps) => {
   const { t } = useTranslation()
 
-  const tittel = props.soknadsside === Soknadsside.Soknadsoversikt ? t('dine.hjelpemidler') : t('banner.tekst')
+  const tittel = props.soknadsside === Soknadsside.Soknadsoversikt ? t('dine.hjelpemiddelsoknader') : t('banner.tekst')
 
   return (
         <div className="banner centeredElement">
