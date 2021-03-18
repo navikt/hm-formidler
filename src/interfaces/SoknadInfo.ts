@@ -1,9 +1,10 @@
 import { SoknadStatus } from "../statemanagement/SoknadStatus";
 
-export interface SoknadKortInfo {
+export interface SoknadInfo {
   soknadId: string
   status: SoknadStatus
   datoOpprettet: string
   datoOppdatert: string
-  formidlerNavn: string
+  navnBruker?: string
+  fnrBruker: string
 }

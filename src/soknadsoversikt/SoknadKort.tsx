@@ -6,16 +6,16 @@ import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import Etikett from 'nav-frontend-etiketter'
-import { SoknadKortInfo } from '../interfaces/SoknadTilGodkjenning'
+import { SoknadInfo } from '../interfaces/SoknadInfo'
 
 type SoknadProps = {
-    soknadTilGodkjenning: SoknadKortInfo
+    soknadInfo: SoknadInfo
   }
 
 const SoknadKort = (props: SoknadProps) => {
     const { t } = useTranslation()
 
-    const soknad = props.soknadTilGodkjenning
+    const soknad = props.soknadInfo
     const sistOppdatert = moment(soknad.datoOpprettet).format('DD.MM.YYYY')
     const etikettType = soknad.status === SoknadStatus.SLETTET || soknad.status === SoknadStatus.UTLØPT ? 'advarsel' : 'info'
 
@@ -24,7 +24,7 @@ const SoknadKort = (props: SoknadProps) => {
         <div className="soknadsKort">
           <div>
             <Normaltekst>
-              {t(`${soknad.formidlerNavn}`)}
+              {t(`${soknad.navnBruker}`)}
             </Normaltekst>
           </div>
           <div>
