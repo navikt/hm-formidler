@@ -7,7 +7,7 @@ on:
       - "LICENCE"
       - "CODEOWNERS"
     branches:
-      - master
+      - main
 
 jobs:
   test:
@@ -47,13 +47,6 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais-dev.yaml
-          PRINT_PAYLOAD: true
-      - name: Deploy to labs-gcp
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: labs-gcp
-          RESOURCE: .nais/labs-gcp.yaml
           PRINT_PAYLOAD: true
       - name: Post-deploy
         uses: navikt/digihot-deploy/actions/post-deploy@v2
