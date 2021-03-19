@@ -27,6 +27,19 @@ const SoknadsOversikt = () => {
     )
 
 
+  const venterGodkjenning = data.filter( (soknad:SoknadInfo) => {
+    return soknad.status === SoknadStatus.VENTER_GODKJENNING
+  }).sort(function(a:SoknadInfo,b:SoknadInfo){
+    return new Date(b.datoOpprettet).getTime() - new Date(a.datoOpprettet).getTime();
+  });
+
+  const ikkeVenterGodkjenning = data.filter( (soknad:SoknadInfo) => {
+    return soknad.status !== SoknadStatus.VENTER_GODKJENNING
+  }).sort(function(a:SoknadInfo,b:SoknadInfo){
+    return new Date(b.datoOppdatert).getTime() - new Date(a.datoOppdatert).getTime();
+  });
+
+  const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
 
   return (
     <>
@@ -34,13 +47,13 @@ const SoknadsOversikt = () => {
         <Banner soknadsside={Soknadsside.Soknadsoversikt} />
       </header>
 
-      <main style={{ paddingTop: '4rem' /*, backgroundColor: '#F2F2F2'*/ }}>
+      <main style={{ paddingTop: '4rem' }}>
         <div className="customPanel" >
-            {data.length === 0 ? <IngenSoknader/> :
+            {alleSoknader.length === 0 ? <IngenSoknader/> :
             (
               <table className="tabell">
                 <tbody>
-                {data.map(
+                {alleSoknader.map(
 
                   (soknad:SoknadInfo) => {
                     let etikettType: EtikettBaseProps['type'];
