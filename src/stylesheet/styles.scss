@@ -42,10 +42,11 @@ html {
 }
 
 .banner {
-  height: 3.5rem;
+    padding-top: $lSpacing;
+  /*height: 3.5rem;
   padding-left: 3rem;
   padding-right: 3rem;
-  flex-direction: column;
+  flex-direction: column;*/
   align-items: center;
 }
 
@@ -63,7 +64,7 @@ html {
 }
 
 .banner .typo-sidetittel {
-  font-size: 1.5rem;
+  //font-size: 1.5rem;
 }
 
 .infobanner {
@@ -98,6 +99,9 @@ html {
   cursor: pointer;
 }
 
+.fontBold > .typo-normal {
+    font-weight: bold;
+}
 .centeredElement {
   align-items: center;
   justify-content: center;

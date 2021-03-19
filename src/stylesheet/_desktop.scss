@@ -205,11 +205,7 @@
   .customPanel {
     width: 50rem;
     margin: 0 auto $lSpacing;
-  }
-
-  .customPanel:last-of-type {
-    width: 40rem;
-    margin: 0 auto $lSpacing;
+    padding: $xlSpacing;
   }
 
   .customPanel .panel {

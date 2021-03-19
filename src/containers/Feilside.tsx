@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import Banner from '../components/Banner'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
-import { Soknadsside } from '../interfaces/CommonTypes'
 import { Knapp } from 'nav-frontend-knapper'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
@@ -17,7 +16,7 @@ const Feilside = () => {
   return (
     <>
       <header>
-        <Banner soknadsside={Soknadsside.Feilside} />
+        <Banner />
       </header>
 
       <main>
