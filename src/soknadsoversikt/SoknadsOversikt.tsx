@@ -48,9 +48,10 @@ const SoknadsOversikt = () => {
       </header>
 
       <main style={{ paddingTop: '4rem' }}>
-        <div className="customPanel" >
+        <div className="customPanel liste" >
             {alleSoknader.length === 0 ? <IngenSoknader/> :
             (
+
               <table className="tabell">
                 <tbody>
                 {alleSoknader.map(

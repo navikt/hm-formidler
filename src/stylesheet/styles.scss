@@ -8,7 +8,7 @@
 
 html {
   min-height: 100%;
-  background-color: $backgroundColor;
+  background-color: #F2F2F2;
   font-size: 16px;
   color: $navMorkGra;
 }
@@ -43,8 +43,6 @@ html {
 
 .banner {
   height: 3.5rem;
-  background-color: $navLimeGronnLighten60;
-  border-bottom: 4px solid $navLimeGronnLighten40;
   padding-left: 3rem;
   padding-right: 3rem;
   flex-direction: column;
@@ -83,7 +81,7 @@ html {
 
 .bekreftPanel {
   border: 1px solid $navOransje;
-  
+
 }
 
 .customPanel.feilside .nav-veileder__frame {
@@ -91,6 +89,10 @@ html {
   height: 100%;
 }
 
+.customPanel.liste {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
 .editLink {
   color: $navBla;
   cursor: pointer;
