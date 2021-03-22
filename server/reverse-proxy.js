@@ -5,15 +5,17 @@ const config = require('./config')
 
 const logger = require('./logger')
 
-const options = () => ({
+const options = (targetAudience) => ({
   parseReqBody: false,
+
   proxyReqOptDecorator: (options, req) => {
     if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
+      console.log(`Veksler inn token til aud ${targetAudience}`)
       return new Promise((resolve, reject) => {
         const selvbetjeningToken = req.session.tokens.access_token
 
         if (selvbetjeningToken !== '' && tokenIsValid(selvbetjeningToken)) {
-          return auth.exchangeToken(selvbetjeningToken).then(
+          return auth.exchangeToken(targetAudience).then(
             (response) => {
               options.headers.Authorization = `Bearer ${response.access_token}`
               resolve(options)
@@ -40,16 +42,11 @@ const tokenIsValid = (token) => {
 
 const envProperties = {
   API_URL: process.env.API_URL || 'http://localhost:8082',
+  SOKNAD_API_URL: process.env.SOKNAD_API_URL || 'http://localhost:9090',
 }
 
 const pathRewriteBasedOnEnvironment = (req) => {
-  /*if (process.env.NAIS_CLUSTER_NAME === 'prod-gcp' || process.env.NAIS_CLUSTER_NAME === 'dev-gcp') {
-    const newUrl = req.originalUrl.replace('/hjelpemidler/formidler/api', '')
-    return newUrl
-  } else {*/
-  // /hjelpemidler/formidler/api/bruker/soknad/62f68547-11ae-418c-8ab7-4d2af985bcd9
   return req.originalUrl.replace('/hjelpemidler/formidler/', '/')
-  // }
 }
 
 const setup = (server) => {
@@ -64,8 +61,8 @@ const setup = (server) => {
       process.exit(1)
     })
 
-  server.use(`${config.basePath}/api/`, proxy(envProperties.API_URL, options()))
-  //server.use(`${config.basePath}/api/`, proxy(envProperties.API_URL))
+  server.use(`${config.basePath}/api/`, proxy(envProperties.API_URL, options(config.app.soknadsbehandlingAudience)))
+  server.use(`${config.basePath}/soknad-api/`, proxy(envProperties.API_URL, options(config.app.soknadApiAudience)))
 }
 
 // TODO validate cookie

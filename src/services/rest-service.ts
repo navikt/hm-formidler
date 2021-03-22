@@ -1,5 +1,6 @@
 
 export const API_PATH = '/hjelpemidler/formidler/api'
+export const SOKNAD_API_PATH = '/hjelpemidler/formidler/soknad-api'
 
 const fetchGet: (url: string) => Promise<Response> = (url) => {
   return fetchWithCredentials(url, { headers: { Pragma: 'no-cache' } })

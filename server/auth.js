@@ -112,7 +112,7 @@ const validateOidcCallback = async (req) => {
     })
 }
 
-const exchangeToken = async (selvbetjeningsToken) => {
+const exchangeToken = async (selvbetjeningsToken, targetAudience) => {
   const clientAssertion = await createClientAssertion()
   return tokenxClient
     .grant({
@@ -121,7 +121,7 @@ const exchangeToken = async (selvbetjeningsToken) => {
       token_endpoint_auth_method: 'private_key_jwt',
       subject_token_type: 'urn:ietf:params:oauth:token-type:jwt',
       client_assertion: clientAssertion,
-      audience: appConfig.targetAudience,
+      audience: targetAudience,
       subject_token: selvbetjeningsToken,
     })
     .then((tokenSet) => {

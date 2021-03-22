@@ -36,6 +36,8 @@ spec:
   env:
     - name: API_URL
       value: http://hm-soknadsbehandling.teamdigihot.svc.cluster.local
+    - name: SOKNAD_API_URL
+      value: http://hm-soknad-api.teamdigihot.svc.cluster.local
     - name: DECORATOR_URL
       value: https://dekoratoren.dev.nav.no/?context=samarbeidspartner
     - name: SOKNADSBEHANDLING_AUDIENCE
