@@ -5,6 +5,7 @@ import NavFrontendSpinner from 'nav-frontend-spinner'
 import useSWR from 'swr'
 import ScrollToTop from './components/ScrollToTop'
 import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
+import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
 
 const App = () => {
@@ -19,10 +20,8 @@ const App = () => {
       </div>
     )
 
-  console.log('Har altinn rettighet ', data)
-
   if (!data.altinnRettighet || !data.allowlistTilgang) {
-    return <div>Du mangler tilgang{error}</div>
+    return <ManglerTilgang harAltInnRettighet={data.altinnRettighet} harAllowlistTilgang={data.allowlistTilgang}/>
   }
 
   return (

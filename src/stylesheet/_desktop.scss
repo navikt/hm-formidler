@@ -7,9 +7,14 @@
   }
 
   .infoDescBanner {
-    min-width: 90%;
+    width: 50rem;
     background-color: white;
     padding: $xlSpacing;
+    margin: 0 auto;
+  }
+
+  .infoDescBanner p {
+      text-align: center;
   }
 
   .ingressBox {
