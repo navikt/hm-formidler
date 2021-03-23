@@ -42,6 +42,8 @@ spec:
       value: https://dekoratoren.dev.nav.no/?context=samarbeidspartner
     - name: SOKNADSBEHANDLING_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknadsbehandling
+    - name: SOKNAD_API_AUDIENCE
+      value: dev-gcp:teamdigihot:hm-soknad-api
     - name: REDIS_HOST
       value: soknad-redis.teamdigihot.svc.cluster.local
     - name: LOGINSERVICE_URL

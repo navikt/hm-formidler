@@ -46,7 +46,7 @@ const SoknadsOversikt = () => {
   return (
     <>
       <header>
-        <Banner/>
+        <Banner />
       </header>
 
       <main style={{ paddingTop: '2rem' }}>
@@ -55,13 +55,21 @@ const SoknadsOversikt = () => {
             <IngenSoknader />
           ) : (
             <>
-            <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end', width: '100%', paddingBottom: '2rem'}}>
-              <div>
-                <Undertittel>Utfylte digital søknader</Undertittel>
-              </div>
-              <div style={{marginLeft: 'auto', paddingRight: '1rem'}}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-end',
+                  width: '100%',
+                  paddingBottom: '2rem',
+                }}
+              >
+                <div>
+                  <Undertittel>Utfylte digital søknader</Undertittel>
+                </div>
+                <div style={{ marginLeft: 'auto', paddingRight: '1rem' }}>
                   <Normaltekst>Status vises i 4 uker.</Normaltekst>
-              </div>
+                </div>
               </div>
               <table className="tabell">
                 <tbody>
@@ -82,7 +90,7 @@ const SoknadsOversikt = () => {
                     return (
                       <tr>
                         <td className="fontBold">
-                          <Normaltekst >{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
+                          <Normaltekst>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
                         </td>
                         <td>
                           <Normaltekst>
@@ -92,7 +100,7 @@ const SoknadsOversikt = () => {
                           </Normaltekst>
                         </td>
                         <td>
-                          <Etikett type={etikettType} style={{float: 'right'}}>
+                          <Etikett type={etikettType} style={{ float: 'right' }}>
                             <Normaltekst>{t(soknad.status)}</Normaltekst>
                           </Etikett>
                         </td>

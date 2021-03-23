@@ -114,6 +114,8 @@ const validateOidcCallback = async (req) => {
 
 const exchangeToken = async (selvbetjeningsToken, targetAudience) => {
   const clientAssertion = await createClientAssertion()
+  console.log('exchangetoken', targetAudience)
+
   return tokenxClient
     .grant({
       grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',

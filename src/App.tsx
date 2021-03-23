@@ -1,21 +1,35 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
+import NavFrontendSpinner from 'nav-frontend-spinner'
 import useSWR from 'swr'
 import ScrollToTop from './components/ScrollToTop'
+import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
 export const BASE_PATH = '/hjelpemidler/formidler'
 
-
-
-
 const App = () => {
-    const { data, error } = useSWR(`${SOKNAD_API_PATH}/altinn/rettighet-til-tjeneste`, fetcher)
+  const { data, error } = useSWR(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
+
+  /* TODO: Mekke feilside */
+  if (error) return <div>Noe gikk feil: {error}</div>
+  if (!data)
+    return (
+      <div className="content centeredElement">
+        <NavFrontendSpinner type="L" />
+      </div>
+    )
+
+  console.log('Har altinn rettighet ', data)
+
+  if (!data.altinnRettighet || !data.allowlistTilgang) {
+    return <div>Du mangler tilgang{error}</div>
+  }
 
   return (
     <>
       <BrowserRouter>
-            <ScrollToTop />
-            <Routes />
+        <ScrollToTop />
+        <Routes />
       </BrowserRouter>
     </>
   )
