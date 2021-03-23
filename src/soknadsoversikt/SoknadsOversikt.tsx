@@ -4,6 +4,7 @@ import Banner from '../components/Banner'
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import useSWR from 'swr'
 import { API_PATH, fetcher } from '../services/rest-service'
+import Panel from 'nav-frontend-paneler';
 import NavFrontendSpinner from 'nav-frontend-spinner'
 import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
@@ -50,11 +51,10 @@ const SoknadsOversikt = () => {
       </header>
 
       <main style={{ paddingTop: '2rem' }}>
-        <div className="customPanel liste">
-          {alleSoknader.length === 0 ? (
+      {alleSoknader.length === 0 ? (
             <IngenSoknader />
           ) : (
-            <>
+        <Panel border className="customPanel liste">
               <div
                 style={{
                   display: 'flex',
@@ -109,9 +109,7 @@ const SoknadsOversikt = () => {
                   })}
                 </tbody>
               </table>
-            </>
-          )}
-        </div>
+        </Panel>)}
       </main>
     </>
   )

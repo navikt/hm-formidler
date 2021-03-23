@@ -1,19 +1,9 @@
 import { setParams } from '@navikt/nav-dekoratoren-moduler'
-
-interface Params {
-  context?: 'privatperson' | 'arbeidsgiver' | 'samarbeidspartner'
-  simple?: boolean
-  enforceLogin?: boolean
-  redirectToApp?: boolean
-  level?: string
-  language?: 'nb' | 'nn' | 'en' | 'se'
-  feedback?: boolean
-  chatbot?: boolean
-}
+import { Params } from '@navikt/nav-dekoratoren-moduler/dist/functions/params'
 
 const DEFAULT_PARAMS: Params = {
   chatbot: false,
-  simple: true,
+  simple: false,
   feedback: false,
   context: 'samarbeidspartner',
 }

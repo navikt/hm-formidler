@@ -21,7 +21,7 @@ const ManglerTilgang = (props: ManglerTilgangProps) => {
         <Banner />
       </header>
       <main style={{ paddingTop: '2rem' }}>
-        <div className="infoDescBanner">
+        <div className="customPanel">
           <Veilederpanel fargetema="advarsel" type="plakat" svg={<SpotIllustration />}>
             <Systemtittel className="centeredElement">{infoSideTittel}</Systemtittel>
             <VeilederTekst harAltInnRettighet={harAltInnRettighet} harAllowlistTilgang={harAllowlistTilgang} />
