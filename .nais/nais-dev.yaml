@@ -58,3 +58,4 @@ spec:
       rules:
         - application: soknad-redis
         - application: hm-soknadsbehandling
+        - application: hm-soknad-api
