@@ -79,9 +79,6 @@ const SoknadsOversikt = () => {
                 <div>
                   <Undertittel>Utfylte digital søknader</Undertittel>
                 </div>
-                <div style={{ marginLeft: 'auto', paddingRight: '1rem' }}>
-                  <Normaltekst>Status vises i 4 uker.</Normaltekst>
-                </div>
               </div>
               <table className="tabell">
                 <tbody>
