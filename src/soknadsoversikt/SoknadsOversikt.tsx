@@ -15,12 +15,17 @@ import { beregnFrist, formaterDato } from '../Utils'
 import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
+import { BASE_PATH } from '../App'
+import { useHistory } from 'react-router-dom'
 
 const SoknadsOversikt = () => {
   const { t } = useTranslation()
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
+  const history = useHistory()
 
-  if (error) return <div>Noe gikk feil: {error}</div>
+  if (error) {
+    history.push({ pathname: `${BASE_PATH}/feilside` })
+  }
   if (!data)
     return (
       <div className="content centeredElement">
@@ -55,11 +60,11 @@ const SoknadsOversikt = () => {
       <main style={{ paddingTop: '2rem' }}>
         <div className="veilederWrapperPanel">
           <Veilederpanel fargetema="info" type="plakat" svg={<SpotIllustration />}>
-            <Normaltekst>Dette er en oversikt over de digitale søknadene du har fylt ut. i 4 uker etter at du fylte ut søknaden kan du se om bruker har bekreftet og sendt inn søknaden, slettet den eller om den er blitt slettet fordi bekreftelsesfristen har utløpt.
+            <Normaltekst>Dette er en oversikt over dine digitale søknader. I 4 uker etter at du fyller ut en søknad kan du se om bruker har bekreftet og sendt den inn, slettet den eller om den er blitt slettet fordi bekreftelsesfristen har utløpt.
             </Normaltekst>
             <br/>
             <Normaltekst>
-              Vi kan dessverre ikke vise status etter at hjelpemiddelsentralen har mottatt søknaden. Ferdig behandlede søknader vil derfor fremdeles vises som innsendt.
+              Vi kan dessverre ikke vise status etter at hjelpemiddelsentralen har mottatt søknaden. Ferdigbehandlede søknader vises derfor som Innsendt.
             </Normaltekst>
           </Veilederpanel>
         </div>
