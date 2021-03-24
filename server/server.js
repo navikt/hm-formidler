@@ -81,7 +81,6 @@ if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
     } else {
       let tokenSet = new TokenSet(currentTokens)
       if (tokenSet.expired()) {
-        //console.log('Token is expired, refreshing')
         console.log('Token is expired, redirecting to /login for now until we have fixed issue with invalid grant')
         res.redirect(`${basePath}/login`)
 
@@ -91,8 +90,9 @@ if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
         console.log('New tokenset saved to session')
 
         res.redirect(301, config.loginservice.loginServiceUrl)*/
+      } else {
+        return next()
       }
-      return next()
     }
   })
 }
