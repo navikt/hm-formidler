@@ -13,6 +13,8 @@ import IngenSoknader from './IngenSoknader'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { beregnFrist, formaterDato } from '../Utils'
 import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
+import Veilederpanel from 'nav-frontend-veilederpanel'
+import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 
 const SoknadsOversikt = () => {
   const { t } = useTranslation()
@@ -51,6 +53,16 @@ const SoknadsOversikt = () => {
       </header>
 
       <main style={{ paddingTop: '2rem' }}>
+        <div className="veilederWrapperPanel">
+          <Veilederpanel fargetema="info" type="plakat" svg={<SpotIllustration />}>
+            <Normaltekst>Dette er en oversikt over de digitale søknadene du har fylt ut. i 4 uker etter at du fylte ut søknaden kan du se om bruker har bekreftet og sendt inn søknaden, slettet den eller om den er blitt slettet fordi bekreftelsesfristen har utløpt.
+            </Normaltekst>
+            <br/>
+            <Normaltekst>
+              Vi kan dessverre ikke vise status etter at hjelpemiddelsentralen har mottatt søknaden. Ferdig behandlede søknader vil derfor fremdeles vises som innsendt.
+            </Normaltekst>
+          </Veilederpanel>
+        </div>
       {alleSoknader.length === 0 ? (
             <IngenSoknader />
           ) : (

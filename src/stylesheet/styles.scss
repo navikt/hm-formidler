@@ -37,8 +37,14 @@ html {
 }
 
 .banner {
-    padding-top: $lSpacing;
+  padding-top: $lSpacing;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .customPanel.feilside .nav-veileder__frame {

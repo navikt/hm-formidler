@@ -13,11 +13,6 @@
     margin: 0 auto;
   }
 
-  .nav-veilederpanel__content > p {
-      text-align: center;
-  }
-
-  
   .content {
     margin-bottom: $lSpacing;
   }
@@ -28,7 +23,18 @@
     padding: $sSpacing;
   }
 
+  .customPanel > .nav-veilederpanel--info{
+    background-color: #6ab889;
+  }
+
   .customPanel .panel {
     padding: $xlSpacing;
   }
+
+  .veilederWrapperPanel {
+    width: 45rem;
+    margin: 0 auto $lSpacing;
+  }
 }
+
+

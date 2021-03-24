@@ -21,7 +21,7 @@ const App = () => {
     )
 
   if (!data.altinnRettighet || !data.allowlistTilgang) {
-    return <ManglerTilgang harAltInnRettighet={data.altinnRettighet} harAllowlistTilgang={data.allowlistTilgang}/>
+    return <ManglerTilgang/>
   }
 
   return (
