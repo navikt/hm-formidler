@@ -2,7 +2,6 @@ import React from 'react'
 import './../stylesheet/styles.scss'
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
-import Banner from '../components/Banner'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
 import { Knapp } from 'nav-frontend-knapper'
@@ -15,10 +14,6 @@ const Feilside = () => {
 
   return (
     <>
-      <header>
-        <Banner />
-      </header>
-
       <main>
         <div className="customPanel feilside">
           <Veilederpanel type={'plakat'} kompakt svg={<SpotIllustration />}>
