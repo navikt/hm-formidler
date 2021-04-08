@@ -96,6 +96,7 @@ const SoknadsOversikt = () => {
                         break
                       case SoknadStatus.GODKJENT:
                       case SoknadStatus.GODKJENT_MED_FULLMAKT:
+                      case SoknadStatus.ENDELIG_JOURNALFØRT:
                         etikettType = 'info'
                         break
                       case SoknadStatus.VENTER_GODKJENNING:
