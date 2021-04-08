@@ -38,6 +38,6 @@ spec:
     - name: API_URL
       value: http://hm-mocks.teamdigihot.svc.cluster.local
     - name: SOKNAD_API_URL
-      value: http://hm-mocks.teamdigihot.svc.cluster.local
+      value: http://hm-mocks.teamdigihot.svc.cluster.local/hjelpemidler/digitalsoknadhjelpemidler
     - name: SOKNAD_URL
       value: https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/digitalsoknadhjelpemidler
