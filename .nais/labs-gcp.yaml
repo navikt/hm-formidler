@@ -1,0 +1,43 @@
+apiVersion: 'nais.io/v1alpha1'
+kind: 'Application'
+metadata:
+  name: hm-formidler
+  namespace: teamdigihot
+  labels:
+    team: teamdigihot
+spec:
+  image: {{image}}
+  team: teamdigihot
+  port: 5000
+  replicas:
+    min: 1
+    max: 1
+    cpuThresholdPercentage: 90
+  vault:
+    enabled: false
+  ingresses:
+    - https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/formidler
+  liveness:
+    path: /hjelpemidler/formidler/internal/isAlive
+    initialDelay: 5
+  readiness:
+    path: /hjelpemidler/formidler/internal/isReady
+    initialDelay: 5
+  prometheus:
+    enabled: true
+    path: /hjelpemidler/formidler/internal/metrics
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
+      rules:
+        - application: hm-mocks
+  env:
+    - name: DECORATOR_URL
+      value: https://www.nav.no/dekoratoren/?context=privatperson
+    - name: API_URL
+      value: http://hm-mocks.teamdigihot.svc.cluster.local
+    - name: SOKNAD_API_URL
+      value: http://hm-mocks.teamdigihot.svc.cluster.local
+    - name: SOKNAD_URL
+      value: https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/digitalsoknadhjelpemidler
