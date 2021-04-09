@@ -107,11 +107,11 @@ const SoknadsOversikt = () => {
                         <td className="fontBold">
                           <Normaltekst>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
                         </td>
-                        <td>
+                        <td style={{textAlign: 'right'}}>
                           <Normaltekst>
                             {soknad.status === SoknadStatus.VENTER_GODKJENNING
                               ? `Frist:  ${beregnFrist(soknad.datoOpprettet)}`
-                              : `Dato: ${formaterDato(soknad.datoOppdatert)}`}
+                              : formaterDato(soknad.datoOppdatert)}
                           </Normaltekst>
                         </td>
                         <td>
