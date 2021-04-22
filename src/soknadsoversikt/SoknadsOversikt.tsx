@@ -100,6 +100,7 @@ const SoknadsOversikt = () => {
                         etikettType = 'info'
                         break
                       case SoknadStatus.VENTER_GODKJENNING:
+                      default: 
                         etikettType = 'fokus'
                     }
                     return (
