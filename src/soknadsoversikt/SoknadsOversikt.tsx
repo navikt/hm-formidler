@@ -94,13 +94,14 @@ const SoknadsOversikt = () => {
                       case SoknadStatus.UTLØPT:
                         etikettType = 'advarsel'
                         break
+                      case SoknadStatus.VENTER_GODKJENNING:
+                        etikettType = 'fokus'
+                        break
                       case SoknadStatus.GODKJENT:
                       case SoknadStatus.GODKJENT_MED_FULLMAKT:
                       case SoknadStatus.ENDELIG_JOURNALFØRT:
+                        default:
                         etikettType = 'info'
-                        break
-                      case SoknadStatus.VENTER_GODKJENNING:
-                        etikettType = 'fokus'
                     }
                     return (
                       <tr>
