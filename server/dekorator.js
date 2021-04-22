@@ -16,10 +16,13 @@ const cache = new NodeCache({
 const getDecorator = () =>
   new Promise((resolve, reject) => {
     const decorator = cache.get('main-cache')
+    console.log('Dekoratør', process.env.DECORATOR_URL)
     if (decorator) {
       resolve(decorator)
     } else {
       request(process.env.DECORATOR_URL, (error, response, body) => {
+        console.log('Dekoratør error ', error)
+        console.log('Dekoratør body ', body)
         if (!error && response.statusCode >= 200 && response.statusCode < 400) {
           const { document } = new JSDOM(body).window
           const prop = 'innerHTML'
