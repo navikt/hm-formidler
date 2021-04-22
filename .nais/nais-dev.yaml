@@ -35,13 +35,13 @@ spec:
     frontchannelLogoutURI: "https://hjelpemidler.dev.nav.no/hjelpemidler/formidler/logout"
   env:
     - name: API_URL
-      value: http://hm-soknadsbehandling.teamdigihot.svc.cluster.local
+      value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
     - name: SOKNAD_API_URL
       value: http://hm-soknad-api.teamdigihot.svc.cluster.local
     - name: DECORATOR_URL
       value: https://dekoratoren.dev.nav.no/?context=samarbeidspartner
     - name: SOKNADSBEHANDLING_AUDIENCE
-      value: dev-gcp:teamdigihot:hm-soknadsbehandling
+      value: dev-gcp:teamdigihot:hm-soknadsbehandling-db
     - name: SOKNAD_API_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknad-api
     - name: REDIS_HOST
@@ -56,9 +56,7 @@ spec:
         - host: www-q0.nav.no
         - host: loginservice.dev.nav.no
         - host: dekoratoren.dev.nav.no
-        - host: tokendings.dev-gcp.nais.io
       rules:
         - application: soknad-redis
-        - application: hm-soknadsbehandling
         - application: hm-soknadsbehandling-db
         - application: hm-soknad-api
