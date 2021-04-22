@@ -27,6 +27,13 @@
     margin-bottom: $sSpacing;
   }
 
+  .banner {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
   .customPanel .inputPanel {
     margin-bottom: 1rem;
   }
