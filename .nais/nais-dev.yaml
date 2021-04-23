@@ -39,7 +39,7 @@ spec:
     - name: SOKNAD_API_URL
       value: http://hm-soknad-api.teamdigihot.svc.cluster.local
     - name: DECORATOR_URL
-      value: https://dekoratoren.nav.no/?context=samarbeidspartner
+      value: https://www.nav.no/dekoratoren/
     - name: SOKNADSBEHANDLING_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknadsbehandling-db
     - name: SOKNAD_API_AUDIENCE
@@ -54,6 +54,7 @@ spec:
     outbound:
       external:
         - host: www-q0.nav.no
+        - host: www.nav.no
         - host: loginservice.dev.nav.no
         - host: dekoratoren.nav.no
       rules:
