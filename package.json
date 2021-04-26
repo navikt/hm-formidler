@@ -106,7 +106,7 @@
     "eject": "craco eject",
     "client": "cross-env DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner yarn start",
     "server": "cross-env DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner node server/server.js",
-    "server-docker-be": "cross-env DEBUG=express-http-proxy IDPORTEN_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration TOKEN_X_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration  API_URL=http://host.docker.internal:8082 DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner node server/server.js",
+    "server-docker-be": "cross-env DEBUG=express-http-proxy IDPORTEN_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration TOKEN_X_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration  API_URL=http://localhost:8083/api DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner node server/server.js",
     "mocked-be": "cross-env SOKNAD_URL=http://localhost:3000/hjelpemidler/digitalsoknadhjelpemidler NAIS_CLUSTER_NAME=labs-gcp SOKNAD_API_URL=http://host.docker.internal:4040/ API_URL=http://host.docker.internal:4040/api/ IDPORTEN_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration TOKEN_X_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration   DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner node server/server.js",
     "devd": "concurrently --kill-others-on-fail \"yarn server-docker-be\" \"yarn client\"",
     "devoffline": "concurrently --kill-others-on-fail \"yarn mocked-be\" \"yarn client\"",
