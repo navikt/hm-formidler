@@ -109,7 +109,7 @@ const SoknadsOversikt = () => {
                     case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
                     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
                     case SoknadStatus.VEDTAKSRESULTAT_ANNET:
-                    case SoknadStatus.UTLEVERING_STARTET:
+                    case SoknadStatus.UTSENDING_STARTET:
                     default:
                       etikettType = 'info'
                   }
