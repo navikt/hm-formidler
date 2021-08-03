@@ -68,7 +68,7 @@ const SoknadsOversikt = () => {
             <br />
             <Normaltekst>
               Vi kan dessverre ikke vise status etter at hjelpemiddelsentralen har mottatt søknaden. Ferdigbehandlede
-              søknader vises derfor som Innsendt.
+              søknader vises derfor som Under behandling.
             </Normaltekst>
           </Veilederpanel>
         </div>
