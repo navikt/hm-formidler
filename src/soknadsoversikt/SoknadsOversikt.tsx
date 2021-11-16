@@ -96,18 +96,20 @@ const SoknadsOversikt = () => {
                   switch (soknad.status) {
                     case SoknadStatus.SLETTET:
                     case SoknadStatus.UTLØPT:
+                    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
                       etikettType = 'advarsel'
                       break
                     case SoknadStatus.VENTER_GODKJENNING:
+                    case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
                       etikettType = 'fokus'
+                      break
+                    case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
+                    case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
+                      etikettType = 'suksess'
                       break
                     case SoknadStatus.GODKJENT:
                     case SoknadStatus.GODKJENT_MED_FULLMAKT:
                     case SoknadStatus.ENDELIG_JOURNALFØRT:
-                    case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
-                    case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
-                    case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
-                    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
                     case SoknadStatus.VEDTAKSRESULTAT_ANNET:
                     case SoknadStatus.UTSENDING_STARTET:
                     default:
