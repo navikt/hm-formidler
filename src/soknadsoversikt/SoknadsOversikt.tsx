@@ -61,14 +61,7 @@ const SoknadsOversikt = () => {
         <div className="veilederWrapperPanel">
           <Veilederpanel fargetema="info" type="plakat" svg={<SpotIllustration />}>
             <Normaltekst>
-              Dette er en oversikt over dine digitale søknader. I 4 uker etter at du fyller ut en søknad kan du se om
-              bruker har bekreftet og sendt den inn, slettet den eller om den er blitt slettet fordi bekreftelsesfristen
-              har utløpt.
-            </Normaltekst>
-            <br />
-            <Normaltekst>
-              Vi kan dessverre ikke vise status etter at hjelpemiddelsentralen har mottatt søknaden. Ferdigbehandlede
-              søknader vises derfor som Under behandling.
+              {t('hoved.veilederpanel')}
             </Normaltekst>
           </Veilederpanel>
         </div>

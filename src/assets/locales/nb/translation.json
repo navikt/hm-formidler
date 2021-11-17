@@ -1,4 +1,5 @@
 {
+  "hoved.veilederpanel": "Dette er en oversikt over dine digitale søknader. Her kan du se om bruker har bekreftet og sendt den inn, slettet den eller om den er blitt slettet fordi bekreftelsesfristen har utløpt. Søknadene ligger her synlig i 4 uker etter at de er blitt effektuert.",
   "slettSoknadModal.sletteAdvarsel": "Formidler har ikke lagret denne søknaden, men må fylle ut en ny søknad hvis du skal søke. Er du sikker på at du vil slette søknaden?",
   "slettSoknadModal.slett": "Ja, slett",
   "slettSoknadModal.fortsett": "Nei, fortsett med søknaden",
