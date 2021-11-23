@@ -1,5 +1,5 @@
 {
-    "hoved.veilederpanel": "Dette er ei oversikt over dei digitale søknadene dine. Her kan du sjå om brukar har bekrefta og sendt den inn, sletta ho eller om ho er vorte sletta fordi stadfestingsfristen har gått ut. Søknadene ligg her synleg i 4 veker etter at dei er vorte effektuerte.",
+    "hoved.veilederpanel": "Dette er ei oversikt over dei digitale søknadene dine. Her kan du sjå om brukar har bekrefta og sendt den inn, sletta ho eller om ho er vorte sletta fordi stadfestingsfristen har gått ut. Søknadene ligg her synleg i 4 veker etter at saka enten er sletta av brukar eller saka er avslutta på hjelpemiddelsentralen.",
     "slettSoknadModal.sletteAdvarsel": "Formidler har ikke lagret denne søknaden, men må fylle ut en ny søknad hvis du skal søke. Er du sikker på at du vil slette søknaden?",
     "slettSoknadModal.slett": "Ja, slett",
     "slettSoknadModal.fortsett": "Nei, fortsett med søknaden",
