@@ -61,7 +61,13 @@ const SoknadsOversikt = () => {
         <div className="veilederWrapperPanel">
           <Veilederpanel fargetema="info" type="plakat" svg={<SpotIllustration />}>
             <Normaltekst>
-              {t('hoved.veilederpanel')}
+              {t('hoved.veilederpanel.p0')}
+            </Normaltekst>
+            <Normaltekst style={{ marginTop: '0.5rem' }}>
+              {t('hoved.veilederpanel.p1')}
+            </Normaltekst>
+            <Normaltekst style={{ marginTop: '0.5rem' }}>
+              {t('hoved.veilederpanel.p2')}
             </Normaltekst>
           </Veilederpanel>
         </div>
