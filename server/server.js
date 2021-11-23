@@ -10,7 +10,6 @@ const buildPath = path.resolve(__dirname, '../build')
 const { basePath } = require('./config')
 const logger = require('./logger')
 const server = express()
-const createEnvSettingsFile = require('./envSettings.js')
 const reverseProxy = require('./reverse-proxy')
 const { generators, TokenSet } = require('openid-client')
 const config = require('./config')
@@ -20,7 +19,9 @@ server.set('view engine', 'mustache')
 server.engine('html', mustacheExpress())
 
 server.set('trust proxy', 1)
-createEnvSettingsFile(path.resolve(`${buildPath}/static/js/settings.js`))
+
+// const createEnvSettingsFile = require('./envSettings.js')
+// createEnvSettingsFile(path.resolve(`${buildPath}/static/js/settings.js`))
 
 server.use(setupSession())
 
@@ -99,6 +100,13 @@ if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
 
 // Authenticated calls
 reverseProxy.setup(server)
+
+server.get(`${basePath}/js/settings.js`, (req, res) => {
+    res.contentType('text/javascript').send(`window.appSettings = {
+        MILJO: '${process.env.NAIS_CLUSTER_NAME}',
+        SOKNAD_URL: '${process.env.SOKNAD_URL}'
+    };`)
+})
 
 // Match everything except internal og static
 server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
