@@ -1,5 +1,7 @@
 {
     "hoved.veilederpanel": "Dette er ei oversikt over dei digitale søknadene dine. Her kan du sjå om brukar har bekrefta og sendt den inn, sletta ho eller om ho er vorte sletta fordi stadfestingsfristen har gått ut. Søknadene ligg her synleg i 4 veker etter at saka enten er sletta av brukar eller saka er avslutta på hjelpemiddelsentralen.",
+    "hoved.veilederpanel.statuser.apne": "Vis beskriving av statusane",
+    "hoved.veilederpanel.statuser.lukk": "Lukk beskriving av statusane",
     "slettSoknadModal.sletteAdvarsel": "Formidler har ikke lagret denne søknaden, men må fylle ut en ny søknad hvis du skal søke. Er du sikker på at du vil slette søknaden?",
     "slettSoknadModal.slett": "Ja, slett",
     "slettSoknadModal.fortsett": "Nei, fortsett med søknaden",
@@ -102,6 +104,27 @@
     "validering.maxLengde": "{{fieldName}} kan ikke overgå {{maxLengde}} tegn",
     "validering.maxSiffer": "{{fieldName}} må ha {{maxSiffer}} tegn",
     "validering.gyldigEpost": "{{fieldName}} må være en gyldig e-postadresse",
-    "validering.gyldig": "{{fieldName}} må være gyldig"
-  }
+    "validering.gyldig": "{{fieldName}} må være gyldig",
+    "statuser.venter.tittel": "Ventar på bekrefting",
+    "statuser.venter.beskrivelse": "Søknaden er sendt til brukar. Brukar må bekrefte søknaden og sende den inn.",
+    "statuser.innsendtAvBruker.tittel": "Innsendt av brukar",
+    "statuser.innsendtAvBruker.beskrivelse": "Brukar har bekrefta søknaden og sendt den inn.",
+    "statuser.innsendtAvDeg.tittel": "Innsendt av deg",
+    "statuser.innsendtAvDeg.beskrivelse": "Formidler har sendt inn søknaden med fullmakt på papir. Det vil ta opptil eit døgn før søknaden blir synleg hos brukar.",
+    "statuser.underBehandling.tittel": "Under behandling",
+    "statuser.underBehandling.beskrivelse": "Søknaden er under behandling.",
+    "statuser.innvilget.tittel": "Innvilga",
+    "statuser.innvilget.beskrivelse": "Søknaden er innvilga.",
+    "statuser.slettet.tittel": "Sletta av bruker",
+    "statuser.slettet.beskrivelse": "Bruker har sjølv sletta søknaden. Søknaden er dermed ikkje sendt inn.",
+    "statuser.slettetFrist.tittel": "Sletta - Frist utgått",
+    "statuser.slettetFrist.beskrivelse": "Når formidler har sendt søknaden til brukar for bekrefting, så har brukar ein frist på 15 dagar på å svare. Om brukar ikkje svarar, så blir søknaden sletta av personvernomsyn.",
+    "statuser.avslatt.tittel": "Avslått",
+    "statuser.avslatt.beskrivelse": "Søknaden er avslått.",
+    "statuser.lukket.tittel": "Saken er lukka",
+    "statuser.lukket.beskrivelse": "Saken med søknaden er lukka med eit vedtak som vi dessverre ikkje kan vise foreløpig. Vedtaket kan være både positivt og negativt.",
+    "statuser.ferdig.tittel": "Ferdig behandlet",
+    "statuser.ferdig.beskrivelse": "Saken er ferdig behandla på hjelpemiddelsentralen. Søknaden er innvilga eller delvis innvilga, og hjelpemiddelet gjeres klart for utkøyring. \nHjelpemiddelsentralane har ulike rutiner for når dei køyrer ut hjelpemiddel. Det kan ofte ta fleire dagar frå hjelpemiddelet gjeres klart til utkøyring og til det faktisk køyres ut. Foreløpig er det dessverre ikkje mogeleg å vise status for når hjelpemiddelet køyres ut eller er utlevert."
+
+}
   
