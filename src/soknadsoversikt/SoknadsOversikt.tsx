@@ -1,7 +1,7 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import {  Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi'
 import useSWR from 'swr'
 import { API_PATH, fetcher } from '../services/rest-service'
 import Panel from 'nav-frontend-paneler'
@@ -71,10 +71,13 @@ const SoknadsOversikt = () => {
             <Normaltekst style={{ marginTop: '0.5rem' }}>
               {t('hoved.veilederpanel.p2')}
             </Normaltekst>
+
             <Lesmerpanel
               apneTekst={t('hoved.veilederpanel.statuser.apne')}
               lukkTekst={t('hoved.veilederpanel.statuser.lukk')}>
-              <ul style={{listStyleType:"none"}}>
+              <Systemtittel style={{marginTop:"1.5rem"}}>Beskrivelse av statuser</Systemtittel>
+
+              <ul style={{listStyleType:"none", padding:"0"}}>
                 <li>
                   <StatusBeskrivelse tittel={t("statuser.venter.tittel")} beskrivelse={t("statuser.venter.beskrivelse")}/>
                 </li>

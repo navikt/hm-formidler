@@ -10,7 +10,7 @@ type StatusBeskrivelseProps = {
 const StatusBeskrivelse = (props: StatusBeskrivelseProps) => {
   return (
     <div style={{marginBottom:"1rem"}}>
-      <Undertittel>{props.tittel}</Undertittel>
+      <Undertittel tag={"h3"}>{props.tittel}</Undertittel>
       <Normaltekst>{props.beskrivelse}</Normaltekst>
     </div>
   )
