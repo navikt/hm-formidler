@@ -1,5 +1,9 @@
 name: Vulnerabilities scanning of dependencies
-on: push
+on: 
+  push:
+  schedule:
+    - cron: "0 17 * * 0,4" # Kl 02:00 hver søndag og torsdag
+
 jobs:
   security:
     runs-on: ubuntu-latest
