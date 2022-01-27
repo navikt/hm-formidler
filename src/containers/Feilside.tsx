@@ -1,4 +1,3 @@
-import React from 'react'
 import './../stylesheet/styles.scss'
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
@@ -26,7 +25,7 @@ const Feilside = () => {
               </div>
             </div>
             <div className="knappepanel">
-            <Knapp onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>{t('kvittering.tilbake')}</Knapp>
+              <Knapp onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>{t('kvittering.tilbake')}</Knapp>
             </div>
           </Veilederpanel>
         </div>

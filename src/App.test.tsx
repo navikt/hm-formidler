@@ -7,7 +7,7 @@ import '@testing-library/jest-dom/extend-expect'
 import App from './App'
 */
 test('integration test - happy path 1', async () => {
-    expect(true)
+  expect(true)
 })
 
 /*import MutationObserver from '@sheerun/mutationobserver-shim'
@@ -154,8 +154,8 @@ afterAll(() => server.close())*/
     )
   )*/
 
-  // Brukerside: Set up page specific server endpoint mock, click next and validate that the stored draft contains the correct and expected data
-  /*let soknadSent: string | undefined = undefined
+// Brukerside: Set up page specific server endpoint mock, click next and validate that the stored draft contains the correct and expected data
+/*let soknadSent: string | undefined = undefined
   server.use(
     rest.get(API_PATH + '/pdl/userinfo/valider-navn?etternavn=Nordmann&fnr=15084300133', (req, res, ctx) => {
       return res(ctx.json({ etternavnMatch: true }))

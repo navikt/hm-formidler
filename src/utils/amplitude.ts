@@ -6,13 +6,13 @@ export enum amplitude_taxonomy {
   SKJEMAINNSENDING_FEILET = 'skjemainnsending feilet',
   SKJEMA_FULLFØRT = 'skjema fullført',
   SKJEMAVALIDERING_FEILET = 'skjemavalidering feilet',
-  NAVIGERE = 'navigere'
+  NAVIGERE = 'navigere',
 }
 
 //Events som ikke er i NAV sin taxonomi
 export enum digihot_customevents {
-    SØKNAD_BEKREFTET='søknad bekreftet',
-    SØKNAD_SLETTET='søknad slettet'
+  SØKNAD_BEKREFTET = 'søknad bekreftet',
+  SØKNAD_SLETTET = 'søknad slettet',
   /*SKJEMA_FORTSATT = 'skjema fortsatt',*/
 }
 
@@ -86,7 +86,6 @@ export function logNavigeringLenke(id: string, destinasjon: string) {
   })
 }
 
-
 export function logSkjemaCustomEvent(event: digihot_customevents, id: string, data?: any) {
   logAmplitudeEvent(event, {
     skjemanavn: SKJEMANAVN,
@@ -94,7 +93,6 @@ export function logSkjemaCustomEvent(event: digihot_customevents, id: string, da
     ...data,
   })
 }
-
 
 export function logSkjemainnsendingFeilet() {
   logAmplitudeEvent(amplitude_taxonomy.SKJEMAINNSENDING_FEILET, {

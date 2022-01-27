@@ -14,7 +14,6 @@ export const validateStringIsRequiredAndObeysMaxLength = (input: string, fieldNa
   }
 }
 
-
 export const validateNonRequiredStringObeysMaxLength = (input: string, fieldName: string) => {
   const MAX_LETTERS = 256
 

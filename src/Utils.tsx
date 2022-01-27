@@ -17,8 +17,8 @@ export const beregnFrist = (opprettetDato: string): string => {
 }
 
 export const formaterDato = (opprettetDato: string): string => {
-    return moment(opprettetDato).format('D. MMM YYYY')
-  }
+  return moment(opprettetDato).format('D. MMM YYYY')
+}
 
 export const checkForErrors = (potentialErrorMessages: ValidationError): boolean => {
   return Object.keys(potentialErrorMessages).find((key) => potentialErrorMessages[key]) !== undefined

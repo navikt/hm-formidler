@@ -1,5 +1,3 @@
-import React from 'react'
-
 // Ikkje heilt trivielt å bruke translation i ein enum. Kan vurdere å utvide til å ta inn alle strengar,
 // ikkje kun dei som er definert under:
 export enum Opplesingstekst {

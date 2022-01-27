@@ -10,18 +10,18 @@ export enum RequestMethod {
 }
 
 export type HjelpemiddelItem = {
-    antall: number
-    beskrivelse: string
-    hjelpemiddelkategori: string
-    hmsNr: string
-    tilleggsinformasjon: string
-    rangering?: string
-    utlevertFraHjelpemiddelsentralen: boolean
-    vilkarliste?: HjelpemiddelVilkar[]
-    tilbehorListe?: Hjelpemiddeltilbehoer[]
-    begrunnelse?: string
-    kanIkkeTilsvarande: boolean
-    //navn?: string
+  antall: number
+  beskrivelse: string
+  hjelpemiddelkategori: string
+  hmsNr: string
+  tilleggsinformasjon: string
+  rangering?: string
+  utlevertFraHjelpemiddelsentralen: boolean
+  vilkarliste?: HjelpemiddelVilkar[]
+  tilbehorListe?: Hjelpemiddeltilbehoer[]
+  begrunnelse?: string
+  kanIkkeTilsvarande: boolean
+  //navn?: string
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -40,11 +40,10 @@ export type HjelpemiddelVilkar = {
   tilleggsinfo?: string
 }
 
-
 export enum Soknadsside {
   Oppsummering = 'oppsummering',
   Kvittering = 'kvittering',
   Info = 'info',
   Feilside = 'feil',
-  Soknadsoversikt = 'soknadsoversikt'
+  Soknadsoversikt = 'soknadsoversikt',
 }

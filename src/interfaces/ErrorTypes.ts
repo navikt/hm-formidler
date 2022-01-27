@@ -1,7 +1,6 @@
 export type ErrorTypeBrukerInfo = {
-  rettigheterOgPlikter: string | undefined,
+  rettigheterOgPlikter: string | undefined
   [key: string]: string | undefined
 }
 
-export type ValidationError =  
-| ErrorTypeBrukerInfo
+export type ValidationError = ErrorTypeBrukerInfo

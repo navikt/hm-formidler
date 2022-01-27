@@ -17,8 +17,8 @@ describe('i18n', () => {
 
       const allTranslationsUsed = stdout.split('t(').map((item) => {
         return item
-         .replace(/(.*)'\).*/, '$1')
-       .replace(/(\n)/, '')
+          .replace(/(.*)'\).*/, '$1')
+          .replace(/(\n)/, '')
           .replace(/'/g, '')
       })
 
@@ -32,8 +32,8 @@ describe('i18n', () => {
         expect(allNynorskTranslationsDefined).toContainEqual(allTranslationsUsed[i])
       }*/
 
-    done()
-     })
+      done()
+    })
   })
 
   /**

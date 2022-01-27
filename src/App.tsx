@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
 import NavFrontendSpinner from 'nav-frontend-spinner'
@@ -21,7 +20,7 @@ const App = () => {
     )
 
   if (!data.altinnRettighet || !data.allowlistTilgang) {
-    return <ManglerTilgang/>
+    return <ManglerTilgang />
   }
 
   return (

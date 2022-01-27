@@ -1,4 +1,4 @@
-import { SoknadStatus } from "../statemanagement/SoknadStatus";
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
 
 export interface SoknadInfo {
   soknadId: string

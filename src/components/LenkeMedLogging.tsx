@@ -12,7 +12,6 @@ type LenkeMedLoggingProps = {
 }
 
 const LenkeMedLogging = (props: LenkeMedLoggingProps) => {
-
   return (
     <>
       <Lenke

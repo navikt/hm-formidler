@@ -1,14 +1,10 @@
-import React from 'react'
 import '../stylesheet/styles.scss'
 import { Systemtittel } from 'nav-frontend-typografi'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import Banner from '../components/Banner'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 
-
-
 const ManglerTilgang = () => {
-
   const infoSideTittel = 'Du mangler tilgang til å se dine innsendte digitale søknader'
 
   return (
@@ -26,6 +22,5 @@ const ManglerTilgang = () => {
     </>
   )
 }
-
 
 export default ManglerTilgang
