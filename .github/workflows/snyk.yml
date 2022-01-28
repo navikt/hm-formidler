@@ -1,7 +1,16 @@
 name: Vulnerabilities scanning of dependencies
-on: 
+on:
   schedule:
-    - cron: "0 19 * * *"
+    - cron: '*/10 * * * *'
+  push:
+    paths-ignore:
+      - README.md
+      - CHANGELOG.md
+      - .gitignore
+      - .github/**
+      - Jenkinsfile
+    branches:
+      - main
 
 jobs:
   security:
