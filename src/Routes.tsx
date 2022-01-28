@@ -5,7 +5,7 @@ import Feilside from './containers/Feilside'
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 
-const Routes = () => {
+const Routes: React.FC = () => {
   const { t } = useTranslation()
 
   return (

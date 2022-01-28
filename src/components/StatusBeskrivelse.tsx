@@ -5,7 +5,7 @@ type StatusBeskrivelseProps = {
   beskrivelse: string
 }
 
-const StatusBeskrivelse = (props: StatusBeskrivelseProps) => {
+const StatusBeskrivelse: React.FC<StatusBeskrivelseProps> = (props: StatusBeskrivelseProps) => {
   return (
     <div style={{ marginBottom: '1rem' }}>
       <Undertittel tag={'h3'}>{props.tittel}</Undertittel>

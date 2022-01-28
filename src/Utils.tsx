@@ -24,7 +24,7 @@ export const checkForErrors = (potentialErrorMessages: ValidationError): boolean
   return Object.keys(potentialErrorMessages).find((key) => potentialErrorMessages[key]) !== undefined
 }
 
-export const capitalize = (tekstStreng: string, separator: string) => {
+export const capitalize = (tekstStreng: string, separator: string): string => {
   return tekstStreng
     .toLowerCase()
     .split(separator)
@@ -34,7 +34,7 @@ export const capitalize = (tekstStreng: string, separator: string) => {
     .join(separator)
 }
 
-export const capitalizeKommunenavn = (navn: string) => {
+export const capitalizeKommunenavn = (navn: string): string => {
   const separator = navn.includes('-') ? '-' : ' '
   return capitalize(navn, separator)
 }
@@ -56,24 +56,14 @@ export const createFeilOppsummering = (errors: ValidationError): FeilType[] => {
     .filter((key) => errors[key] !== undefined)
     .map((key) => ({
       skjemaelementId: key,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       feilmelding: errors[key]!, // Filter makes sure it is not undefined
     }))
 }
 
-export const fokusOgScrollTilFeiloppsummering = (feiloppsummeringRef: RefObject<HTMLDivElement>) => {
+export const fokusOgScrollTilFeiloppsummering = (feiloppsummeringRef: RefObject<HTMLDivElement>): void => {
   if (feiloppsummeringRef.current) {
     feiloppsummeringRef.current.focus()
     feiloppsummeringRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-}
-
-export const getErrorIds = (errors: any) => {
-  if (errors === undefined) return undefined
-  const newErrors: string[] = []
-  for (const error in errors) {
-    if (errors[error] !== undefined) {
-      newErrors.push(error)
-    }
-  }
-  return newErrors
 }

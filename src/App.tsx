@@ -7,7 +7,7 @@ import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
 import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
 
-const App = () => {
+const App: React.FC = () => {
   const { data, error } = useSWR(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
 
   /* TODO: Mekke feilside */

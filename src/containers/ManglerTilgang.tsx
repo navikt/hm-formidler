@@ -4,7 +4,7 @@ import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_
 import Banner from '../components/Banner'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 
-const ManglerTilgang = () => {
+const ManglerTilgang: React.FC = () => {
   const infoSideTittel = 'Du mangler tilgang til å se dine innsendte digitale søknader'
 
   return (

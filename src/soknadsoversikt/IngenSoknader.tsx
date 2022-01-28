@@ -4,7 +4,7 @@ import 'nav-frontend-tabell-style'
 import { ReactComponent as SpotIllustration } from '../assets/svg/ingenSoknader.svg'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 
-const IngenSoknader = () => {
+const IngenSoknader: React.FC = () => {
   return (
     <div className="customPanel">
       <Veilederpanel type="plakat" veilederProps={{ transparent: true }} svg={<SpotIllustration />}>

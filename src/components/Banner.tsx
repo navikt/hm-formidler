@@ -3,7 +3,7 @@ import '../stylesheet/styles.scss'
 import { useTranslation } from 'react-i18next'
 import environment from '../environment'
 
-const Banner = () => {
+const Banner: React.FC = () => {
   const { t } = useTranslation()
 
   return (

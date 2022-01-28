@@ -25,7 +25,7 @@ const DEFAULT_PARAMS: Params = {
   context: 'samarbeidspartner',
 }
 
-export const initDecorator = () => {
+export const initDecorator = (): void => {
   setParams({
     ...DEFAULT_PARAMS,
   })

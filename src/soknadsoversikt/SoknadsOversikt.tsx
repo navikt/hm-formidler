@@ -19,7 +19,7 @@ import { useHistory } from 'react-router-dom'
 import Lesmerpanel from 'nav-frontend-lesmerpanel'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
 
-const SoknadsOversikt = () => {
+const SoknadsOversikt: React.FC = () => {
   const { t } = useTranslation()
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
   const history = useHistory()

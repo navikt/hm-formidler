@@ -7,7 +7,7 @@ import { Knapp } from 'nav-frontend-knapper'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
 
-const Feilside = () => {
+const Feilside: React.FC = () => {
   const { t } = useTranslation()
   const history = useHistory()
 

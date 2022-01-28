@@ -11,7 +11,7 @@ type SoknadProps = {
   soknadInfo: SoknadInfo
 }
 
-const SoknadKort = (props: SoknadProps) => {
+const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
   const { t } = useTranslation()
 
   const soknad = props.soknadInfo

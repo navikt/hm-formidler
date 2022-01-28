@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import amplitude from 'amplitude-js'
 
 export enum amplitude_taxonomy {
@@ -18,7 +19,7 @@ export enum digihot_customevents {
 
 const SKJEMANAVN = 'formidler'
 
-export const initAmplitude = () => {
+export const initAmplitude = (): void => {
   if (amplitude) {
     amplitude.getInstance().init('default', '', {
       apiEndpoint: 'amplitude.nav.no/collect-auto',
@@ -30,7 +31,8 @@ export const initAmplitude = () => {
   }
 }
 
-export function logAmplitudeEvent(eventName: string, data?: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function logAmplitudeEvent(eventName: string, data?: any): void {
   setTimeout(() => {
     data = {
       app: 'formidler',
@@ -47,55 +49,10 @@ export function logAmplitudeEvent(eventName: string, data?: any) {
   })
 }
 
-export function logSkjemastegFullfoert(id: string, steg: number) {
-  logAmplitudeEvent(amplitude_taxonomy.SKJEMASTEG_FULLFØRT, {
-    skjemanavn: SKJEMANAVN,
-    skjemaId: id,
-    steg: steg,
-  })
-}
-
-export function logSkjemaStartet(id: string) {
-  logAmplitudeEvent(amplitude_taxonomy.SKJEMA_START, {
-    skjemanavn: SKJEMANAVN,
-    skjemaId: id,
-  })
-}
-
-export function logSkjemavalideringFeilet(id: string, komponent: string, feilmeldinger: string[] | undefined) {
-  logAmplitudeEvent(amplitude_taxonomy.SKJEMAVALIDERING_FEILET, {
-    skjemanavn: SKJEMANAVN,
-    skjemaId: id,
-    skjemaside: komponent,
-    feilmeldinger: feilmeldinger,
-  })
-}
-
-export function logSkjemaFullfoert(id: string) {
-  logAmplitudeEvent(amplitude_taxonomy.SKJEMA_FULLFØRT, {
-    skjemanavn: SKJEMANAVN,
-    skjemaId: id,
-  })
-}
-
-export function logNavigeringLenke(id: string, destinasjon: string) {
+export function logNavigeringLenke(id: string, destinasjon: string): void {
   logAmplitudeEvent(amplitude_taxonomy.NAVIGERE, {
     skjemanavn: SKJEMANAVN,
     skjemaId: id,
     destinasjon: destinasjon,
-  })
-}
-
-export function logSkjemaCustomEvent(event: digihot_customevents, id: string, data?: any) {
-  logAmplitudeEvent(event, {
-    skjemanavn: SKJEMANAVN,
-    skjemaId: id,
-    ...data,
-  })
-}
-
-export function logSkjemainnsendingFeilet() {
-  logAmplitudeEvent(amplitude_taxonomy.SKJEMAINNSENDING_FEILET, {
-    skjemanavn: SKJEMANAVN,
   })
 }
