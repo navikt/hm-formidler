@@ -1,15 +1,16 @@
-import { render } from '@testing-library/react'
-import Infoside from '../infoside/Infoside'
-import { axe, toHaveNoViolations } from 'jest-axe'
-import Bruker from '../bruker/Bruker'
-import Brukersituasjon from '../containers/Brukersituasjon'
-import Hjelpemidler from '../containers/Hjelpemidler'
-import Levering from '../containers/Levering'
-import Oppsummering from '../oppsummering/Oppsummering'
-import Kvittering from '../containers/Kvittering'
-import Feilside from '../containers/Feilside'
-import React from 'react'
-import App from '../App'
+// import { render } from '@testing-library/react'
+// import Infoside from '../infoside/Infoside'
+// import { axe, toHaveNoViolations } from 'jest-axe'
+import { toHaveNoViolations } from 'jest-axe'
+// import Bruker from '../bruker/Bruker'
+// import Brukersituasjon from '../containers/Brukersituasjon'
+// import Hjelpemidler from '../containers/Hjelpemidler'
+// import Levering from '../containers/Levering'
+// import Oppsummering from '../oppsummering/Oppsummering'
+// import Kvittering from '../containers/Kvittering'
+// import Feilside from '../containers/Feilside'
+// import React from 'react'
+// import App from '../App'
 
 // To fix "Error: Not implemented: window.scrollTo"
 it('renders without crashing', () => {
@@ -17,9 +18,11 @@ it('renders without crashing', () => {
 })
 
 beforeEach(() => {
-  jest.spyOn(global, 'fetch').mockResolvedValue({
-    json: jest.fn().mockResolvedValue(''),
-  })
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve({}),
+    })
+  ) as jest.Mock
 })
 afterEach(() => {
   jest.restoreAllMocks()
