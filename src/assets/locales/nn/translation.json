@@ -120,6 +120,7 @@
     "StandardSittepute": "Ynskjer standard sittepute",
     "LeggesTilSeparat": "Trykkavlastende sittepute leggjast til separat",
     "HarFraFor": "Brukar har sitjepute frå før",
+    "soknadvisning.tittel": "Søknad om hjelpemiddel til {{navnBruker}}",
     "statuser.venter.tittel": "Ventar på bekrefting",
     "statuser.venter.beskrivelse": "Søknaden er sendt til brukar. Brukar må bekrefte søknaden og sende den inn.",
     "statuser.innsendtAvBruker.tittel": "Innsendt av brukar",
