@@ -92,3 +92,38 @@ html {
   overflow: hidden;
   // max-width: 80ch;
 }
+
+.navds-link-panel__content {
+  flex-grow: 1;
+}
+
+
+// Soknad
+.contentBlock,
+.contentBlock.typo-element,
+.contentBlock.typo-normal {
+  margin-bottom: $lSpacing;
+}
+.contentBlock.typo-undertittel {
+  margin-bottom: $mSpacing;
+}
+
+.categoryRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoTable {
+  display: table;
+  width: 100%;
+}
+
+.infoRow {
+  display: table-row;
+  width: 100%;
+}
+
+.infoRowCell,
+.infoRowCellHms {
+  display: table-cell;
+}

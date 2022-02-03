@@ -3,21 +3,19 @@ import Banner from '../components/Banner'
 import { Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi'
 import useSWR from 'swr'
 import { API_PATH, fetcher } from '../services/rest-service'
-import Panel from 'nav-frontend-paneler'
 import NavFrontendSpinner from 'nav-frontend-spinner'
 import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import IngenSoknader from './IngenSoknader'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { beregnFrist, formaterDato } from '../Utils'
-import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import { BASE_PATH } from '../App'
 import { useHistory } from 'react-router-dom'
 import Lesmerpanel from 'nav-frontend-lesmerpanel'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
+import SoknadKort from './SoknadKort'
 
 const SoknadsOversikt: React.FC = () => {
   const { t } = useTranslation()
@@ -139,69 +137,18 @@ const SoknadsOversikt: React.FC = () => {
         {alleSoknader.length === 0 ? (
           <IngenSoknader />
         ) : (
-          <Panel border className="customPanel liste">
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-end',
-                width: '100%',
-                paddingBottom: '2rem',
-              }}
-            >
-              <div>
-                <Undertittel>Utfylte digitale søknader</Undertittel>
-              </div>
+          <div className="customPanel">
+            <div style={{ marginBottom: '1rem' }}>
+              <Undertittel>Utfylte digitale søknader</Undertittel>
             </div>
-            <table className="tabell">
-              <tbody>
-                {alleSoknader.map((soknad: SoknadInfo) => {
-                  let etikettType: EtikettBaseProps['type']
-                  switch (soknad.status) {
-                    case SoknadStatus.SLETTET:
-                    case SoknadStatus.UTLØPT:
-                    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
-                      etikettType = 'advarsel'
-                      break
-                    case SoknadStatus.VENTER_GODKJENNING:
-                    case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
-                      etikettType = 'fokus'
-                      break
-                    case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
-                    case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
-                      etikettType = 'suksess'
-                      break
-                    case SoknadStatus.GODKJENT:
-                    case SoknadStatus.GODKJENT_MED_FULLMAKT:
-                    case SoknadStatus.ENDELIG_JOURNALFØRT:
-                    case SoknadStatus.VEDTAKSRESULTAT_ANNET:
-                    case SoknadStatus.UTSENDING_STARTET:
-                    default:
-                      etikettType = 'info'
-                  }
-                  return (
-                    <tr key={soknad.soknadId}>
-                      <td className="fontBold">
-                        <Normaltekst>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <Normaltekst>
-                          {soknad.status === SoknadStatus.VENTER_GODKJENNING
-                            ? `Frist:  ${beregnFrist(soknad.datoOpprettet)}`
-                            : formaterDato(soknad.datoOppdatert)}
-                        </Normaltekst>
-                      </td>
-                      <td>
-                        <Etikett type={etikettType} style={{ float: 'right' }}>
-                          <Normaltekst>{t(soknad.status)}</Normaltekst>
-                        </Etikett>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </Panel>
+            {alleSoknader.map((soknad: SoknadInfo) => {
+              return (
+                <div key={soknad.søknadId}>
+                  <SoknadKort soknadInfo={soknad} />
+                </div>
+              )
+            })}
+          </div>
         )}
       </main>
     </>

@@ -17,11 +17,12 @@ export type HjelpemiddelItem = {
   tilleggsinformasjon: string
   rangering?: string
   utlevertFraHjelpemiddelsentralen: boolean
+  utlevertInfo?: UtlevertInfo
   vilkarliste?: HjelpemiddelVilkar[]
   tilbehorListe?: Hjelpemiddeltilbehoer[]
   begrunnelse?: string
   kanIkkeTilsvarande: boolean
-  //navn?: string
+  rullestolInfo?: RullestolInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -46,4 +47,29 @@ export enum Soknadsside {
   Info = 'info',
   Feilside = 'feil',
   Soknadsoversikt = 'soknadsoversikt',
+}
+
+export type UtlevertInfo = {
+  utlevertType?: UtlevertType
+  overførtFraBruker?: string
+  annenKommentar?: string
+}
+
+export enum UtlevertType {
+  FremskuttLager = 'FremskuttLager',
+  Korttidslån = 'Korttidslån',
+  Overført = 'Overført',
+  Annet = 'Annet',
+}
+
+export type RullestolInfo = {
+  skalBrukesIBil?: boolean
+  sitteputeValg?: SitteputeValg
+}
+
+export enum SitteputeValg {
+  TrengerSittepute = 'TrengerSittepute',
+  HarFraFor = 'HarFraFor',
+  StandardSittepute = 'StandardSittepute',
+  LeggesTilSeparat = 'LeggesTilSeparat',
 }

@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop'
 import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
 import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
+import '@navikt/ds-css'
 
 const App: React.FC = () => {
   const { data, error } = useSWR(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
