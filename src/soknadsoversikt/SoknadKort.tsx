@@ -8,7 +8,6 @@ import { beregnFrist, formaterDato } from '../Utils'
 import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
 import { LinkPanel } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
-import { useHistory } from 'react-router-dom'
 
 type SoknadProps = {
   soknadInfo: SoknadInfo
@@ -16,7 +15,6 @@ type SoknadProps = {
 
 const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
   const { t } = useTranslation()
-  const history = useHistory()
 
   const soknad = props.soknadInfo
   let etikettType: EtikettBaseProps['type']
@@ -45,14 +43,7 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
 
   return (
     <div style={{ marginBottom: '0.5rem' }}>
-      <LinkPanel
-        onClick={() => {
-          history.push({
-            pathname: `${BASE_PATH}/soknad/${soknad.søknadId}`,
-          })
-        }}
-        border
-      >
+      <LinkPanel href={`${BASE_PATH}/soknad/${soknad.søknadId}`} border>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div className="fontBold">
