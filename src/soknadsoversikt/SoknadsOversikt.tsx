@@ -7,13 +7,16 @@ import NavFrontendSpinner from 'nav-frontend-spinner'
 import 'nav-frontend-tabell-style'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import IngenSoknader from './IngenSoknader'
+import { ApplicationContext } from '../statemanagement/ApplicationContext'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { BASE_PATH } from '../App'
 import { useHistory } from 'react-router-dom'
 import SoknadKort from './SoknadKort'
 import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
+import { useContext } from 'react'
 
 const SoknadsOversikt: React.FC = () => {
+  const { erPilotkommune } = useContext(ApplicationContext)
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
   const history = useHistory()
 
@@ -44,6 +47,8 @@ const SoknadsOversikt: React.FC = () => {
     })
 
   const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
+
+  console.log('erPilotkommune', erPilotkommune)
 
   return (
     <>

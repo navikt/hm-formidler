@@ -1,4 +1,3 @@
-//import { ApplicationContext } from '../statemanagement/ApplicationContext'
 import { Element, Normaltekst, Undertittel, Systemtittel } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -12,7 +11,6 @@ type FormidlerProps = {
 
 const OppfoelgingOgOpplaeringOppsummering = (props: FormidlerProps) => {
   const { t } = useTranslation()
-  //const { state } = useContext(ApplicationContext)
   const { formidler, oppfolgingsansvarlig } = props
 
   return (
