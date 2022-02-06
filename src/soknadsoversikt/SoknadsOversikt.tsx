@@ -1,6 +1,5 @@
 import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
-import { Undertittel } from 'nav-frontend-typografi'
 import useSWR from 'swr'
 import { API_PATH, fetcher } from '../services/rest-service'
 import NavFrontendSpinner from 'nav-frontend-spinner'
@@ -11,9 +10,10 @@ import { ApplicationContext } from '../statemanagement/ApplicationContext'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { BASE_PATH } from '../App'
 import { useHistory } from 'react-router-dom'
-import SoknadKort from './SoknadKort'
 import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 import { useContext } from 'react'
+import SoknadListeGammel from './SoknadListeGammel'
+import SoknadListe from './SoknadListe'
 
 const SoknadsOversikt: React.FC = () => {
   const { erPilotkommune } = useContext(ApplicationContext)
@@ -48,8 +48,6 @@ const SoknadsOversikt: React.FC = () => {
 
   const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
 
-  console.log('erPilotkommune', erPilotkommune)
-
   return (
     <>
       <header>
@@ -61,18 +59,10 @@ const SoknadsOversikt: React.FC = () => {
         {alleSoknader.length === 0 ? (
           <IngenSoknader />
         ) : (
-          <div className="customPanel">
-            <div style={{ marginBottom: '1rem' }}>
-              <Undertittel>Utfylte digitale søknader</Undertittel>
-            </div>
-            {alleSoknader.map((soknad: SoknadInfo) => {
-              return (
-                <div key={soknad.søknadId}>
-                  <SoknadKort soknadInfo={soknad} />
-                </div>
-              )
-            })}
-          </div>
+          <>
+            {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
+            {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
+          </>
         )}
       </main>
     </>
