@@ -15,7 +15,7 @@ const Routes: React.FC = () => {
         <title>{t('helmet.title')}</title>
       </Helmet>
       <Route exact path={['/', `${BASE_PATH}/`]} component={SoknadsOversikt} />
-      <Route exact path={['/', `${BASE_PATH}/soknad/:soknadsid?`]} component={SoknadVisning} />
+      <Route exact path={['/', `${BASE_PATH}/soknad/:soknadsid`]} component={SoknadVisning} />
       <Route exact path={`${BASE_PATH}/feilside`} component={Feilside} />
     </>
   )

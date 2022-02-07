@@ -9,6 +9,7 @@ import Soknad from '../soknad/Soknad'
 import { Sidetittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
 import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
+import SoknadVisningFeil from './SoknadVisningFeil'
 
 interface ParamTypes {
   soknadsid: string
@@ -22,7 +23,7 @@ const SoknadVisning: React.FC = () => {
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
 
   if (error) {
-    history.push({ pathname: `${BASE_PATH}/feilside` }) // TODO kan vise feilmelding på denne siden
+    return <SoknadVisningFeil soknadsid={soknadsid} />
   }
   if (!data)
     return (
