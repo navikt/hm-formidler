@@ -49,6 +49,11 @@ const FullmaktOgVilkaarOppsummering = (props: FullmaktOgVilkaarProps) => {
           <li>{t('oppsummering.nodvenigHjelpemidler', { navn: brukersNavn })}</li>
         </ul>
       </div>
+
+      <div className="contentBlock">
+        <Element tag="h3">{t('oppsummering.infoOmRettOgPlikt.tittel')}</Element>
+        <Normaltekst>{t('oppsummering.infoOmRettOgPlikt')}</Normaltekst>
+      </div>
     </>
   )
 }

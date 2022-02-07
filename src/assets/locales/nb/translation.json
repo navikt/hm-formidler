@@ -119,6 +119,8 @@
   "oppsummering.fritakFraFullmakt.tekst": "Fullmakt på papir er ikke innhentet på grunn av korona-situasjonen",
   "oppsummering.brukerErInformertOmRettigheter": "{{navn}} er kjent med hvilke hjelpemidler det søkes om, er informert om sine rettigheter og plikter, og om at NAV kan innhente nødvendige opplysninger for å behandle søknaden",
   "oppsummering.soknadSlutt": "Søknad slutt",
+  "oppsummering.infoOmRettOgPlikt.tittel": "Informasjon om rettigheter og plikter",
+  "oppsummering.infoOmRettOgPlikt": "På nav.no kan du lese om hjelpemiddelmottakeres rettigheter og plikter og hvordan NAV behandler personopplysninger. På lovdata.no kan du lese om hvilke vilkår som må være oppfylt for å få rett til hjelpemidler i folketrygdloven §10-5, §10-6 og §10-7.",
   "kvittering.sletting": "Sletting av søknad",
   "validering.erPakrevd": "{{fieldName}} må fylles inn",
   "validering.maxLengde": "{{fieldName}} kan ikke overgå {{maxLengde}} tegn",
