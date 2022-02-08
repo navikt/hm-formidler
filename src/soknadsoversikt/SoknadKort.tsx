@@ -8,6 +8,7 @@ import { beregnFrist, formaterDato } from '../Utils'
 import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
 import { LinkPanel } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 type SoknadProps = {
   soknadInfo: SoknadInfo
@@ -43,7 +44,13 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
 
   return (
     <div style={{ marginBottom: '0.5rem' }}>
-      <LinkPanel href={`${BASE_PATH}/soknad/${soknad.søknadId}`} border>
+      <LinkPanel
+        href={`${BASE_PATH}/soknad/${soknad.søknadId}`}
+        onClick={() => {
+          logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
+        }}
+        border
+      >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div className="fontBold">

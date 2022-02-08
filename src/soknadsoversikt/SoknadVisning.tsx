@@ -34,9 +34,6 @@ const SoknadVisning: React.FC = () => {
 
   const { søknadsdata, navnBruker } = data
 
-  console.log('Søknadsdata: ', data)
-  console.log('navnBruker: ', navnBruker)
-
   return (
     <>
       <header>

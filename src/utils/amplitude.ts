@@ -12,9 +12,8 @@ export enum amplitude_taxonomy {
 
 //Events som ikke er i NAV sin taxonomi
 export enum digihot_customevents {
-  SØKNAD_BEKREFTET = 'søknad bekreftet',
-  SØKNAD_SLETTET = 'søknad slettet',
-  /*SKJEMA_FORTSATT = 'skjema fortsatt',*/
+  NY_SØKNAD = 'ny søknad',
+  SØKNAD_ÅPNET = 'søknad åpnet',
 }
 
 const SKJEMANAVN = 'formidler'
@@ -46,6 +45,14 @@ export function logAmplitudeEvent(eventName: string, data?: any): void {
     } catch (error) {
       console.error(error)
     }
+  })
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function logCustomEvent(event: digihot_customevents, data?: any) {
+  logAmplitudeEvent(event, {
+    skjemanavn: SKJEMANAVN,
+    ...data,
   })
 }
 

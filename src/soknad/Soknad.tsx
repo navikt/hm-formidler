@@ -17,8 +17,6 @@ const Soknad = (props: SoknadProps) => {
   const { t } = useTranslation()
   const { soknad } = props
 
-  console.log('In <Soknad> with props: ', props)
-
   return (
     <div className="customPanel soknadPanel">
       <div>
