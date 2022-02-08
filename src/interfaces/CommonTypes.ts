@@ -23,6 +23,8 @@ export type HjelpemiddelItem = {
   begrunnelse?: string
   kanIkkeTilsvarande: boolean
   rullestolInfo?: RullestolInfo
+  elektriskRullestolInfo?: ElektriskRullestolInfo
+  personlofterInfo?: PersonlofterInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -72,4 +74,25 @@ export enum SitteputeValg {
   HarFraFor = 'HarFraFor',
   StandardSittepute = 'StandardSittepute',
   LeggesTilSeparat = 'LeggesTilSeparat',
+}
+
+export type ElektriskRullestolInfo = {
+  godkjenningskurs?: boolean
+  kanBetjeneManuellStyring?: boolean
+  ferdesSikkertITrafikk?: boolean
+  nedsattGangfunksjon?: boolean
+  oppbevaringOgLagring?: boolean
+  oppbevaringInfo?: string
+  kjentMedForsikring?: boolean
+  harSpesialsykkel?: boolean
+  plasseringAvHendel?: HendelPlassering
+}
+
+export enum HendelPlassering {
+  VENSTRE = 'Venstre',
+  HØYRE = 'Høyre',
+}
+
+export type PersonlofterInfo = {
+  harBehovForSeilEllerSele?: boolean
 }

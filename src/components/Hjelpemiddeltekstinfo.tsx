@@ -49,6 +49,15 @@ const Hjelpemiddeltekstinfo = (props: HjelpemiddeltekstinfoProps) => {
           <Normaltekst style={{ display: 'inline' }}>{hm.tilleggsinformasjon}</Normaltekst>
         </div>
       )}
+      {!!hm.personlofterInfo && (
+        <>
+          <Element style={{ display: 'inline' }}>{t('handlekurv.labels.personloftere.tittel')}:&nbsp;</Element>
+          <Normaltekst style={{ display: 'inline' }}>
+            {hm.personlofterInfo.harBehovForSeilEllerSele === true && 'Ja'}
+            {hm.personlofterInfo.harBehovForSeilEllerSele === false && 'Nei'}
+          </Normaltekst>
+        </>
+      )}
     </>
   )
 }
