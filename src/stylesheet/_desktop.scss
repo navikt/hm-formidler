@@ -49,6 +49,15 @@
     width: 12em;
   }
 
+  .soknadKortLabel {
+    width: 20em;
+  }
+
+  .soknadKort{
+    align-items: 'center';
+    justify-content: 'flex-start';
+  }
+
   .hjelpemiddelinfo {
     display: flex;
     flex-flow: row;

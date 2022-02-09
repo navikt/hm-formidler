@@ -110,4 +110,20 @@
   .hjelpemiddelForm .skjemaelement {
     margin-bottom: $sSpacing;
   }
+
+  .infoRow {
+    display: flex !important;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+  }
+
+  .infoRowReverse {
+    flex-direction: column-reverse;
+  }
+
+  .soknadKort{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
 }
