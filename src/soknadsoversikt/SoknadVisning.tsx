@@ -34,6 +34,10 @@ const SoknadVisning: React.FC = () => {
 
   const { søknadsdata, navnBruker } = data
 
+  if (!søknadsdata) {
+    return <SoknadVisningFeil soknadsid={soknadsid} />
+  }
+
   return (
     <>
       <header>
