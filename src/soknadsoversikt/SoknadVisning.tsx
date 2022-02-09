@@ -10,6 +10,7 @@ import { Sidetittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
 import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
 import SoknadVisningFeil from './SoknadVisningFeil'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 interface ParamTypes {
   soknadsid: string
@@ -37,6 +38,8 @@ const SoknadVisning: React.FC = () => {
   if (!søknadsdata) {
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
+
+  logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
 
   return (
     <>

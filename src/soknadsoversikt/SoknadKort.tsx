@@ -74,7 +74,7 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
         <LinkPanel
           href={`${BASE_PATH}/soknad/${soknad.søknadId}`}
           onClick={() => {
-            logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
+            logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
           }}
           border
         >

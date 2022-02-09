@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
         href={environment.SOKNAD_URL}
         className="knapp knapp--hoved"
         onClick={() => {
-          logCustomEvent(digihot_customevents.NY_SØKNAD)
+          logCustomEvent(digihot_customevents.KLIKK_NY_SØKNAD)
         }}
       >
         Ny Søknad
