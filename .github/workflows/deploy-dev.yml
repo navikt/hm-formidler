@@ -8,6 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
+      - DIGIHOT-700-formidler-se-soknad
 jobs:
   test:
     name: Test
@@ -58,6 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create release
+        if: github.ref == 'refs/heads/main'
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

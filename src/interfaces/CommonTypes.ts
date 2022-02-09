@@ -17,11 +17,14 @@ export type HjelpemiddelItem = {
   tilleggsinformasjon: string
   rangering?: string
   utlevertFraHjelpemiddelsentralen: boolean
+  utlevertInfo?: UtlevertInfo
   vilkarliste?: HjelpemiddelVilkar[]
   tilbehorListe?: Hjelpemiddeltilbehoer[]
   begrunnelse?: string
   kanIkkeTilsvarande: boolean
-  //navn?: string
+  rullestolInfo?: RullestolInfo
+  elektriskRullestolInfo?: ElektriskRullestolInfo
+  personlofterInfo?: PersonlofterInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -46,4 +49,50 @@ export enum Soknadsside {
   Info = 'info',
   Feilside = 'feil',
   Soknadsoversikt = 'soknadsoversikt',
+}
+
+export type UtlevertInfo = {
+  utlevertType?: UtlevertType
+  overførtFraBruker?: string
+  annenKommentar?: string
+}
+
+export enum UtlevertType {
+  FremskuttLager = 'FremskuttLager',
+  Korttidslån = 'Korttidslån',
+  Overført = 'Overført',
+  Annet = 'Annet',
+}
+
+export type RullestolInfo = {
+  skalBrukesIBil?: boolean
+  sitteputeValg?: SitteputeValg
+}
+
+export enum SitteputeValg {
+  TrengerSittepute = 'TrengerSittepute',
+  HarFraFor = 'HarFraFor',
+  StandardSittepute = 'StandardSittepute',
+  LeggesTilSeparat = 'LeggesTilSeparat',
+}
+
+export type ElektriskRullestolInfo = {
+  godkjenningskurs?: boolean
+  kanBetjeneManuellStyring?: boolean
+  ferdesSikkertITrafikk?: boolean
+  nedsattGangfunksjon?: boolean
+  oppbevaringOgLagring?: boolean
+  oppbevaringInfo?: string
+  kjentMedForsikring?: boolean
+  harSpesialsykkel?: boolean
+  plasseringAvHendel?: HendelPlassering
+}
+
+export enum HendelPlassering {
+  VENSTRE = 'Venstre',
+  HØYRE = 'Høyre',
+}
+
+export type PersonlofterInfo = {
+  harBehovForSeilEllerSele?: boolean
 }
