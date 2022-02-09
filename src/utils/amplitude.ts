@@ -14,6 +14,7 @@ export enum amplitude_taxonomy {
 export enum digihot_customevents {
   NY_SØKNAD = 'ny søknad',
   SØKNAD_ÅPNET = 'søknad åpnet',
+  SØKNAD_VISNING_FEILET = 'søknad visning feilet',
 }
 
 const SKJEMANAVN = 'formidler'

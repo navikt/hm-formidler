@@ -6,6 +6,7 @@ import Lenke from 'nav-frontend-lenker'
 import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 interface SoknadVisningFeilProps {
   soknadsid: string
@@ -15,6 +16,8 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
   const history = useHistory()
 
   const { soknadsid } = props
+
+  logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
 
   return (
     <>
