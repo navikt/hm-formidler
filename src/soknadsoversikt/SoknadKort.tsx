@@ -18,14 +18,14 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
   const { t } = useTranslation()
 
   const soknad = props.soknadInfo
-  let soknadKanVises = true
+  let kanViseSoknad = true
   let etikettType: EtikettBaseProps['type']
   switch (soknad.status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
       etikettType = 'advarsel'
-      soknadKanVises = false
+      kanViseSoknad = false
       break
     case SoknadStatus.VENTER_GODKJENNING:
     case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
@@ -46,8 +46,8 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
 
   const panelInnhold = (
     <>
-      <div style={{ display: 'flex' }} className="soknadKort">
-        <div className="soknadKortLabel">
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
           <div className="fontBold">
             <Normaltekst>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
           </div>
@@ -58,7 +58,9 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
           </Normaltekst>
         </div>
         <div>
-          <Etikett type={etikettType}>
+          {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt 
+          med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
+          <Etikett type={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
             <Normaltekst>{t(soknad.status)}</Normaltekst>
           </Etikett>
         </div>
@@ -66,7 +68,7 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
     </>
   )
 
-  if (soknadKanVises) {
+  if (kanViseSoknad) {
     return (
       <div style={{ marginBottom: '0.5rem' }}>
         <LinkPanel
