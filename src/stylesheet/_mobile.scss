@@ -126,4 +126,16 @@
     align-items: flex-start;
   }
 
+  .centerButtons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .customModal {
+    padding: $sSpacing;
+    width: 18rem;
+    margin-top: 3rem;
+  }
 }

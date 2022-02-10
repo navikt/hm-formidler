@@ -8,6 +8,7 @@ import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
 import '@navikt/ds-css'
 import { ApplicationContext } from './statemanagement/ApplicationContext'
+import SessionCheck from './SessionCheck'
 
 const App: React.FC = () => {
   const { data, error } = useSWR(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
@@ -30,7 +31,9 @@ const App: React.FC = () => {
       <BrowserRouter>
         <ApplicationContext.Provider value={data}>
           <ScrollToTop />
-          <Routes />
+          <SessionCheck>
+            <Routes />
+          </SessionCheck>
         </ApplicationContext.Provider>
       </BrowserRouter>
     </>
