@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - DIGIHOT-700-formidler-se-soknad
+      - sesjon-varsel
 jobs:
   test:
     name: Test

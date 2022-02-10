@@ -16,6 +16,8 @@ export enum digihot_customevents {
   KLIKK_ÅPNE_SØKNAD = 'klikk åpne søknad',
   SØKNAD_ÅPNET = 'søknad åpnet',
   SØKNAD_VISNING_FEILET = 'søknad visning feilet',
+  VARSEL_OM_SESJON_UTLOPER = 'varsel vist om sesjon utløper',
+  VARSEL_OM_SESJON_UTLOPT = 'varsel vist om sesjon utløpt',
 }
 
 const SKJEMANAVN = 'formidler'
@@ -50,11 +52,16 @@ export function logAmplitudeEvent(eventName: string, data?: any): void {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function logCustomEvent(event: digihot_customevents, data?: any) {
-  logAmplitudeEvent(event, {
+export function logVistSesjonUtloperVarsel(data: { sekunderTilUtlop: number }) {
+  logAmplitudeEvent(digihot_customevents.VARSEL_OM_SESJON_UTLOPER, {
     skjemanavn: SKJEMANAVN,
     ...data,
+  })
+}
+
+export function logCustomEvent(event: digihot_customevents) {
+  logAmplitudeEvent(event, {
+    skjemanavn: SKJEMANAVN,
   })
 }
 
