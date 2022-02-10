@@ -71,6 +71,12 @@ html {
   margin-bottom: $sSpacing;
 }
 
+.customModal {
+  .knappepanel {
+    margin-top: 1rem;
+  }
+}
+
 .small-media-reverse-wrap {
   flex-wrap: wrap-reverse;
 }
