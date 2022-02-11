@@ -42,9 +42,8 @@ const SessionCheck = ({ children }: Props) => {
   }
 
   useEffect(() => {
-    // Ikke sjekk hvis vi bruker MSW
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((window as any).appSettings.MILJO === 'labs-gcp') {
+    // Ikke sjekk hvis vi bruker er i labs/mock (endret fra MSW)
+    if (window.appSettings.MILJO === 'labs-gcp') {
       return
     }
 
