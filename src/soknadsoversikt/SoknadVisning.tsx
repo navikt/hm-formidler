@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
 import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { useEffect } from 'react'
 
 interface ParamTypes {
   soknadsid: string
@@ -22,6 +23,10 @@ const SoknadVisning: React.FC = () => {
 
   const { soknadsid } = useParams<ParamTypes>()
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
+
+  useEffect(() => {
+    logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
+  }, [])
 
   if (error) {
     return <SoknadVisningFeil soknadsid={soknadsid} />
@@ -38,8 +43,6 @@ const SoknadVisning: React.FC = () => {
   if (!søknadsdata) {
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
-
-  logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
 
   return (
     <>
