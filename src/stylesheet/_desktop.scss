@@ -104,6 +104,16 @@
   .tilbehoerinfo-antall {
     flex: 0 0 7rem;
   }
+
+  .centerButtons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .customModal {
+    padding: $xlSpacing;
+    width: 40rem;
+  }
 }
 
 

@@ -11,20 +11,30 @@ import skiplinks from './decorator/decorator-skiplinks'
 import megamenu from './decorator/decorator-megamenu'
 import './i18n'
 import { initAmplitude } from './utils/amplitude'
-import environment from './environment'
 import * as Sentry from '@sentry/browser'
 import { initDecorator } from './decorator/decorator'
 import { v4 as uuid } from 'uuid'
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    hj: any
+    appSettings: {
+      MILJO: 'labs-gcp' | 'dev-gcp' | 'prod-gcp' | 'undefined'
+      SOKNAD_URL: string
+    }
+  }
+}
 
 const init = async () => {
   initAmplitude()
   initDecorator()
 
-  if (environment.MILJO === 'prod-gcp') {
+  if (window.appSettings.MILJO === 'prod-gcp') {
     console.log('Activate Sentry in prod-gcp')
     Sentry.init({ dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56' })
     Sentry.setUser({ id: uuid() })
-  } else if (environment.MILJO === 'dev-gcp') {
+  } else if (window.appSettings.MILJO === 'dev-gcp') {
     console.log('Activate Sentry in dev-gcp')
     Sentry.init({ dsn: 'https://1b9a6aaee2644e20a1b00e7affde3dea@sentry.gc.nav.no/57' })
     Sentry.setUser({ id: uuid() })

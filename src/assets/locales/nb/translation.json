@@ -172,5 +172,9 @@
   "leggTilEllerEndre.bruker.kroppsmaal": "Kroppsmål: ",
   "leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal": "Setebredde: {{kroppsmaal.setebredde}} cm, legglengde: {{kroppsmaal.legglengde}} cm, lårlengde: {{kroppsmaal.laarlengde}} cm, høyde: {{kroppsmaal.hoyde}} cm, kroppsvekt: {{kroppsmaal.kroppsvekt}} kg.",
   "handlekurv.labels.personloftere.tittel": "Har bruker behov for seil eller sele",
-  "leggTilEllerEndre.rullestol.sittepute:": "Sittepute: "
+  "leggTilEllerEndre.rullestol.sittepute:": "Sittepute: ",
+  "sesjon.utloper.tid": "Sesjonen din utløper om {{tid}} minutter",
+  "sesjon.utloper.forklaring": "Du kan fortsatt bruke siden, men når sesjonen utløper må du logge inn på nytt.",
+  "sesjon.utlopt": "Sesjonen din er utløpt. Vennligst logg inn på nytt.",
+  "sesjon.utlopt.loggInn": "Logg inn på nytt"
 }
