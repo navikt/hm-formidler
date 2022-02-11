@@ -7,6 +7,7 @@ import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { useEffect } from 'react'
 
 interface SoknadVisningFeilProps {
   soknadsid: string
@@ -18,6 +19,19 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
   const { soknadsid } = props
 
   logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
+
+  useEffect(() => {
+    window.hj =
+      window.hj ||
+      function () {
+        // eslint-disable-next-line prefer-rest-params
+        ;(window.hj.q = window.hj.q || []).push(arguments)
+      }
+    if (window.appSettings.MILJO !== 'labs-gcp') {
+      // && window.appSettings.MILJO !== 'dev-gcp') {
+      window.hj('trigger', 'digihot_behovsmelding_feilmelding')
+    }
+  })
 
   return (
     <>
