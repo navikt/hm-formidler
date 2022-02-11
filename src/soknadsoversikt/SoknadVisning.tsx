@@ -1,5 +1,5 @@
 import './../stylesheet/styles.scss'
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
 import NavFrontendSpinner from 'nav-frontend-spinner'
 import 'nav-frontend-tabell-style'
@@ -22,7 +22,7 @@ const SoknadVisning: React.FC = () => {
   const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
-  const { data, error } = useSWR(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
+  const { data, error } = useSWRImmutable(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
