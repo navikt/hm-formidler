@@ -90,7 +90,9 @@ const SoknadsOversiktVeileder: React.FC = () => {
               </li>
             </ul>
             {visMidlertidigMelding && (
-              <strong>Merk: Gamle saker som ved en feil tidligere ble vist er ny ryddet opp i.</strong>
+              <div style={{ marginTop: '2rem' }}>
+                <strong>Merk: Gamle saker som ved en feil tidligere ble vist er ny ryddet opp i.</strong>
+              </div>
             )}
           </Lesmerpanel>
         </Veilederpanel>
