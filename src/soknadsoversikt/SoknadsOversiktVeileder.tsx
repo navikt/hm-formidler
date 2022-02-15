@@ -21,6 +21,12 @@ const SoknadsOversiktVeileder: React.FC = () => {
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</Normaltekst>
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p2')}</Normaltekst>
 
+          {visMidlertidigMelding && (
+            <div style={{ marginTop: '1rem' }}>
+              <strong>Merk: Gamle saker som ved en feil tidligere ble vist er ny ryddet opp i.</strong>
+            </div>
+          )}
+
           <Lesmerpanel
             apneTekst={t('hoved.veilederpanel.statuser.apne')}
             lukkTekst={t('hoved.veilederpanel.statuser.lukk')}
@@ -89,11 +95,6 @@ const SoknadsOversiktVeileder: React.FC = () => {
                 />
               </li>
             </ul>
-            {visMidlertidigMelding && (
-              <div style={{ marginTop: '2rem' }}>
-                <strong>Merk: Gamle saker som ved en feil tidligere ble vist er ny ryddet opp i.</strong>
-              </div>
-            )}
           </Lesmerpanel>
         </Veilederpanel>
       </div>
