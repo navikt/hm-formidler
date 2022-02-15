@@ -23,7 +23,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
 
           {visMidlertidigMelding && (
             <div style={{ marginTop: '1rem' }}>
-              <strong>Merk: Gamle saker som ved en feil tidligere ble vist er ny ryddet opp i.</strong>
+              <strong>Merk: Gamle saker som ved en feil tidligere ble vist er nå ryddet opp i.</strong>
             </div>
           )}
 
