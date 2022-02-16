@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Normaltekst, Undertittel, Systemtittel } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'

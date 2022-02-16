@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-exec node server/server.js
+exec node -r dotenv/config server/server.js
