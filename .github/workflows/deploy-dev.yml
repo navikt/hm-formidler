@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - sesjon-varsel
+      - fix-logout-melding
 jobs:
   test:
     name: Test

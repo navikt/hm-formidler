@@ -98,6 +98,13 @@ if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
   })
 }
 
+server.get(`${basePath}/session/exp`, (req, res) => {
+  if (!req.session.tokens) {
+    return res.sendStatus(401)
+  }
+  return res.json({ exp: req.session.tokens.expires_at })
+})
+
 // Authenticated calls
 reverseProxy.setup(server)
 
@@ -106,13 +113,6 @@ server.get(`${basePath}/js/settings.js`, (req, res) => {
         MILJO: '${process.env.NAIS_CLUSTER_NAME}',
         SOKNAD_URL: '${process.env.SOKNAD_URL}'
     };`)
-})
-
-server.get(`${basePath}/session/exp`, (req, res) => {
-  if (!req.session.tokens) {
-    return res.sendStatus(401)
-  }
-  return res.json({ exp: req.session.tokens.expires_at })
 })
 
 // Match everything except internal og static
