@@ -1,3 +1,4 @@
+import React from 'react'
 import './../stylesheet/styles.scss'
 import { Normaltekst } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'

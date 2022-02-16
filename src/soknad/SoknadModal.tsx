@@ -1,3 +1,4 @@
+import React from 'react'
 import ModalWrapper from 'nav-frontend-modal'
 import Soknad from './Soknad'
 import { Knapp } from 'nav-frontend-knapper'
