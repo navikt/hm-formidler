@@ -1,3 +1,4 @@
+import React from 'react'
 import '../stylesheet/styles.scss'
 import { Systemtittel } from 'nav-frontend-typografi'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'

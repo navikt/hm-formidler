@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
@@ -27,9 +28,6 @@ declare global {
 }
 
 const init = async () => {
-  initAmplitude()
-  initDecorator()
-
   if (window.appSettings.MILJO === 'prod-gcp') {
     console.log('Activate Sentry in prod-gcp')
     Sentry.init({ dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56' })
@@ -39,6 +37,9 @@ const init = async () => {
     Sentry.init({ dsn: 'https://1b9a6aaee2644e20a1b00e7affde3dea@sentry.gc.nav.no/57' })
     Sentry.setUser({ id: uuid() })
   }
+
+  initAmplitude()
+  initDecorator()
 
   if (process.env.NODE_ENV === 'development') {
     document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_HEADING}}}', withMenu)

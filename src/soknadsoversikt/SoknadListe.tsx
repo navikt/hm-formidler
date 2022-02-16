@@ -1,3 +1,4 @@
+import React from 'react'
 import './../stylesheet/styles.scss'
 import { Undertittel } from 'nav-frontend-typografi'
 import 'nav-frontend-tabell-style'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { HendelPlassering, HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
