@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - sesjon-varsel
+      - forsok-pa-server-routing
 jobs:
   test:
     name: Test

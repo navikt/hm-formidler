@@ -1,3 +1,4 @@
+import React from 'react'
 import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
 import useSWR from 'swr'
@@ -19,6 +20,9 @@ const SoknadsOversikt: React.FC = () => {
   const { erPilotkommune } = useContext(ApplicationContext)
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
   const history = useHistory()
+
+  console.log('data', data)
+  console.log('error', error)
 
   if (error) {
     history.push({ pathname: `${BASE_PATH}/feilside` })
@@ -48,6 +52,21 @@ const SoknadsOversikt: React.FC = () => {
 
   const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
 
+  if (alleSoknader.length === 0) {
+    return (
+      <>
+        <header>
+          <Banner />
+        </header>
+
+        <main style={{ paddingTop: '2rem' }}>
+          <SoknadsOversiktVeileder />
+          <IngenSoknader />
+        </main>
+      </>
+    )
+  }
+
   return (
     <>
       <header>
@@ -56,14 +75,8 @@ const SoknadsOversikt: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <SoknadsOversiktVeileder />
-        {alleSoknader.length === 0 ? (
-          <IngenSoknader />
-        ) : (
-          <>
-            {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
-            {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
-          </>
-        )}
+        {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
+        {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
       </main>
     </>
   )

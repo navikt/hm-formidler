@@ -1,3 +1,4 @@
+import React from 'react'
 import { Innholdstittel } from 'nav-frontend-typografi'
 import Panel from 'nav-frontend-paneler'
 import './../stylesheet/oppsummering.module.scss'

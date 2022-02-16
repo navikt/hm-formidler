@@ -1,3 +1,4 @@
+import React from 'react'
 import { Route } from 'react-router-dom'
 import SoknadsOversikt from './soknadsoversikt/SoknadsOversikt'
 import { BASE_PATH } from './App'

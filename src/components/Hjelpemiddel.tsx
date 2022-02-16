@@ -1,3 +1,4 @@
+import React from 'react'
 import Hjelpemiddelinfo from './Hjelpemiddelinfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'

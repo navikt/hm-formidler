@@ -1,3 +1,4 @@
+import React from 'react'
 import { Normaltekst, Element } from 'nav-frontend-typografi'
 import { HjelpemiddelItem, HjelpemiddelVilkar } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
