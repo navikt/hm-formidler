@@ -1,3 +1,4 @@
+import React from 'react'
 import { HendelPlassering, HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
@@ -9,7 +10,7 @@ type RullestolInfoProps = {
   kroppsmaal: Kroppsmaal | undefined
 }
 
-export const RullestolInfo = (props: RullestolInfoProps) => {
+export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfoProps) => {
   const { t } = useTranslation()
   const { hm, kroppsmaal } = props
   return (

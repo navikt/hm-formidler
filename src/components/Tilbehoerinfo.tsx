@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Undertekst } from 'nav-frontend-typografi'
 import { Hjelpemiddeltilbehoer } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
@@ -6,7 +7,7 @@ type TilbehoerinfoProps = {
   tilbehoerListe?: Hjelpemiddeltilbehoer[]
 }
 
-const Tilbehoerinfo = (props: TilbehoerinfoProps) => {
+const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) => {
   const { t } = useTranslation()
   const { tilbehoerListe } = props
 

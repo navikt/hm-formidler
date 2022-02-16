@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import { useState } from 'react'
 import './../stylesheet/oppsummering.module.scss'

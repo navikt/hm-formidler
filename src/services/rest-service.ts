@@ -18,7 +18,7 @@ export const fetcher = async (url: string): Promise<any> => {
   return await response.json()
 }
 
-const getSessionExp = async () => {
+const getSessionExp = async (): Promise<Response> => {
   const response = await fetchGet(`${BASE_PATH}/session/exp`)
   return response
 }

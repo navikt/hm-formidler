@@ -1,3 +1,4 @@
+import React from 'react'
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 
 type StatusBeskrivelseProps = {

@@ -22,7 +22,7 @@
     "inlineSources": true,
     "sourceRoot": "/",
     "declaration": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "incremental": true,
     "noFallthroughCasesInSwitch": true
   },
@@ -32,5 +32,8 @@
   "exclude": [
     "node_modules",
     "build"
+  ],
+  "types": [
+    "cypress"
   ]
 }

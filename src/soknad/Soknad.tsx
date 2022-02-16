@@ -1,3 +1,4 @@
+import React from 'react'
 import { Innholdstittel } from 'nav-frontend-typografi'
 import Panel from 'nav-frontend-paneler'
 import './../stylesheet/oppsummering.module.scss'
@@ -13,7 +14,7 @@ type SoknadProps = {
   soknad: Soknadsdata
 }
 
-const Soknad = (props: SoknadProps) => {
+const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
   const { t } = useTranslation()
   const { soknad } = props
 
