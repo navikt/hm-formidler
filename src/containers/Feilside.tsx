@@ -7,15 +7,12 @@ import { Knapp } from 'nav-frontend-knapper'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
 import { useEffect } from 'react'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 const Feilside: React.FC = () => {
   const { t } = useTranslation()
   const history = useHistory()
 
   useEffect(() => {
-    logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
-
     window.hj =
       window.hj ||
       function () {
