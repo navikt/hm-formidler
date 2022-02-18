@@ -49,21 +49,6 @@ const SoknadsOversikt: React.FC = () => {
 
   const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
 
-  if (alleSoknader.length === 0) {
-    return (
-      <>
-        <header>
-          <Banner />
-        </header>
-
-        <main style={{ paddingTop: '2rem' }}>
-          <SoknadsOversiktVeileder />
-          <IngenSoknader />
-        </main>
-      </>
-    )
-  }
-
   return (
     <>
       <header>
@@ -72,8 +57,14 @@ const SoknadsOversikt: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <SoknadsOversiktVeileder />
-        {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
-        {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
+        {alleSoknader.length === 0 ? (
+          <IngenSoknader />
+        ) : (
+          <>
+            {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
+            {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
+          </>
+        )}
       </main>
     </>
   )

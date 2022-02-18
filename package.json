@@ -22,7 +22,6 @@
     "express-http-proxy": "^1.6.2",
     "express-session": "^1.17.2",
     "fs-extra": "^10.0.0",
-    "graphql": "^16.0.1",
     "i18next": "^20.6.0",
     "jsdom": "^17.0.0",
     "jsonwebtoken": "^8.5.1",
