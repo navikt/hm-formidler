@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Normaltekst, Undertittel, Systemtittel } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -9,7 +10,7 @@ type FormidlerProps = {
   oppfolgingsansvarlig: Oppfolgingsansvarliginfo
 }
 
-const OppfoelgingOgOpplaeringOppsummering = (props: FormidlerProps) => {
+const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: FormidlerProps) => {
   const { t } = useTranslation()
   const { formidler, oppfolgingsansvarlig } = props
 

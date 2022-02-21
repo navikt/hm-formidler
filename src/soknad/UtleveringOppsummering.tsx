@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -11,7 +12,7 @@ type LeveringProps = {
   bruker: Brukerinfo
 }
 
-const UtleveringOppsummering = (props: LeveringProps) => {
+const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) => {
   const { t } = useTranslation()
 
   const { levering, formidler, bruker } = props

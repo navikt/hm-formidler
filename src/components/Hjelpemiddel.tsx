@@ -1,3 +1,4 @@
+import React from 'react'
 import Hjelpemiddelinfo from './Hjelpemiddelinfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
@@ -11,7 +12,7 @@ type HjelpemiddelProps = {
   kroppsmaal: Kroppsmaal | undefined
 }
 
-const Hjelpemiddel = (props: HjelpemiddelProps) => {
+const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
   const { hm, kroppsmaal } = props
 
   return (

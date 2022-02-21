@@ -1,3 +1,4 @@
+import React from 'react'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -7,7 +8,7 @@ type FullmaktOgVilkaarProps = {
   bruker: Brukerinfo
 }
 
-const FullmaktOgVilkaarOppsummering = (props: FullmaktOgVilkaarProps) => {
+const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: FullmaktOgVilkaarProps) => {
   const { t } = useTranslation()
 
   const { bruker } = props

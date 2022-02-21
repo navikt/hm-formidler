@@ -1,3 +1,4 @@
+import React from 'react'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -11,7 +12,7 @@ type HjelpemidlerProps = {
   kroppsmaal: Kroppsmaal | undefined
 }
 
-const HjelpemidlerOppsummering = (props: HjelpemidlerProps) => {
+const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
   const { hjelpemidler, hjelpemiddelTotalAntall, kroppsmaal } = props
 

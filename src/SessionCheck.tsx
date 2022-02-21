@@ -13,7 +13,7 @@ interface Props {
 const CHECK_INTERVAL = 30 * 1000
 const VIS_VARSEL_PAA_MINUTT = 5
 
-const SessionCheck = ({ children }: Props) => {
+const SessionCheck: React.FC<Props> = ({ children }: Props) => {
   const { t } = useTranslation()
   const [visSesjonUtloperVarsel, setVisSesjonUtloperVarsel] = useState(false)
   const [harVistSesjonUtloperVarsel, setHarVistSesjonUtloperVarsel] = useState(false)

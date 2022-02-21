@@ -1,3 +1,4 @@
+import React from 'react'
 import { Normaltekst, Element } from 'nav-frontend-typografi'
 import { HjelpemiddelItem, HjelpemiddelVilkar } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
@@ -6,7 +7,7 @@ type HjelpemiddeltekstinfoProps = {
   hm: HjelpemiddelItem
 }
 
-const Hjelpemiddeltekstinfo = (props: HjelpemiddeltekstinfoProps) => {
+const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: HjelpemiddeltekstinfoProps) => {
   const { t } = useTranslation()
   const { hm } = props
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Sidetittel } from 'nav-frontend-typografi'
 import '../stylesheet/styles.scss'
 import { useTranslation } from 'react-i18next'

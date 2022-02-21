@@ -1,3 +1,4 @@
+import React from 'react'
 import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
 import useSWR from 'swr'
