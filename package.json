@@ -68,7 +68,7 @@
     "react-i18next": "^11.11.4",
     "react-modal": "^3.14.3",
     "react-router-dom": "^5.2.1",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "5.0.0",
     "redis": "^3.1.2",
     "sass": "^1.49.8",
     "swr": "^1.1.2",
@@ -114,20 +114,23 @@
     "@types/react-modal": "^3.12.1",
     "@types/react-router-dom": "^5.1.8",
     "@types/redis": "^2.8.32",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "7.28.0",
     "jest-axe": "^5.0.1",
     "prettier": "^2.3.2",
     "ts-node-dev": "^1.1.8",
     "type-fest": "^2.3.4",
     "typescript": "^4.4.2"
+  },
+  "resolutions": {
+    "eslint-plugin-react": "7.28.0"
   },
   "browserslist": {
     "production": [
