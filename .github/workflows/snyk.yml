@@ -1,7 +1,5 @@
 name: Vulnerabilities scanning of dependencies
 on:
-  schedule:
-    - cron: '17 02 * * *' #Tilfeldig tidspunkt (kl 02:17) hver dag
   push:
     paths-ignore:
       - README.md
