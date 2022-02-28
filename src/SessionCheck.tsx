@@ -5,6 +5,7 @@ import AlertStripe from 'nav-frontend-alertstriper'
 import { Hovedknapp } from 'nav-frontend-knapper'
 import { digihot_customevents, logCustomEvent, logVistSesjonUtloperVarsel } from './utils/amplitude'
 import restService from './services/rest-service'
+import * as Sentry from '@sentry/browser'
 
 interface Props {
   children: React.ReactNode
@@ -29,6 +30,7 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
           setVisSesjonUtloperVarsel(false)
           setVisSesjonUtloptVarsel(true)
           logCustomEvent(digihot_customevents.VARSEL_OM_SESJON_UTLOPT)
+          Sentry.addBreadcrumb({ message: 'Sesjon utløpt. Viser varsel om sesjon utløpt.' })
         }
         return
       }
@@ -37,6 +39,7 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
       return data
     } catch (err) {
       console.log('Kunne ikke hente session exp:', err)
+      Sentry.captureException(err)
       return
     }
   }
