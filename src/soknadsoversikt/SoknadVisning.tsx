@@ -13,6 +13,7 @@ import { Tilbakeknapp } from 'nav-frontend-ikonknapper'
 import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
+import * as Sentry from '@sentry/browser'
 
 interface ParamTypes {
   soknadsid: string
@@ -30,6 +31,8 @@ const SoknadVisning: React.FC = () => {
   }, [])
 
   if (error) {
+    Sentry.addBreadcrumb({ message: `Vising av søknad ${soknadsid} feilet` })
+    Sentry.captureException(error)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
   if (!data)
