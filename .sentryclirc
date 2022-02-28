@@ -1,0 +1,4 @@
+[defaults]
+project=hm-formidler
+url=https://sentry.gc.nav.no/
+org=nav

@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - forsok-pa-server-routing
+      - DIGIHOT-714-sentry
 jobs:
   test:
     name: Test
@@ -29,6 +29,14 @@ jobs:
         run: |
           yarn install
           yarn build
+      - name: Lag sentry release
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          npx -p @sentry/cli sentry-cli releases new "${{ github.sha }}"
+          npx -p @sentry/cli sentry-cli releases files "${{ github.sha }}" upload-sourcemaps build/static/js \
+              --url-prefix '~/src'
+          npx -p @sentry/cli sentry-cli releases finalize "${{ github.sha }}"
       - name: Pre-deploy
         uses: navikt/digihot-deploy/actions/pre-deploy@v2
         env:
@@ -40,13 +48,14 @@ jobs:
           docker build --pull --tag ${IMAGE} .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${IMAGE}
-      - name: Deploy to labs-gcp
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: labs-gcp
-          RESOURCE: .nais/labs-gcp.yaml
-          PRINT_PAYLOAD: true
+      # - name: Deploy to labs-gcp
+      #   uses: nais/deploy/actions/deploy@v1
+      #   env:
+      #     APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+      #     CLUSTER: labs-gcp
+      #     RESOURCE: .nais/labs-gcp.yaml
+      #     PRINT_PAYLOAD: true
+      #     VAR: commit=${{ github.sha }}
       - name: Deploy to dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
@@ -54,6 +63,7 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais-dev.yaml
           PRINT_PAYLOAD: true
+          VAR: commit=${{ github.sha }}
       - name: Post-deploy
         uses: navikt/digihot-deploy/actions/post-deploy@v2
         env:
