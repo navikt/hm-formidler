@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
 import useSWR from 'swr'
@@ -15,6 +15,7 @@ import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 import { useContext } from 'react'
 import SoknadListeGammel from './SoknadListeGammel'
 import SoknadListe from './SoknadListe'
+import * as Sentry from '@sentry/browser'
 
 const SoknadsOversikt: React.FC = () => {
   const { erPilotkommune } = useContext(ApplicationContext)
@@ -22,6 +23,8 @@ const SoknadsOversikt: React.FC = () => {
   const history = useHistory()
 
   if (error) {
+    Sentry.addBreadcrumb({ message: 'Visning av søknadsoversikt feilet' })
+    Sentry.captureException(new Error(error))
     history.push({ pathname: `${BASE_PATH}/feilside` })
   }
   if (!data)
@@ -48,6 +51,10 @@ const SoknadsOversikt: React.FC = () => {
     })
 
   const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
+
+  useEffect(() => {
+    Sentry.addBreadcrumb({ message: `Filtrerte ut ${alleSoknader.length} søknader som kan vises for formidler` })
+  }, [])
 
   return (
     <>
