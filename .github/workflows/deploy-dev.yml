@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - forsok-pa-server-routing
+      - DIGIHOT-714-sentry
 jobs:
   test:
     name: Test
@@ -29,6 +29,10 @@ jobs:
         run: |
           yarn install
           yarn build
+      - name: Opprett release med Sentry
+        run: yarn sentry-release
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Pre-deploy
         uses: navikt/digihot-deploy/actions/pre-deploy@v2
         env:
@@ -40,13 +44,13 @@ jobs:
           docker build --pull --tag ${IMAGE} .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${IMAGE}
-      - name: Deploy to labs-gcp
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: labs-gcp
-          RESOURCE: .nais/labs-gcp.yaml
-          PRINT_PAYLOAD: true
+      # - name: Deploy to labs-gcp
+      #   uses: nais/deploy/actions/deploy@v1
+      #   env:
+      #     APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+      #     CLUSTER: labs-gcp
+      #     RESOURCE: .nais/labs-gcp.yaml
+      #     PRINT_PAYLOAD: true
       - name: Deploy to dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:

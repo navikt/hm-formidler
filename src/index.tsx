@@ -28,15 +28,14 @@ declare global {
 }
 
 const init = async () => {
-  if (window.appSettings.MILJO === 'prod-gcp') {
-    console.log('Activate Sentry in prod-gcp')
-    Sentry.init({ dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56' })
-    Sentry.setUser({ id: uuid() })
-  } else if (window.appSettings.MILJO === 'dev-gcp') {
-    console.log('Activate Sentry in dev-gcp')
-    Sentry.init({ dsn: 'https://1b9a6aaee2644e20a1b00e7affde3dea@sentry.gc.nav.no/57' })
-    Sentry.setUser({ id: uuid() })
-  }
+  const miljo = window.appSettings.MILJO
+  Sentry.init({
+    dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56',
+    environment: miljo,
+    enabled: miljo === 'dev-gcp' || miljo === 'prod-gcp',
+    release: process.env.REACT_APP_SENTRY_RELEASE || 'unknown',
+  })
+  Sentry.setUser({ id: uuid() })
 
   initAmplitude()
   initDecorator()
