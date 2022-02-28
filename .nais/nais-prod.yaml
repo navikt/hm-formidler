@@ -50,6 +50,8 @@ spec:
       value: "https://loginservice.nav.no/login?redirect=https://www.nav.no/hjelpemidler/formidler"
     - name: SOKNAD_URL
       value: https://www.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+    - name: GIT_COMMIT
+      value: {{commit}}
   accessPolicy:
     outbound:
       external:
