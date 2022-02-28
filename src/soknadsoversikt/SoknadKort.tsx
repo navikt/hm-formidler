@@ -10,6 +10,7 @@ import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
 import { LinkPanel, Panel } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import * as Sentry from '@sentry/browser'
 
 type SoknadProps = {
   soknadInfo: SoknadInfo
@@ -75,6 +76,7 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
         <LinkPanel
           href={`${BASE_PATH}/soknad/${soknad.søknadId}`}
           onClick={() => {
+            Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
             logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
           }}
           border

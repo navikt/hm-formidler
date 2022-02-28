@@ -72,6 +72,7 @@ const settingsHandler: RequestHandler = (req, res) => {
   res.type('.js')
   res.send(`window.appSettings = {
   MILJO: '${process.env.NAIS_CLUSTER_NAME}',
-  SOKNAD_URL: '${process.env.SOKNAD_URL}'
+  SOKNAD_URL: '${process.env.SOKNAD_URL}',
+  GIT_COMMIT: '${process.env.GIT_COMMIT}',
 }`)
 }
