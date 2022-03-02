@@ -53,6 +53,8 @@ spec:
       value: https://www.nav.no/hjelpemidler/digitalsoknadhjelpemidler
     - name: REDIRECT_URL
       value: https://www.nav.no/hjelpemidler/formidler
+    - name: GIT_COMMIT
+      value: {{commit}}
   accessPolicy:
     outbound:
       external:

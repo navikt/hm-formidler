@@ -10,12 +10,16 @@ export const BASE_PATH = '/hjelpemidler/formidler'
 import '@navikt/ds-css'
 import { ApplicationContext } from './statemanagement/ApplicationContext'
 import SessionCheck from './SessionCheck'
+import * as Sentry from '@sentry/browser'
 
 const App: React.FC = () => {
   const { data, error } = useSWRImmutable(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
 
   /* TODO: Mekke feilside */
-  if (error) return <div>Noe gikk feil: {error}</div>
+  if (error) {
+    Sentry.captureException(new Error(error))
+    return <div>Noe gikk feil: {error}</div>
+  }
   if (!data)
     return (
       <div className="content centeredElement">
@@ -24,6 +28,9 @@ const App: React.FC = () => {
     )
 
   if (!data.altinnRettighet || !data.allowlistTilgang) {
+    Sentry.addBreadcrumb({
+      message: `Formidler mangler tilgang. altinnRettighet=<${data.altinnRettighet}>, allowlistTilgang=<${data.allowlistTilgang}>`,
+    })
     return <ManglerTilgang />
   }
 
