@@ -31,8 +31,9 @@ spec:
     enabled: true
   idporten:
     enabled: true
-    redirectURI: "https://www.nav.no/hjelpemidler/formidler/oauth2/callback"
-    frontchannelLogoutURI: "https://www.nav.no/hjelpemidler/formidler/logout"
+    sidecar:
+      enabled: true
+      level: Level4
   env:
     - name: API_URL
       value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
@@ -50,6 +51,8 @@ spec:
       value: "https://loginservice.nav.no/login?redirect=https://www.nav.no/hjelpemidler/formidler"
     - name: SOKNAD_URL
       value: https://www.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+    - name: REDIRECT_URL
+      value: https://www.nav.no/hjelpemidler/formidler
   accessPolicy:
     outbound:
       external:

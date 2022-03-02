@@ -17,9 +17,9 @@ Flate for hjelpemiddelformidlere med oversikt over søknader - frontend
     ```
 3. Logg inn
 
-    Naviger til localhost:5000 slik at du kjem til Mock OAuth2 Server Sign-in og fyll inn
-    ```
-    12345678910 i 'Enter any user/subject' (for at DKIF-mock skal fungere må du bruke dette fnr)
-    Level4 i 'Optional acr claim value'
-    ```
+    Naviger til localhost:5000 for å trigge login mot mock-oauth-server
+    Mock-oauth-server logger deg automatisk inn, fødselsnummer og token-varighet kan du endre i 
+    docker-compose fil som setter opp mock-server: https://github.com/navikt/hm-soknad-api/tree/master/docker-compose
+
+
     Naviger tilbake til localhost:3000, der du no vil vere logga inn.

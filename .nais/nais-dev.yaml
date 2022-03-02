@@ -33,8 +33,9 @@ spec:
     enabled: true
   idporten:
     enabled: true
-    redirectURI: "https://hjelpemidler.dev.nav.no/hjelpemidler/formidler/oauth2/callback"
-    frontchannelLogoutURI: "https://hjelpemidler.dev.nav.no/hjelpemidler/formidler/logout"
+    sidecar:
+      enabled: true
+      level: Level4
   env:
     - name: API_URL
       value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
@@ -46,18 +47,15 @@ spec:
       value: dev-gcp:teamdigihot:hm-soknadsbehandling-db
     - name: SOKNAD_API_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknad-api
-    - name: REDIS_HOST
-      value: soknad-redis.teamdigihot.svc.cluster.local
-    - name: LOGINSERVICE_URL
-      value: "https://loginservice.dev.nav.no/login?redirect=https://hjelpemidler.dev.nav.no/hjelpemidler/formidler"
     - name: SOKNAD_URL
       value: https://hjelpemidler.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+    - name: REDIRECT_URL
+      value: https://hjelpemidler.dev.nav.no/hjelpemidler/formidler
   accessPolicy:
     outbound:
       external:
         - host: www-q0.nav.no
         - host: www.nav.no
-        - host: loginservice.dev.nav.no
         - host: dekoratoren.nav.no
       rules:
         - application: soknad-redis

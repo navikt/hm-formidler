@@ -11,7 +11,7 @@ server.set('view engine', 'mustache')
 server.engine('html', mustacheExpress())
 server.set('trust proxy', 1)
 
-const { session, destroySessionBySid } = setupSession()
+const { session } = setupSession()
 
 server.use(session())
 
@@ -20,7 +20,7 @@ router.use('/internal/', routes.internal())
 router.use('/api/', authMiddleware.requiresValidToken(), routes.soknadsbehnadlingDb())
 router.use('/soknad-api/', authMiddleware.requiresValidToken(), routes.soknadApi())
 router.use('/session', authMiddleware.requiresValidToken(), routes.session())
-router.use('/', routes.auth(destroySessionBySid))
+router.use('/', routes.auth())
 router.use('/', routes.public(server))
 
 server.use(config.basePath, router)

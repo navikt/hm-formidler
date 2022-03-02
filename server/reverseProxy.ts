@@ -8,9 +8,9 @@ function options(targetAudience: string): ProxyOptions {
     parseReqBody: false,
     async proxyReqOptDecorator(options, req) {
       if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
-        const selvbetjeningToken = req.session.tokens?.access_token
-        if (auth.tokenIsValid(selvbetjeningToken)) {
-          const { access_token } = await auth.exchangeToken(selvbetjeningToken, targetAudience)
+        const idportenToken = req.headers['authorization']?.split(' ')[1]
+        if (auth.tokenIsValid(idportenToken)) {
+          const { access_token } = await auth.exchangeToken(idportenToken, targetAudience)
           if (options.headers) {
             options.headers.Authorization = `Bearer ${access_token}`
           }

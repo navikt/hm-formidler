@@ -57,6 +57,7 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.5",
     "node-jose": "^2.0.0",
+    "jose": "^4.3.8",
     "openid-client": "^4.7.5",
     "prom-client": "^13.2.0",
     "prop-types": "^15.8.0",

@@ -1,7 +1,5 @@
 import session, { SessionOptions } from 'express-session'
-import redis from 'redis'
 import { config } from './config'
-import redisStore, { RedisStore } from 'connect-redis'
 import memoryStore from 'memorystore'
 import type { SetRequired } from 'type-fest'
 import type { TokenSetParameters } from 'openid-client'
@@ -19,21 +17,6 @@ declare module 'express-session' {
   }
 }
 
-function setupRedis(): RedisStore {
-  const Store = redisStore(session)
-  const client = redis.createClient({
-    host: config.session.redisHost,
-    port: Number(config.session.redisPort),
-    password: config.session.redisPassword,
-  })
-  client.unref()
-  client.on('debug', console.log)
-  return new Store({
-    client: client,
-    disableTouch: true,
-  })
-}
-
 export function setupSession() {
   const options: SetRequired<SessionOptions, 'cookie'> = {
     cookie: {
@@ -47,14 +30,7 @@ export function setupSession() {
     saveUninitialized: false,
     unset: 'destroy',
   }
-
-  if (process.env.NODE_ENV === 'production' && process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
-    options.cookie.secure = true
-    options.store = setupRedis()
-  } else {
-    options.store = new MemoryStore({ checkPeriod: 86400000 })
-  }
-
+  options.store = new MemoryStore({ checkPeriod: 86400000 })
   return {
     session(): RequestHandler {
       return session(options)

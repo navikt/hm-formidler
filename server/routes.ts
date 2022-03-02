@@ -1,6 +1,6 @@
 import express, { Express, RequestHandler, Router } from 'express'
 import { setupMetrics } from './setupMetrics'
-import { authMiddleware } from './auth'
+import { authMiddleware, authMiddlewareLocal } from './auth'
 import { config } from './config'
 import { reverseProxy } from './reverseProxy'
 import { getDecorator } from './dekorator'
@@ -38,11 +38,16 @@ export const routes = {
     router.get('*', authMiddleware.requiresLogin(), spaHandler)
     return router
   },
-  auth(destroySessionBySid: (sid: string) => void): Router {
+  auth(): Router {
     const router = Router()
-    router.get('/login', authMiddleware.login())
-    router.get('/logout', authMiddleware.logout(destroySessionBySid))
-    router.get('/oauth2/callback', authMiddleware.callback())
+
+    if (!config.isProduction()) {
+      router.get('/oauth2-local/callback', authMiddlewareLocal.localCallback())
+      router.get('/login', authMiddlewareLocal.localLogin())
+    } else {
+      router.get('/login', authMiddleware.login())
+      router.get('/logout', authMiddleware.logout())
+    }
     return router
   },
   session(): Router {
