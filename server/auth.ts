@@ -282,12 +282,7 @@ const callbackHandler = (): RequestHandler => async (req, res) => {
       sameSite: 'lax',
       maxAge: config.session.maxAgeMs,
     })
-    if (config.isProduction()) {
-      session.idportenSid = auth.getSid(tokens.id_token)
-      res.redirect(301, config.loginservice.loginServiceUrl || '/')
-    } else {
-      res.redirect(303, config.basePath)
-    }
+    res.redirect(303, config.basePath)
   } catch (err: unknown) {
     session.destroy(() => {})
     res.sendStatus(403)
