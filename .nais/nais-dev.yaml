@@ -60,6 +60,5 @@ spec:
         - host: www.nav.no
         - host: dekoratoren.nav.no
       rules:
-        - application: soknad-redis
         - application: hm-soknadsbehandling-db
         - application: hm-soknad-api

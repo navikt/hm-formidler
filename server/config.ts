@@ -38,9 +38,6 @@ if (process.env.NODE_ENV === 'production' && process.env.NAIS_CLUSTER_NAME !== '
 const session = {
   secret: process.env.SESSION_SECRET || 'tullescret',
   maxAgeMs: Number(process.env.SESSION_MAX_AGE_MS) || 12 * 60 * 60 * 1000, // defaults to 12 hours
-  redisHost: process.env.REDIS_HOST,
-  redisPort: process.env.REDIS_PORT || 6379,
-  redisPassword: process.env.REDIS_PASSWORD,
 }
 
 const app = {
