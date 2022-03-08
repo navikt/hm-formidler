@@ -11,9 +11,6 @@ import StatusBeskrivelse from '../components/StatusBeskrivelse'
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
 
-  // TODO: Remove this (and text conditioned on this below) any time on or after 21/2/2022.
-  const visMidlertidigMelding = new Date().getTime() < new Date(2022, 2 - 1, 21).getTime()
-
   return (
     <>
       <div className="veilederWrapperPanel">
@@ -21,12 +18,6 @@ const SoknadsOversiktVeileder: React.FC = () => {
           <Normaltekst>{t('hoved.veilederpanel.p0')}</Normaltekst>
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</Normaltekst>
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p2')}</Normaltekst>
-
-          {visMidlertidigMelding && (
-            <div style={{ marginTop: '1rem' }}>
-              <strong>Merk: Gamle saker som ved en feil tidligere ble vist er nå ryddet opp i.</strong>
-            </div>
-          )}
 
           <Lesmerpanel
             apneTekst={t('hoved.veilederpanel.statuser.apne')}
