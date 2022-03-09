@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - DIGIHOT-714-sentry
+      - DIGIHOT-700-formidlervisning-hele-landet
 jobs:
   test:
     name: Test

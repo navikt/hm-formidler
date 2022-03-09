@@ -7,18 +7,14 @@ import NavFrontendSpinner from 'nav-frontend-spinner'
 import 'nav-frontend-tabell-style'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import IngenSoknader from './IngenSoknader'
-import { ApplicationContext } from '../statemanagement/ApplicationContext'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { BASE_PATH } from '../App'
 import { useHistory } from 'react-router-dom'
 import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
-import { useContext } from 'react'
-import SoknadListeGammel from './SoknadListeGammel'
 import SoknadListe from './SoknadListe'
 import * as Sentry from '@sentry/browser'
 
 const SoknadsOversikt: React.FC = () => {
-  const { erPilotkommune } = useContext(ApplicationContext)
   const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
   const history = useHistory()
 
@@ -60,14 +56,7 @@ const SoknadsOversikt: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <SoknadsOversiktVeileder />
-        {alleSoknader.length === 0 ? (
-          <IngenSoknader />
-        ) : (
-          <>
-            {erPilotkommune && <SoknadListe alleSoknader={alleSoknader} />}
-            {!erPilotkommune && <SoknadListeGammel alleSoknader={alleSoknader} />}
-          </>
-        )}
+        {alleSoknader.length === 0 ? <IngenSoknader /> : <SoknadListe alleSoknader={alleSoknader} />}
       </main>
     </>
   )
