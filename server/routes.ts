@@ -1,6 +1,6 @@
 import express, { Express, RequestHandler, Router } from 'express'
 import { setupMetrics } from './setupMetrics'
-import { authMiddleware, authMiddlewareLocal } from './auth'
+import { auth, authMiddleware, authMiddlewareLocal } from './auth'
 import { config } from './config'
 import { reverseProxy } from './reverseProxy'
 import { getDecorator } from './dekorator'
@@ -53,10 +53,11 @@ export const routes = {
   session(): Router {
     const router = Router()
     router.get('/exp', (req, res) => {
-      if (!req.session.tokens) {
+      const idportenToken = req.headers['authorization']?.split(' ')[1]
+      if (!idportenToken) {
         return res.sendStatus(401)
       }
-      return res.json({ exp: req.session.tokens.expires_at })
+      return res.json({ exp: auth.getExp(idportenToken) })
     })
 
     return router

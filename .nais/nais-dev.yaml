@@ -25,7 +25,6 @@ spec:
     enabled: true
     path: /hjelpemidler/formidler/internal/metrics
   envFrom:
-    - secret: redis-password
     - secret: session-encrypt-key
   ingresses:
     - https://hjelpemidler.dev.nav.no/hjelpemidler/formidler

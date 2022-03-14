@@ -23,7 +23,6 @@ spec:
     enabled: true
     path: /hjelpemidler/formidler/internal/metrics
   envFrom:
-    - secret: redis-password
     - secret: session-encrypt-key
   ingresses:
     - https://www.nav.no/hjelpemidler/formidler
@@ -45,8 +44,6 @@ spec:
       value: prod-gcp:teamdigihot:hm-soknadsbehandling-db
     - name: SOKNAD_API_AUDIENCE
       value: prod-gcp:teamdigihot:hm-soknad-api
-    - name: REDIS_HOST
-      value: soknad-redis.teamdigihot.svc.cluster.local
     - name: LOGINSERVICE_URL
       value: "https://loginservice.nav.no/login?redirect=https://www.nav.no/hjelpemidler/formidler"
     - name: SOKNAD_URL
@@ -63,6 +60,5 @@ spec:
         - host: dekoratoren.nav.no
         - host: tokendings.prod-gcp.nais.io
       rules:
-        - application: soknad-redis
         - application: hm-soknadsbehandling-db
         - application: hm-soknad-api
