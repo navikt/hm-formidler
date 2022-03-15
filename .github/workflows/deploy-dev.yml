@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - dockerimage
+      - gha-workflow
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}
@@ -72,6 +72,7 @@ jobs:
   
   createRelease:
     name: Create release
+    # if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: deployDev
     steps:
@@ -81,8 +82,11 @@ jobs:
         uses: navikt/digihot-deploy/actions/pre-deploy@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post-deploy
+        uses: navikt/digihot-deploy/actions/post-deploy@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create release
-        if: github.ref == 'refs/heads/main'
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -92,10 +96,6 @@ jobs:
           body: ${{ env.CHANGE_LOG }}
           draft: true
           prerelease: false
-      - name: Post-deploy
-        uses: navikt/digihot-deploy/actions/post-deploy@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   createSentryRelease:
     name: Create Sentry releae
