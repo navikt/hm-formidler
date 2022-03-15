@@ -11,11 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get release tag
-        env:
-          VERSION_TAG: ${{ github.event.release.tag_name }}
         run: |
           APPLICATION=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 2)
-          IMAGE=docker.pkg.github.com/$GITHUB_REPOSITORY/$APPLICATION:$VERSION_TAG
+          IMAGE=docker.pkg.github.com/$GITHUB_REPOSITORY/$APPLICATION:$GITHUB_SHA
           echo "IMAGE=${IMAGE}" >> $GITHUB_ENV
           echo $IMAGE
       - name: Deploy to prod-gcp

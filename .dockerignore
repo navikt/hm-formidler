@@ -1,7 +1,6 @@
-*
-!build
-!build-server
-!server
-!package.json
-!yarn.lock
-!init.sh
+.github/*
+.nais/*
+.gitignore
+.sentryclirc
+*.md
+*.sh

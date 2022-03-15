@@ -1,18 +1,21 @@
-FROM node:alpine as basebuilder
+FROM node:16.14.0-alpine as basebuilder
 
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-RUN yarn add http-proxy-middleware
+RUN yarn install
+COPY . .
+RUN yarn build
 
-FROM navikt/node-express:12.2.0-alpine
+
+FROM gcr.io/distroless/nodejs:16
 WORKDIR /app
 
-COPY init.sh /init-scripts/init.sh
-RUN chmod +x /init-scripts/init.sh
-
-COPY build-server/ ./server
-COPY build/ ./build
-COPY --from=basebuilder /app/node_modules /app/node_modules
 ENV NODE_ENV=production
 EXPOSE 3000
+
+COPY --from=basebuilder /app/node_modules ./node_modules
+COPY --from=basebuilder /app/build-server/ ./server
+COPY --from=basebuilder /app/build/ ./build
+
+CMD [ "-r", "dotenv/config", "server/server.js" ]

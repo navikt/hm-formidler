@@ -8,7 +8,11 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      -  session-checker-fix
+      - dockerimage
+
+env:
+  DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}
+
 jobs:
   test:
     name: Test
@@ -18,10 +22,86 @@ jobs:
         uses: actions/checkout@v2
       - run: yarn install
       - run: yarn test
-  deploy:
-    name: Build and deploy
+  
+  build:
+    name: Build Docker image
     runs-on: ubuntu-latest
     needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and push Docker image
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker build --pull --tag $DOCKER_IMAGE .
+          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+          docker push $DOCKER_IMAGE
+  
+  deployDev:
+    name: Deploy to dev-gcp
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/nais-dev.yaml
+          PRINT_PAYLOAD: true
+          VAR: commit=${{ github.sha }},image=${{ env.DOCKER_IMAGE }}
+  
+  deployLabs:
+    name: Deploy to labs-gcp
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy to labs-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: labs-gcp
+          RESOURCE: .nais/labs-gcp.yaml
+          PRINT_PAYLOAD: true
+          VAR: commit=${{ github.sha }},image=${{ env.DOCKER_IMAGE }}
+  
+  createRelease:
+    name: Create release
+    runs-on: ubuntu-latest
+    needs: deployDev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Pre-deploy
+        uses: navikt/digihot-deploy/actions/pre-deploy@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release
+        if: github.ref == 'refs/heads/main'
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION_TAG }}
+          release_name: ${{ env.APPLICATION }} ${{ env.VERSION_TAG }}
+          body: ${{ env.CHANGE_LOG }}
+          draft: true
+          prerelease: false
+      - name: Post-deploy
+        uses: navikt/digihot-deploy/actions/post-deploy@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  createSentryRelease:
+    name: Create Sentry releae
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -37,45 +117,3 @@ jobs:
           npx -p @sentry/cli sentry-cli releases files "${{ github.sha }}" upload-sourcemaps build/static/js \
               --url-prefix '~/hjelpemidler/formidler/static/js'
           npx -p @sentry/cli sentry-cli releases finalize "${{ github.sha }}"
-      - name: Pre-deploy
-        uses: navikt/digihot-deploy/actions/pre-deploy@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker build --pull --tag ${IMAGE} .
-          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push ${IMAGE}
-      - name: Deploy to labs-gcp
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: labs-gcp
-          RESOURCE: .nais/labs-gcp.yaml
-          PRINT_PAYLOAD: true
-          VAR: commit=${{ github.sha }}
-      - name: Deploy to dev-gcp
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .nais/nais-dev.yaml
-          PRINT_PAYLOAD: true
-          VAR: commit=${{ github.sha }}
-      - name: Post-deploy
-        uses: navikt/digihot-deploy/actions/post-deploy@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create release
-        if: github.ref == 'refs/heads/main'
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.VERSION_TAG }}
-          release_name: ${{ env.APPLICATION }} ${{ env.VERSION_TAG }}
-          body: ${{ env.CHANGE_LOG }}
-          draft: true
-          prerelease: false
