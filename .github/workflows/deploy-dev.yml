@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - gha-workflow
+      - DIGIHOT-731-ikke-refresh-når-utlogget
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}
@@ -72,7 +72,7 @@ jobs:
   
   createRelease:
     name: Create release
-    # if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: deployDev
     steps:
