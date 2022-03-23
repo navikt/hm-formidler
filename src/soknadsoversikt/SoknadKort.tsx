@@ -40,6 +40,7 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
     case SoknadStatus.GODKJENT:
     case SoknadStatus.GODKJENT_MED_FULLMAKT:
     case SoknadStatus.ENDELIG_JOURNALFØRT:
+    case SoknadStatus.VEDTAKSRESULTAT_HENLAGTBORTFALT:
     case SoknadStatus.VEDTAKSRESULTAT_ANNET:
     case SoknadStatus.UTSENDING_STARTET:
     default:
