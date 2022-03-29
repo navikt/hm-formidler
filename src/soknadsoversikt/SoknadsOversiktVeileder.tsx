@@ -23,7 +23,9 @@ const SoknadsOversiktVeileder: React.FC = () => {
             apneTekst={t('hoved.veilederpanel.statuser.apne')}
             lukkTekst={t('hoved.veilederpanel.statuser.lukk')}
           >
-            <Systemtittel style={{ marginTop: '1.5rem' }}>Beskrivelse av statuser</Systemtittel>
+            <Systemtittel style={{ marginTop: '1.5rem' }}>
+              {t('soknadsoversikt.soknadsoversikt.beskrivelseAvStatuser')}
+            </Systemtittel>
 
             <ul style={{ listStyleType: 'none', padding: '0' }}>
               <li>

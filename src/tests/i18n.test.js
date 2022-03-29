@@ -10,10 +10,10 @@ describe('i18n', () => {
   test('Ingen translation keys mangler', (done) => {
     exec(`grep "t(.*\'" --include \*.tsx --include \*.ts -ohrw './src'`, (_, stdout) => {
       const bokmaal = Object.keys(nb)
-      //const nynorsk = Object.keys(nn)
+      const nynorsk = Object.keys(nn)
       const felles = Object.keys(commonKeys)
       const allBokmaalTranslationsDefined = bokmaal.concat(felles)
-      //const allNynorskTranslationsDefined = nynorsk.concat(felles)
+      const allNynorskTranslationsDefined = nynorsk.concat(felles)
 
       const allTranslationsUsed = stdout.split('t(').map((item) => {
         return item
@@ -28,9 +28,9 @@ describe('i18n', () => {
         expect(allBokmaalTranslationsDefined).toContainEqual(allTranslationsUsed[i])
       }
 
-      /*for (let i = 0; i < allTranslationsUsed.length; i += 1) {
+      for (let i = 0; i < allTranslationsUsed.length; i += 1) {
         expect(allNynorskTranslationsDefined).toContainEqual(allTranslationsUsed[i])
-      }*/
+      }
 
       done()
     })
