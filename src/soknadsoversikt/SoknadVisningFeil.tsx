@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface SoknadVisningFeilProps {
   soknadsid: string
@@ -16,6 +17,7 @@ interface SoknadVisningFeilProps {
 
 const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisningFeilProps) => {
   const history = useHistory()
+  const { t } = useTranslation()
 
   const { soknadsid } = props
 
@@ -45,16 +47,16 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
             }}
             style={{ marginBottom: '0.5rem' }}
           >
-            Tilbake til oversikt
+            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Tilbakeknapp>
           <Veilederpanel fargetema="advarsel" type="plakat" svg={<SpotIllustration />}>
             <Systemtittel className="centeredElement" style={{ marginBottom: '2rem' }}>
-              Vi kan ikke vise denne søknaden for øyeblikket
+              {t('soknadsoversikt.soknadVisningFeil.kanIkkeVise')}
             </Systemtittel>
 
             <Normaltekst style={{ marginBottom: '0.5rem' }}>
-              Dette kan skyldes treghet i systemet. Vennligst forsøk å{' '}
-              <Lenke href={`./${soknadsid}`}>laste inn siden på nytt.</Lenke>
+              {t('soknadsoversikt.soknadVisningFeil.vennligstForsok')}
+              <Lenke href={`./${soknadsid}`}>{t('soknadsoversikt.soknadVisningFeil.lastInnPaNytt')}</Lenke>
             </Normaltekst>
           </Veilederpanel>
         </div>

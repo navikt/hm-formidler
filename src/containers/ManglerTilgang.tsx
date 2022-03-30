@@ -4,9 +4,10 @@ import { Systemtittel } from 'nav-frontend-typografi'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import Banner from '../components/Banner'
 import Veilederpanel from 'nav-frontend-veilederpanel'
+import { useTranslation } from 'react-i18next'
 
 const ManglerTilgang: React.FC = () => {
-  const infoSideTittel = 'Du mangler tilgang til å se dine innsendte digitale søknader'
+  const { t } = useTranslation()
 
   return (
     <>
@@ -16,7 +17,7 @@ const ManglerTilgang: React.FC = () => {
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
           <Veilederpanel fargetema="advarsel" type="plakat" svg={<SpotIllustration />}>
-            <Systemtittel className="centeredElement">{infoSideTittel}</Systemtittel>
+            <Systemtittel className="centeredElement">{t('feilside.manglerTilgang')}</Systemtittel>
           </Veilederpanel>
         </div>
       </main>

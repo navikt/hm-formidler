@@ -66,7 +66,7 @@ const SoknadVisning: React.FC = () => {
             }}
             style={{ marginBottom: '0.5rem' }}
           >
-            Tilbake til oversikt
+            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Tilbakeknapp>
           <Soknad soknad={søknadsdata} />
         </div>
