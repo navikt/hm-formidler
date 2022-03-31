@@ -4,6 +4,7 @@ import { BASE_PATH } from '../App'
 import Cookies from 'universal-cookie'
 import restService from '../services/rest-service'
 import * as Sentry from '@sentry/browser'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 export interface Params {
   context?: 'privatperson' | 'arbeidsgiver' | 'samarbeidspartner'
@@ -61,6 +62,7 @@ export const initDecorator = () => {
 
   onLanguageSelect((language) => {
     i18next.changeLanguage(language.locale)
+    logCustomEvent(digihot_customevents.SPRAAK_ENDRET, { språk: language.locale })
   })
 }
 

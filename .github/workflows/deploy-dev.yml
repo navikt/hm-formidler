@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - DIGIHOT-711-enable-ivar-aasen
+      - DIGIHOT-711-spåk-statistikk
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}
