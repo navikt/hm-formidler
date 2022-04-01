@@ -42,14 +42,14 @@ export const initDecorator = () => {
       .hentSpraak()
       .then((response) => {
         setLanguage(response.spraak)
-        i18next.changeLanguage(response.spraak)
+        changeLanguage(response.spraak)
       })
       .catch((error) => {
         Sentry.captureException(error)
       })
   } else {
     console.log('hentet språk fra cookies: ' + language)
-    i18next.changeLanguage(language)
+    changeLanguage(language)
   }
 
   setParams({
@@ -61,9 +61,13 @@ export const initDecorator = () => {
   })
 
   onLanguageSelect((language) => {
-    i18next.changeLanguage(language.locale)
-    logCustomEvent(digihot_customevents.SPRAAK_ENDRET, { språk: language.locale })
+    changeLanguage(language.locale)
   })
+}
+
+const changeLanguage = (language: string) => {
+  i18next.changeLanguage(language)
+  logCustomEvent(digihot_customevents.SPRAAK_ENDRET, { språk: language })
 }
 
 export const setLanguage = (language: 'nb' | 'nn' | 'en' | 'se') => {
