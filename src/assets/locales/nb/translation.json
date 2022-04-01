@@ -1,7 +1,7 @@
 {
   "hoved.veilederpanel.p0": "Dette er en oversikt over digitale søknader du har sendt på vegne av brukere i kommunen.",
   "hoved.veilederpanel.p1": "Om du har valgt at bruker skal bekrefte søknaden digitalt, vil du her se om søknaden er sendt inn, slettet eller om den er blitt slettet fordi bekreftelsesfristen har utløpt.",
-  "hoved.veilederpanel.p2": "Søknadene vises i denne oversikten i 4 uker etter at saken enten er slettet av bruker eller saken er avsluttet på hjelpemiddelsentralen.",
+  "hoved.veilederpanel.p2": "Søknadene vises i denne oversikten i 4 uker etter at saken enten er slettet av bruker eller saken er avsluttet på hjelpemiddelsentralen. Ingen saker som er eldre enn 6 måneder vises i oversikten.",
   "hoved.veilederpanel.statuser.apne": "Vis beskrivelse av statusene",
   "hoved.veilederpanel.statuser.lukk": "Lukk beskrivelse av statusene",
   "VENTER_GODKJENNING": "Venter på bekreftelse",
