@@ -10,7 +10,7 @@ const maskeringsregler = [
 ]
 
 // Exportes kun for å kunne testes
-export const fjernPersonopplysninger = (event: Event, _hint?: EventHint): Event => {
+export const fjernPersonopplysninger = (event: Event): Event => {
   const url = event.request?.url ? maskerPersonopplysninger(event.request.url) : ''
   return {
     ...event,
