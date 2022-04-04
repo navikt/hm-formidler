@@ -1,7 +1,7 @@
 {
   "hoved.veilederpanel.p0": "Dette er ei oversikt over digitale søknadar du har sendt på vegne av brukarar i kommunen.",
   "hoved.veilederpanel.p1": "Om du har valt at brukar skal stadfeste søknaden digitalt, vil du her sjå om søknaden er sendt inn, sletta eller om den er blitt sletta fordi stadfestingsfristen har gått ut.",
-  "hoved.veilederpanel.p2": "Søknadane visast i denne oversikta i 4 veker etter at saka anten er sletta av brukar eller saka er avslutta på hjelpemiddelsentralen.",
+  "hoved.veilederpanel.p2": "Søknadane visast i denne oversikta i 4 veker etter at saka anten er sletta av brukar eller saka er avslutta på hjelpemiddelsentralen. Ingen saker som er eldre enn 6 månadar blir vist i oversikta.",
   "hoved.veilederpanel.statuser.apne": "Vis skildring av statusane",
   "hoved.veilederpanel.statuser.lukk": "Lukk skildring av statusane",
   "VENTER_GODKJENNING": "Ventar på stadfesting",

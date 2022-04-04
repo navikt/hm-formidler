@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/browser'
 import { v4 as uuid } from 'uuid'
-import { Breadcrumb, Event, EventHint } from '@sentry/browser'
+import { Breadcrumb, Event } from '@sentry/browser'
 
 const maskeringsregler = [
   {
