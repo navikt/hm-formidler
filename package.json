@@ -123,6 +123,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.28.0",
     "jest-axe": "^5.0.1",
+    "jest-mock-extended": "^2.0.5",
     "prettier": "^2.3.2",
     "ts-node-dev": "^1.1.8",
     "type-fest": "^2.3.4",

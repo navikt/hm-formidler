@@ -12,9 +12,8 @@ import skiplinks from './decorator/decorator-skiplinks'
 import megamenu from './decorator/decorator-megamenu'
 import './i18n'
 import { initAmplitude } from './utils/amplitude'
-import * as Sentry from '@sentry/browser'
 import { initDecorator } from './decorator/decorator'
-import { v4 as uuid } from 'uuid'
+import { initSentry } from './utils/sentry'
 
 declare global {
   interface Window {
@@ -29,15 +28,7 @@ declare global {
 }
 
 const init = async () => {
-  const miljo = window.appSettings.MILJO
-  Sentry.init({
-    dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56',
-    environment: miljo,
-    enabled: miljo === 'dev-gcp' || miljo === 'prod-gcp',
-    release: window.appSettings.GIT_COMMIT || 'unknown',
-  })
-  Sentry.setUser({ id: uuid() })
-
+  initSentry()
   initAmplitude()
   initDecorator()
 
