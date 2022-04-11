@@ -6,7 +6,7 @@ import 'nav-frontend-tabell-style'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import { beregnFrist, formaterDato } from '../Utils'
-import Etikett, { EtikettBaseProps } from 'nav-frontend-etiketter'
+import { Tag, TagProps } from '@navikt/ds-react'
 import { LinkPanel, Panel } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
@@ -21,21 +21,21 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
 
   const soknad = props.soknadInfo
   let kanViseSoknad = true
-  let etikettType: EtikettBaseProps['type']
+  let etikettType: TagProps['variant']
   switch (soknad.status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
-      etikettType = 'advarsel'
+      etikettType = 'error'
       kanViseSoknad = false
       break
     case SoknadStatus.VENTER_GODKJENNING:
     case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
-      etikettType = 'fokus'
+      etikettType = 'warning'
       break
     case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
     case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
-      etikettType = 'suksess'
+      etikettType = 'success'
       break
     case SoknadStatus.GODKJENT:
     case SoknadStatus.GODKJENT_MED_FULLMAKT:
@@ -63,9 +63,9 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
         <div>
           {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt 
           med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
-          <Etikett type={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
+          <Tag variant={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
             <Normaltekst>{t(soknad.status)}</Normaltekst>
-          </Etikett>
+          </Tag>
         </div>
       </div>
     </>
