@@ -1,6 +1,6 @@
 import React from 'react'
 import { Innholdstittel } from 'nav-frontend-typografi'
-import Panel from 'nav-frontend-paneler'
+import { Panel } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
