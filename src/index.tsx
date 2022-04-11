@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
 import 'nav-frontend-core'
 import NavFrontendModal from 'nav-frontend-modal'
