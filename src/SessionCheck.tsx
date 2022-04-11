@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Modal from 'nav-frontend-modal'
+import { Modal } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { Button, Alert } from '@navikt/ds-react'
 import { digihot_customevents, logCustomEvent, logVistSesjonUtloperVarsel } from './utils/amplitude'
@@ -77,65 +77,55 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
   return (
     <>
       {visSesjonUtloptVarsel && (
-        <Modal
-          closeButton={false}
-          onRequestClose={() => {}}
-          isOpen={true}
-          contentLabel=""
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          appElement={document.getElementById('root')!}
-        >
-          <div className="customModal">
-            <div className="contentBlock">
-              <Alert variant="warning" inline>
-                {t('sesjon.utlopt')}
-              </Alert>
-            </div>
-            <div className="centerButtons">
-              <div className="knappepanel">
-                <Button
-                  onClick={() => {
-                    window.location.reload()
-                  }}
-                >
-                  {t('sesjon.utlopt.loggInn')}
-                </Button>
+        <Modal closeButton={false} open={true} onClose={() => {}}>
+          <Modal.Content>
+            <div className="customModal">
+              <div className="contentBlock">
+                <Alert variant="warning" inline>
+                  {t('sesjon.utlopt')}
+                </Alert>
+              </div>
+              <div className="centerButtons">
+                <div className="knappepanel">
+                  <Button
+                    onClick={() => {
+                      window.location.reload()
+                    }}
+                  >
+                    {t('sesjon.utlopt.loggInn')}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
+          </Modal.Content>
         </Modal>
       )}
       {visSesjonUtloperVarsel && sekunderTilUtlop !== undefined && (
-        <Modal
-          closeButton={true}
-          onRequestClose={() => setVisSesjonUtloperVarsel(false)}
-          isOpen={true}
-          contentLabel=""
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          appElement={document.getElementById('root')!}
-        >
-          <div className="customModal">
-            <div className="contentBlock">
-              <Alert variant="warning" inline>
-                {t('sesjon.utloper.tid', {
-                  tid: `${Math.ceil(sekunderTilUtlop / 60)}`,
-                })}
-                <br />
-                {t('sesjon.utloper.forklaring')}
-              </Alert>
-            </div>
-            <div className="centerButtons">
-              <div className="knappepanel">
-                <Button
-                  onClick={() => {
-                    setVisSesjonUtloperVarsel(false)
-                  }}
-                >
-                  OK
-                </Button>
+        <Modal closeButton={true} onClose={() => setVisSesjonUtloperVarsel(false)} open={true}>
+          <Modal.Content>
+            <div className="customModal">
+              <div className="contentBlock">
+                <Alert variant="warning" inline>
+                  {t('sesjon.utloper.tid', {
+                    tid: `${Math.ceil(sekunderTilUtlop / 60)}`,
+                  })}
+                  <br />
+                  {t('sesjon.utloper.forklaring')}
+                </Alert>
+              </div>
+              <div className="centerButtons">
+                <div className="knappepanel">
+                  <Button
+                    onClick={() => {
+                      setVisSesjonUtloperVarsel(false)
+                    }}
+                  >
+                    OK
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
+          </Modal.Content>
         </Modal>
       )}
       <>{children}</>

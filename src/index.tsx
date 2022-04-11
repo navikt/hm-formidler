@@ -13,6 +13,7 @@ import './i18n'
 import { initAmplitude } from './utils/amplitude'
 import { initDecorator } from './decorator/decorator'
 import { initSentry } from './utils/sentry'
+import { Modal } from '@navikt/ds-react'
 import '@navikt/ds-css'
 
 declare global {
@@ -49,6 +50,10 @@ const init = async () => {
   //Renders app component
   const rootElement = document.getElementById('root')
   NavFrontendModal.setAppElement(rootElement)
+
+  if (Modal.setAppElement) {
+    Modal.setAppElement(rootElement)
+  }
 
   ReactDOM.render(<App />, rootElement)
 }
