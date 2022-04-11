@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from 'nav-frontend-modal'
 import { useTranslation } from 'react-i18next'
-import { Alert } from '@navikt/ds-react'
-import { Hovedknapp } from 'nav-frontend-knapper'
+import { Button, Alert } from '@navikt/ds-react'
 import { digihot_customevents, logCustomEvent, logVistSesjonUtloperVarsel } from './utils/amplitude'
 import restService from './services/rest-service'
 import * as Sentry from '@sentry/browser'
@@ -94,13 +93,13 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
             </div>
             <div className="centerButtons">
               <div className="knappepanel">
-                <Hovedknapp
+                <Button
                   onClick={() => {
                     window.location.reload()
                   }}
                 >
                   {t('sesjon.utlopt.loggInn')}
-                </Hovedknapp>
+                </Button>
               </div>
             </div>
           </div>
@@ -127,13 +126,13 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
             </div>
             <div className="centerButtons">
               <div className="knappepanel">
-                <Hovedknapp
+                <Button
                   onClick={() => {
                     setVisSesjonUtloperVarsel(false)
                   }}
                 >
                   OK
-                </Hovedknapp>
+                </Button>
               </div>
             </div>
           </div>

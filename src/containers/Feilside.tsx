@@ -4,7 +4,7 @@ import { Ingress, Innholdstittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
-import { Knapp } from 'nav-frontend-knapper'
+import { Button } from '@navikt/ds-react'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
 import { useEffect } from 'react'
@@ -39,7 +39,9 @@ const Feilside: React.FC = () => {
               </div>
             </div>
             <div className="knappepanel">
-              <Knapp onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>{t('kvittering.tilbake')}</Knapp>
+              <Button variant="secondary" onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>
+                {t('kvittering.tilbake')}
+              </Button>
             </div>
           </Veilederpanel>
         </div>
