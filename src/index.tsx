@@ -14,6 +14,7 @@ import './i18n'
 import { initAmplitude } from './utils/amplitude'
 import { initDecorator } from './decorator/decorator'
 import { initSentry } from './utils/sentry'
+import '@navikt/ds-css'
 
 declare global {
   interface Window {
