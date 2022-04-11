@@ -2,7 +2,7 @@ import React from 'react'
 import '../stylesheet/styles.scss'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
-import Veilederpanel from 'nav-frontend-veilederpanel'
+import { GuidePanel } from '@navikt/ds-react'
 import Lenke from 'nav-frontend-lenker'
 import Tilbakeknapp from '../components/Tilbakeknapp'
 import { useHistory } from 'react-router-dom'
@@ -49,7 +49,7 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
           >
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Tilbakeknapp>
-          <Veilederpanel fargetema="advarsel" type="plakat" svg={<SpotIllustration />}>
+          <GuidePanel poster illustration={<SpotIllustration />} className="warning">
             <Systemtittel className="centeredElement" style={{ marginBottom: '2rem' }}>
               {t('soknadsoversikt.soknadVisningFeil.kanIkkeVise')}
             </Systemtittel>
@@ -58,7 +58,7 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
               {t('soknadsoversikt.soknadVisningFeil.vennligstForsok')}
               <Lenke href={`./${soknadsid}`}>{t('soknadsoversikt.soknadVisningFeil.lastInnPaNytt')}</Lenke>
             </Normaltekst>
-          </Veilederpanel>
+          </GuidePanel>
         </div>
       </main>
     </>

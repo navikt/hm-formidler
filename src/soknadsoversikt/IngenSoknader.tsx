@@ -3,7 +3,7 @@ import './../stylesheet/styles.scss'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import 'nav-frontend-tabell-style'
 import { ReactComponent as SpotIllustration } from '../assets/svg/ingenSoknader.svg'
-import Veilederpanel from 'nav-frontend-veilederpanel'
+import { GuidePanel } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 
 const IngenSoknader: React.FC = () => {
@@ -11,10 +11,10 @@ const IngenSoknader: React.FC = () => {
 
   return (
     <div className="customPanel">
-      <Veilederpanel type="plakat" veilederProps={{ transparent: true }} svg={<SpotIllustration />}>
+      <GuidePanel poster illustration={<SpotIllustration />}>
         <Systemtittel className="centeredElement">{t('soknadsoversikt.ingenSoknader.finnerIngen')}</Systemtittel>
         <Normaltekst className="centeredElement">{t('soknadsoversikt.ingenSoknader.paDenneSiden')} </Normaltekst>
-      </Veilederpanel>
+      </GuidePanel>
     </div>
   )
 }

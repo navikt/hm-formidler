@@ -8,13 +8,13 @@
 
 html {
   min-height: 100%;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   font-size: 16px;
   color: $navMorkGra;
 }
 
 .pagewrapper {
-    padding-bottom: $xlSpacing;
+  padding-bottom: $xlSpacing;
 }
 
 .soknadsKort {
@@ -25,10 +25,9 @@ html {
 }
 
 .soknadsKort > div:last-child {
-    margin-left: auto;
-    padding-right: 1rem;
+  margin-left: auto;
+  padding-right: 1rem;
 }
-
 
 .pagewrapper {
   width: 100%;
@@ -46,7 +45,7 @@ html {
 }
 
 .fontBold > .typo-normal {
-    font-weight: bold;
+  font-weight: bold;
 }
 .centeredElement {
   align-items: center;
@@ -87,7 +86,6 @@ html {
   }
 }
 
-
 // Not .typo-sidetittel, .typo-innholdstittel, .typo-systemtittel, .typo-ingress in the beginning
 .typo-undertittel,
 .typo-element,
@@ -102,7 +100,6 @@ html {
 .navds-link-panel__content {
   flex-grow: 1;
 }
-
 
 // Soknad
 .contentBlock,
@@ -132,4 +129,8 @@ html {
 .infoRowCell,
 .infoRowCellHms {
   display: table-cell;
+}
+
+.navds-guide-panel.warning .navds-guide-panel__content {
+  border-color: orange;
 }

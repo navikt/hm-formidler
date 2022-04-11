@@ -2,7 +2,7 @@ import React from 'react'
 import './../stylesheet/styles.scss'
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
-import Veilederpanel from 'nav-frontend-veilederpanel'
+import { GuidePanel } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
 import { Button } from '@navikt/ds-react'
 import { useHistory } from 'react-router-dom'
@@ -29,7 +29,7 @@ const Feilside: React.FC = () => {
     <>
       <main>
         <div className="customPanel feilside">
-          <Veilederpanel type={'plakat'} kompakt svg={<SpotIllustration />}>
+          <GuidePanel poster illustration={<SpotIllustration />}>
             <div className="contentBlock">
               <Innholdstittel className="titleCenter">{t('feilside.ikkeTilgjengelig')}</Innholdstittel>
             </div>
@@ -43,7 +43,7 @@ const Feilside: React.FC = () => {
                 {t('kvittering.tilbake')}
               </Button>
             </div>
-          </Veilederpanel>
+          </GuidePanel>
         </div>
       </main>
     </>

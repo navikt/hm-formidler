@@ -3,7 +3,7 @@ import './../stylesheet/styles.scss'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
-import Veilederpanel from 'nav-frontend-veilederpanel'
+import { GuidePanel } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import Lesmerpanel from 'nav-frontend-lesmerpanel'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
@@ -14,7 +14,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
   return (
     <>
       <div className="veilederWrapperPanel">
-        <Veilederpanel fargetema="info" type="plakat" svg={<SpotIllustration />}>
+        <GuidePanel poster illustration={<SpotIllustration />}>
           <Normaltekst>{t('hoved.veilederpanel.p0')}</Normaltekst>
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</Normaltekst>
           <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p2')}</Normaltekst>
@@ -90,7 +90,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
               </li>
             </ul>
           </Lesmerpanel>
-        </Veilederpanel>
+        </GuidePanel>
       </div>
     </>
   )
