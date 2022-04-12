@@ -3,7 +3,7 @@ import './../stylesheet/styles.scss'
 import Banner from '../components/Banner'
 import useSWR from 'swr'
 import { API_PATH, fetcher } from '../services/rest-service'
-import NavFrontendSpinner from 'nav-frontend-spinner'
+import { Loader } from '@navikt/ds-react'
 import 'nav-frontend-tabell-style'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import IngenSoknader from './IngenSoknader'
@@ -56,7 +56,7 @@ const SoknadsOversikt: React.FC = () => {
   if (soknader === undefined)
     return (
       <div className="content centeredElement">
-        <NavFrontendSpinner type="L" />
+        <Loader size="large" />
       </div>
     )
 

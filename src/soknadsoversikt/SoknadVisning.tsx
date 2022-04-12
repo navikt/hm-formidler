@@ -2,7 +2,7 @@ import React from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import NavFrontendSpinner from 'nav-frontend-spinner'
+import { Loader } from '@navikt/ds-react'
 import 'nav-frontend-tabell-style'
 import { BASE_PATH } from '../App'
 import { useHistory, useParams } from 'react-router-dom'
@@ -37,7 +37,7 @@ const SoknadVisning: React.FC = () => {
   if (!data)
     return (
       <div className="content centeredElement">
-        <NavFrontendSpinner type="L" />
+        <Loader size="large" />
       </div>
     )
 

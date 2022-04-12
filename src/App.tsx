@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
-import NavFrontendSpinner from 'nav-frontend-spinner'
+import { Loader } from '@navikt/ds-react'
 import useSWRImmutable from 'swr/immutable'
 import ScrollToTop from './components/ScrollToTop'
 import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
@@ -22,7 +22,7 @@ const App: React.FC = () => {
   if (!data)
     return (
       <div className="content centeredElement">
-        <NavFrontendSpinner type="L" />
+        <Loader size="large" />
       </div>
     )
 
