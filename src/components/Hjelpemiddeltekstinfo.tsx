@@ -1,5 +1,5 @@
 import React from 'react'
-import { Normaltekst, Element } from 'nav-frontend-typografi'
+import { BodyShort, Label } from '@navikt/ds-react'
 import { HjelpemiddelItem, HjelpemiddelVilkar } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
 
@@ -17,46 +17,44 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
     <>
       {hm?.vilkarliste && produktHarVilkar && (
         <div>
-          <Element style={{ display: 'inline' }}>Behov:&nbsp;</Element>
-          <Normaltekst style={{ display: 'inline' }}>
+          <Label style={{ display: 'inline' }}>Behov:&nbsp;</Label>
+          <BodyShort style={{ display: 'inline' }}>
             {hm.vilkarliste
               .map((vilkar: HjelpemiddelVilkar) => {
                 return vilkar.tilleggsinfo ? vilkar.tilleggsinfo : vilkar.vilkaarTekst
               })
               .join(', ')}
-          </Normaltekst>
+          </BodyShort>
         </div>
       )}
       {hm?.begrunnelse && (
         <div>
           {hm.kanIkkeTilsvarande ? (
             hm.rangering && parseInt(hm.rangering) > 1 ? (
-              <Element style={{ display: 'inline' }}>{t('handlekurv.labels.begrunnelseForLavereRangering')}</Element>
+              <Label style={{ display: 'inline' }}>{t('handlekurv.labels.begrunnelseForLavereRangering')}</Label>
             ) : (
-              <Element style={{ display: 'inline' }}>
-                {t('handlekurv.labels.begrunnelseForKanIkkeHaTilsvarende')}
-              </Element>
+              <Label style={{ display: 'inline' }}>{t('handlekurv.labels.begrunnelseForKanIkkeHaTilsvarende')}</Label>
             )
           ) : (
-            <Element style={{ display: 'inline' }}>{t('leggTilEllerEndre.begrunnelsen.label2')}</Element>
+            <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.begrunnelsen.label2')}</Label>
           )}
 
-          <Normaltekst style={{ display: 'inline' }}>{hm.begrunnelse}</Normaltekst>
+          <BodyShort style={{ display: 'inline' }}>{hm.begrunnelse}</BodyShort>
         </div>
       )}
       {hm.tilleggsinformasjon && (
         <div>
-          <Element style={{ display: 'inline' }}>{t('felles.kommentar')}</Element>
-          <Normaltekst style={{ display: 'inline' }}>{hm.tilleggsinformasjon}</Normaltekst>
+          <Label style={{ display: 'inline' }}>{t('felles.kommentar')}</Label>
+          <BodyShort style={{ display: 'inline' }}>{hm.tilleggsinformasjon}</BodyShort>
         </div>
       )}
       {!!hm.personlofterInfo && (
         <>
-          <Element style={{ display: 'inline' }}>{t('handlekurv.labels.personloftere.tittel')}:&nbsp;</Element>
-          <Normaltekst style={{ display: 'inline' }}>
+          <Label style={{ display: 'inline' }}>{t('handlekurv.labels.personloftere.tittel')}:&nbsp;</Label>
+          <BodyShort style={{ display: 'inline' }}>
             {hm.personlofterInfo.harBehovForSeilEllerSele === true && 'Ja'}
             {hm.personlofterInfo.harBehovForSeilEllerSele === false && 'Nei'}
-          </Normaltekst>
+          </BodyShort>
         </>
       )}
     </>

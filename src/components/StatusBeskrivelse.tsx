@@ -1,5 +1,5 @@
 import React from 'react'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort } from '@navikt/ds-react'
 
 type StatusBeskrivelseProps = {
   tittel: string
@@ -9,8 +9,10 @@ type StatusBeskrivelseProps = {
 const StatusBeskrivelse: React.FC<StatusBeskrivelseProps> = (props: StatusBeskrivelseProps) => {
   return (
     <div style={{ marginBottom: '1rem' }}>
-      <Undertittel tag={'h3'}>{props.tittel}</Undertittel>
-      <Normaltekst>{props.beskrivelse}</Normaltekst>
+      <Heading size="small" level="3">
+        {props.tittel}
+      </Heading>
+      <BodyShort>{props.beskrivelse}</BodyShort>
     </div>
   )
 }

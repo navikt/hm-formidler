@@ -1,6 +1,6 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
 import { GuidePanel } from '@navikt/ds-react'
@@ -15,17 +15,17 @@ const SoknadsOversiktVeileder: React.FC = () => {
     <>
       <div className="veilederWrapperPanel">
         <GuidePanel poster illustration={<SpotIllustration />}>
-          <Normaltekst>{t('hoved.veilederpanel.p0')}</Normaltekst>
-          <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</Normaltekst>
-          <Normaltekst style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p2')}</Normaltekst>
+          <BodyShort>{t('hoved.veilederpanel.p0')}</BodyShort>
+          <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</BodyShort>
+          <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p2')}</BodyShort>
 
           <Lesmerpanel
             apneTekst={t('hoved.veilederpanel.statuser.apne')}
             lukkTekst={t('hoved.veilederpanel.statuser.lukk')}
           >
-            <Systemtittel style={{ marginTop: '1.5rem' }}>
+            <Heading size="medium" level="2" style={{ marginTop: '1.5rem' }}>
               {t('soknadsoversikt.soknadsoversikt.beskrivelseAvStatuser')}
-            </Systemtittel>
+            </Heading>
 
             <ul style={{ listStyleType: 'none', padding: '0' }}>
               <li>

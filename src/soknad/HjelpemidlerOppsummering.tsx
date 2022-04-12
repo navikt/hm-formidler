@@ -1,5 +1,5 @@
 import React from 'react'
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
@@ -20,7 +20,9 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
     <>
       <div className="contentBlock">
         <div className="contentBlock categoryRow">
-          <Systemtittel tag="h3"> {t('felles.hjelpemidler')}</Systemtittel>
+          <Heading size="medium" level="3">
+            {t('felles.hjelpemidler')}
+          </Heading>
         </div>
       </div>
 
@@ -38,14 +40,14 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       <div className="contentBlock">
         <div className={'infoTable'}>
           <div className={'infoRow infoRowReverse'}>
-            <Normaltekst className={'infoRowCell'}>{t('felles.tilsvarendeProdukt')}</Normaltekst>
-            <Normaltekst className={'alignRight fixedWidthLabel'}>
+            <BodyShort className={'infoRowCell'}>{t('felles.tilsvarendeProdukt')}</BodyShort>
+            <BodyShort className={'alignRight fixedWidthLabel'}>
               {t('felles.totalt') +
                 ' ' +
                 t('felles.antallHjelpemidler.total', {
                   antall: hjelpemiddelTotalAntall,
                 })}
-            </Normaltekst>
+            </BodyShort>
           </div>
         </div>
       </div>

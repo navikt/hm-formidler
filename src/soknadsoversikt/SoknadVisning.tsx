@@ -7,7 +7,8 @@ import 'nav-frontend-tabell-style'
 import { BASE_PATH } from '../App'
 import { useHistory, useParams } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
-import { Sidetittel } from 'nav-frontend-typografi'
+import { Heading } from '@navikt/ds-react'
+
 import { useTranslation } from 'react-i18next'
 import Tilbakeknapp from '../components/Tilbakeknapp'
 import SoknadVisningFeil from './SoknadVisningFeil'
@@ -52,7 +53,9 @@ const SoknadVisning: React.FC = () => {
     <>
       <header>
         <div className="banner" style={{ textAlign: 'center', justifyContent: 'center' }}>
-          <Sidetittel>{t('soknadvisning.tittel', { navnBruker })}</Sidetittel>
+          <Heading level="1" size="xlarge">
+            {t('soknadvisning.tittel', { navnBruker })}
+          </Heading>
         </div>
       </header>
 

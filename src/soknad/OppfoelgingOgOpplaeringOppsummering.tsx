@@ -1,5 +1,5 @@
 import React from 'react'
-import { Element, Normaltekst, Undertittel, Systemtittel } from 'nav-frontend-typografi'
+import { Heading, Label, BodyShort } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Formidlerinfo } from '../interfaces/Formidlerinfo'
@@ -17,78 +17,85 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
   return (
     <>
       <div className="contentBlock categoryRow">
-        <Systemtittel tag="h3"> {t('oppsummering.leveringOgOpplaring')}</Systemtittel>
+        <Heading size="medium" level="3">
+          {' '}
+          {t('oppsummering.leveringOgOpplaring')}
+        </Heading>
       </div>
       <div className="contentBlock">
         <div className="contentBlock">
-          <Undertittel tag="h4">{t('felles.hjelpemiddelFormidler')}</Undertittel>
+          <Heading size="small" level="4">
+            {t('felles.hjelpemiddelFormidler')}
+          </Heading>
         </div>
         <div className="contentBlock">
           <div className={'infoTable'}>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.navn}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.navn}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.arbeidssted}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.arbeidssted}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.stilling}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.stilling}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.adresse')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.adresse}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.adresse')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.adresse}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.telefon}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.telefon}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.treffesEnklest')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.treffesEnklest}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.treffesEnklest')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.treffesEnklest}</BodyShort>
             </div>
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.epost')}</Element>
-              <Normaltekst className={'infoRowCell'}>{formidler.epost}</Normaltekst>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.epost')}</Label>
+              <BodyShort className={'infoRowCell'}>{formidler.epost}</BodyShort>
             </div>
           </div>
         </div>
       </div>
       <div className="contentBlock">
         <div className="contentBlock">
-          <Undertittel tag="h4">{t('oppsummering.ansvarlig')}</Undertittel>
+          <Heading size="small" level="4">
+            {t('oppsummering.ansvarlig')}
+          </Heading>
         </div>
         <div className="contentBlock">
           {!oppfolgingsansvarlig ? (
             <div className={'infoRow'}>
-              <Element className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Element>
-              <Normaltekst className={'infoRowCell'}>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
+              <BodyShort className={'infoRowCell'}>
                 {formidler.navn} {t('oppsummering.hjelpemiddelformidler')}
-              </Normaltekst>
+              </BodyShort>
             </div>
           ) : (
             <div className={'infoTable'}>
               <div className={'infoRow'}>
-                <Element className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Element>
-                <Normaltekst className={'infoRowCell'}>{oppfolgingsansvarlig.navn}</Normaltekst>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
+                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.navn}</BodyShort>
               </div>
               <div className={'infoRow'}>
-                <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Element>
-                <Normaltekst className={'infoRowCell'}>{oppfolgingsansvarlig.arbeidssted}</Normaltekst>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>
+                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.arbeidssted}</BodyShort>
               </div>
               <div className={'infoRow'}>
-                <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Element>
-                <Normaltekst className={'infoRowCell'}>{oppfolgingsansvarlig.stilling}</Normaltekst>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Label>
+                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.stilling}</BodyShort>
               </div>
               <div className={'infoRow'}>
-                <Element className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Element>
-                <Normaltekst className={'infoRowCell'}>{oppfolgingsansvarlig.telefon}</Normaltekst>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
+                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.telefon}</BodyShort>
               </div>
               <div className={'infoRow'}>
-                <Element className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.ansvar')}</Element>
-                <Normaltekst className={'infoRowCell'}>{oppfolgingsansvarlig.ansvarFor}</Normaltekst>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.ansvar')}</Label>
+                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.ansvarFor}</BodyShort>
               </div>
             </div>
           )}

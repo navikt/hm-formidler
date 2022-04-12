@@ -1,6 +1,5 @@
 import React from 'react'
-import { Innholdstittel } from 'nav-frontend-typografi'
-import { Panel } from '@navikt/ds-react'
+import { Panel, Heading } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
@@ -23,9 +22,9 @@ const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
       <div>
         <Panel>
           <div className="contentBlock">
-            <Innholdstittel className="titleCenter" tag="h2">
+            <Heading className="titleCenter" level="2" size="large">
               Søknad
-            </Innholdstittel>
+            </Heading>
           </div>
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={soknad.bruker} />

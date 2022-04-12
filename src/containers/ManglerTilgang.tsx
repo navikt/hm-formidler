@@ -1,6 +1,7 @@
 import React from 'react'
 import '../stylesheet/styles.scss'
-import { Systemtittel } from 'nav-frontend-typografi'
+import { Heading } from '@navikt/ds-react'
+
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import Banner from '../components/Banner'
 import { GuidePanel } from '@navikt/ds-react'
@@ -17,7 +18,9 @@ const ManglerTilgang: React.FC = () => {
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
           <GuidePanel poster illustration={<SpotIllustration />} className="warning">
-            <Systemtittel className="centeredElement">{t('feilside.manglerTilgang')}</Systemtittel>
+            <Heading size="medium" level="2" className="centeredElement">
+              {t('feilside.manglerTilgang')}
+            </Heading>
           </GuidePanel>
         </div>
       </main>

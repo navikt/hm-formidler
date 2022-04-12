@@ -1,6 +1,6 @@
 import React from 'react'
 import { HendelPlassering, HjelpemiddelItem } from '../interfaces/CommonTypes'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { BodyShort, Label } from '@navikt/ds-react'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { useTranslation } from 'react-i18next'
 import { Kategori } from '../soknad/kategorier'
@@ -17,16 +17,16 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
     <>
       {hm.rullestolInfo?.skalBrukesIBil && (
         <div>
-          <Element style={{ display: 'inline' }}>{t('rullestol.bil.tittel')}</Element>
-          <Normaltekst style={{ display: 'inline' }}>{t('rullestol.bil.skalBrukesIBil')}</Normaltekst>
+          <Label style={{ display: 'inline' }}>{t('rullestol.bil.tittel')}</Label>
+          <BodyShort style={{ display: 'inline' }}>{t('rullestol.bil.skalBrukesIBil')}</BodyShort>
         </div>
       )}
       {hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler && (
         <>
           {hm.rullestolInfo?.sitteputeValg && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Element style={{ display: 'inline' }}>{t('leggTilEllerEndre.rullestol.sittepute:')}</Element>
-              <Normaltekst style={{ display: 'inline' }}>{t(hm.rullestolInfo.sitteputeValg)}</Normaltekst>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.rullestol.sittepute:')}</Label>
+              <BodyShort style={{ display: 'inline' }}>{t(hm.rullestolInfo.sitteputeValg)}</BodyShort>
             </div>
           )}
         </>
@@ -35,47 +35,45 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
         <>
           {hm.elektriskRullestolInfo?.oppbevaringOgLagring !== undefined && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Element style={{ display: 'inline' }}>
+              <Label style={{ display: 'inline' }}>
                 {t('leggTilEllerEndre.elRullestol.oppbevaringOgLagring.title')}
-              </Element>
-              <Normaltekst style={{ display: 'inline' }}>
+              </Label>
+              <BodyShort style={{ display: 'inline' }}>
                 {hm.elektriskRullestolInfo?.oppbevaringOgLagring
                   ? t('leggTilEllerEndre.elRullestol.oppbevaringOgLagring.true')
                   : hm.elektriskRullestolInfo?.oppbevaringInfo}
-              </Normaltekst>
+              </BodyShort>
             </div>
           )}
           {hm.elektriskRullestolInfo?.kjentMedForsikring !== undefined && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Element style={{ display: 'inline' }}>
-                {t('leggTilEllerEndre.elRullestol.forsikringsvilkår.title')}
-              </Element>
-              <Normaltekst style={{ display: 'inline' }}>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.forsikringsvilkår.title')}</Label>
+              <BodyShort style={{ display: 'inline' }}>
                 {hm.elektriskRullestolInfo?.kjentMedForsikring
                   ? t('leggTilEllerEndre.elRullestol.forsikringsvilkår.true')
                   : t('leggTilEllerEndre.elRullestol.forsikringsvilkår.false')}
-              </Normaltekst>
+              </BodyShort>
             </div>
           )}
           {hm.elektriskRullestolInfo?.harSpesialsykkel !== undefined && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Element style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.spesialsykkel.title')} </Element>
-              <Normaltekst style={{ display: 'inline' }}>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.spesialsykkel.title')} </Label>
+              <BodyShort style={{ display: 'inline' }}>
                 {hm.elektriskRullestolInfo?.harSpesialsykkel
                   ? t('leggTilEllerEndre.elRullestol.spesialsykkel.true')
                   : t('leggTilEllerEndre.elRullestol.spesialsykkel.false')}
-              </Normaltekst>
+              </BodyShort>
             </div>
           )}
 
           {hm.elektriskRullestolInfo?.plasseringAvHendel && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Element style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.gasshendel.title')} </Element>
-              <Normaltekst style={{ display: 'inline' }}>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.gasshendel.title')} </Label>
+              <BodyShort style={{ display: 'inline' }}>
                 {hm.elektriskRullestolInfo.plasseringAvHendel === HendelPlassering.HØYRE
                   ? t('leggTilEllerEndre.elRullestol.gasshendel.høyre')
                   : t('leggTilEllerEndre.elRullestol.gasshendel.venstre')}
-              </Normaltekst>
+              </BodyShort>
             </div>
           )}
         </>
@@ -83,8 +81,8 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
         <div>
-          <Element>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Element>
-          <Normaltekst>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</Normaltekst>
+          <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
+          <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
         </div>
       )}
     </>

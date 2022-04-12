@@ -1,6 +1,6 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort } from '@navikt/ds-react'
 import 'nav-frontend-tabell-style'
 import { ReactComponent as SpotIllustration } from '../assets/svg/ingenSoknader.svg'
 import { GuidePanel } from '@navikt/ds-react'
@@ -12,8 +12,10 @@ const IngenSoknader: React.FC = () => {
   return (
     <div className="customPanel">
       <GuidePanel poster illustration={<SpotIllustration />}>
-        <Systemtittel className="centeredElement">{t('soknadsoversikt.ingenSoknader.finnerIngen')}</Systemtittel>
-        <Normaltekst className="centeredElement">{t('soknadsoversikt.ingenSoknader.paDenneSiden')} </Normaltekst>
+        <Heading size="medium" className="centeredElement">
+          {t('soknadsoversikt.ingenSoknader.finnerIngen')}
+        </Heading>
+        <BodyShort className="centeredElement">{t('soknadsoversikt.ingenSoknader.paDenneSiden')} </BodyShort>
       </GuidePanel>
     </div>
   )

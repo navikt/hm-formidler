@@ -1,5 +1,5 @@
 import React from 'react'
-import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort, Label } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem, UtlevertType } from '../interfaces/CommonTypes'
 
@@ -16,33 +16,33 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelinfoProps> = (props: Hjelpemiddelin
       <div>
         <div className="hjelpemiddelinfo">
           {/* For store skjermflater */}
-          <Undertittel
-            role="heading"
+          <Heading
+            level="4"
+            size="small"
             aria-label={`Hms nummer ${hjelpemiddel.hmsNr}`}
-            tag="h4"
             className="hjelpemiddelinfo-hmsNr desktop-only"
           >
             {hjelpemiddel.hmsNr}
-          </Undertittel>
+          </Heading>
 
-          <Undertittel tag="h4" className="hjelpemiddelinfo-navn">
+          <Heading level="4" size="small" className="hjelpemiddelinfo-navn">
             {hjelpemiddel.beskrivelse}
-          </Undertittel>
+          </Heading>
 
           {/* For små skjermflater */}
           <span className="sr-only mobile-only">HMS nummer</span>
-          <Element className="hjelpemiddelinfo-hmsNr mobile-only">{hjelpemiddel.hmsNr}</Element>
+          <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hjelpemiddel.hmsNr}</Label>
 
-          <Element className="hjelpemiddelinfo-antall">
+          <Label className="hjelpemiddelinfo-antall">
             {t('felles.antallHjelpemidler', { antall: hjelpemiddel.antall })}
-          </Element>
+          </Label>
         </div>
         <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
-          <Normaltekst>{hjelpemiddel.hjelpemiddelkategori.toUpperCase()}</Normaltekst>
+          <BodyShort>{hjelpemiddel.hjelpemiddelkategori.toUpperCase()}</BodyShort>
         </div>
         {hjelpemiddel.utlevertFraHjelpemiddelsentralen && hjelpemiddel.utlevertInfo?.utlevertType && (
           <div>
-            <Normaltekst style={{ flex: '0 0 4rem' }}>
+            <BodyShort style={{ flex: '0 0 4rem' }}>
               {hjelpemiddel.utlevertInfo?.utlevertType === UtlevertType.Annet ? (
                 <>
                   <b>{t('oppsummering.utlevertAnnet')}</b>: {hjelpemiddel.utlevertInfo?.annenKommentar}
@@ -56,12 +56,12 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelinfoProps> = (props: Hjelpemiddelin
                   })}
                 </>
               )}
-            </Normaltekst>
+            </BodyShort>
           </div>
         )}
         <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
-          <Element>{t('oppsummering.rangering')} &nbsp;</Element>
-          <Normaltekst>{hjelpemiddel?.rangering}</Normaltekst>
+          <Label>{t('oppsummering.rangering')} &nbsp;</Label>
+          <BodyShort>{hjelpemiddel?.rangering}</BodyShort>
         </div>
       </div>
     </>

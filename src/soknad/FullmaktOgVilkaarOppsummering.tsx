@@ -1,5 +1,6 @@
 import React from 'react'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Label, BodyShort } from '@navikt/ds-react'
+
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Brukerinfo, SignaturType } from '../interfaces/Brukerinfo'
@@ -21,24 +22,24 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
 
       {bruker.signatur === SignaturType.FRITAK_FRA_FULLMAKT && (
         <div className="contentBlock">
-          <Element>{t('oppsummering.fritakFraFullmakt.tittel')}</Element>
+          <Label>{t('oppsummering.fritakFraFullmakt.tittel')}</Label>
           <ul>
             <li>
-              <Normaltekst>{t('oppsummering.fritakFraFullmakt.tekst')}</Normaltekst>
+              <BodyShort>{t('oppsummering.fritakFraFullmakt.tekst')}</BodyShort>
             </li>
             <li>
-              <Normaltekst>{t('oppsummering.brukerErInformertOmRettigheter', { navn: brukersNavn })}</Normaltekst>
+              <BodyShort>{t('oppsummering.brukerErInformertOmRettigheter', { navn: brukersNavn })}</BodyShort>
             </li>
           </ul>
         </div>
       )}
 
       <div className="contentBlock">
-        <Element tag="h3">
+        <Label>
           {t('oppsummering.vilkarOppfyllt', {
             navn: brukersNavn,
           })}
-        </Element>
+        </Label>
         <ul
           style={{
             fontFamily: '"Source Sans Pro",Arial,sans-serif',
@@ -52,8 +53,8 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
       </div>
 
       <div className="contentBlock">
-        <Element tag="h3">{t('oppsummering.infoOmRettOgPlikt.tittel')}</Element>
-        <Normaltekst>{t('oppsummering.infoOmRettOgPlikt')}</Normaltekst>
+        <Label spacing>{t('oppsummering.infoOmRettOgPlikt.tittel')}</Label>
+        <BodyShort>{t('oppsummering.infoOmRettOgPlikt')}</BodyShort>
       </div>
     </>
   )

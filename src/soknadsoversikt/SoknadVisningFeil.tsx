@@ -1,6 +1,6 @@
 import React from 'react'
 import '../stylesheet/styles.scss'
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Heading, BodyShort } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import { GuidePanel } from '@navikt/ds-react'
 import Lenke from 'nav-frontend-lenker'
@@ -50,14 +50,14 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Tilbakeknapp>
           <GuidePanel poster illustration={<SpotIllustration />} className="warning">
-            <Systemtittel className="centeredElement" style={{ marginBottom: '2rem' }}>
+            <Heading size="medium" className="centeredElement" style={{ marginBottom: '2rem' }}>
               {t('soknadsoversikt.soknadVisningFeil.kanIkkeVise')}
-            </Systemtittel>
+            </Heading>
 
-            <Normaltekst style={{ marginBottom: '0.5rem' }}>
+            <BodyShort style={{ marginBottom: '0.5rem' }}>
               {t('soknadsoversikt.soknadVisningFeil.vennligstForsok')}
               <Lenke href={`./${soknadsid}`}>{t('soknadsoversikt.soknadVisningFeil.lastInnPaNytt')}</Lenke>
-            </Normaltekst>
+            </BodyShort>
           </GuidePanel>
         </div>
       </main>

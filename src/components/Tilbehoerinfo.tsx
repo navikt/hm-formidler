@@ -1,5 +1,5 @@
 import React from 'react'
-import { Element, Undertekst } from 'nav-frontend-typografi'
+import { Label, Detail } from '@navikt/ds-react'
 import { Hjelpemiddeltilbehoer } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
 
@@ -15,7 +15,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
     <>
       {tilbehoerListe && tilbehoerListe?.length > 0 && (
         <div>
-          <Element className={'fixedWidthLabel'}>{t('leggTilEllerEndre.tilbehor')}</Element>
+          <Label className={'fixedWidthLabel'}>{t('leggTilEllerEndre.tilbehor')}</Label>
         </div>
       )}
       {tilbehoerListe && tilbehoerListe?.length > 0 && (
@@ -23,11 +23,15 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
           {tilbehoerListe?.map((tlbhr: Hjelpemiddeltilbehoer, tilbehorIdx: number) => (
             <li key={tilbehorIdx} className="tilbehoerinfo">
               <span className="sr-only">HMS nummer</span>
-              <Undertekst style={{ flex: '0 0 5rem' }}>{tlbhr.hmsnr}</Undertekst>
-              <Undertekst style={{ flex: '1' }}>{tlbhr.navn}</Undertekst>
-              <Undertekst className="tilbehoerinfo-antall">
+              <Detail size="small" style={{ flex: '0 0 5rem' }}>
+                {tlbhr.hmsnr}
+              </Detail>
+              <Detail size="small" style={{ flex: '1' }}>
+                {tlbhr.navn}
+              </Detail>
+              <Detail size="small" className="tilbehoerinfo-antall">
                 {t('handlekurv.tilbehoer.antall', { antall: tlbhr.antall })}
-              </Undertekst>
+              </Detail>
             </li>
           ))}
         </ul>

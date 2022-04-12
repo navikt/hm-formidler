@@ -1,6 +1,6 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
-import { Ingress, Innholdstittel } from 'nav-frontend-typografi'
+import { Ingress, Heading } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { GuidePanel } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
@@ -31,7 +31,9 @@ const Feilside: React.FC = () => {
         <div className="customPanel feilside">
           <GuidePanel poster illustration={<SpotIllustration />}>
             <div className="contentBlock">
-              <Innholdstittel className="titleCenter">{t('feilside.ikkeTilgjengelig')}</Innholdstittel>
+              <Heading size="large" level="1" className="titleCenter">
+                {t('feilside.ikkeTilgjengelig')}
+              </Heading>
             </div>
             <div className="contentBlock">
               <div className="contentBlock">

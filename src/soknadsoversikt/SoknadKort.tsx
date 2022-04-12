@@ -1,12 +1,11 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
-import { Normaltekst } from 'nav-frontend-typografi'
 import { useTranslation } from 'react-i18next'
 import 'nav-frontend-tabell-style'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import { beregnFrist, formaterDato } from '../Utils'
-import { Tag, TagProps, Panel, LinkPanel } from '@navikt/ds-react'
+import { Tag, TagProps, Panel, LinkPanel, BodyShort } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import * as Sentry from '@sentry/browser'
@@ -51,19 +50,19 @@ const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <div className="fontBold">
-            <Normaltekst>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Normaltekst>
+            <BodyShort>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</BodyShort>
           </div>
-          <Normaltekst>
+          <BodyShort>
             {soknad.status === SoknadStatus.VENTER_GODKJENNING
               ? `Frist:  ${beregnFrist(soknad.datoOpprettet)}`
               : formaterDato(soknad.datoOppdatert)}
-          </Normaltekst>
+          </BodyShort>
         </div>
         <div>
           {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt 
           med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
           <Tag variant={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
-            <Normaltekst>{t(soknad.status)}</Normaltekst>
+            <BodyShort>{t(soknad.status)}</BodyShort>
           </Tag>
         </div>
       </div>
