@@ -1,7 +1,6 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
 import { useTranslation } from 'react-i18next'
-import 'nav-frontend-tabell-style'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import { beregnFrist, formaterDato } from '../Utils'

@@ -1,6 +1,5 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
-import 'nav-frontend-tabell-style'
 import { SoknadInfo } from '../interfaces/SoknadInfo'
 import SoknadKort from './SoknadKort'
 import { useTranslation } from 'react-i18next'

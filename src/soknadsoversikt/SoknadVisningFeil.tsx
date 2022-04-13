@@ -2,8 +2,7 @@ import React from 'react'
 import '../stylesheet/styles.scss'
 import { Heading, BodyShort } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
-import { GuidePanel } from '@navikt/ds-react'
-import Lenke from 'nav-frontend-lenker'
+import { GuidePanel, Link } from '@navikt/ds-react'
 import Tilbakeknapp from '../components/Tilbakeknapp'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
@@ -56,7 +55,7 @@ const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisnin
 
             <BodyShort style={{ marginBottom: '0.5rem' }}>
               {t('soknadsoversikt.soknadVisningFeil.vennligstForsok')}
-              <Lenke href={`./${soknadsid}`}>{t('soknadsoversikt.soknadVisningFeil.lastInnPaNytt')}</Lenke>
+              <Link href={`./${soknadsid}`}>{t('soknadsoversikt.soknadVisningFeil.lastInnPaNytt')}</Link>
             </BodyShort>
           </GuidePanel>
         </div>

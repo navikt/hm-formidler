@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import 'nav-frontend-core'
-import NavFrontendModal from 'nav-frontend-modal'
 import withMenu from './decorator/decorator-header-withmenu'
 import footer from './decorator/decorator-footer'
 import styles from './decorator/decorator-styles'
@@ -49,7 +47,6 @@ const init = async () => {
 
   //Renders app component
   const rootElement = document.getElementById('root')
-  NavFrontendModal.setAppElement(rootElement)
 
   if (Modal.setAppElement) {
     Modal.setAppElement(rootElement)

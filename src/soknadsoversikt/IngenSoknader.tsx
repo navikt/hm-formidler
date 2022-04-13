@@ -1,7 +1,6 @@
 import React from 'react'
 import './../stylesheet/styles.scss'
 import { Heading, BodyShort } from '@navikt/ds-react'
-import 'nav-frontend-tabell-style'
 import { ReactComponent as SpotIllustration } from '../assets/svg/ingenSoknader.svg'
 import { GuidePanel } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'

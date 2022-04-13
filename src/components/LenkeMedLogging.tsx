@@ -1,5 +1,5 @@
 import React from 'react'
-import Lenke from 'nav-frontend-lenker'
+import { Link } from '@navikt/ds-react'
 import { logNavigeringLenke } from '../utils/amplitude'
 
 type LenkeMedLoggingProps = {
@@ -14,17 +14,16 @@ type LenkeMedLoggingProps = {
 const LenkeMedLogging = (props: LenkeMedLoggingProps) => {
   return (
     <>
-      <Lenke
+      <Link
         href={props.href}
         target={props.target}
         className={props.className}
-        ariaLabel={props.ariaLabel}
         onClick={() => {
           logNavigeringLenke(props.skjemaId, props.href)
         }}
       >
         {props.children}
-      </Lenke>
+      </Link>
     </>
   )
 }
