@@ -9,14 +9,13 @@ import { BASE_PATH } from '../App'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import * as Sentry from '@sentry/browser'
 
-type SoknadProps = {
-  soknadInfo: SoknadInfo
+interface Props {
+  soknad: SoknadInfo
 }
 
-const SoknadKort: React.FC<SoknadProps> = (props: SoknadProps) => {
+const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const { t } = useTranslation()
 
-  const soknad = props.soknadInfo
   let kanViseSoknad = true
   let etikettType: TagProps['variant']
   switch (soknad.status) {

@@ -14,6 +14,7 @@ import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
+import { Soknadsdata } from '../interfaces/SoknadInfo'
 
 interface ParamTypes {
   soknadsid: string
@@ -24,7 +25,10 @@ const SoknadVisning: React.FC = () => {
   const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
-  const { data, error } = useSWRImmutable(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
+  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined }>(
+    `${API_PATH}/soknad/formidler/${soknadsid}`,
+    fetcher
+  )
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
@@ -44,7 +48,7 @@ const SoknadVisning: React.FC = () => {
   const { søknadsdata, navnBruker } = data
 
   if (!søknadsdata) {
-    Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholt ikke søknadsdata`)
+    Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
 

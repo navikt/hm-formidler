@@ -8,7 +8,6 @@ import StatusBeskrivelse from '../components/StatusBeskrivelse'
 
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
-
   const [isOpen, setIsOpen] = useState(false)
 
   return (

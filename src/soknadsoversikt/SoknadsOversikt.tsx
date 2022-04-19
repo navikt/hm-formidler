@@ -15,9 +15,9 @@ import * as Sentry from '@sentry/browser'
 import { ApiError } from '../types/errors'
 
 const SoknadsOversikt: React.FC = () => {
-  const { data, error } = useSWR(`${API_PATH}/soknad/formidler`, fetcher)
+  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler`, fetcher)
   const history = useHistory()
-  const [soknader, setSoknader] = useState<[] | undefined>(undefined)
+  const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 
   if (error) {
     if (error instanceof ApiError && error.statusCode == 401) {
@@ -31,18 +31,18 @@ const SoknadsOversikt: React.FC = () => {
   useEffect(() => {
     if (data !== undefined) {
       const venterGodkjenning = data
-        .filter((soknad: SoknadInfo) => {
+        .filter((soknad) => {
           return soknad.status === SoknadStatus.VENTER_GODKJENNING
         })
-        .sort(function (a: SoknadInfo, b: SoknadInfo) {
+        .sort(function (a, b) {
           return new Date(b.datoOpprettet).getTime() - new Date(a.datoOpprettet).getTime()
         })
 
       const ikkeVenterGodkjenning = data
-        .filter((soknad: SoknadInfo) => {
+        .filter((soknad) => {
           return soknad.status !== SoknadStatus.VENTER_GODKJENNING
         })
-        .sort(function (a: SoknadInfo, b: SoknadInfo) {
+        .sort(function (a, b) {
           return new Date(b.datoOppdatert).getTime() - new Date(a.datoOppdatert).getTime()
         })
 

@@ -5,13 +5,13 @@ import SoknadKort from './SoknadKort'
 import { useTranslation } from 'react-i18next'
 import { Heading } from '@navikt/ds-react'
 
-type SoknadListeProps = {
+interface Props {
   alleSoknader: SoknadInfo[]
 }
 
-const SoknadListe: React.FC<SoknadListeProps> = (props: SoknadListeProps) => {
+const SoknadListe: React.FC<Props> = ({ alleSoknader }: Props) => {
   const { t } = useTranslation()
-  const { alleSoknader } = props
+
   return (
     <div className="customPanel">
       <div style={{ marginBottom: '1rem' }}>
@@ -20,7 +20,7 @@ const SoknadListe: React.FC<SoknadListeProps> = (props: SoknadListeProps) => {
       {alleSoknader.map((soknad: SoknadInfo) => {
         return (
           <div key={soknad.søknadId}>
-            <SoknadKort soknadInfo={soknad} />
+            <SoknadKort soknad={soknad} />
           </div>
         )
       })}

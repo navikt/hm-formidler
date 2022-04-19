@@ -10,15 +10,13 @@ import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-interface SoknadVisningFeilProps {
+interface Props {
   soknadsid: string
 }
 
-const SoknadVisningFeil: React.FC<SoknadVisningFeilProps> = (props: SoknadVisningFeilProps) => {
+const SoknadVisningFeil = ({ soknadsid }: Props) => {
   const history = useHistory()
   const { t } = useTranslation()
-
-  const { soknadsid } = props
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
