@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
       <a href={environment.SOKNAD_URL}>
         <Button
           onClick={() => {
-            logCustomEvent(digihot_customevents.KLIKK_NY_SØKNAD)
+            logCustomEvent(digihot_customevents.KLIKK_NY_SØKNAD, {steg: -1})
           }}
         >
           Ny Søknad
