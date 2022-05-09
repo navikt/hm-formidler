@@ -35,4 +35,4 @@ WORKDIR /app/server
 
 COPY --from=server-dependencies /app/node_modules ./node_modules
 
-CMD [ "-r", "dotenv/config", "server/dist/server.js" ]
+CMD [ "-r", "dotenv/config", "dist/server.js" ]
