@@ -27,8 +27,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 EXPOSE 3000
 
-COPY --from=server-dependencies /app/node_modules ./node_modules
-COPY --from=builder /app/client/dist/ ./client
-COPY --from=builder /app/server/dist/ ./server
+COPY --from=server-dependencies /app/node_modules ./server/node_modules
+COPY --from=builder /app/client/dist ./client/dist
+COPY --from=builder /app/server/dist ./server/dist
 
-CMD [ "-r", "dotenv/config", "server/server.js" ]
+CMD [ "-r", "dotenv/config", "server/dist/server.js" ]
