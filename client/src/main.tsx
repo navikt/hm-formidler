@@ -1,43 +1,56 @@
+import '@navikt/ds-css'
+import { Modal } from '@navikt/ds-react'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'vite/modulepreload-polyfill'
 import App from './App'
-import withMenu from './decorator/decorator-header-withmenu'
-import footer from './decorator/decorator-footer'
-import styles from './decorator/decorator-styles'
-import scripts from './decorator/decorator-scripts'
-import skiplinks from './decorator/decorator-skiplinks'
-import megamenu from './decorator/decorator-megamenu'
-import './i18n'
-import { initAmplitude } from './utils/amplitude'
 import { initDecorator } from './decorator/decorator'
+import footer from './decorator/decorator-footer'
+import withMenu from './decorator/decorator-header'
+import scripts from './decorator/decorator-scripts'
+import styles from './decorator/decorator-styles'
+import './i18n'
+import { worker } from './mocks/browser'
+import { initAmplitude } from './utils/amplitude'
 import { initSentry } from './utils/sentry'
-import { Modal } from '@navikt/ds-react'
-import '@navikt/ds-css'
 
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     hj: any
     appSettings: {
-      MILJO: 'labs-gcp' | 'dev-gcp' | 'prod-gcp' | 'undefined'
-      SOKNAD_URL: string
-      GIT_COMMIT: string
+      MILJO?: 'labs-gcp' | 'dev-gcp' | 'prod-gcp' | 'local'
+      SOKNAD_URL?: string
+      GIT_COMMIT?: string
+      USE_MSW?: boolean
     }
   }
 }
 
+async function initMsw(): Promise<void> {
+  if (process.env.NODE_ENV === 'development' || window.appSettings.USE_MSW === true) {
+    const { worker } = await import('./mocks/browser')
+    await worker.start({
+      onUnhandledRequest: 'bypass',
+      serviceWorker: {
+        url: '/hjelpemidler/formidler/mockServiceWorker.js',
+      },
+    })
+  }
+}
+
 const init = async () => {
+  await initMsw()
+
   initSentry()
   initAmplitude()
   initDecorator()
 
   if (process.env.NODE_ENV === 'development') {
-    document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_HEADING}}}', withMenu)
+    document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_HEADER}}}', withMenu)
     document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_FOOTER}}}', footer)
     document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_STYLES}}}', styles)
     document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_SCRIPTS}}}', scripts)
-    document.body.innerHTML = document.body.innerHTML.replace('{{{NAV_SKIPLINKS}}}', skiplinks)
-    document.body.innerHTML = document.body.innerHTML.replace('{{{MEGAMENU_RESOURCES}}}', megamenu)
 
     // Execute client.js
     const script = document.createElement('script')
@@ -55,4 +68,5 @@ const init = async () => {
   ReactDOM.render(<App />, rootElement)
 }
 
+// noinspection JSIgnoredPromiseFromCall
 init()

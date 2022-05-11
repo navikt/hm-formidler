@@ -1,13 +1,14 @@
-import React from 'react'
-import './../stylesheet/styles.scss'
-import { useTranslation } from 'react-i18next'
-import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
-import { beregnFrist, formaterDato } from '../Utils'
-import { Tag, TagProps, Panel, LinkPanel, BodyShort } from '@navikt/ds-react'
-import { BASE_PATH } from '../App'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { BodyShort, LinkPanel, Panel, Tag, TagProps } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { BASE_PATH } from '../App'
+import { SoknadInfo } from '../interfaces/SoknadInfo'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { beregnFrist, formaterDato } from '../Utils'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import './../stylesheet/styles.scss'
 
 interface Props {
   soknad: SoknadInfo
@@ -71,7 +72,8 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     return (
       <div style={{ marginBottom: '0.5rem' }}>
         <LinkPanel
-          href={`${BASE_PATH}/soknad/${soknad.søknadId}`}
+          as={Link}
+          to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
           onClick={() => {
             Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
             logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)

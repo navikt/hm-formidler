@@ -60,7 +60,7 @@ export const config = {
   session,
   basePath: '/hjelpemidler/formidler',
   buildPath() {
-    return path.resolve(__dirname, '../build')
+    return path.join(__dirname, '../../client/dist')
   },
   loginservice: {
     loginServiceUrl: process.env.LOGINSERVICE_URL,

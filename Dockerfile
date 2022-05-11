@@ -1,21 +1,47 @@
-FROM node:16.14.0-alpine as basebuilder
+FROM node:16.15.0-alpine as client-builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install
-COPY . .
+COPY client/package.json client/yarn.lock ./
+
+RUN yarn install --frozen-lockfile --silent
+
+COPY client .
+
 RUN yarn build
 
+FROM node:16.15.0-alpine as server-builder
 
-FROM gcr.io/distroless/nodejs:16
+WORKDIR /app
+
+COPY server/package.json server/yarn.lock ./
+
+RUN yarn install --frozen-lockfile --silent
+
+COPY server .
+
+RUN yarn build
+
+FROM node:16.15.0-alpine as server-dependencies
+
+WORKDIR /app
+
+COPY server/package.json server/yarn.lock ./
+
+RUN yarn install --frozen-lockfile --production --silent
+
+FROM gcr.io/distroless/nodejs:16 as runtime
+
 WORKDIR /app
 
 ENV NODE_ENV=production
 EXPOSE 3000
 
-COPY --from=basebuilder /app/node_modules ./node_modules
-COPY --from=basebuilder /app/build-server/ ./server
-COPY --from=basebuilder /app/build/ ./build
+COPY --from=client-builder /app/dist ./client/dist
+COPY --from=server-builder /app/dist ./server/dist
 
-CMD [ "-r", "dotenv/config", "server/server.js" ]
+WORKDIR /app/server
+
+COPY --from=server-dependencies /app/node_modules ./node_modules
+
+CMD [ "-r", "dotenv/config", "dist/server.js" ]

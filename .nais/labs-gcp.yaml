@@ -34,10 +34,6 @@ spec:
         - application: hm-mocks
   env:
     - name: DECORATOR_URL
-      value: https://www.nav.no/dekoratoren/?context=privatperson
-    - name: API_URL
-      value: http://hm-mocks.teamdigihot.svc.cluster.local
-    - name: SOKNAD_API_URL
-      value: http://hm-mocks.teamdigihot.svc.cluster.local/hjelpemidler/digitalsoknadhjelpemidler
-    - name: SOKNAD_URL
-      value: https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/digitalsoknadhjelpemidler
+      value: "https://www.nav.no/dekoratoren/?context=privatperson"
+    - name: USE_MSW
+      value: "true"

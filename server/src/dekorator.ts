@@ -14,12 +14,10 @@ const cache = new NodeCache({
 })
 
 export interface IDekoratorFragmenter {
-  NAV_SKIPLINKS?: string
   NAV_SCRIPTS?: string
   NAV_STYLES?: string
-  NAV_HEADING?: string
+  NAV_HEADER?: string
   NAV_FOOTER?: string
-  MEGAMENU_RESOURCES?: string
 }
 
 export async function getDecorator(): Promise<Maybe<IDekoratorFragmenter>> {
@@ -38,12 +36,10 @@ export async function getDecorator(): Promise<Maybe<IDekoratorFragmenter>> {
         const { document } = new JSDOM(html).window
         const prop = 'innerHTML'
         const fragmenter: IDekoratorFragmenter = {
-          NAV_SKIPLINKS: document.getElementById('skiplinks')?.[prop],
           NAV_SCRIPTS: document.getElementById('scripts')?.[prop],
           NAV_STYLES: document.getElementById('styles')?.[prop],
-          NAV_HEADING: document.getElementById('header-withmenu')?.[prop],
+          NAV_HEADER: document.getElementById('header-withmenu')?.[prop],
           NAV_FOOTER: document.getElementById('footer-withmenu')?.[prop],
-          MEGAMENU_RESOURCES: document.getElementById('megamenu-resources')?.[prop],
         }
         cache.set('main-cache', fragmenter)
         return fragmenter

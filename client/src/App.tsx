@@ -17,7 +17,7 @@ const App: React.FC = () => {
   /* TODO: Mekke feilside */
   if (error) {
     Sentry.captureException(new Error(error))
-    return <div>Noe gikk feil: {error}</div>
+    return <div>Noe gikk feil: {String(error)}</div>
   }
   if (!data)
     return (

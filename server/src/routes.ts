@@ -1,10 +1,10 @@
 import express, { Express, RequestHandler, Router } from 'express'
-import { setupMetrics } from './setupMetrics'
 import { auth, authMiddleware, authMiddlewareLocal } from './auth'
 import { config } from './config'
-import { reverseProxy } from './reverseProxy'
 import { getDecorator } from './dekorator'
 import { logger } from './logger'
+import { reverseProxy } from './reverseProxy'
+import { setupMetrics } from './setupMetrics'
 
 export const routes = {
   internal(): Router {
@@ -75,10 +75,12 @@ const spaHandler: RequestHandler = async (req, res) => {
 }
 
 const settingsHandler: RequestHandler = (req, res) => {
+  const appSettings = {
+    GIT_COMMIT: process.env.GIT_COMMIT,
+    MILJO: process.env.NAIS_CLUSTER_NAME,
+    SOKNAD_URL: process.env.SOKNAD_URL,
+    USE_MSW: process.env.USE_MSW === 'true',
+  }
   res.type('.js')
-  res.send(`window.appSettings = {
-  MILJO: '${process.env.NAIS_CLUSTER_NAME}',
-  SOKNAD_URL: '${process.env.SOKNAD_URL}',
-  GIT_COMMIT: '${process.env.GIT_COMMIT}',
-}`)
+  res.send(`window.appSettings = ${JSON.stringify(appSettings)}`)
 }
