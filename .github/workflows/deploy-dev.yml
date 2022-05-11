@@ -99,12 +99,14 @@ jobs:
       - name: Install and build application
         run: |
           yarn install
+          yarn --cwd ./client install
+          yarn --cwd ./server install
           yarn build
       - name: Lag sentry release
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           npx -p @sentry/cli sentry-cli releases new "${{ github.sha }}"
-          npx -p @sentry/cli sentry-cli releases files "${{ github.sha }}" upload-sourcemaps build/static/js \
-              --url-prefix '~/hjelpemidler/formidler/static/js'
+          npx -p @sentry/cli sentry-cli releases files "${{ github.sha }}" upload-sourcemaps client/dist/assets \
+              --url-prefix '~/hjelpemidler/formidler/assets'
           npx -p @sentry/cli sentry-cli releases finalize "${{ github.sha }}"

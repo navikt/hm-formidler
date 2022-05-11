@@ -6,6 +6,9 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
   base: '/hjelpemidler/formidler/',
   plugins: [react(), svgr()],
+  build: {
+    sourcemap: true,
+  },
   server: {
     proxy: process.env.USE_MSW
       ? {}
