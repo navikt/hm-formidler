@@ -5,19 +5,10 @@
   <link rel="icon" href="data:," />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {{{NAV_STYLES}}}
-  <script>
-    window.frontendlogger = {
-      info: function() {
-      },
-      warn: function() {
-      },
-      error: function() {
-      },
-      event: function() {
-      }
-    };
-    window.frontendlogger.appname = "hm-formidler";
+  <script type="application/javascript">
+    window.appSettings = {};
   </script>
+  <script src="/hjelpemidler/formidler/settings.js"></script>
   <title>NAV Hjelpemiddelformidler</title>
 </head>
 <body>
@@ -28,10 +19,6 @@
 </div>
 {{{NAV_FOOTER}}}
 {{{NAV_SCRIPTS}}}
-<script type="application/javascript">
-  window.appSettings = {};
-</script>
-<script src="/hjelpemidler/formidler/settings.js"></script>
 <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
