@@ -1,9 +1,9 @@
 {
-  "name": "client",
+  "name": "hm-formidler-client",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env DECORATOR_URL=https://www.nav.no/dekoratoren/?context=samarbeidspartner vite",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -46,10 +46,14 @@
     "jest": "^28.1.0",
     "jest-axe": "^6.0.0",
     "jest-mock-extended": "^2.0.6",
+    "msw": "^0.39.2",
     "prettier": "^2.6.2",
     "sass": "^1.51.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.7",
     "vite-plugin-svgr": "^2.1.0"
+  },
+  "msw": {
+    "workerDirectory": ""
   }
 }

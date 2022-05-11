@@ -6,4 +6,4 @@ export default '<link rel="icon" type="image/x-icon" href="https://www.nav.no/de
   '<link rel="mask-icon" href="https://www.nav.no/dekoratoren/media/safari-pinned-tab.svg" color="#5bbad5">' +
   '<meta name="msapplication-TileColor" content="#ffffff">' +
   '<meta name="theme-color" content="#ffffff">' +
-  '<link href=https://www.nav.no/dekoratoren/css/client.css rel="stylesheet" />'
+  '<link href="https://www.nav.no/dekoratoren/css/client.css" rel="stylesheet" />'

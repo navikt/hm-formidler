@@ -2,32 +2,36 @@
 <html lang="no">
 <head>
   <meta charset="utf-8" />
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="data:," />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <link rel="apple-touch-icon" href="logo192.png" />
-  {{{NAV_SCRIPTS}}} {{{NAV_STYLES}}} {{{MEGAMENU_RESOURCES}}}
-  <script type="application/javascript">
+  {{{NAV_STYLES}}}
+  <script>
     window.frontendlogger = {
-      info: function() {},
-      warn: function() {},
-      error: function() {},
-      event: function() {},
-    }
-    window.frontendlogger.appname = 'hm-formidler'
+      info: function() {
+      },
+      warn: function() {
+      },
+      error: function() {
+      },
+      event: function() {
+      }
+    };
+    window.frontendlogger.appname = "hm-formidler";
   </script>
   <title>NAV Hjelpemiddelformidler</title>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
+{{{NAV_HEADER}}}
 <div class="pagewrapper">
-  {{{NAV_SKIPLINKS}}} {{{NAV_HEADING}}}
   <div id="root"></div>
 </div>
 {{{NAV_FOOTER}}}
+{{{NAV_SCRIPTS}}}
 <script type="application/javascript">
-  window.appSettings = {}
+  window.appSettings = {};
 </script>
+<script src="/hjelpemidler/formidler/settings.js"></script>
 <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
