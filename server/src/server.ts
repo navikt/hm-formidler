@@ -1,19 +1,19 @@
-import { setupSession } from './session'
-import { authMiddleware } from './auth'
 import express from 'express'
 import mustacheExpress from 'mustache-express'
+import { authMiddleware } from './auth'
 import { config } from './config'
 import { routes } from './routes'
+import { setupSession } from './session'
 
-const server = express()
-server.set('views', config.buildPath())
-server.set('view engine', 'mustache')
-server.engine('html', mustacheExpress())
-server.set('trust proxy', 1)
+const app = express()
+app.set('views', config.buildPath())
+app.set('view engine', 'mustache')
+app.engine('html', mustacheExpress())
+app.set('trust proxy', 1)
 
 const { session } = setupSession()
 
-server.use(session())
+app.use(session())
 
 const router = express.Router()
 router.use('/internal/', routes.internal())
@@ -21,9 +21,16 @@ router.use('/api/', authMiddleware.requiresValidToken(), routes.soknadsbehnadlin
 router.use('/soknad-api/', authMiddleware.requiresValidToken(), routes.soknadApi())
 router.use('/session', authMiddleware.requiresValidToken(), routes.session())
 router.use('/', routes.auth())
-router.use('/', routes.public(server))
+router.use('/', routes.public(app))
 
-server.use(config.basePath, router)
+app.use(config.basePath, router)
 
 const PORT = process.env.PORT || 5000
-server.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+const server = app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server')
+  server.close(() => {
+    console.log('HTTP server closed')
+  })
+})
