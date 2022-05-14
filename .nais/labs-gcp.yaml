@@ -33,7 +33,5 @@ spec:
       rules:
         - application: hm-mocks
   env:
-    - name: DECORATOR_URL
-      value: "https://www.nav.no/dekoratoren/?context=privatperson"
     - name: USE_MSW
       value: "true"

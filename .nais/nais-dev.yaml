@@ -40,8 +40,6 @@ spec:
       value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
     - name: SOKNAD_API_URL
       value: http://hm-soknad-api.teamdigihot.svc.cluster.local
-    - name: DECORATOR_URL
-      value: https://www.nav.no/dekoratoren/
     - name: SOKNADSBEHANDLING_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknadsbehandling-db
     - name: SOKNAD_API_AUDIENCE

@@ -1,29 +1,73 @@
+import { fetchDecoratorHtml } from '@navikt/nav-dekoratoren-moduler/ssr'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { render } from 'mustache'
+import { ConfigEnv, defineConfig, Plugin, splitVendorChunkPlugin } from 'vite'
 import svgr from 'vite-plugin-svgr'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  base: '/hjelpemidler/formidler/',
-  plugins: [react(), svgr()],
-  build: {
-    sourcemap: true,
-  },
-  server: {
-    proxy: process.env.USE_MSW
-      ? {}
-      : {
-          '/hjelpemidler/formidler/api': {
-            target: 'http://localhost:5000',
-            changeOrigin: true,
+const htmlPlugin = (env: ConfigEnv): Plugin => ({
+  name: 'html-transform',
+  async transformIndexHtml(html) {
+    if (env.mode === 'development') {
+      const decorator = await fetchDecoratorHtml({
+        env: 'dev',
+        context: 'samarbeidspartner',
+      })
+      return {
+        html: render(html, decorator),
+        tags: [
+          {
+            tag: 'script',
+            children: `window.appSettings = {
+              USE_MSW: true,
+              MILJO: 'local'
+            }`,
           },
-          '/hjelpemidler/formidler/soknad-api': {
-            target: 'http://localhost:5000',
-            changeOrigin: true,
+        ],
+      }
+    } else {
+      return {
+        html,
+        tags: [
+          {
+            tag: 'script',
+            children: `window.appSettings = {}`,
           },
-          '/hjelpemidler/formidler/session/exp': {
-            target: 'http://localhost:5000',
+          {
+            tag: 'script',
+            attrs: {
+              src: '/hjelpemidler/formidler/settings.js',
+            },
           },
-        },
+        ],
+      }
+    }
   },
 })
+
+// https://vitejs.dev/config/
+export default defineConfig((env) => ({
+  base: '/hjelpemidler/formidler/',
+  plugins: [htmlPlugin(env), react(), svgr(), splitVendorChunkPlugin()],
+  build: {
+    sourcemap: true,
+    manifest: true,
+  },
+  server: {
+    proxy:
+      process.env.USE_MSW === 'true'
+        ? {}
+        : {
+            '/hjelpemidler/formidler/api': {
+              target: 'http://localhost:5000',
+              changeOrigin: true,
+            },
+            '/hjelpemidler/formidler/soknad-api': {
+              target: 'http://localhost:5000',
+              changeOrigin: true,
+            },
+            '/hjelpemidler/formidler/session/exp': {
+              target: 'http://localhost:5000',
+            },
+          },
+  },
+}))

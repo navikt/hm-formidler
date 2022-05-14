@@ -1,7 +1,7 @@
+import { fetchDecoratorHtml } from '@navikt/nav-dekoratoren-moduler/ssr'
 import express, { Express, RequestHandler, Router } from 'express'
 import { auth, authMiddleware, authMiddlewareLocal } from './auth'
 import { config } from './config'
-import { getDecorator } from './dekorator'
 import { logger } from './logger'
 import { reverseProxy } from './reverseProxy'
 import { setupMetrics } from './setupMetrics'
@@ -66,7 +66,11 @@ export const routes = {
 
 const spaHandler: RequestHandler = async (req, res) => {
   try {
-    res.render('index.html', await getDecorator())
+    const decorator = await fetchDecoratorHtml({
+      env: config.isProduction() ? 'prod' : 'dev',
+      context: 'samarbeidspartner',
+    })
+    res.render('index.html', decorator)
   } catch (err: unknown) {
     const error = `Failed to get decorator: ${err}`
     logger.error(error)
