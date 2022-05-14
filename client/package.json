@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env-shell USE_MSW=true vite",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
