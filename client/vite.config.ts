@@ -1,13 +1,13 @@
 import { fetchDecoratorHtml } from '@navikt/nav-dekoratoren-moduler/ssr'
 import react from '@vitejs/plugin-react'
 import { render } from 'mustache'
-import { ConfigEnv, defineConfig, Plugin, splitVendorChunkPlugin } from 'vite'
+import { defineConfig, Plugin, splitVendorChunkPlugin } from 'vite'
 import svgr from 'vite-plugin-svgr'
 
-const htmlPlugin = (env: ConfigEnv): Plugin => ({
+const htmlPlugin = ({ development }: { development?: boolean }): Plugin => ({
   name: 'html-transform',
   async transformIndexHtml(html) {
-    if (env.mode === 'development') {
+    if (development) {
       const decorator = await fetchDecoratorHtml({
         env: 'dev',
         context: 'samarbeidspartner',
@@ -19,7 +19,7 @@ const htmlPlugin = (env: ConfigEnv): Plugin => ({
             tag: 'script',
             children: `window.appSettings = {
               USE_MSW: true,
-              MILJO: 'local'
+              MILJO: 'labs-gcp'
             }`,
           },
         ],
@@ -47,7 +47,7 @@ const htmlPlugin = (env: ConfigEnv): Plugin => ({
 // https://vitejs.dev/config/
 export default defineConfig((env) => ({
   base: '/hjelpemidler/formidler/',
-  plugins: [htmlPlugin(env), react(), svgr(), splitVendorChunkPlugin()],
+  plugins: [htmlPlugin({ development: env.mode === 'development' }), react(), svgr(), splitVendorChunkPlugin()],
   build: {
     sourcemap: true,
     manifest: true,
