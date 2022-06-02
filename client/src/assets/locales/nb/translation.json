@@ -15,6 +15,8 @@
   "VEDTAKSRESULTAT_HENLAGTBORTFALT": "Saken er lukket",
   "VEDTAKSRESULTAT_ANNET": "Saken er lukket",
   "ENDELIG_JOURNALFØRT": "Under behandling",
+  "BESTILLING_AVVIST": "Avvist",
+  "BESTILLING_FERDIGSTILT": "Under behandling",
   "UTSENDING_STARTET": "Ferdig behandlet",
   "UTLØPT": "Slettet - frist utløpt",
   "BEVEGELSE": "Bevegelse",
