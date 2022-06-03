@@ -23,9 +23,11 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
-    case SoknadStatus.BESTILLING_AVVIST:
       etikettType = 'error'
       kanViseSoknad = false
+      break
+    case SoknadStatus.BESTILLING_AVVIST:
+      etikettType = 'error'
       break
     case SoknadStatus.VENTER_GODKJENNING:
     case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
