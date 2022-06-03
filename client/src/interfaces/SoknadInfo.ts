@@ -7,6 +7,7 @@ import { Oppfolgingsansvarliginfo } from './Oppfolgingsansvarliginfo'
 
 export interface SoknadInfo {
   søknadId: string
+  behovsmeldingType: string
   status: SoknadStatus
   datoOpprettet: string
   datoOppdatert: string

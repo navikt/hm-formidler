@@ -25,7 +25,7 @@ const SoknadVisning: React.FC = () => {
   const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
-  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined }>(
+  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined; behovsmeldingType: string | undefined }>(
     `${API_PATH}/soknad/formidler/${soknadsid}`,
     fetcher
   )
@@ -45,7 +45,7 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker } = data
+  const { søknadsdata, navnBruker, behovsmeldingType } = data
 
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
@@ -57,7 +57,7 @@ const SoknadVisning: React.FC = () => {
       <header>
         <div className="banner" style={{ textAlign: 'center', justifyContent: 'center' }}>
           <Heading level="1" size="xlarge">
-            {t('soknadvisning.tittel', { navnBruker })}
+            {t('soknadvisning.tittel' + (behovsmeldingType === 'BESTILLING' ? '.bestilling' : ''), { navnBruker })}
           </Heading>
         </div>
       </header>
@@ -74,7 +74,7 @@ const SoknadVisning: React.FC = () => {
           >
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Tilbakeknapp>
-          <Soknad soknad={søknadsdata} />
+          <Soknad soknad={søknadsdata} behovsmeldingType={behovsmeldingType} />
         </div>
       </main>
     </>

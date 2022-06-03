@@ -11,11 +11,12 @@ import { Soknadsdata } from '../interfaces/SoknadInfo'
 
 type SoknadProps = {
   soknad: Soknadsdata
+  behovsmeldingType: string
 }
 
 const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
   const { t } = useTranslation()
-  const { soknad } = props
+  const { soknad, behovsmeldingType } = props
 
   return (
     <div className="customPanel soknadPanel">
@@ -23,7 +24,7 @@ const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
         <Panel>
           <div className="contentBlock">
             <Heading className="titleCenter" level="2" size="large">
-              Søknad
+              {behovsmeldingType === 'BESTILLING' ? 'Bestilling' : 'Søknad'}
             </Heading>
           </div>
           <div className="contentBlock" data-testid="oppsummering">

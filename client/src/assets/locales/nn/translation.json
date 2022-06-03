@@ -83,6 +83,7 @@
   "LeggesTilSeparat": "Trykkavlastande sitjepute leggjast til separat",
   "HarFraFor": "Brukar har sitjepute frå før",
   "soknadvisning.tittel": "Søknad for {{navnBruker}}",
+  "soknadvisning.tittel.bestilling": "Bestilling for {{navnBruker}}",
   "statuser.venter.tittel": "Ventar på stadfesting",
   "statuser.venter.beskrivelse": "Søknaden er sendt til brukar. Brukar må stadfeste søknaden og sende den inn.",
   "statuser.innsendtAvBruker.tittel": "Innsendt av brukar",
