@@ -8,8 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - DIGIHOT-769/alertstriper
-      - vite
+      - DIGIHOT-851-bestilling-statuser
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}

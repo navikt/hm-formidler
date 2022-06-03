@@ -15,6 +15,8 @@
   "VEDTAKSRESULTAT_HENLAGTBORTFALT": "Saka er lukka",
   "VEDTAKSRESULTAT_ANNET": "Saka er lukka",
   "ENDELIG_JOURNALFØRT": "Under behandling",
+  "BESTILLING_AVVIST": "Avvist",
+  "BESTILLING_FERDIGSTILT": "Under behandling",
   "UTSENDING_STARTET": "Ferdig behandla",
   "UTLØPT": "Sletta - frist utgått",
   "BEVEGELSE": "Bevegelse",

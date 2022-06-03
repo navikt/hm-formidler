@@ -22,10 +22,10 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   switch (soknad.status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
-    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
       etikettType = 'error'
       kanViseSoknad = false
       break
+    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
     case SoknadStatus.BESTILLING_AVVIST:
       etikettType = 'error'
       break
