@@ -1,14 +1,14 @@
-import { BodyShort, LinkPanel, Panel, Tag, TagProps } from '@navikt/ds-react'
-import * as Sentry from '@sentry/browser'
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import { BASE_PATH } from '../App'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
-import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { beregnFrist, formaterDato } from '../Utils'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
-import './../stylesheet/styles.scss'
+import { BodyShort, LinkPanel, Panel, Tag, TagProps } from "@navikt/ds-react";
+import * as Sentry from "@sentry/browser";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { BASE_PATH } from "../App";
+import { SoknadInfo } from "../interfaces/SoknadInfo";
+import { SoknadStatus } from "../statemanagement/SoknadStatus";
+import { beregnFrist, formaterDato } from "../Utils";
+import { digihot_customevents, logCustomEvent } from "../utils/amplitude";
+import "./../stylesheet/styles.scss";
 
 interface Props {
   soknad: SoknadInfo
@@ -23,6 +23,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
+    case SoknadStatus.BESTILLING_AVVIST:
       etikettType = 'error'
       kanViseSoknad = false
       break
@@ -32,6 +33,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       break
     case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
     case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
+    case SoknadStatus.BESTILLING_FERDIGSTILT:
       etikettType = 'success'
       break
     case SoknadStatus.GODKJENT:
@@ -58,7 +60,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
           </BodyShort>
         </div>
         <div>
-          {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt 
+          {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt
           med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
           <Tag variant={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
             <BodyShort>{t(soknad.status)}</BodyShort>
