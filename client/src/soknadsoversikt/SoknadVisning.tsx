@@ -46,7 +46,7 @@ const SoknadVisning: React.FC = () => {
     )
 
   const { søknadsdata, navnBruker, behovsmeldingType } = data
-
+  
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
     return <SoknadVisningFeil soknadsid={soknadsid} />

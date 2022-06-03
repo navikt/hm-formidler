@@ -11,7 +11,7 @@ import { Soknadsdata } from '../interfaces/SoknadInfo'
 
 type SoknadProps = {
   soknad: Soknadsdata
-  behovsmeldingType: string
+  behovsmeldingType: string | undefined
 }
 
 const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
