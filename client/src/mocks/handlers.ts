@@ -51,8 +51,27 @@ export const handlers: RestHandler[] = [
       },
     ],
     erPilotkommune: true,
+    erPilotkommuneForBestillingsordning: true,
   }),
   getJson('/api/soknad/formidler', [
+    {
+      søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7cd73hf',
+      datoOpprettet: '2022-06-07T18:59:13.992+00:00',
+      datoOppdatert: '2022-06-07T18:59:13.992+00:00',
+      status: 'BESTILLING_FERDIGSTILT',
+      fullmakt: 'true',
+      fnrBruker: '12345678910',
+      navnBruker: 'Bjarne Bestilling',
+    },
+    {
+      søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
+      datoOpprettet: '2022-06-06T18:59:13.992+00:00',
+      datoOppdatert: '2022-06-06T18:59:13.992+00:00',
+      status: 'BESTILLING_AVVIST',
+      fullmakt: 'true',
+      fnrBruker: '12345678910',
+      navnBruker: 'Bjørg Bestilling',
+    },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
       datoOpprettet: '2021-03-08T18:59:13.992+00:00',
@@ -60,7 +79,7 @@ export const handlers: RestHandler[] = [
       status: 'VENTER_GODKJENNING',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'fornavn etternavn',
+      navnBruker: 'Egon Olsen',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8014b',
@@ -69,7 +88,7 @@ export const handlers: RestHandler[] = [
       status: 'GODKJENT_MED_FULLMAKT',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'fornavn etternavn',
+      navnBruker: 'Heldige Luke',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8015b',
@@ -78,7 +97,7 @@ export const handlers: RestHandler[] = [
       status: 'GODKJENT',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'fornavn etternavn',
+      navnBruker: 'Dr. Emmett Brown',
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df4',
@@ -87,7 +106,7 @@ export const handlers: RestHandler[] = [
       status: 'ENDELIG_JOURNALFØRT',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Skikkelig langt navn og etternavn',
+      navnBruker: 'Pippilotta Viktualia Rullegardina Krusemynte Efraimsdatter Langstrømpe',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-0138adsf',
@@ -96,7 +115,7 @@ export const handlers: RestHandler[] = [
       status: 'SLETTET',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'fornavn etternavn',
+      navnBruker: 'Albert Åberg',
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df5',
@@ -105,7 +124,7 @@ export const handlers: RestHandler[] = [
       status: 'VENTER_GODKJENNING',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Skikkelig langt navn og etternavn',
+      navnBruker: 'John Ronald Reuel Tolkien',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-sdfgsdfg',
@@ -114,7 +133,7 @@ export const handlers: RestHandler[] = [
       status: 'UTLØPT',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Annet Navn',
+      navnBruker: 'Trude Dyrearter',
     },
     {
       søknadId: '11153d43-01ea-4b51-8ddb-sdfgsdfg',
@@ -177,7 +196,7 @@ export const handlers: RestHandler[] = [
       status: 'UTSENDING_STARTET',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'Namn Med Mellomnamn',
+      navnBruker: 'Helen Adams Keller',
     },
   ]),
   getJson('/api/soknad/formidler/:id', {
