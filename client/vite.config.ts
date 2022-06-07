@@ -46,7 +46,7 @@ const htmlPlugin = ({ development }: { development?: boolean }): Plugin => ({
 
 // https://vitejs.dev/config/
 export default defineConfig((env) => ({
-  base: '/hjelpemidler/formidler/',
+  base: '/hjelpemidler/formidler',
   plugins: [htmlPlugin({ development: env.mode === 'development' }), react(), svgr(), splitVendorChunkPlugin()],
   build: {
     sourcemap: true,

@@ -59,13 +59,13 @@ const SoknadVisning: React.FC = () => {
           <Link
               onClick={() => {
                 history.push({
-                  pathname: `${BASE_PATH}`,
+                  pathname: `${BASE_PATH}/`,
                 })
               }}
               style={{ marginBottom: '0.5rem' }}
-              href="#"
+              href=""
           >
-            <Back title={"Hello"} />
+            <Back title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Link>
         </div>
