@@ -22,11 +22,6 @@ const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
     <div className="customPanel soknadPanel">
       <div>
         <Panel>
-          <div className="contentBlock">
-            <Heading className="titleCenter" level="2" size="large">
-              {behovsmeldingType === 'BESTILLING' ? 'Bestilling' : 'Søknad'}
-            </Heading>
-          </div>
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={soknad.bruker} />
             {

@@ -2,19 +2,19 @@ import React from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { Loader } from '@navikt/ds-react'
+import {Link, Loader} from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useHistory, useParams } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
 import { Heading } from '@navikt/ds-react'
 
 import { useTranslation } from 'react-i18next'
-import Tilbakeknapp from '../components/Tilbakeknapp'
 import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
+import {Back} from "@navikt/ds-icons";
 
 interface ParamTypes {
   soknadsid: string
@@ -46,7 +46,7 @@ const SoknadVisning: React.FC = () => {
     )
 
   const { søknadsdata, navnBruker, behovsmeldingType } = data
-  
+
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
     return <SoknadVisningFeil soknadsid={soknadsid} />
@@ -55,6 +55,20 @@ const SoknadVisning: React.FC = () => {
   return (
     <>
       <header>
+        <div className="customPanel">
+          <Link
+              onClick={() => {
+                history.push({
+                  pathname: `${BASE_PATH}`,
+                })
+              }}
+              style={{ marginBottom: '0.5rem' }}
+              href="#"
+          >
+            <Back title={"Hello"} />
+            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
+          </Link>
+        </div>
         <div className="banner" style={{ textAlign: 'center', justifyContent: 'center' }}>
           <Heading level="1" size="xlarge">
             {t('soknadvisning.tittel' + (behovsmeldingType === 'BESTILLING' ? '.bestilling' : ''), { navnBruker })}
@@ -64,16 +78,6 @@ const SoknadVisning: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
-          <Tilbakeknapp
-            onClick={() => {
-              history.push({
-                pathname: `${BASE_PATH}`,
-              })
-            }}
-            style={{ marginBottom: '0.5rem' }}
-          >
-            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
-          </Tilbakeknapp>
           <Soknad soknad={søknadsdata} behovsmeldingType={behovsmeldingType} />
         </div>
       </main>
