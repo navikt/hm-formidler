@@ -1,10 +1,10 @@
-import { BodyShort, LinkPanel, Panel, Tag, TagProps } from "@navikt/ds-react";
+import { BodyShort, Label, LinkPanel, Panel, Tag, TagProps } from "@navikt/ds-react";
 import * as Sentry from "@sentry/browser";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { BASE_PATH } from "../App";
-import { SoknadInfo, ValgtÅrsak } from "../interfaces/SoknadInfo";
+import { BehovsmeldingType, SoknadInfo, ValgtÅrsak } from "../interfaces/SoknadInfo";
 import { SoknadStatus } from "../statemanagement/SoknadStatus";
 import { beregnFrist, formaterDato } from "../Utils";
 import { digihot_customevents, logCustomEvent } from "../utils/amplitude";
@@ -35,6 +35,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
     case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
     case SoknadStatus.BESTILLING_FERDIGSTILT:
+    case SoknadStatus.UTSENDING_STARTET:
       etikettType = 'success'
       break
     case SoknadStatus.BESTILLING_AVVIST:
@@ -50,7 +51,6 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.ENDELIG_JOURNALFØRT:
     case SoknadStatus.VEDTAKSRESULTAT_HENLAGTBORTFALT:
     case SoknadStatus.VEDTAKSRESULTAT_ANNET:
-    case SoknadStatus.UTSENDING_STARTET:
     default:
       etikettType = 'info'
   }
@@ -60,19 +60,33 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <div className="fontBold">
-            <BodyShort>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</BodyShort>
+            <Label>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</Label>
           </div>
-          <BodyShort>
-            {soknad.status === SoknadStatus.VENTER_GODKJENNING
-              ? `Frist:  ${beregnFrist(soknad.datoOpprettet)}`
-              : formaterDato(soknad.datoOppdatert)}
-          </BodyShort>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <BodyShort>
+              {t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
+              <span style={{ whiteSpace: 'pre', color: 'gray' }}>  |  </span>
+            </BodyShort>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <BodyShort>
+                {soknad.status === SoknadStatus.VENTER_GODKJENNING
+                  ? t('frist.for.å.bekrefte')
+                  : t('oppdatert')}
+                <span style={{ whiteSpace: 'pre' }}>: </span>
+              </BodyShort>
+              <BodyShort>
+                {soknad.status === SoknadStatus.VENTER_GODKJENNING
+                  ? beregnFrist(soknad.datoOpprettet)
+                  : formaterDato(soknad.datoOppdatert)}
+              </BodyShort>
+            </div>
+          </div>
         </div>
         <div>
           {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt
           med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
-          <Tag variant={etikettType} style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
-            <BodyShort>{t(soknad.status)}</BodyShort>
+          <Tag variant={etikettType} size='small' style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
+            {t(soknad.status)}
           </Tag>
         </div>
       </div>

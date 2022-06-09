@@ -12,7 +12,7 @@ export enum amplitude_taxonomy {
 
 //Events som ikke er i NAV sin taxonomi
 export enum digihot_customevents {
-  KLIKK_NY_SØKNAD = 'ny søknad',
+  KLIKK_NY_SAK = 'ny søknad',
   KLIKK_ÅPNE_SØKNAD = 'klikk åpne søknad',
   SØKNAD_ÅPNET = 'søknad åpnet',
   SØKNAD_VISNING_FEILET = 'søknad visning feilet',

@@ -62,7 +62,7 @@ export const handlers: RestHandler[] = [
       status: 'BESTILLING_FERDIGSTILT',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'Bjarne Bestilling',
+      navnBruker: 'Nasse Nøff',
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
@@ -72,18 +72,18 @@ export const handlers: RestHandler[] = [
       status: 'BESTILLING_AVVIST',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'Bjørg Bestilling',
+      navnBruker: 'Trude Luth',
       valgteÅrsaker: ['Annet']
     },
     {
-      søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
+      søknadId: 'abc887bc-5a95-49c2-a123-f0e0f7c32df3',
       behovsmeldingType: 'BESTILLING',
       datoOpprettet: '2022-06-06T18:59:13.992+00:00',
       datoOppdatert: '2022-06-06T18:59:13.992+00:00',
       status: 'BESTILLING_AVVIST',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'Bente Bestilling',
+      navnBruker: 'Vegard Beider',
       valgteÅrsaker: ['Duplikat av en annen bestilling']
     },
     {
@@ -102,7 +102,7 @@ export const handlers: RestHandler[] = [
       status: 'GODKJENT_MED_FULLMAKT',
       fullmakt: 'true',
       fnrBruker: '12345678910',
-      navnBruker: 'Heldige Luke',
+      navnBruker: 'Benny Frandsen',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8015b',
@@ -111,7 +111,7 @@ export const handlers: RestHandler[] = [
       status: 'GODKJENT',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Dr. Emmett Brown',
+      navnBruker: 'Kjeld Jensen',
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df4',
@@ -129,7 +129,7 @@ export const handlers: RestHandler[] = [
       status: 'SLETTET',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Albert Åberg',
+      navnBruker: 'Basse Jensen',
     },
     {
       søknadId: '5ef53d43-01ea-4b51-8ddb-sdfgsdfg',

@@ -10,14 +10,14 @@ const Banner: React.FC = () => {
 
   return (
     <div className="banner">
-      <Heading size="xlarge">{t('dine.hjelpemiddelsoknader')}</Heading>
+      <Heading size="xlarge">{t('dine.hjelpemiddelsaker')}</Heading>
       <a href={environment.SOKNAD_URL}>
         <Button
           onClick={() => {
-            logCustomEvent(digihot_customevents.KLIKK_NY_SØKNAD, { steg: -1 })
+            logCustomEvent(digihot_customevents.KLIKK_NY_SAK, { steg: -1 })
           }}
         >
-          Ny Søknad
+          Ny sak
         </Button>
       </a>
     </div>

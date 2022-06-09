@@ -13,11 +13,15 @@ export const sumNumbersInArray = (array: number[]): number => {
 }
 
 export const beregnFrist = (opprettetDato: string): string => {
-  return moment(opprettetDato).add(14, 'days').format('D. MMM YYYY')
+  return formaterMomentDato(moment(opprettetDato).add(14, 'days'))
 }
 
 export const formaterDato = (opprettetDato: string): string => {
-  return moment(opprettetDato).format('D. MMM YYYY')
+  return formaterMomentDato(moment(opprettetDato))
+}
+
+export const formaterMomentDato = (opprettetDato: moment.Moment): string => {
+  return opprettetDato.format('DD. MMMM YYYY')
 }
 
 export const checkForErrors = (potentialErrorMessages: ValidationError): boolean => {

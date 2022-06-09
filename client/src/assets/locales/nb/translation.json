@@ -1,7 +1,6 @@
 {
-  "hoved.veilederpanel.p0": "Dette er en oversikt over digitale søknader du har sendt på vegne av brukere i kommunen.",
+  "hoved.veilederpanel.p0": "Dette er en oversikt over status digitale saker du har sendt inn til NAV på vegne av innbygger. Saken vises i 4 uker etter at saken er avsluttet på hjelpemiddelsentralen, eller at saken er slettet av innbygger. Ingen saker som er eldre enn 6 måneder vises i oversikten.",
   "hoved.veilederpanel.p1": "Om du har valgt at bruker skal bekrefte søknaden digitalt, vil du her se om søknaden er sendt inn, slettet eller om den er blitt slettet fordi bekreftelsesfristen har utløpt.",
-  "hoved.veilederpanel.p2": "Søknadene vises i denne oversikten i 4 uker etter at saken enten er slettet av bruker eller saken er avsluttet på hjelpemiddelsentralen. Ingen saker som er eldre enn 6 måneder vises i oversikten.",
   "hoved.veilederpanel.statuser.apne": "Vis beskrivelse av statusene",
   "hoved.veilederpanel.statuser.lukk": "Lukk beskrivelse av statusene",
   "VENTER_GODKJENNING": "Venter på bekreftelse",
@@ -22,7 +21,9 @@
   "BEVEGELSE": "Bevegelse",
   "KOGNISJON": "Kognisjon (hukommelse, planlegging m.m.)",
   "HØRSEL": "Hørsel",
-  "dine.hjelpemiddelsoknader": "Dine hjelpemiddelsøknader",
+  "SØKNAD": "Søknad",
+  "BESTILLING": "Bestilling",
+  "dine.hjelpemiddelsaker": "Dine hjelpemiddelsaker",
   "feilside.ikkeTilgjengelig": "Tekniske problemer med nettsiden",
   "feilside.proevIgjen": "Forsøk igjen om et par minutter",
   "feilside.manglerTilgang": "Du mangler tilgang til å se dine innsendte digitale søknader",
@@ -134,10 +135,12 @@
   "sesjon.utlopt.loggInn": "Logg inn på nytt",
   "soknadsoversikt.ingenSoknader.finnerIngen": "Vi finner ingen søknader om hjelpemidler innsendt av deg",
   "soknadsoversikt.ingenSoknader.paDenneSiden": "På denne siden kan du få oversikt over digitale søknader du har sendt inn på vegne av brukere.",
-  "soknadsoversikt.soknadListe.utfylteSoknader": "Utfylte digitale søknader",
+  "soknadsoversikt.soknadListe.saker": "Saker",
   "soknadsoversikt.soknadsoversikt.beskrivelseAvStatuser": "Beskrivelse av statuser",
   "soknadsoversikt.soknadVisning.tilbakeTilOversikt": "Tilbake til oversikten",
   "soknadsoversikt.soknadVisningFeil.kanIkkeVise": "Vi kan ikke vise denne søknaden for øyeblikket",
   "soknadsoversikt.soknadVisningFeil.vennligstForsok": "Dette kan skyldes treghet i systemet. Vennligst forsøk å ",
-  "soknadsoversikt.soknadVisningFeil.lastInnPaNytt": "laste inn siden på nytt."
+  "soknadsoversikt.soknadVisningFeil.lastInnPaNytt": "laste inn siden på nytt.",
+  "frist.for.å.bekrefte": "Frist for å bekrefte",
+  "oppdatert": "Oppdatert"
 }
