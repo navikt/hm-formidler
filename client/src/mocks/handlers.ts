@@ -56,6 +56,7 @@ export const handlers: RestHandler[] = [
   getJson('/api/soknad/formidler', [
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7cd73hf',
+      behovsmeldingType: 'BESTILLING',
       datoOpprettet: '2022-06-07T18:59:13.992+00:00',
       datoOppdatert: '2022-06-07T18:59:13.992+00:00',
       status: 'BESTILLING_FERDIGSTILT',
@@ -65,12 +66,25 @@ export const handlers: RestHandler[] = [
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
+      behovsmeldingType: 'BESTILLING',
       datoOpprettet: '2022-06-06T18:59:13.992+00:00',
       datoOppdatert: '2022-06-06T18:59:13.992+00:00',
       status: 'BESTILLING_AVVIST',
       fullmakt: 'true',
       fnrBruker: '12345678910',
       navnBruker: 'Bjørg Bestilling',
+      valgteÅrsaker: ['Annet']
+    },
+    {
+      søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
+      behovsmeldingType: 'BESTILLING',
+      datoOpprettet: '2022-06-06T18:59:13.992+00:00',
+      datoOppdatert: '2022-06-06T18:59:13.992+00:00',
+      status: 'BESTILLING_AVVIST',
+      fullmakt: 'true',
+      fnrBruker: '12345678910',
+      navnBruker: 'Bente Bestilling',
+      valgteÅrsaker: ['Duplikat av en annen bestilling']
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
@@ -118,15 +132,6 @@ export const handlers: RestHandler[] = [
       navnBruker: 'Albert Åberg',
     },
     {
-      søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df5',
-      datoOpprettet: '2021-03-01T18:59:13.992+00:00',
-      datoOppdatert: '2021-03-08T18:59:13.992+00:00',
-      status: 'VENTER_GODKJENNING',
-      fullmakt: 'false',
-      fnrBruker: '12345678910',
-      navnBruker: 'John Ronald Reuel Tolkien',
-    },
-    {
       søknadId: '5ef53d43-01ea-4b51-8ddb-sdfgsdfg',
       datoOpprettet: '2021-02-07T14:06:59.269+00:00',
       datoOppdatert: '2021-03-08T14:06:59.269+00:00',
@@ -142,7 +147,7 @@ export const handlers: RestHandler[] = [
       status: 'VEDTAKSRESULTAT_INNVILGET',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Anders Andersen',
+      navnBruker: 'Anders I. And',
     },
     {
       søknadId: '22253d43-01ea-4b51-8ddb-sdfgsdfg',
@@ -151,7 +156,7 @@ export const handlers: RestHandler[] = [
       status: 'VEDTAKSRESULTAT_MUNTLIG_INNVILGET',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Anders And',
+      navnBruker: 'Anders I.M. And',
     },
     {
       søknadId: '22253d43-01ea-4b51-9ddb-sdfgsdfg',
@@ -178,7 +183,7 @@ export const handlers: RestHandler[] = [
       status: 'VEDTAKSRESULTAT_HENLAGTBORTFALT',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Anders Andrej',
+      navnBruker: 'Anders "Henlagt" Andrej',
     },
     {
       søknadId: '55553d43-01ea-4b51-8ddb-sdfgsdfg',
@@ -187,7 +192,7 @@ export const handlers: RestHandler[] = [
       status: 'VEDTAKSRESULTAT_ANNET',
       fullmakt: 'false',
       fnrBruker: '12345678910',
-      navnBruker: 'Anders Andrej',
+      navnBruker: 'Anders "Annet" Andrej',
     },
     {
       søknadId: '33353d43-01ea-4b51-8ddb-sdfgsabc',
