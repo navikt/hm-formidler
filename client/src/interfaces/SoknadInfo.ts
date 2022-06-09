@@ -7,13 +7,14 @@ import { Oppfolgingsansvarliginfo } from './Oppfolgingsansvarliginfo'
 
 export interface SoknadInfo {
   søknadId: string
-  behovsmeldingType: string
+  behovsmeldingType: BehovsmeldingType
   status: SoknadStatus
   datoOpprettet: string
   datoOppdatert: string
   navnBruker?: string
   fnrBruker: string
   søknadsdata?: Soknadsdata
+  valgteÅrsaker?: String[]
 }
 
 export interface Soknadsdata {
@@ -25,4 +26,12 @@ export interface Soknadsdata {
   levering: Leveringsinfo
 }
 
-// TODO Elektrisk rullestolinfo
+export enum ValgtÅrsak {
+  ANNET = 'Annet',
+  DUPLIKAT = 'Duplikat av en annen bestilling'
+}
+
+export enum BehovsmeldingType {
+  SØKNAD = 'SØKNAD',
+  BESTILLING = 'BESTILLING'
+}

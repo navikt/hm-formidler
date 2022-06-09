@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './../stylesheet/styles.scss'
 import { Heading, BodyShort } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { GuidePanel, Accordion } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
+import { ApplicationContext } from '../statemanagement/ApplicationContext'
 
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
+  const { erPilotkommuneForBestillingsordning } = useContext(ApplicationContext)
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -59,6 +61,14 @@ const SoknadsOversiktVeileder: React.FC = () => {
                       beskrivelse={t('statuser.innvilget.beskrivelse')}
                     />
                   </li>
+                  {erPilotkommuneForBestillingsordning &&
+                    <li>
+                      <StatusBeskrivelse
+                        tittel={t('statuser.godkjent.tittel')}
+                        beskrivelse={t('statuser.godkjent.beskrivelse')}
+                      />
+                    </li>
+                  }
                   <li>
                     <StatusBeskrivelse
                       tittel={t('statuser.slettet.tittel')}
@@ -77,6 +87,14 @@ const SoknadsOversiktVeileder: React.FC = () => {
                       beskrivelse={t('statuser.avslatt.beskrivelse')}
                     />
                   </li>
+                  {erPilotkommuneForBestillingsordning &&
+                    <li>
+                      <StatusBeskrivelse
+                        tittel={t('statuser.avvist.tittel')}
+                        beskrivelse={t('statuser.avvist.beskrivelse')}
+                      />
+                    </li>
+                  }
                   <li>
                     <StatusBeskrivelse
                       tittel={t('statuser.lukket.tittel')}

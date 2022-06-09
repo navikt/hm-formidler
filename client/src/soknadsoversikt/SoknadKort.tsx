@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { BASE_PATH } from "../App";
-import { SoknadInfo } from "../interfaces/SoknadInfo";
+import { SoknadInfo, ValgtÅrsak } from "../interfaces/SoknadInfo";
 import { SoknadStatus } from "../statemanagement/SoknadStatus";
 import { beregnFrist, formaterDato } from "../Utils";
 import { digihot_customevents, logCustomEvent } from "../utils/amplitude";
@@ -22,11 +22,10 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   switch (soknad.status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
-    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
       etikettType = 'error'
       kanViseSoknad = false
       break
-    case SoknadStatus.BESTILLING_AVVIST:
+    case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
       etikettType = 'error'
       break
     case SoknadStatus.VENTER_GODKJENNING:
@@ -37,6 +36,14 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
     case SoknadStatus.BESTILLING_FERDIGSTILT:
       etikettType = 'success'
+      break
+    case SoknadStatus.BESTILLING_AVVIST:
+      if (soknad.valgteÅrsaker && soknad.valgteÅrsaker.includes(ValgtÅrsak.DUPLIKAT)) {
+        etikettType = 'info'
+      }
+      else {
+        etikettType = 'warning'
+      }
       break
     case SoknadStatus.GODKJENT:
     case SoknadStatus.GODKJENT_MED_FULLMAKT:
