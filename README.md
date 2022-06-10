@@ -1,11 +1,11 @@
 # hm-formidler
 
-Flate for hjelpemiddelformidlere med oversikt over søknader - frontend
+Flate for hjelpemiddelformidlere med oversikt over saker - frontend
 
 ### Lokal køyring
 
 1. start backend
-    [hm-soknadsbehandling](https://github.com/navikt/hm-soknadnadsbehandling) (for henting av søknadar)
+    [hm-soknadsbehandling](https://github.com/navikt/hm-soknadnadsbehandling) (for henting av saker)
     [hm-soknad-api](https://github.com/navikt/hm-soknad-api) (for innlogging)
 
 2. bygg og start front-end:
