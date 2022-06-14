@@ -214,7 +214,7 @@ export const handlers: RestHandler[] = [
     navnBruker: 'Arne Arnesen',
     er_digital: true,
     behovsmeldingType: 'BESTILLING',
-    valgteÅrsaker: ['Duplikat av en annen bestilling'],
+    valgteÅrsaker: ['Annet'],
     søknadsdata: {
       bruker: {
         etternavn: 'Arnesen',
@@ -303,7 +303,7 @@ export const handlers: RestHandler[] = [
     navnBruker: 'Arne Arnesen',
     er_digital: true,
     behovsmeldingType: 'BESTILLING',
-    valgteÅrsaker: ['Annet'],
+    valgteÅrsaker: ['Duplikat av en annen bestilling'],
     søknadsdata: {
       bruker: {
         etternavn: 'Arnesen',
