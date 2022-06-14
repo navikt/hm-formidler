@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
 import {Back} from "@navikt/ds-icons";
+import {SoknadStatus} from "../statemanagement/SoknadStatus";
 
 interface ParamTypes {
   soknadsid: string
@@ -25,7 +26,7 @@ const SoknadVisning: React.FC = () => {
   const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
-  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined; behovsmeldingType: string | undefined }>(
+  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined; behovsmeldingType: string | undefined; status: SoknadStatus | undefined, valgteÅrsaker?: String[] | undefined }>(
     `${API_PATH}/soknad/formidler/${soknadsid}`,
     fetcher
   )
@@ -45,7 +46,7 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker, behovsmeldingType } = data
+  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker } = data
 
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
@@ -78,7 +79,7 @@ const SoknadVisning: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
-          <Soknad soknad={søknadsdata} behovsmeldingType={behovsmeldingType} />
+          <Soknad soknad={søknadsdata} behovsmeldingType={behovsmeldingType} status={status} valgteÅrsaker={valgteÅrsaker} />
         </div>
       </main>
     </>
