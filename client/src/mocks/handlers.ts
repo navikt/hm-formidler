@@ -73,7 +73,7 @@ export const handlers: RestHandler[] = [
       fullmakt: 'true',
       fnrBruker: '12345678910',
       navnBruker: 'Trude Luth',
-      valgteÅrsaker: ['Annet']
+      valgteÅrsaker: ['Annet'],
     },
     {
       søknadId: 'abc887bc-5a95-49c2-a123-f0e0f7c32df3',
@@ -84,7 +84,7 @@ export const handlers: RestHandler[] = [
       fullmakt: 'true',
       fnrBruker: '12345678910',
       navnBruker: 'Vegard Beider',
-      valgteÅrsaker: ['Duplikat av en annen bestilling']
+      valgteÅrsaker: ['Duplikat av en annen bestilling'],
     },
     {
       søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
@@ -228,6 +228,7 @@ export const handlers: RestHandler[] = [
         bruksarena: 'DAGLIGLIVET',
         funksjonsnedsettelser: ['BEVEGELSE'],
         signatur: 'BRUKER_BEKREFTER',
+        brukernummer: '1234567',
       },
       formidler: {
         navn: 'Hans Hansen',
@@ -404,6 +405,7 @@ export const handlers: RestHandler[] = [
         bruksarena: 'DAGLIGLIVET',
         funksjonsnedsettelser: ['BEVEGELSE'],
         signatur: 'BRUKER_BEKREFTER',
+        brukernummer: '1234567',
       },
       formidler: {
         navn: 'Hans Hansen',

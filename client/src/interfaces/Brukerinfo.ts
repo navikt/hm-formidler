@@ -11,6 +11,7 @@ export interface Brukerinfo {
   bruksarena: string
   funksjonsnedsettelser: Funksjonsnedsettelse[]
   kroppsmaal?: Kroppsmaal
+  brukernummer?: string | undefined | null
 }
 
 enum Funksjonsnedsettelse {
