@@ -61,11 +61,15 @@ function BrukerOppsummering(props: BrukerProps) {
             <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.funksjonsnedsettelser')}</Label>
             <BodyShort className={'infoRowCell'}>
               {/* eslint-disable-next-line */} {/* i18n testen knekker uten linjeskift her... */}
-              {bruker.funksjonsnedsettelser
-              .map((funksjonsnedsettelse) => t(funksjonsnedsettelse.valueOf()))
-              .join(', ')}
+              {bruker.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse.valueOf())).join(', ')}
             </BodyShort>
           </div>
+          {bruker.brukernummer && (
+            <div className={'infoRow'}>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.brukernummer')}</Label>
+              <BodyShort className={'infoRowCell'}>{bruker.brukernummer}</BodyShort>
+            </div>
+          )}
         </div>
       </div>
       <hr aria-hidden="true" />
