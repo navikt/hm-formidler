@@ -1,14 +1,14 @@
-import { BodyShort, Label, LinkPanel, Panel, Tag, TagProps } from "@navikt/ds-react";
-import * as Sentry from "@sentry/browser";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { BASE_PATH } from "../App";
-import { BehovsmeldingType, SoknadInfo, ValgtÅrsak } from "../interfaces/SoknadInfo";
-import { SoknadStatus } from "../statemanagement/SoknadStatus";
-import { beregnFrist, formaterDato } from "../Utils";
-import { digihot_customevents, logCustomEvent } from "../utils/amplitude";
-import "./../stylesheet/styles.scss";
+import { BodyShort, Label, LinkPanel, Panel, Tag, TagProps } from '@navikt/ds-react'
+import * as Sentry from '@sentry/browser'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { BASE_PATH } from '../App'
+import { BehovsmeldingType, SoknadInfo, ValgtÅrsak } from '../interfaces/SoknadInfo'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { beregnFrist, formaterDato } from '../Utils'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import './../stylesheet/styles.scss'
 
 interface Props {
   soknad: SoknadInfo
@@ -17,13 +17,11 @@ interface Props {
 const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const { t } = useTranslation()
 
-  let kanViseSoknad = true
   let etikettType: TagProps['variant']
   switch (soknad.status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
       etikettType = 'error'
-      kanViseSoknad = false
       break
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
       etikettType = 'error'
@@ -41,8 +39,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     case SoknadStatus.BESTILLING_AVVIST:
       if (soknad.valgteÅrsaker && soknad.valgteÅrsaker.includes(ValgtÅrsak.DUPLIKAT)) {
         etikettType = 'info'
-      }
-      else {
+      } else {
         etikettType = 'warning'
       }
       break
@@ -65,13 +62,11 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             <BodyShort>
               {t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
-              <span style={{ whiteSpace: 'pre', color: 'gray' }}>  |  </span>
+              <span style={{ whiteSpace: 'pre', color: 'gray' }}> | </span>
             </BodyShort>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               <BodyShort>
-                {soknad.status === SoknadStatus.VENTER_GODKJENNING
-                  ? t('frist.for.å.bekrefte')
-                  : t('oppdatert')}
+                {soknad.status === SoknadStatus.VENTER_GODKJENNING ? t('frist.for.å.bekrefte') : t('oppdatert')}
                 <span style={{ whiteSpace: 'pre' }}>: </span>
               </BodyShort>
               <BodyShort>
@@ -85,7 +80,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         <div>
           {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt
           med etiketter for klikkbare panel (som har en 'chevron next' fra LinkPanel) */}
-          <Tag variant={etikettType} size='small' style={kanViseSoknad ? {} : { marginRight: '2rem' }}>
+          <Tag variant={etikettType} size="small">
             {t(soknad.status)}
           </Tag>
         </div>
@@ -93,29 +88,21 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
     </>
   )
 
-  if (kanViseSoknad) {
-    return (
-      <div style={{ marginBottom: '0.5rem' }}>
-        <LinkPanel
-          as={Link}
-          to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
-          onClick={() => {
-            Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
-            logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
-          }}
-          border
-        >
-          {panelInnhold}
-        </LinkPanel>
-      </div>
-    )
-  } else {
-    return (
-      <div style={{ marginBottom: '0.5rem' }}>
-        <Panel>{panelInnhold}</Panel>
-      </div>
-    )
-  }
+  return (
+    <div style={{ marginBottom: '0.5rem' }}>
+      <LinkPanel
+        as={Link}
+        to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
+        onClick={() => {
+          Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
+          logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
+        }}
+        border
+      >
+        {panelInnhold}
+      </LinkPanel>
+    </div>
+  )
 }
 
 export default SoknadKort
