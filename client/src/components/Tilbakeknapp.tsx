@@ -4,7 +4,7 @@ import { Back } from '@navikt/ds-icons'
 
 const Tilbakeknapp = ({ children, title = 'Forrige', ...rest }: ButtonProps) => {
   return (
-    <Button variant="tertiary" {...rest} aria-label={'Forrige'} icon={<Back title={title} />} iconPosition="left">
+    <Button variant="tertiary" {...rest} aria-label={title} icon={<Back title={title} />} iconPosition="left">
       {children}
     </Button>
   )
