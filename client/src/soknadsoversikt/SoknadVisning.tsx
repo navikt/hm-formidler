@@ -2,7 +2,7 @@ import React from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import {Link, Loader} from '@navikt/ds-react'
+import { Link, Loader } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useHistory, useParams } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
@@ -14,8 +14,8 @@ import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
-import {Back} from "@navikt/ds-icons";
-import {SoknadStatus} from "../statemanagement/SoknadStatus";
+import { Back } from '@navikt/ds-icons'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
 
 interface ParamTypes {
   soknadsid: string
@@ -26,10 +26,13 @@ const SoknadVisning: React.FC = () => {
   const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
-  const { data, error } = useSWRImmutable<{ søknadsdata: Soknadsdata | undefined; navnBruker: string | undefined; behovsmeldingType: string | undefined; status: SoknadStatus | undefined, valgteÅrsaker?: String[] | undefined }>(
-    `${API_PATH}/soknad/formidler/${soknadsid}`,
-    fetcher
-  )
+  const { data, error } = useSWRImmutable<{
+    søknadsdata: Soknadsdata | undefined
+    navnBruker: string | undefined
+    behovsmeldingType: string | undefined
+    status: SoknadStatus | undefined
+    valgteÅrsaker?: String[] | undefined
+  }>(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
@@ -58,13 +61,13 @@ const SoknadVisning: React.FC = () => {
       <header>
         <div className="customPanel">
           <Link
-              onClick={() => {
-                history.push({
-                  pathname: `${BASE_PATH}/`,
-                })
-              }}
-              style={{ marginBottom: '0.5rem' }}
-              href=""
+            onClick={() => {
+              history.push({
+                pathname: `${BASE_PATH}/`,
+              })
+            }}
+            style={{ marginBottom: '0.5rem' }}
+            href=""
           >
             <Back title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
@@ -79,7 +82,12 @@ const SoknadVisning: React.FC = () => {
 
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
-          <Soknad soknad={søknadsdata} behovsmeldingType={behovsmeldingType} status={status} valgteÅrsaker={valgteÅrsaker} />
+          <Soknad
+            soknad={søknadsdata}
+            behovsmeldingType={behovsmeldingType}
+            status={status}
+            valgteÅrsaker={valgteÅrsaker}
+          />
         </div>
       </main>
     </>
