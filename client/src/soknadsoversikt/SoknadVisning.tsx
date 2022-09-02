@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { Link, Loader } from '@navikt/ds-react'
+import { Button, Link, Loader } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useHistory, useParams } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
@@ -10,12 +10,13 @@ import { Heading } from '@navikt/ds-react'
 
 import { useTranslation } from 'react-i18next'
 import SoknadVisningFeil from './SoknadVisningFeil'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
 import { Back } from '@navikt/ds-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { useReactToPrint } from 'react-to-print'
 
 interface ParamTypes {
   soknadsid: string
@@ -37,6 +38,14 @@ const SoknadVisning: React.FC = () => {
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
   }, [])
+
+  const printRef = useRef(null)
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+    documentTitle:
+      data && (data.behovsmeldingType === 'BESTILLING' ? `Bestilling` : `Søknad` + ` for ${data.navnBruker}`),
+    onBeforePrint: () => logKlikkPåSkrivUt(soknadsid),
+  })
 
   if (error) {
     Sentry.captureException(new Error(error))
@@ -73,16 +82,20 @@ const SoknadVisning: React.FC = () => {
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Link>
         </div>
-        <div className="banner" style={{ textAlign: 'center', justifyContent: 'center' }}>
+        <div className="banner" style={{ display: 'flex' }}>
           <Heading level="1" size="xlarge">
             {t('soknadvisning.tittel' + (behovsmeldingType === 'BESTILLING' ? '.bestilling' : ''), { navnBruker })}
           </Heading>
+          <Button variant="secondary" onClick={handlePrint}>
+            {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+          </Button>
         </div>
       </header>
 
       <main style={{ paddingTop: '2rem' }}>
         <div className="customPanel">
           <Soknad
+            ref={printRef}
             soknad={søknadsdata}
             behovsmeldingType={behovsmeldingType}
             status={status}
