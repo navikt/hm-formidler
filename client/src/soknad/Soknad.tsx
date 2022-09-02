@@ -1,5 +1,5 @@
 import React from 'react'
-import {Panel, Heading, Alert} from '@navikt/ds-react'
+import { Panel, Heading, Alert } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
@@ -7,17 +7,18 @@ import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
 import UtleveringOppsummering from './UtleveringOppsummering'
 import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
-import {BehovsmeldingType, Soknadsdata, ValgtÅrsak} from '../interfaces/SoknadInfo'
-import {SoknadStatus} from "../statemanagement/SoknadStatus";
+import { BehovsmeldingType, Soknadsdata, ValgtÅrsak } from '../interfaces/SoknadInfo'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
 
 type SoknadProps = {
   soknad: Soknadsdata
   behovsmeldingType: string | undefined
   status: SoknadStatus | undefined
   valgteÅrsaker?: String[] | undefined
+  ref: React.ForwardedRef<HTMLDivElement>
 }
 
-const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
+const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref) => {
   const { t } = useTranslation()
   const { soknad, status, valgteÅrsaker } = props
 
@@ -33,16 +34,12 @@ const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
             <Heading spacing size="xsmall" level="6">
               {t('statuser.bestilling.avvist.heading')}
             </Heading>
-            {varDuplikat && (
-              <>{t('statuser.bestilling.avvist.årsak.duplikat', {brukersNavn: brukersNavn})}</>
-            )}
-            {!varDuplikat && (
-              <>{t('statuser.bestilling.avvist.årsak.annet')}</>
-            )}
+            {varDuplikat && <>{t('statuser.bestilling.avvist.årsak.duplikat', { brukersNavn: brukersNavn })}</>}
+            {!varDuplikat && <>{t('statuser.bestilling.avvist.årsak.annet')}</>}
           </Alert>
         </div>
       )}
-      <div>
+      <div ref={ref}>
         <Panel>
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={soknad.bruker} />
@@ -67,6 +64,6 @@ const Soknad: React.FC<SoknadProps> = (props: SoknadProps) => {
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>
     </div>
   )
-}
+})
 
 export default Soknad

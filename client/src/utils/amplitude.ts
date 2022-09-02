@@ -19,6 +19,7 @@ export enum digihot_customevents {
   VARSEL_OM_SESJON_UTLOPER = 'varsel vist om sesjon utløper',
   VARSEL_OM_SESJON_UTLOPT = 'varsel vist om sesjon utløpt',
   SPRAAK_ENDRET = 'språk endret',
+  KLIKK_SKRIV_UT = 'klikk på skriv ut',
 }
 
 const SKJEMANAVN = 'formidler'
@@ -73,5 +74,12 @@ export function logNavigeringLenke(id: string, destinasjon: string): void {
     skjemanavn: SKJEMANAVN,
     skjemaId: id,
     destinasjon: destinasjon,
+  })
+}
+
+export function logKlikkPåSkrivUt(id: string): void {
+  logAmplitudeEvent(digihot_customevents.KLIKK_SKRIV_UT, {
+    skjemanavn: SKJEMANAVN,
+    skjemaId: id,
   })
 }
