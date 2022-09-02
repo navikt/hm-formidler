@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - DIGIHOT-859/vis-slettede-soknader
+      - DIGIHOT-872/print-soknad
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}
