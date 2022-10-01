@@ -13,6 +13,13 @@ spec:
     min: 2
     max: 4
     cpuThresholdPercentage: 90
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 256Mi
   liveness:
     path: /hjelpemidler/formidler/internal/isAlive
     initialDelay: 5
