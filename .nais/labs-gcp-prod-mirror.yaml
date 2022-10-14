@@ -1,7 +1,7 @@
 apiVersion: 'nais.io/v1alpha1'
 kind: 'Application'
 metadata:
-  name: hm-formidler
+  name: hm-formidler-prod-mirror
   namespace: teamdigihot
   labels:
     team: teamdigihot
