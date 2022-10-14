@@ -42,3 +42,5 @@ spec:
   env:
     - name: USE_MSW
       value: "true"
+    - name: SOKNAD_URL
+      value: https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/digitalsoknadhjelpemidler
