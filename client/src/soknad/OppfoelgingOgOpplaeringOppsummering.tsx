@@ -17,14 +17,14 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
   return (
     <>
       <div className="contentBlock categoryRow">
-        <Heading size="medium" level="3">
+        <Heading size="medium" level="2">
           {' '}
           {t('oppsummering.leveringOgOpplaring')}
         </Heading>
       </div>
       <div className="contentBlock">
         <div className="contentBlock">
-          <Heading size="small" level="4">
+          <Heading size="small" level="3">
             {t('felles.hjelpemiddelFormidler')}
           </Heading>
         </div>
@@ -63,7 +63,7 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
       </div>
       <div className="contentBlock">
         <div className="contentBlock">
-          <Heading size="small" level="4">
+          <Heading size="small" level="3">
             {t('oppsummering.ansvarlig')}
           </Heading>
         </div>

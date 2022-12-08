@@ -18,7 +18,7 @@ function BrukerOppsummering(props: BrukerProps) {
   return (
     <>
       <div className="contentBlock categoryRow">
-        <Heading size="medium" level="3">
+        <Heading size="medium" level="2">
           {t('oppsummering.hjelpemiddelbruker')}
         </Heading>
       </div>

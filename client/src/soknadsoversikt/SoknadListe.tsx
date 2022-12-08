@@ -15,7 +15,7 @@ const SoknadListe: React.FC<Props> = ({ alleSoknader }: Props) => {
   return (
     <div className="customPanel">
       <div style={{ marginBottom: '1rem' }}>
-        <Heading size="small">{t('soknadsoversikt.soknadListe.saker')}</Heading>
+        <Heading level="2" size="small">{t('soknadsoversikt.soknadListe.saker')}</Heading>
       </div>
       {alleSoknader.map((soknad: SoknadInfo) => {
         return (

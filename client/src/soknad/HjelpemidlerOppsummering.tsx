@@ -20,7 +20,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
     <>
       <div className="contentBlock">
         <div className="contentBlock categoryRow">
-          <Heading size="medium" level="3">
+          <Heading size="medium" level="2">
             {t('felles.hjelpemidler')}
           </Heading>
         </div>

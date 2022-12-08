@@ -21,7 +21,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
     <>
       <div className="contentBlock">
         <div className="contentBlock">
-          <Heading size="small" level="4">
+          <Heading size="small" level="3">
             {t('oppsummering.utlevering')}
           </Heading>
         </div>

@@ -17,7 +17,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelinfoProps> = (props: Hjelpemiddelin
         <div className="hjelpemiddelinfo">
           {/* For store skjermflater */}
           <Heading
-            level="4"
+            level="3"
             size="small"
             aria-label={`Hms nummer ${hjelpemiddel.hmsNr}`}
             className="hjelpemiddelinfo-hmsNr desktop-only"
@@ -25,7 +25,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelinfoProps> = (props: Hjelpemiddelin
             {hjelpemiddel.hmsNr}
           </Heading>
 
-          <Heading level="4" size="small" className="hjelpemiddelinfo-navn">
+          <Heading level="3" size="small" className="hjelpemiddelinfo-navn">
             {hjelpemiddel.beskrivelse}
           </Heading>
 
