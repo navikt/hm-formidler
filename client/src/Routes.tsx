@@ -12,14 +12,23 @@ const Routes: React.FC = () => {
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: 'no' }}>
-        <title>{t('helmet.title')}</title>
-      </Helmet>
-      <Route exact path={['/', `${BASE_PATH}/`]} component={SoknadsOversikt} />
-      <Route exact path={['/', `${BASE_PATH}/soknad/:soknadsid`]} component={SoknadVisning} />
-      <Route exact path={`${BASE_PATH}/feilside`} component={Feilside} />
+      <Route exact path={['/', `${BASE_PATH}/`]}><SettTittel title="helmet.title.forsiden"><SoknadsOversikt /></SettTittel></Route>
+      <Route exact path={['/', `${BASE_PATH}/soknad/:soknadsid`]}><SettTittel title="helmet.title.sak"><SoknadVisning /></SettTittel></Route>
+      <Route exact path={`${BASE_PATH}/feilside`}><SettTittel title="helmet.title.feilside"><Feilside /></SettTittel></Route>
     </>
   )
 }
 
 export default Routes
+
+const SettTittel = ({title, children}: {title: string, children?: React.ReactNode}) => {
+    const { t } = useTranslation()
+    return (
+        <>
+            <Helmet htmlAttributes={{ lang: 'no' }}>
+                <title>{t(title)}</title>
+            </Helmet>
+            {children}
+        </>
+    )
+};
