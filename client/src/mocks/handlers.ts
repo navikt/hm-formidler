@@ -51,7 +51,6 @@ export const handlers: RestHandler[] = [
       },
     ],
     erPilotkommune: true,
-    erPilotkommuneForBestillingsordning: true,
   }),
   getJson('/api/soknad/formidler', [
     {
