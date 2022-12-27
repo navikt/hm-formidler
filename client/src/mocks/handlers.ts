@@ -17,41 +17,6 @@ export const handlers: RestHandler[] = [
       erPilotkommune: true,
       harAltinnRettighet: true,
       harAllowlistTilgang: true,
-      organisasjoner: [
-        {
-          orgnr: "910753282",
-          navn: "STORÅS OG HESSENG",
-          orgform: "AS",
-          overordnetOrgnr: null
-        }
-      ],
-      organisasjonerManKanBeOmTilgangTil: [
-        {
-          orgnr: "910825755",
-          navn: "ÅLEN OG DEKNEPOLLEN REGNSKAP",
-          orgform: "AS",
-          overordnetOrgnr: null
-        },
-        {
-          orgnr: "857066162",
-          navn: "OVERMODIG BILLETTLUKE",
-          orgform: "",
-          overordnetOrgnr: null
-        },
-        {
-          orgnr: "805824352",
-          navn: "STORÅS OG HESSENG 4 AND THE GOBLET OF FIRE",
-          orgform: "",
-          overordnetOrgnr: null
-        }
-      ],
-      godkjenningskurs: [
-        {
-          id: 1,
-          title: "El-rullestol",
-          kilde: "kursliste_import"
-        }
-      ],
       feil: []
     }
   }),
