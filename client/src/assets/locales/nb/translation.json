@@ -97,7 +97,7 @@
   "statuser.innsendtAvDeg.tittel": "Innsendt av deg",
   "statuser.innsendtAvDeg.beskrivelse": "Formidler har sendt inn søknaden med fullmakt på papir. Det vil ta opptil et døgn før søknaden blir synlig hos bruker.",
   "statuser.underBehandling.tittel": "Under behandling",
-  "statuser.underBehandling.beskrivelse": "Søknaden er under behandling.",
+  "statuser.underBehandling.beskrivelse": "Saken er under behandling.",
   "statuser.innvilget.tittel": "Innvilget",
   "statuser.innvilget.beskrivelse": "Søknaden er innvilget.",
   "statuser.godkjent.tittel": "Godkjent",
