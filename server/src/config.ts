@@ -45,7 +45,7 @@ const app = {
   useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
   port: process.env.PORT || 5000,
   soknadsbehandlingAudience: process.env.SOKNADSBEHANDLING_AUDIENCE || 'local:hm-soknadsbehandling-db',
-  soknadApiAudience: process.env.SOKNAD_API_AUDIENCE || 'local:hjelpemidlerdigitalsoknad-api',
+  rollerAudience: process.env.HM_ROLLER_AUDIENCE || 'local:hm-roller',
   cluster: process.env.NAIS_CLUSTER_NAME || '',
   redirectUrl: process.env.REDIRECT_URL,
 }

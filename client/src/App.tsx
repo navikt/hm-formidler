@@ -4,7 +4,7 @@ import Routes from './Routes'
 import { Loader } from '@navikt/ds-react'
 import useSWRImmutable from 'swr/immutable'
 import ScrollToTop from './components/ScrollToTop'
-import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
+import { fetcher, ROLLER_PATH } from './services/rest-service'
 import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
 import { ApplicationContext } from './statemanagement/ApplicationContext'
@@ -12,7 +12,7 @@ import SessionCheck from './SessionCheck'
 import * as Sentry from '@sentry/browser'
 
 const App: React.FC = () => {
-  const { data, error } = useSWRImmutable(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
+  const { data, error } = useSWRImmutable(ROLLER_PATH, fetcher)
 
   /* TODO: Mekke feilside */
   if (error) {
@@ -26,7 +26,7 @@ const App: React.FC = () => {
       </div>
     )
 
-  if (!data.altinnRettighet || !data.allowlistTilgang) {
+  if (!data.formidlerRolle.harFormidlerRolle) {
     Sentry.addBreadcrumb({
       message: `Formidler mangler tilgang. altinnRettighet=<${data.altinnRettighet}>, allowlistTilgang=<${data.allowlistTilgang}>`,
     })

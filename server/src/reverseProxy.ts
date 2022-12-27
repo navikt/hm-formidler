@@ -26,19 +26,13 @@ function options(targetAudience: string): ProxyOptions {
 
 const envProperties = {
   API_URL: process.env.API_URL || 'http://localhost:8082',
-  SOKNAD_API_URL: process.env.SOKNAD_API_URL || 'http://localhost:9090',
+  HM_ROLLER_URL: process.env.HM_ROLLER_URL || 'http://localhost:9090',
 }
 
 function pathRewriteBasedOnEnvironment(req: Request): string {
-  if (process.env.NAIS_CLUSTER_NAME === 'prod-gcp' || process.env.NAIS_CLUSTER_NAME === 'dev-gcp') {
-    return req.originalUrl
-      .replace('/hjelpemidler/formidler/soknad-api', '/hm')
+  return req.originalUrl
       .replace('/hjelpemidler/formidler/api', '/api')
-  } else {
-    return req.originalUrl
-      .replace('/hjelpemidler/formidler/soknad-api', '/hm')
-      .replace('/hjelpemidler/formidler/api', '/api')
-  }
+      .replace('/hjelpemidler/formidler/roller-api', '/api')
 }
 
 function setup() {
@@ -51,7 +45,7 @@ function setup() {
 const handlers = {
   soknadsbehandlingDb: (): RequestHandler =>
     proxy(envProperties.API_URL, options(config.app.soknadsbehandlingAudience)),
-  soknadApi: (): RequestHandler => proxy(envProperties.SOKNAD_API_URL, options(config.app.soknadApiAudience)),
+  roller: (): RequestHandler => proxy(envProperties.HM_ROLLER_URL, options(config.app.rollerAudience)),
 }
 
 // TODO validate cookie

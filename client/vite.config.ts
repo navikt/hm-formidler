@@ -61,7 +61,7 @@ export default defineConfig((env) => ({
               target: 'http://localhost:5000',
               changeOrigin: true,
             },
-            '/hjelpemidler/formidler/soknad-api': {
+            '/hjelpemidler/formidler/roller-api': {
               target: 'http://localhost:5000',
               changeOrigin: true,
             },

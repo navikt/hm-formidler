@@ -2,7 +2,7 @@ import { BASE_PATH } from '../App'
 import { ApiError } from '../types/errors'
 
 export const API_PATH = '/hjelpemidler/formidler/api'
-export const SOKNAD_API_PATH = '/hjelpemidler/formidler/soknad-api'
+export const ROLLER_PATH = '/hjelpemidler/formidler/roller-api/roller'
 
 const fetchGet: (url: string) => Promise<Response> = (url) => {
   return fetchWithCredentials(url, { headers: { Pragma: 'no-cache' } })

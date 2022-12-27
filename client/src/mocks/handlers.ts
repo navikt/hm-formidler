@@ -10,47 +10,50 @@ export const handlers: RestHandler[] = [
   rest.get('https://www.nav.no/person/innloggingsstatus/auth', async (req, res, ctx) => {
     return res(ctx.status(200))
   }),
-  getJson('/soknad-api/dkif/spraak', { spraak: 'nb' }),
-  getJson('/soknad-api/altinn/rettigheter-til-tjeneste', {
-    altinnRettighet: true,
-    allowlistTilgang: true,
-    organisasjoner: [
-      {
-        type: 'Business',
-        name: 'SKVALDER KOMMUNE',
-        organizationNumber: '6969',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '811076112',
-      },
-    ],
-    organisasjonerManKanBeOmTilgangTil: [
-      {
-        type: 'Business',
-        name: 'FIKTIVE KOMMUNE',
-        organizationNumber: '910712217',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-      {
-        type: 'Business',
-        name: 'ALPHA KOMMUNE',
-        organizationNumber: '810831164',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-      {
-        type: 'Business',
-        name: 'MOCK KOMMUNE',
-        organizationNumber: '810831162',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-    ],
-    erPilotkommune: true,
+  getJson('/roller-api/roller', {
+    bestillerRolle: null,
+    formidlerRolle: {
+      harFormidlerRolle: true,
+      erPilotkommune: true,
+      harAltinnRettighet: true,
+      harAllowlistTilgang: true,
+      organisasjoner: [
+        {
+          orgnr: "910753282",
+          navn: "STORÅS OG HESSENG",
+          orgform: "AS",
+          overordnetOrgnr: null
+        }
+      ],
+      organisasjonerManKanBeOmTilgangTil: [
+        {
+          orgnr: "910825755",
+          navn: "ÅLEN OG DEKNEPOLLEN REGNSKAP",
+          orgform: "AS",
+          overordnetOrgnr: null
+        },
+        {
+          orgnr: "857066162",
+          navn: "OVERMODIG BILLETTLUKE",
+          orgform: "",
+          overordnetOrgnr: null
+        },
+        {
+          orgnr: "805824352",
+          navn: "STORÅS OG HESSENG 4 AND THE GOBLET OF FIRE",
+          orgform: "",
+          overordnetOrgnr: null
+        }
+      ],
+      godkjenningskurs: [
+        {
+          id: 1,
+          title: "El-rullestol",
+          kilde: "kursliste_import"
+        }
+      ],
+      feil: []
+    }
   }),
   getJson('/api/soknad/formidler', [
     {
