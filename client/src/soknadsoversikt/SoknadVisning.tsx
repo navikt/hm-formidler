@@ -2,9 +2,9 @@ import React, { useRef } from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { Button, Link, Loader } from '@navikt/ds-react'
+import { Button, Loader } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
 import { Heading } from '@navikt/ds-react'
 
@@ -24,7 +24,6 @@ interface ParamTypes {
 
 const SoknadVisning: React.FC = () => {
   const { t } = useTranslation()
-  const history = useHistory()
 
   const { soknadsid } = useParams<ParamTypes>()
   const { data, error } = useSWRImmutable<{
@@ -69,15 +68,7 @@ const SoknadVisning: React.FC = () => {
     <>
       <header>
         <div className="customPanel">
-          <Link
-            onClick={() => {
-              history.push({
-                pathname: `${BASE_PATH}/`,
-              })
-            }}
-            style={{ marginBottom: '0.5rem' }}
-            href=""
-          >
+          <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
             <Back title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Link>
