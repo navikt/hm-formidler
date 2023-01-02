@@ -10,47 +10,15 @@ export const handlers: RestHandler[] = [
   rest.get('https://www.nav.no/person/innloggingsstatus/auth', async (req, res, ctx) => {
     return res(ctx.status(200))
   }),
-  getJson('/soknad-api/dkif/spraak', { spraak: 'nb' }),
-  getJson('/soknad-api/altinn/rettigheter-til-tjeneste', {
-    altinnRettighet: true,
-    allowlistTilgang: true,
-    organisasjoner: [
-      {
-        type: 'Business',
-        name: 'SKVALDER KOMMUNE',
-        organizationNumber: '6969',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '811076112',
-      },
-    ],
-    organisasjonerManKanBeOmTilgangTil: [
-      {
-        type: 'Business',
-        name: 'FIKTIVE KOMMUNE',
-        organizationNumber: '910712217',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-      {
-        type: 'Business',
-        name: 'ALPHA KOMMUNE',
-        organizationNumber: '810831164',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-      {
-        type: 'Business',
-        name: 'MOCK KOMMUNE',
-        organizationNumber: '810831162',
-        organizationForm: 'BEDR',
-        status: 'Active',
-        parentOrganizationNumber: '910712210',
-      },
-    ],
-    erPilotkommune: true,
+  getJson('/roller-api/roller', {
+    bestillerRolle: null,
+    formidlerRolle: {
+      harFormidlerRolle: true,
+      erPilotkommune: true,
+      harAltinnRettighet: true,
+      harAllowlistTilgang: true,
+      feil: []
+    }
   }),
   getJson('/api/soknad/formidler', [
     {

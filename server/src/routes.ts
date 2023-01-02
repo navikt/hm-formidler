@@ -25,9 +25,9 @@ export const routes = {
     router.use(reverseProxy.handlers.soknadsbehandlingDb())
     return router
   },
-  soknadApi(): Router {
+  roller(): Router {
     const router = Router()
-    router.use(reverseProxy.handlers.soknadApi())
+    router.use(reverseProxy.handlers.roller())
     return router
   },
   public(server: Express): Router {

@@ -1,9 +1,8 @@
 import { BASE_PATH } from '../App'
-import { DkifResponse } from '../interfaces/Dkif'
 import { ApiError } from '../types/errors'
 
 export const API_PATH = '/hjelpemidler/formidler/api'
-export const SOKNAD_API_PATH = '/hjelpemidler/formidler/soknad-api'
+export const ROLLER_PATH = '/hjelpemidler/formidler/roller-api/roller'
 
 const fetchGet: (url: string) => Promise<Response> = (url) => {
   return fetchWithCredentials(url, { headers: { Pragma: 'no-cache' } })
@@ -29,23 +28,12 @@ const getSessionExp = async (): Promise<Response> => {
   return response
 }
 
-const hentSpraak = async (): Promise<DkifResponse> => {
-  const response = await fetchGet(`${SOKNAD_API_PATH}/dkif/spraak/`)
-  if (response.ok) {
-    return await response.json()
-  } else {
-    return Promise.reject(new ApiError('Ukjent feil mot baksystem', response.status))
-  }
-}
-
 export interface RestService {
   getSessionExp: () => Promise<Response>
-  hentSpraak: () => Promise<DkifResponse>
 }
 
 const restService: RestService = {
   getSessionExp,
-  hentSpraak,
 }
 
 export default restService

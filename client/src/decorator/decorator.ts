@@ -37,17 +37,7 @@ export const initDecorator = () => {
   const cookies = new Cookies()
   const language = cookies.get(DECORATOR_LANGUAGE_COOKIE)
 
-  if (language === undefined || !SPRAAK.includes(language)) {
-    restService
-      .hentSpraak()
-      .then((response) => {
-        setLanguage(response.spraak)
-        changeLanguage(response.spraak)
-      })
-      .catch((error) => {
-        Sentry.captureException(error)
-      })
-  } else {
+  if (SPRAAK.includes(language)) {
     console.log('hentet språk fra cookies: ' + language)
     changeLanguage(language)
   }

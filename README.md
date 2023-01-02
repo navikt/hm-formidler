@@ -6,7 +6,7 @@ Flate for hjelpemiddelformidlere med oversikt over saker - frontend
 
 1. start backend
     [hm-soknadsbehandling](https://github.com/navikt/hm-soknadnadsbehandling) (for henting av saker)
-    [hm-soknad-api](https://github.com/navikt/hm-soknad-api) (for innlogging)
+    [hm-roller](https://github.com/navikt/hm-roller) (for henting av tilganger)
 
 2. bygg og start front-end:
 

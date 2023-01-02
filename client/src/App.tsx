@@ -4,31 +4,41 @@ import Routes from './Routes'
 import { Loader } from '@navikt/ds-react'
 import useSWRImmutable from 'swr/immutable'
 import ScrollToTop from './components/ScrollToTop'
-import { SOKNAD_API_PATH, fetcher } from './services/rest-service'
+import { fetcher, ROLLER_PATH } from './services/rest-service'
 import ManglerTilgang from './containers/ManglerTilgang'
 export const BASE_PATH = '/hjelpemidler/formidler'
-import { ApplicationContext } from './statemanagement/ApplicationContext'
+import { ApplicationContext, Roller } from './statemanagement/ApplicationContext'
 import SessionCheck from './SessionCheck'
 import * as Sentry from '@sentry/browser'
+import Feilside from './containers/Feilside'
 
 const App: React.FC = () => {
-  const { data, error } = useSWRImmutable(`${SOKNAD_API_PATH}/altinn/rettigheter-til-tjeneste`, fetcher)
+  const { data, error } = useSWRImmutable<Roller>(ROLLER_PATH, fetcher)
 
-  /* TODO: Mekke feilside */
   if (error) {
+    Sentry.addBreadcrumb({
+      message: `Henting av tilgang fra hm-roller feilet: <${error}>`,
+    })
     Sentry.captureException(new Error(error))
-    return <div>Noe gikk feil: {String(error)}</div>
+    return <Feilside />
   }
-  if (!data)
+  if (!data) {
     return (
       <div className="content centeredElement">
         <Loader size="large" />
       </div>
     )
+  }
 
-  if (!data.altinnRettighet || !data.allowlistTilgang) {
+  if (data.formidlerRolle.feil.length > 0) {
     Sentry.addBreadcrumb({
-      message: `Formidler mangler tilgang. altinnRettighet=<${data.altinnRettighet}>, allowlistTilgang=<${data.allowlistTilgang}>`,
+      message: `Feil fra hm-roller: <${data}>`,
+    })
+    return <Feilside />
+  }
+  if (!data.formidlerRolle.harFormidlerRolle) {
+    Sentry.addBreadcrumb({
+      message: `Formidler mangler tilgang. Respons fra hm-roller<${data}>`,
     })
     return <ManglerTilgang />
   }
@@ -36,7 +46,7 @@ const App: React.FC = () => {
   return (
     <>
       <BrowserRouter>
-        <ApplicationContext.Provider value={data}>
+        <ApplicationContext.Provider value={{ roller: data }}>
           <ScrollToTop />
           <SessionCheck>
             <Routes />

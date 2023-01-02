@@ -45,12 +45,12 @@ spec:
   env:
     - name: API_URL
       value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
-    - name: SOKNAD_API_URL
-      value: http://hm-soknad-api.teamdigihot.svc.cluster.local
     - name: SOKNADSBEHANDLING_AUDIENCE
       value: dev-gcp:teamdigihot:hm-soknadsbehandling-db
-    - name: SOKNAD_API_AUDIENCE
-      value: dev-gcp:teamdigihot:hm-soknad-api
+    - name: HM_ROLLER_URL
+      value: http://hm-roller.teamdigihot.svc.cluster.local
+    - name: HM_ROLLER_AUDIENCE
+      value: dev-gcp:teamdigihot:hm-roller
     - name: SOKNAD_URL
       value: https://hjelpemidler.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler
     - name: REDIRECT_URL
@@ -65,4 +65,4 @@ spec:
         - host: dekoratoren.nav.no
       rules:
         - application: hm-soknadsbehandling-db
-        - application: hm-soknad-api
+        - application: hm-roller
