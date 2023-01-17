@@ -79,6 +79,7 @@ export enum SitteputeValg {
 export type ElektriskRullestolInfo = {
   godkjenningskurs?: boolean
   kanBetjeneManuellStyring?: boolean
+  kanBetjeneMotorisertStyring?: boolean
   ferdesSikkertITrafikk?: boolean
   nedsattGangfunksjon?: boolean
   oppbevaringOgLagring?: boolean

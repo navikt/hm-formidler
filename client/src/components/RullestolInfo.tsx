@@ -33,7 +33,47 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
       )}
       {hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler && (
         <>
-          {hm.elektriskRullestolInfo?.oppbevaringOgLagring !== undefined && (
+          {hm.elektriskRullestolInfo?.kanBetjeneManuellStyring === true && (
+            <div style={{ marginBottom: '0.5rem' }}>
+              <Label style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}
+              </Label>
+              <BodyShort style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.kanBetjeneManuellStyring')}
+              </BodyShort>
+            </div>
+          )}
+          {hm.elektriskRullestolInfo?.kanBetjeneMotorisertStyring === true && (
+            <div style={{ marginBottom: '0.5rem' }}>
+              <Label style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}
+              </Label>
+              <BodyShort style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.kanBetjeneMotorisertStyring')}
+              </BodyShort>
+            </div>
+          )}
+          {hm.elektriskRullestolInfo?.ferdesSikkertITrafikk === true && (
+            <div style={{ marginBottom: '0.5rem' }}>
+              <Label style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.ferdesSikkertITrafikk.title')}
+              </Label>
+              <BodyShort style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.ferdesSikkertITrafikk')}
+              </BodyShort>
+            </div>
+          )}
+          {hm.elektriskRullestolInfo?.nedsattGangfunksjon === true && (
+            <div style={{ marginBottom: '0.5rem' }}>
+              <Label style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.nedsattGangfunksjon.title')}
+              </Label>
+              <BodyShort style={{ display: 'inline' }}>
+                {t('leggTilEllerEndre.elRullestol.nedsattGangfunksjon')}
+              </BodyShort>
+            </div>
+          )}
+          {hm.elektriskRullestolInfo?.oppbevaringOgLagring != null && (
             <div style={{ marginBottom: '0.5rem' }}>
               <Label style={{ display: 'inline' }}>
                 {t('leggTilEllerEndre.elRullestol.oppbevaringOgLagring.title')}
@@ -45,7 +85,7 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
               </BodyShort>
             </div>
           )}
-          {hm.elektriskRullestolInfo?.kjentMedForsikring !== undefined && (
+          {hm.elektriskRullestolInfo?.kjentMedForsikring != null && (
             <div style={{ marginBottom: '0.5rem' }}>
               <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.forsikringsvilkår.title')}</Label>
               <BodyShort style={{ display: 'inline' }}>
@@ -55,7 +95,7 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
               </BodyShort>
             </div>
           )}
-          {hm.elektriskRullestolInfo?.harSpesialsykkel !== undefined && (
+          {hm.elektriskRullestolInfo?.harSpesialsykkel != null && (
             <div style={{ marginBottom: '0.5rem' }}>
               <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.spesialsykkel.title')} </Label>
               <BodyShort style={{ display: 'inline' }}>
@@ -80,11 +120,11 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
       )}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-        <div>
-          <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
-          <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
-        </div>
-      )}
+          <div>
+            <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
+            <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
+          </div>
+        )}
     </>
   )
 }
