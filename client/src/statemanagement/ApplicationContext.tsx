@@ -1,27 +1,11 @@
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
+import { Roller } from '../interfaces/Roller'
 
 type ApplicationContextType = {
   roller: Roller
 }
 
-export interface Roller {
-  formidlerRolle: FormidlerRolle
-  bestillerRolle: BestillerRolle | undefined
-}
-
-export interface FormidlerRolle {
-  harFormidlerRolle: boolean
-  erPilotkommune: boolean
-  feil: ('ALLOWLIST' | 'ALTINN')[]
-}
-
-export interface BestillerRolle {
-  harBestillerRolle: boolean
-  erPilotkommune: boolean
-  feil: ('GODKJENNINGSKURS' | 'ALLOWLIST' | 'AAREG')[]
-}
-
-const ApplicationContext = createContext<ApplicationContextType>({
+export const ApplicationContext = createContext<ApplicationContextType>({
   roller: {
     bestillerRolle: undefined,
     formidlerRolle: {
@@ -32,4 +16,11 @@ const ApplicationContext = createContext<ApplicationContextType>({
   }
 })
 
-export { ApplicationContext }
+export const useRoller = () => {
+  const { roller } = useContext(ApplicationContext)
+  return {
+    erFormidler: roller.formidlerRolle.harFormidlerRolle === true,
+    erBestiller: roller.bestillerRolle?.harBestillerRolle === true,
+    harGyldigRolle: roller.formidlerRolle.harFormidlerRolle === true || roller.bestillerRolle?.harBestillerRolle === true,
+  }
+}

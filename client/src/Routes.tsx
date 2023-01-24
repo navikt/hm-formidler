@@ -1,18 +1,17 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import SoknadsOversikt from './soknadsoversikt/SoknadsOversikt'
 import { BASE_PATH } from './App'
 import Feilside from './containers/Feilside'
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import SoknadVisning from './soknadsoversikt/SoknadVisning'
+import Tilgangside from './containers/Tilgangside'
 
 const Routes: React.FC = () => {
-  const { t } = useTranslation()
 
   return (
     <>
-      <Route exact path={['/', `${BASE_PATH}/`]}><SettTittel title="helmet.title.forsiden"><SoknadsOversikt /></SettTittel></Route>
+      <Route exact path={['/', `${BASE_PATH}/`]}><SettTittel title="helmet.title.forsiden"><Tilgangside /></SettTittel></Route>
       <Route exact path={['/', `${BASE_PATH}/soknad/:soknadsid`]}><SettTittel title="helmet.title.sak"><SoknadVisning /></SettTittel></Route>
       <Route exact path={`${BASE_PATH}/feilside`}><SettTittel title="helmet.title.feilside"><Feilside /></SettTittel></Route>
     </>

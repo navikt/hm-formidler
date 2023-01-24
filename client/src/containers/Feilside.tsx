@@ -40,11 +40,6 @@ const Feilside: React.FC = () => {
                 <Ingress className="centeredElement"> {t('feilside.proevIgjen')}</Ingress>
               </div>
             </div>
-            <div className="knappepanel">
-              <Button variant="secondary" onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>
-                {t('kvittering.tilbake')}
-              </Button>
-            </div>
           </GuidePanel>
         </div>
       </main>
