@@ -18,7 +18,9 @@ const SoknadsOversiktVeileder: React.FC = () => {
       <div className="veilederWrapperPanel">
         <GuidePanel poster illustration={<SpotIllustration />}>
           <BodyShort>{t('hoved.veilederpanel.p0')}</BodyShort>
-          <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</BodyShort>
+          {erFormidler && (
+            <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</BodyShort>
+          )}
 
           <ReadMore
             style={{ marginTop: '2rem' }}
