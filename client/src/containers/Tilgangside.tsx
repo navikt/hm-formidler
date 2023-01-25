@@ -16,22 +16,16 @@ const Tilgangside: React.FC = () => {
   }
 
   if (roller.formidlerRolle.feil.length > 0) {
-    Sentry.addBreadcrumb({
-      message: `Feil fra hm-roller for formidlerrolle: <${roller.formidlerRolle.feil}>`,
-    })
+    Sentry.captureMessage(`Feil fra hm-roller for formidlerrolle: <${roller.formidlerRolle.feil}>`)
     return <Feilside />
   }
 
   if ((roller.bestillerRolle?.feil ?? []).length > 0) {
-    Sentry.addBreadcrumb({
-      message: `Feil fra hm-roller for bestillerrolle: <${roller.bestillerRolle?.feil}>`,
-    })
+    Sentry.captureMessage(`Feil fra hm-roller for bestillerrolle: <${roller.bestillerRolle?.feil}>`)
     return <Feilside />
   }
 
-  Sentry.addBreadcrumb({
-    message: `Formidler mangler tilgang. Respons fra hm-roller<${roller}>`,
-  })
+  Sentry.captureMessage(`Formidler mangler tilgang. Respons fra hm-roller<${roller}>`)
   return <ManglerTilgang />
 }
 
