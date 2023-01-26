@@ -19,7 +19,6 @@ jobs:
       - name: Deploy to prod-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
-          DEPLOY_SERVER: deploy.nais.io:443 # Workaround https://nav-it.slack.com/archives/C5KUST8N6/p1674573453174539?thread_ts=1674572577.446359&cid=C5KUST8N6
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
           RESOURCE: .nais/nais-prod.yaml
@@ -31,6 +30,7 @@ jobs:
       - name: Deploy to labs-gcp-prod-mirror
         uses: nais/deploy/actions/deploy@v1
         env:
+          DEPLOY_SERVER: deploy.nais.io:443 # Workaround https://nav-it.slack.com/archives/C5KUST8N6/p1674573453174539?thread_ts=1674572577.446359&cid=C5KUST8N6
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: labs-gcp
           RESOURCE: .nais/labs-gcp-prod-mirror.yaml
