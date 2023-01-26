@@ -111,7 +111,7 @@
   "statuser.avvist.tittel": "Avvist",
   "statuser.avvist.beskrivelse": "Bestillingen er avvist.",
   "statuser.lukket.tittel": "Saken er lukket",
-  "statuser.lukket.beskrivelse": "Saken med søknaden er lukket med et vedtak som vi dessverre ikke kan vise foreløpig. Vedtaket kan være både positivt og negativt.",
+  "statuser.lukket.beskrivelse": "Saken er lukket med et vedtak som vi dessverre ikke kan vise foreløpig. Vedtaket kan være både positivt og negativt.",
   "statuser.ferdig.tittel": "Ferdig behandlet",
   "statuser.ferdig.beskrivelse": "Saken er ferdig behandlet på hjelpemiddelsentralen. Søknaden er innvilget eller delvis innvilget, og hjelpemidlet gjøres klart for utkjøring. \nHjelpemiddelsentralene har ulike rutiner for når de kjører ut hjelpemidler. Det ofte ta flere dager fra hjelpemidlet gjøres klart til utkjøring og til det faktisk kjøres ut. Foreløpig er det dessverre ikke mulig å vise status for når hjelpemidlet kjøres ut eller er utlevert.",
   "statuser.bestilling.avvist.heading": "Saken er lukket",
