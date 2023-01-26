@@ -1,7 +1,8 @@
 import { RefObject } from 'react'
 import { ValidationError } from './interfaces/ErrorTypes'
 import moment from 'moment'
-import 'moment/locale/nb'
+import 'moment/dist/locale/nb'
+
 moment.locale('nb')
 
 export const sumNumbersInArray = (array: number[]): number => {
