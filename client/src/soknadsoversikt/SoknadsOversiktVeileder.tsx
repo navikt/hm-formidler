@@ -11,15 +11,15 @@ const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { erFormidler } = useRoller()
+  const { erFormidler, erFormidlerPilotkommune } = useRoller()
 
   return (
     <>
       <div className="veilederWrapperPanel">
         <GuidePanel poster illustration={<SpotIllustration />}>
-          <BodyShort>{t('hoved.veilederpanel.p0')}</BodyShort>
-          {erFormidler && (
-            <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p1')}</BodyShort>
+          <BodyShort>{t('hoved.veilederpanel.p0')}{erFormidlerPilotkommune && t('hoved.veilederpanel.p1')}{t('hoved.veilederpanel.p2')}</BodyShort>
+          {erFormidlerPilotkommune && (
+            <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p3')}</BodyShort>
           )}
 
           <ReadMore
@@ -33,18 +33,20 @@ const SoknadsOversiktVeileder: React.FC = () => {
 
             <ul style={{ listStyleType: 'none', padding: '0' }}>
               {erFormidler && (<>
-                <li>
-                  <StatusBeskrivelse
-                    tittel={t('statuser.venter.tittel')}
-                    beskrivelse={t('statuser.venter.beskrivelse')}
-                  />
-                </li>
-                <li>
-                  <StatusBeskrivelse
-                    tittel={t('statuser.innsendtAvBruker.tittel')}
-                    beskrivelse={t('statuser.innsendtAvBruker.beskrivelse')}
-                  />
-                </li>
+                {erFormidlerPilotkommune && (<>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.venter.tittel')}
+                      beskrivelse={t('statuser.venter.beskrivelse')}
+                    />
+                  </li>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.innsendtAvBruker.tittel')}
+                      beskrivelse={t('statuser.innsendtAvBruker.beskrivelse')}
+                    />
+                  </li>
+                </>)}
                 <li>
                   <StatusBeskrivelse
                     tittel={t('statuser.innsendtAvDeg.tittel')}
@@ -71,12 +73,14 @@ const SoknadsOversiktVeileder: React.FC = () => {
                 />
               </li>
               {erFormidler && (<>
-                <li>
-                  <StatusBeskrivelse
-                    tittel={t('statuser.slettet.tittel')}
-                    beskrivelse={t('statuser.slettet.beskrivelse')}
-                  />
-                </li>
+                {erFormidlerPilotkommune && (<>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.slettet.tittel')}
+                      beskrivelse={t('statuser.slettet.beskrivelse')}
+                    />
+                  </li>
+                </>)}
                 <li>
                   <StatusBeskrivelse
                     tittel={t('statuser.slettetFrist.tittel')}

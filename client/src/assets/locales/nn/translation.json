@@ -1,6 +1,8 @@
 {
-  "hoved.veilederpanel.p0": "Dette er ei oversikt over status på digitale saker du har sendt inn til NAV på vegne av innbyggjar. Sakene visast i 4 veker etter at saka er avslutta på hjelpemiddelsentralen, eller at saka er sletta av innbyggjar. Ingen saker som er eldre enn 6 månadar blir vist i oversikta.",
-  "hoved.veilederpanel.p1": "Om du har valt at brukar skal stadfeste saka digitalt, vil du her sjå om saka er sendt inn, sletta eller om den er blitt sletta fordi stadfestingsfristen har gått ut.",
+  "hoved.veilederpanel.p0": "Dette er ei oversikt over status på digitale saker du har sendt inn til NAV på vegne av innbyggjar. Sakene visast i 4 veker etter at saka er avslutta på hjelpemiddelsentralen",
+  "hoved.veilederpanel.p1": ", eller at saka er sletta av innbyggjar",
+  "hoved.veilederpanel.p2": ". Ingen saker som er eldre enn 6 månadar blir vist i oversikta.",
+  "hoved.veilederpanel.p3": "Om du har valt at brukar skal stadfeste saka digitalt, vil du her sjå om saka er sendt inn, sletta eller om den er blitt sletta fordi stadfestingsfristen har gått ut.",
   "hoved.veilederpanel.statuser.apne": "Vis skildring av statusane",
   "hoved.veilederpanel.statuser.lukk": "Lukk skildring av statusane",
   "VENTER_GODKJENNING": "Ventar på stadfesting",

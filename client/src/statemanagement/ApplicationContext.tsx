@@ -22,5 +22,6 @@ export const useRoller = () => {
     erFormidler: roller.formidlerRolle.harFormidlerRolle === true,
     erBestiller: roller.bestillerRolle?.harBestillerRolle === true,
     harGyldigRolle: roller.formidlerRolle.harFormidlerRolle === true || roller.bestillerRolle?.harBestillerRolle === true,
+    erFormidlerPilotkommune: roller.formidlerRolle.harFormidlerRolle === true && roller.formidlerRolle.erPilotkommune === true,
   }
 }

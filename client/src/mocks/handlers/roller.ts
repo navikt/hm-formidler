@@ -7,8 +7,8 @@ const rolleHandlers = [
         return res(
             ctx.json({
                 bestillerRolle: {
-                    harBestillerRolle: false,
-                    erPilotkommune: false,
+                    harBestillerRolle: true,
+                    erPilotkommune: true,
                     feil: []
                 },
                 formidlerRolle: {
