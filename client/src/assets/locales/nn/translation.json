@@ -111,7 +111,7 @@
   "statuser.avvist.tittel": "Avvist",
   "statuser.avvist.beskrivelse": "Bestillinga er avvist.",
   "statuser.lukket.tittel": "Saka er lukka",
-  "statuser.lukket.beskrivelse": "Saka med søknaden er lukka med eit vedtak som vi dessverre ikkje kan vise førebels. Vedtaket kan vere både positivt og negativt.",
+  "statuser.lukket.beskrivelse": "Saka er lukka med eit vedtak som vi dessverre ikkje kan vise førebels. Vedtaket kan vere både positivt og negativt.",
   "statuser.ferdig.tittel": "Ferdig behandla",
   "statuser.ferdig.beskrivelse": "Saka er ferdig behandla på hjelpemiddelsentralen. Søknaden er innvilga eller delvis innvilga, og hjelpemiddelet gjerast klart for utkøyring. \nHjelpemiddelsentralane har ulike rutiner for når dei køyrer ut hjelpemiddel. Det kan ofte ta fleire dagar frå hjelpemiddelet gjerast klart til utkøyring og til det faktisk køyrast ut. Førebels er det dessverre ikkje mogeleg å vise status for når hjelpemiddelet køyrast ut eller er utlevert.",
   "statuser.bestilling.avvist.heading": "Saka er lukka",
