@@ -19,7 +19,13 @@ const SoknadsOversikt: React.FC = () => {
 
   const {erFormidler} = useRoller()
 
-  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler?formidler=${erFormidler}`, fetcher)
+  let mswQuery = ''
+  if (window.appSettings.USE_MSW) {
+    // MSW må vite hvilken rolle brukeren har for å fungere med RolleSwitcher
+    mswQuery = `?formidler=${erFormidler}`
+  }
+
+  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler${mswQuery}`, fetcher)
   const history = useHistory()
   const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 
