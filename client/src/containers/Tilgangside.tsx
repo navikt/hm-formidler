@@ -25,7 +25,7 @@ const Tilgangside: React.FC = () => {
     return <Feilside />
   }
 
-  Sentry.captureMessage(`Formidler mangler tilgang. Respons fra hm-roller<${roller}>`)
+  Sentry.captureMessage(`Formidler mangler tilgang. Respons fra hm-roller<${JSON.stringify(roller)}>`)
   return <ManglerTilgang />
 }
 
