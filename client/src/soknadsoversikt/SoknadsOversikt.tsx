@@ -25,7 +25,7 @@ const SoknadsOversikt: React.FC = () => {
     mswQuery = `?formidler=${erFormidler}`
   }
 
-  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler${mswQuery}`, fetcher)
+  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/innsender${mswQuery}`, fetcher)
   const history = useHistory()
   const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 

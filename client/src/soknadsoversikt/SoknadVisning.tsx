@@ -32,7 +32,7 @@ const SoknadVisning: React.FC = () => {
     behovsmeldingType: string | undefined
     status: SoknadStatus | undefined
     valgteÅrsaker?: String[] | undefined
-  }>(`${API_PATH}/soknad/formidler/${soknadsid}`, fetcher)
+  }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)

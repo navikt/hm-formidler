@@ -4,7 +4,7 @@ import { API_PATH } from "../../services/rest-service"
 import { sakerMock } from "../mockdata/saker"
 
 const soknadsbehandlingDbHandlers = [
-    rest.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/formidler`, (req, res, ctx) => {
+    rest.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, (req, res, ctx) => {
 
         const rolle = req.url.searchParams.get('formidler')
 
@@ -15,7 +15,7 @@ const soknadsbehandlingDbHandlers = [
 
         return res(ctx.json(saker))
     }),
-    rest.get<{}, {}, {}>(`${API_PATH}/soknad/formidler/abc887bc-5a95-49c2-a123-f0e0f7c32df3`, (req, res, ctx) => {
+    rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/abc887bc-5a95-49c2-a123-f0e0f7c32df3`, (req, res, ctx) => {
         return res(
             ctx.json({
                 soknadId: 'b3b15dd3-38d8-4968-a5fa-09263deaad9f',
@@ -81,7 +81,7 @@ const soknadsbehandlingDbHandlers = [
             })
         )
     }),
-    rest.get<{}, {}, {}>(`${API_PATH}/soknad/formidler/fec887bc-5a95-49c2-a123-f0e0f7c32df3`, (req, res, ctx) => {
+    rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/fec887bc-5a95-49c2-a123-f0e0f7c32df3`, (req, res, ctx) => {
         return res(
             ctx.json({
                 soknadId: 'b3b15dd3-38d8-4968-a5fa-09263deaad9f',
@@ -145,7 +145,7 @@ const soknadsbehandlingDbHandlers = [
                 },
             }))
     }),
-    rest.get<{}, {}, {}>(`${API_PATH}/soknad/formidler/fec887bc-5a95-49c2-a098-f0e0f7cd73hf`, (req, res, ctx) => {
+    rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/fec887bc-5a95-49c2-a098-f0e0f7cd73hf`, (req, res, ctx) => {
         return res(
             ctx.json({
                 soknadId: 'b3b15dd3-38d8-4968-a5fa-09263deaad9f',
@@ -209,7 +209,7 @@ const soknadsbehandlingDbHandlers = [
                 },
             }))
     }),
-    rest.get<{}, {}, {}>(`${API_PATH}/soknad/formidler/:id`, (req, res, ctx) => {
+    rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/:id`, (req, res, ctx) => {
         return res(
             ctx.json({
                 soknadId: 'b3b15dd3-38d8-4968-a5fa-09263deaad9f',
