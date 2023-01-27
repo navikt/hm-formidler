@@ -7,28 +7,18 @@ import Feilside from '../containers/Feilside'
 import { Roller } from '../interfaces/Roller'
 import { fetcher, ROLLER_PATH } from '../services/rest-service'
 
-
-const initialRoller = {
-  bestillerRolle: undefined,
-  formidlerRolle: {
-    harFormidlerRolle: false,
-    erPilotkommune: false,
-    feil: []
-  }
-}
-
 type ApplicationContextType = {
-  roller: Roller
-  setRoller: Dispatch<SetStateAction<Roller>>
+  roller: Roller | undefined
+  setRoller: Dispatch<SetStateAction<Roller | undefined>>
 }
 
 export const ApplicationContext = createContext<ApplicationContextType>({
-  roller: initialRoller,
+  roller: undefined,
   setRoller: () => { }
 })
 
 export const ApplicationProvider = ({ children }: { children: React.ReactNode }) => {
-  const [roller, setRoller] = useState<Roller>(initialRoller)
+  const [roller, setRoller] = useState<Roller>()
 
   const { data, error } = useSWRImmutable<Roller>(ROLLER_PATH, fetcher)
 
@@ -64,9 +54,9 @@ export const ApplicationProvider = ({ children }: { children: React.ReactNode })
 export const useRoller = () => {
   const { roller } = useContext(ApplicationContext)
   return {
-    erFormidler: roller.formidlerRolle.harFormidlerRolle === true,
-    erBestiller: roller.bestillerRolle?.harBestillerRolle === true,
-    harGyldigRolle: roller.formidlerRolle.harFormidlerRolle === true || roller.bestillerRolle?.harBestillerRolle === true,
-    erFormidlerPilotkommune: roller.formidlerRolle.harFormidlerRolle === true && roller.formidlerRolle.erPilotkommune === true,
+    erFormidler: roller?.formidlerRolle.harFormidlerRolle === true,
+    erBestiller: roller?.bestillerRolle?.harBestillerRolle === true,
+    harGyldigRolle: roller?.formidlerRolle.harFormidlerRolle === true || roller?.bestillerRolle?.harBestillerRolle === true,
+    erFormidlerPilotkommune: roller?.formidlerRolle.harFormidlerRolle === true && roller.formidlerRolle.erPilotkommune === true,
   }
 }

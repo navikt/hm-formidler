@@ -1,3 +1,4 @@
+import { Loader } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
 import React, { useContext } from 'react'
 import SoknadsOversikt from '../soknadsoversikt/SoknadsOversikt'
@@ -10,6 +11,12 @@ const Tilgangside: React.FC = () => {
 
   const { roller } = useContext(ApplicationContext)
   const { harGyldigRolle } = useRoller()
+
+  if (!roller) {
+    return <div className="content centeredElement">
+      <Loader size="large" />
+    </div>
+  }
 
   if (harGyldigRolle) {
     return <SoknadsOversikt />
@@ -25,7 +32,7 @@ const Tilgangside: React.FC = () => {
     return <Feilside />
   }
 
-  Sentry.captureMessage(`Formidler mangler tilgang. Respons fra hm-roller<${JSON.stringify(roller)}>`)
+  Sentry.captureMessage(`Innsender mangler tilgang. Respons fra hm-roller<${JSON.stringify(roller)}>`)
   return <ManglerTilgang />
 }
 

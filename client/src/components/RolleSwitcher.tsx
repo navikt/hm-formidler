@@ -37,6 +37,7 @@ const RolleSwitcher = () => {
     const erPilotkommune = values.includes('erPilotkommune')
 
     setRoller((prev) => {
+      if (!prev) return undefined
       return {
         formidlerRolle: {
           ...prev.formidlerRolle,
