@@ -1,20 +1,65 @@
-import { createContext, useContext } from 'react'
+import { Loader } from '@navikt/ds-react'
+import * as Sentry from '@sentry/browser'
+import { useEffect } from 'react'
+import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import useSWRImmutable from 'swr/immutable'
+import Feilside from '../containers/Feilside'
 import { Roller } from '../interfaces/Roller'
+import { fetcher, ROLLER_PATH } from '../services/rest-service'
+
+
+const initialRoller = {
+  bestillerRolle: undefined,
+  formidlerRolle: {
+    harFormidlerRolle: false,
+    erPilotkommune: false,
+    feil: []
+  }
+}
 
 type ApplicationContextType = {
   roller: Roller
+  setRoller: Dispatch<SetStateAction<Roller>>
 }
 
 export const ApplicationContext = createContext<ApplicationContextType>({
-  roller: {
-    bestillerRolle: undefined,
-    formidlerRolle: {
-      harFormidlerRolle: false,
-      erPilotkommune: false,
-      feil: []
-    }
-  }
+  roller: initialRoller,
+  setRoller: () => { }
 })
+
+export const ApplicationProvider = ({ children }: { children: React.ReactNode }) => {
+  const [roller, setRoller] = useState<Roller>(initialRoller)
+
+  const { data, error } = useSWRImmutable<Roller>(ROLLER_PATH, fetcher)
+
+  useEffect(()=>{
+    if (data) {
+      setRoller(data)
+    }
+  }, [data])
+
+  if (error) {
+    Sentry.addBreadcrumb({
+      message: `Henting av tilgang fra hm-roller feilet: <${error}>`,
+    })
+    Sentry.captureException(new Error(error))
+    return <Feilside />
+  }
+  if (!data) {
+    return (
+      <div className="content centeredElement">
+        <Loader size="large" />
+      </div>
+    )
+  }
+
+  return (
+    <ApplicationContext.Provider
+      value={{ roller, setRoller }}>
+      {children}
+    </ApplicationContext.Provider>
+  )
+}
 
 export const useRoller = () => {
   const { roller } = useContext(ApplicationContext)

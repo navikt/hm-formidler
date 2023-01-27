@@ -13,9 +13,19 @@ import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 import SoknadListe from './SoknadListe'
 import * as Sentry from '@sentry/browser'
 import { ApiError } from '../types/errors'
+import { useRoller } from '../statemanagement/ApplicationContext'
 
 const SoknadsOversikt: React.FC = () => {
-  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler`, fetcher)
+
+  const {erFormidler} = useRoller()
+
+  let mswQuery = ''
+  if (window.appSettings.USE_MSW) {
+    // MSW må vite hvilken rolle brukeren har for å fungere med RolleSwitcher
+    mswQuery = `?formidler=${erFormidler}`
+  }
+
+  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler${mswQuery}`, fetcher)
   const history = useHistory()
   const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 
