@@ -27,7 +27,7 @@ const soknadsbehandlingDbHandlers = [
                 navnBruker: 'Vegard Beider',
                 er_digital: true,
                 behovsmeldingType: 'BESTILLING',
-                valgteÅrsaker: ['Annet'],
+                valgteÅrsaker: ['Duplikat av en annen bestilling'],
                 søknadsdata: {
                     bruker: {
                         etternavn: 'Beider',
@@ -93,7 +93,7 @@ const soknadsbehandlingDbHandlers = [
                 navnBruker: 'Trude Luth',
                 er_digital: true,
                 behovsmeldingType: 'BESTILLING',
-                valgteÅrsaker: ['Duplikat av en annen bestilling'],
+                valgteÅrsaker: ['Annet'],
                 søknadsdata: {
                     bruker: {
                         etternavn: 'Luth',
