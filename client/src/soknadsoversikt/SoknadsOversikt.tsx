@@ -13,9 +13,13 @@ import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 import SoknadListe from './SoknadListe'
 import * as Sentry from '@sentry/browser'
 import { ApiError } from '../types/errors'
+import { useRoller } from '../statemanagement/ApplicationContext'
 
 const SoknadsOversikt: React.FC = () => {
-  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler`, fetcher)
+
+  const {erFormidler} = useRoller()
+
+  const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/formidler?formidler=${erFormidler}`, fetcher)
   const history = useHistory()
   const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 

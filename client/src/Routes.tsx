@@ -1,11 +1,12 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import { BASE_PATH } from './App'
-import Feilside from './containers/Feilside'
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
-import SoknadVisning from './soknadsoversikt/SoknadVisning'
+import { Route } from 'react-router-dom'
+import { BASE_PATH } from './App'
+import RolleSwitcher from './components/RolleSwitcher'
+import Feilside from './containers/Feilside'
 import Tilgangside from './containers/Tilgangside'
+import SoknadVisning from './soknadsoversikt/SoknadVisning'
 
 const Routes: React.FC = () => {
 
@@ -20,14 +21,15 @@ const Routes: React.FC = () => {
 
 export default Routes
 
-const SettTittel = ({title, children}: {title: string, children?: React.ReactNode}) => {
-    const { t } = useTranslation()
-    return (
-        <>
-            <Helmet htmlAttributes={{ lang: 'no' }}>
-                <title>{t(title)}</title>
-            </Helmet>
-            {children}
-        </>
-    )
+const SettTittel = ({ title, children }: { title: string, children?: React.ReactNode }) => {
+  const { t } = useTranslation()
+  return (
+    <>
+      <Helmet htmlAttributes={{ lang: 'no' }}>
+        <title>{t(title)}</title>
+      </Helmet>
+      {(window.appSettings.USE_MSW) && <RolleSwitcher />}
+      {children}
+    </>
+  )
 };
