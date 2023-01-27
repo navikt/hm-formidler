@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
-import './../stylesheet/styles.scss'
-import { Heading, BodyShort, ReadMore } from '@navikt/ds-react'
+import { BodyShort, GuidePanel, Heading, ReadMore } from '@navikt/ds-react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { GuidePanel } from '@navikt/ds-react'
 import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
 import { useRoller } from '../statemanagement/ApplicationContext'
+import './../stylesheet/styles.scss'
 
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
@@ -53,12 +52,14 @@ const SoknadsOversiktVeileder: React.FC = () => {
                     beskrivelse={t('statuser.innsendtAvDeg.beskrivelse')}
                   />
                 </li>
-                <li>
-                  <StatusBeskrivelse
-                    tittel={t('statuser.underBehandling.tittel')}
-                    beskrivelse={t('statuser.underBehandling.beskrivelse')}
-                  />
-                </li>
+              </>)}
+              <li>
+                <StatusBeskrivelse
+                  tittel={t('statuser.underBehandling.tittel')}
+                  beskrivelse={t('statuser.underBehandling.beskrivelse')}
+                />
+              </li>
+              {erFormidler && (<>
                 <li>
                   <StatusBeskrivelse
                     tittel={t('statuser.innvilget.tittel')}
