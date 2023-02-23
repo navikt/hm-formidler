@@ -2,7 +2,7 @@ import React from 'react'
 import { HendelPlassering, HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { BodyShort, Label } from '@navikt/ds-react'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { Kategori } from '../soknad/kategorier'
 
 type RullestolInfoProps = {
@@ -33,11 +33,64 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
       )}
       {hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler && (
         <>
+          {!!hm.elektriskRullestolInfo?.kabin && (
+            <>
+              {hm.elektriskRullestolInfo.kabin.brukerOppfyllerKrav === true && (
+                <>
+                  <div style={{ marginBottom: '0.5rem' }}>
+                    <Label style={{ display: 'inline' }}>
+                      {t('leggTilEllerEndre.elRullestol.kabin.behovForKabin')}:{' '}
+                    </Label>
+                    <BodyShort style={{ display: 'inline' }}>
+                      {t('leggTilEllerEndre.elRullestol.kabin.oppfyllerKravForKabin.ja')}
+                    </BodyShort>
+                  </div>
+
+                  <div style={{ marginBottom: '0.5rem' }}>
+                    <Label style={{ display: 'inline' }}>
+                      {t('leggTilEllerEndre.elRullestol.kabin.enklereLøsningErVurdert')}:{' '}
+                    </Label>
+                    <BodyShort style={{ display: 'inline' }}>
+                      {hm.elektriskRullestolInfo.kabin.kanIkkeAvhjelpesMedEnklereBegrunnelse ||
+                        t(
+                          `leggTilEllerEndre.elRullestol.kabin.arsak.${hm.elektriskRullestolInfo.kabin.kanIkkeAvhjelpesMedEnklereArsak}`
+                        )}
+                    </BodyShort>
+                  </div>
+                </>
+              )}
+
+              {hm.elektriskRullestolInfo.kabin.brukerOppfyllerKrav === false && (
+                <>
+                  <div style={{ marginBottom: '0.5rem' }}>
+                    <Label style={{ display: 'inline' }}>
+                      {t('leggTilEllerEndre.elRullestol.kabin.behovForKabin')}:{' '}
+                    </Label>
+                    <BodyShort style={{ display: 'inline' }}>
+                      <Trans
+                        i18nKey="leggTilEllerEndre.elRullestol.kabin.oppfyllerKravForKabin.nei"
+                        components={{
+                          italic: <em />,
+                        }}
+                      />
+                    </BodyShort>
+                  </div>
+
+                  <div style={{ marginBottom: '0.5rem' }}>
+                    <Label style={{ display: 'inline' }}>
+                      {t('leggTilEllerEndre.elRullestol.kabin.årsakForBehovForKabin')}:{' '}
+                    </Label>
+                    <BodyShort style={{ display: 'inline' }}>
+                      {hm.elektriskRullestolInfo.kabin.arsakForBehovBegrunnelse}
+                    </BodyShort>
+                  </div>
+                </>
+              )}
+            </>
+          )}
           {hm.elektriskRullestolInfo?.kanBetjeneManuellStyring === true && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Label style={{ display: 'inline' }}>
-                {t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}
-              </Label>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}</Label>
               <BodyShort style={{ display: 'inline' }}>
                 {t('leggTilEllerEndre.elRullestol.kanBetjeneManuellStyring')}
               </BodyShort>
@@ -45,9 +98,7 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
           )}
           {hm.elektriskRullestolInfo?.kanBetjeneMotorisertStyring === true && (
             <div style={{ marginBottom: '0.5rem' }}>
-              <Label style={{ display: 'inline' }}>
-                {t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}
-              </Label>
+              <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.elRullestol.kanBetjeneStyring.title')}</Label>
               <BodyShort style={{ display: 'inline' }}>
                 {t('leggTilEllerEndre.elRullestol.kanBetjeneMotorisertStyring')}
               </BodyShort>
@@ -120,11 +171,11 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
       )}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-          <div>
-            <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
-            <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
-          </div>
-        )}
+        <div>
+          <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
+          <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
+        </div>
+      )}
     </>
   )
 }

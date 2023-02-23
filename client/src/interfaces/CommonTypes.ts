@@ -87,6 +87,18 @@ export type ElektriskRullestolInfo = {
   kjentMedForsikring?: boolean
   harSpesialsykkel?: boolean
   plasseringAvHendel?: HendelPlassering
+  kabin?: {
+    brukerOppfyllerKrav?: boolean
+    kanIkkeAvhjelpesMedEnklereArsak?: KanIkkeAvhjelpesMedEnklereArsak
+    kanIkkeAvhjelpesMedEnklereBegrunnelse?: string
+    arsakForBehovBegrunnelse?: string
+  }
+}
+
+export enum KanIkkeAvhjelpesMedEnklereArsak {
+  HAR_LUFTVEISPROBLEMER = 'HAR_LUFTVEISPROBLEMER',
+  BEGRENSNING_VED_FUNKSJONSNEDSETTELSE = 'BEGRENSNING_VED_FUNKSJONSNEDSETTELSE',
+  ANNET = 'ANNET',
 }
 
 export enum HendelPlassering {
