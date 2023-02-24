@@ -8,7 +8,7 @@ on:
       - "CODEOWNERS"
     branches:
       - main
-      - ers-kabin
+      - nye-felter-kalenderapp
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/hm-formidler:${{ github.sha }}

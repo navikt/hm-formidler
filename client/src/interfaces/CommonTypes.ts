@@ -25,6 +25,7 @@ export type HjelpemiddelItem = {
   rullestolInfo?: RullestolInfo
   elektriskRullestolInfo?: ElektriskRullestolInfo
   personlofterInfo?: PersonlofterInfo
+  appInfo?: AppInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -108,4 +109,10 @@ export enum HendelPlassering {
 
 export type PersonlofterInfo = {
   harBehovForSeilEllerSele?: boolean
+}
+
+export type AppInfo = {
+  brukerHarProvdProvelisens: boolean
+  stottepersonSkalAdministrere: boolean
+  stottepersonHarProvdProvelisens?: boolean
 }
