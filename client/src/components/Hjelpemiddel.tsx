@@ -31,7 +31,10 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
         <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
       )}
+      {hm.appInfo && 
       <AppInfo hm={hm}/>
+      }
+      
     </>
   )
 }
