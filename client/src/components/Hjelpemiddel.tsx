@@ -6,6 +6,7 @@ import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
 import { RullestolInfo } from './RullestolInfo'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { Kategori } from '../soknad/kategorier'
+import { AppInfo } from './AppInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
