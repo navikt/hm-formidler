@@ -18,7 +18,7 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div style={{ marginBottom: '0.5rem' }}>
-        <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForBruker.label')}</Label>
+        <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForBruker.label')} </Label>
         <BodyShort style={{ display: 'inline' }}>
           {hm.appInfo.brukerHarProvdProvelisens
             ? t('hjelpemiddelinfo.kalenderapp.utprøvingForBruker.harPrøvd')
@@ -27,7 +27,7 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
       </div>
 
       <div style={{ marginBottom: '0.5rem' }}>
-        <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.støtteperson.label')}</Label>
+        <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.støtteperson.label')} </Label>
         <BodyShort style={{ display: 'inline' }}>
           {hm.appInfo.stottepersonSkalAdministrere
             ? t('hjelpemiddelinfo.kalenderapp.støtteperson.skalAdministrere')
@@ -35,9 +35,9 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
         </BodyShort>
       </div>
 
-      {hm.appInfo.stottepersonHarProvdProvelisens !== undefined && (
+      {hm.appInfo.stottepersonSkalAdministrere && hm.appInfo.stottepersonHarProvdProvelisens != null && (
         <div style={{ marginBottom: '0.5rem' }}>
-          <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.label')}</Label>
+          <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.label')} </Label>
           <BodyShort style={{ display: 'inline' }}>
             {hm.appInfo.stottepersonHarProvdProvelisens
               ? t('hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harPrøvd')
