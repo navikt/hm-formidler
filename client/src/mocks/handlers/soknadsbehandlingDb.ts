@@ -334,8 +334,35 @@ const soknadsbehandlingDbHandlers = [
               personlofterInfo: null,
               utlevertInfo: { utlevertType: null, overførtFraBruker: null, annenKommentar: null },
             },
+            {
+              antall: 1,
+              beskrivelse: 'MemoAssist Plus Premium',
+              hjelpemiddelkategori: 'Kalendere og planleggingssystemer',
+              hmsNr: '252309',
+              tilleggsinformasjon: '',
+              rangering: '1',
+              utlevertFraHjelpemiddelsentralen: false,
+              vilkarliste: [],
+              tilbehorListe: [],
+              begrunnelse: '',
+              kanIkkeTilsvarande: false,
+              navn: 'MemoAssist Plus Premium',
+              rullestolInfo: null,
+              elektriskRullestolInfo: null,
+              personlofterInfo: null,
+              utlevertInfo: {
+                utlevertType: null,
+                overførtFraBruker: null,
+                annenKommentar: null
+              },
+              appInfo: {
+                brukerHarProvdProvelisens: true,
+                stottepersonSkalAdministrere: true,
+                stottepersonHarProvdProvelisens: false
+              }
+            },
           ],
-          hjelpemiddelTotalAntall: 3,
+          hjelpemiddelTotalAntall: 4,
           oppfolgingsansvarlig: null,
           levering: {
             kontaktPerson: { navn: null, telefon: null, kontaktpersonType: 'HJELPEMIDDELBRUKER' },

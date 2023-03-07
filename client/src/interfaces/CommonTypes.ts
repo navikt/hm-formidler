@@ -27,6 +27,7 @@ export type HjelpemiddelItem = {
   rullestolInfo?: RullestolInfo
   elektriskRullestolInfo?: ElektriskRullestolInfo
   personlofterInfo?: PersonlofterInfo
+  appInfo?: AppInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -120,4 +121,10 @@ export enum AntallArsak {
   BEHOV_FOR_JEVNLIG_VASK_ELLER_VEDLIKEHOLD = 'BEHOV_FOR_JEVNLIG_VASK_ELLER_VEDLIKEHOLD',
   BRUKER_HAR_TO_HJEM = 'BRUKER_HAR_TO_HJEM',
   ANNET_BEHOV = 'ANNET_BEHOV',
+}
+
+export type AppInfo = {
+  brukerHarProvdProvelisens: boolean
+  stottepersonSkalAdministrere: boolean
+  stottepersonHarProvdProvelisens?: boolean
 }

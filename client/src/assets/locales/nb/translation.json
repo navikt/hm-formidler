@@ -173,5 +173,14 @@
   "soknadsoversikt.soknadVisningFeil.lastInnPaNytt": "laste inn siden på nytt.",
   "soknadsoversikt.soknadVisningFeil.skrivUt": "Skriv ut sak",
   "frist.for.å.bekrefte": "Frist for å bekrefte",
-  "oppdatert": "Oppdatert"
+  "oppdatert": "Oppdatert",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.label": "Utprøving for bruker:",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.harPrøvd": "Bruker har hatt en vellykket utprøving av prøvelisensen.",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.harIkkePrøvd": "Bruker har ikke testet prøvelisensen. Informasjon er gitt om at bruker vil bli bedt om å teste prøvelisensen under behandling av saken.",
+  "hjelpemiddelinfo.kalenderapp.støtteperson.label": "Støtteperson:",
+  "hjelpemiddelinfo.kalenderapp.støtteperson.skalAdministrere": "Støtteperson skal hjelpe bruker med kalenderen.",
+  "hjelpemiddelinfo.kalenderapp.støtteperson.skalIkkeAdministrere": "Ingen støtteperson skal hjelpe bruker med kalenderen.",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.label": "Utprøving for støtteperson:",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harPrøvd": "Støtteperson har hatt en vellykket utprøving av prøvelisensen.",
+  "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harIkkePrøvd": "Støtteperson har ikke prøvd ut prøvelisensen. Informasjon er gitt om at støttepersonen vil bli bedt om å teste prøvelisensen under behandling av saken."
 }

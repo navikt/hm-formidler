@@ -6,6 +6,7 @@ import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
 import { RullestolInfo } from './RullestolInfo'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { Kategori } from '../soknad/kategorier'
+import { AppInfo } from './AppInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
@@ -28,8 +29,12 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       </div>
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-        <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
-      )}
+          <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
+        )}
+      {hm.appInfo &&
+        <AppInfo hm={hm} />
+      }
+
     </>
   )
 }
