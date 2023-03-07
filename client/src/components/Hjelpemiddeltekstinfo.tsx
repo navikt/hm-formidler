@@ -57,6 +57,20 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
           </BodyShort>
         </>
       )}
+      {!!hm.arsakForAntall && (
+        <>
+          <Label style={{ display: 'inline' }}>
+            <b>{t('leggTilEllerEndre.antallBegrunnelse.label')}:&nbsp;</b>
+          </Label>
+          <BodyShort style={{ display: 'inline' }}>
+            {hm.arsakForAntallBegrunnelse ? (
+              <>{hm.arsakForAntallBegrunnelse}</>
+            ) : (
+              <>{t(`leggTilEllerEndre.antallBegrunnelse.${hm.arsakForAntall}`)}</>
+            )}
+          </BodyShort>
+        </>
+      )}
     </>
   )
 }

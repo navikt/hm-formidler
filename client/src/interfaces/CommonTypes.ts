@@ -11,6 +11,8 @@ export enum RequestMethod {
 
 export type HjelpemiddelItem = {
   antall: number
+  arsakForAntall?: AntallArsak
+  arsakForAntallBegrunnelse?: string
   beskrivelse: string
   hjelpemiddelkategori: string
   hmsNr: string
@@ -109,6 +111,16 @@ export enum HendelPlassering {
 
 export type PersonlofterInfo = {
   harBehovForSeilEllerSele?: boolean
+}
+
+export enum AntallArsak {
+  BEHOV_I_FLERE_ETASJER = 'BEHOV_I_FLERE_ETASJER',
+  BEHOV_I_FLERE_ROM = 'BEHOV_I_FLERE_ROM',
+  BEHOV_INNENDØRS_OG_UTENDØRS = 'BEHOV_INNENDØRS_OG_UTENDØRS',
+  BEHOV_FOR_FLERE_PUTER_FOR_RULLESTOL = 'BEHOV_FOR_FLERE_PUTER_FOR_RULLESTOL',
+  BEHOV_FOR_JEVNLIG_VASK_ELLER_VEDLIKEHOLD = 'BEHOV_FOR_JEVNLIG_VASK_ELLER_VEDLIKEHOLD',
+  BRUKER_HAR_TO_HJEM = 'BRUKER_HAR_TO_HJEM',
+  ANNET_BEHOV = 'ANNET_BEHOV',
 }
 
 export type AppInfo = {

@@ -121,7 +121,8 @@ const soknadsbehandlingDbHandlers = [
           },
           hjelpemidler: [
             {
-              antall: 1,
+              antall: 2,
+              arsakForAntall: 'BEHOV_I_FLERE_ETASJER',
               beskrivelse: 'Topro Terskeleliminator',
               hjelpemiddelkategori: 'Terskeleliminatorer og ramper',
               hmsNr: '014117',
