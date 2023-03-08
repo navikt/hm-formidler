@@ -3,6 +3,7 @@ export interface Leveringsinfo {
   adresse: string
   kontaktPerson: KontaktPerson
   merknad: string
+  tilleggsinfo: LeveringTilleggsinfo[]
 }
 
 export interface KontaktPerson {
@@ -22,4 +23,9 @@ export enum KontaktPersonType {
   HJELPEMIDDELBRUKER = 'HJELPEMIDDELBRUKER',
   HJELPEMIDDELFORMIDLER = 'HJELPEMIDDELFORMIDLER',
   ANNEN_KONTAKTPERSON = 'ANNEN_KONTAKTPERSON',
+}
+
+export enum LeveringTilleggsinfo {
+  UTLEVERING_KALENDERAPP = 'UTLEVERING_KALENDERAPP',
+  ALLE_HJELPEMIDLER_ER_UTLEVERT = 'ALLE_HJELPEMIDLER_ER_UTLEVERT',
 }
