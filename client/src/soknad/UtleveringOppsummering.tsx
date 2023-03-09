@@ -27,7 +27,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
         </div>
         <div className="contentBlock">
           <div className={'infoTable'}>
-            {levering.tilleggsinfo.map((tilleggsinfo) => {
+            {levering.tilleggsinfo?.map((tilleggsinfo) => {
               return (
                 <div className={'infoRow'} key={tilleggsinfo}>
                   <Label className={'infoRowCell fixedWidthLabel'}>{t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.label`)}</Label>
