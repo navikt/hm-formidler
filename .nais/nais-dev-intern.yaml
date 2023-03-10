@@ -1,7 +1,7 @@
 apiVersion: 'nais.io/v1alpha1'
 kind: 'Application'
 metadata:
-  name: hm-formidler
+  name: hm-formidler-dev-intern
   namespace: teamdigihot
   labels:
     team: teamdigihot
@@ -34,7 +34,7 @@ spec:
   envFrom:
     - secret: session-encrypt-key
   ingresses:
-    - https://hjelpemidler.dev.nav.no/hjelpemidler/formidler
+    - https://hjelpemidler.intern.dev.nav.no/hjelpemidler/formidler
   tokenx:
     enabled: true
   idporten:

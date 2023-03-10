@@ -23,7 +23,7 @@ spec:
   vault:
     enabled: false
   ingresses:
-    - https://hjelpemidlerdigitalsoknad-prod-mirror.labs.nais.io/hjelpemidler/formidler
+    - https://hjelpemidler-prod-mirror.ekstern.dev.nav.no/hjelpemidler/formidler
   liveness:
     path: /hjelpemidler/formidler/internal/isAlive
     initialDelay: 5

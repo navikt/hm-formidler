@@ -20,7 +20,7 @@ const Feilside: React.FC = () => {
         // eslint-disable-next-line prefer-rest-params
         ;(window.hj.q = window.hj.q || []).push(arguments)
       }
-    if (window.appSettings.MILJO !== 'labs-gcp' && window.appSettings.MILJO !== 'dev-gcp') {
+    if (window.appSettings.MILJO === 'prod-gcp') {
       window.hj('event', 'digihot_behovsmelding_feilmelding')
     }
   }, [])

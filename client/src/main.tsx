@@ -15,7 +15,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     hj: any
     appSettings: {
-      MILJO?: 'labs-gcp' | 'dev-gcp' | 'prod-gcp' | 'local'
+      MILJO?: 'dev-gcp' | 'prod-gcp' | 'local'
       SOKNAD_URL?: string
       GIT_COMMIT?: string
       USE_MSW?: boolean

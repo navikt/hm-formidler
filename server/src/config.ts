@@ -26,7 +26,7 @@ export type OauthMockConfig = typeof oauthMock
 
 export type IDPortenConfig = typeof idporten
 
-if (process.env.NODE_ENV === 'production' && process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
+if (process.env.NODE_ENV === 'production' && process.env.USE_MSW !== 'true') {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   tokenx.privateJwk = JSON.parse(process.env.TOKEN_X_PRIVATE_JWK!) // TOKEN_X_PRIVATE_JWM is undefined locally
 } else {
@@ -67,9 +67,6 @@ export const config = {
   },
   isProduction() {
     return process.env.NODE_ENV === 'production'
-  },
-  isLabsGcp() {
-    return process.env.NAIS_CLUSTER_NAME === 'labs-gcp'
   },
   isMocked() {
     return process.env.USE_MSW === 'true'

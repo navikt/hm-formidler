@@ -1,7 +1,7 @@
 apiVersion: 'nais.io/v1alpha1'
 kind: 'Application'
 metadata:
-  name: hm-formidler
+  name: hm-formidler-dev-ekstern
   namespace: teamdigihot
   labels:
     team: teamdigihot
@@ -23,7 +23,7 @@ spec:
   vault:
     enabled: false
   ingresses:
-    - https://hjelpemidlerdigitalsoknad.labs.nais.io/hjelpemidler/formidler
+    - https://hjelpemidler.ekstern.dev.nav.no/hjelpemidler/formidler
   liveness:
     path: /hjelpemidler/formidler/internal/isAlive
     initialDelay: 5
