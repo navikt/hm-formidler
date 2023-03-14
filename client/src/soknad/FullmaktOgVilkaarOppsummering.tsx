@@ -46,9 +46,13 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
             lineHeight: '1.375rem',
           }}
         >
-          <li>{t('oppsummering.nedsattBeveglighetsfunksjon', { navn: brukersNavn })}</li>
-          <li>{t('oppsummering.ingenEnklereHjelpemidler', { navn: brukersNavn })}</li>
-          <li>{t('oppsummering.nodvenigHjelpemidler', { navn: brukersNavn })}</li>
+          {bruker.bekreftedeVilkår.map((vilkår) => {
+            return (
+              <li key={vilkår}>
+                {t(`oppsummering.brukervilkår.${vilkår}`, { navn: brukersNavn, })}
+              </li>
+            )
+          })}
         </ul>
       </div>
 
