@@ -43,6 +43,7 @@ const soknadsbehandlingDbHandlers = [
             funksjonsnedsettelser: ['BEVEGELSE'],
             signatur: 'BRUKER_BEKREFTER',
             brukernummer: '1234567',
+            bekreftedeVilkår: ['PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1', 'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1', 'KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1', 'I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1'],
           },
           formidler: {
             navn: 'Hans Hansen',
@@ -108,6 +109,7 @@ const soknadsbehandlingDbHandlers = [
             bruksarena: 'DAGLIGLIVET',
             funksjonsnedsettelser: ['BEVEGELSE'],
             signatur: 'BRUKER_BEKREFTER',
+            bekreftedeVilkår: ['PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1', 'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1', 'KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1', 'I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1'],
           },
           formidler: {
             navn: 'Hans Hansen',
@@ -174,6 +176,7 @@ const soknadsbehandlingDbHandlers = [
             bruksarena: 'DAGLIGLIVET',
             funksjonsnedsettelser: ['BEVEGELSE'],
             signatur: 'BRUKER_BEKREFTER',
+            bekreftedeVilkår: ['PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1', 'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1', 'KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1', 'I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1'],
           },
           formidler: {
             navn: 'Hans Hansen',
@@ -239,6 +242,7 @@ const soknadsbehandlingDbHandlers = [
             signatur: 'FULLMAKT',
             kroppsmaal: { setebredde: 1, laarlengde: 2, legglengde: 3, hoyde: 4, kroppsvekt: 5 },
             brukernummer: null,
+            bekreftedeVilkår: ['PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1', 'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1', 'KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1', 'I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1'],
           },
           formidler: {
             navn: 'Berømt Aktivitet',
@@ -400,6 +404,7 @@ const soknadsbehandlingDbHandlers = [
             funksjonsnedsettelser: ['BEVEGELSE'],
             signatur: 'BRUKER_BEKREFTER',
             brukernummer: '1234567',
+            bekreftedeVilkår: ['NEDSATT_FUNKSJON', 'STORRE_BEHOV', 'PRAKTISKE_PROBLEM'],
           },
           formidler: {
             navn: 'Hans Hansen',
