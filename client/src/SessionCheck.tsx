@@ -45,7 +45,7 @@ const SessionCheck: React.FC<Props> = ({ children }: Props) => {
 
   useEffect(() => {
     // Ikke sjekk hvis vi bruker er i labs/mock (endret fra MSW)
-    if (window.appSettings.MILJO === 'labs-gcp') {
+    if (window.appSettings.USE_MSW) {
       return
     }
 

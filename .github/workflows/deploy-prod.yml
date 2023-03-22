@@ -21,17 +21,16 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
-          RESOURCE: .nais/nais-prod.yaml
+          RESOURCE: .nais/prod.yaml
           VAR: commit=${{ github.sha }}
       - name: Post-production
         uses: navikt/digihot-deploy/actions/post-production@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to labs-gcp-prod-mirror
+      - name: Deploy to dev-ekstern-prod-mirror
         uses: nais/deploy/actions/deploy@v1
         env:
-          DEPLOY_SERVER: deploy.nais.io:443 # Workaround https://nav-it.slack.com/archives/C5KUST8N6/p1674573453174539?thread_ts=1674572577.446359&cid=C5KUST8N6
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: labs-gcp
-          RESOURCE: .nais/labs-gcp-prod-mirror.yaml
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/dev-ekstern-prod-mirror.yaml
           VAR: commit=${{ github.sha }}

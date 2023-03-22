@@ -1,7 +1,7 @@
 apiVersion: 'nais.io/v1alpha1'
 kind: 'Application'
 metadata:
-  name: hm-formidler-prod-mirror
+  name: hm-formidler-ekstern
   namespace: teamdigihot
   labels:
     team: teamdigihot
@@ -23,7 +23,7 @@ spec:
   vault:
     enabled: false
   ingresses:
-    - https://hjelpemidlerdigitalsoknad-prod-mirror.labs.nais.io/hjelpemidler/formidler
+    - https://hjelpemidler.ekstern.dev.nav.no/hjelpemidler/formidler
   liveness:
     path: /hjelpemidler/formidler/internal/isAlive
     initialDelay: 5
@@ -43,4 +43,4 @@ spec:
     - name: USE_MSW
       value: "true"
     - name: SOKNAD_URL
-      value: https://hjelpemidlerdigitalsoknad-prod-mirror.labs.nais.io/hjelpemidler/digitalsoknadhjelpemidler
+      value: https://hjelpemidler.ekstern.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler

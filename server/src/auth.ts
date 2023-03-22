@@ -24,7 +24,7 @@ let oauthMockClient: Nullable<Client> = null
 let oauthMockMetadata: Nullable<Issuer<Client>> = null
 
 async function setup(idpConfig: IDPortenConfig, txConfig: TokenXConfig, appConf: AppConfig): Promise<void> {
-  if (process.env.NAIS_CLUSTER_NAME === 'labs-gcp') return
+  if (config.isMocked()) return
   else {
     idportenConfig = idpConfig
     tokenxConfig = txConfig
@@ -206,7 +206,7 @@ async function validerToken(token: string | Uint8Array) {
 
 const requiresValidToken = (): RequestHandler => async (req, res, next) => {
   await setIsAuthenticated(req, res, next)
-  if (config.isLabsGcp() || req.isAuthenticated) {
+  if (config.isMocked() || req.isAuthenticated) {
     debugLogger('requiresValidToken: token present or not required, calling next()')
     next()
   } else {
@@ -218,13 +218,13 @@ const requiresValidToken = (): RequestHandler => async (req, res, next) => {
 const requiresLogin = (): RequestHandler => async (req, res, next) => {
   await setIsAuthenticated(req, res, next)
   if (!config.isProduction()) {
-    if (!req.isAuthenticated && !config.isLabsGcp()) {
+    if (!req.isAuthenticated && !config.isMocked()) {
       debugLogger('requiresLogin: token not present or invalid, redirecting to login page')
       res.redirect(`${config.basePath}/login?redirect=${config.basePath}`)
     } else {
       next()
     }
-  } else if (config.isLabsGcp() || req.isAuthenticated) {
+  } else if (config.isMocked() || req.isAuthenticated) {
     debugLogger('requiresLogin: token present or not required, calling next()')
     next()
   } else {

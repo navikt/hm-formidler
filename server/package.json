@@ -23,7 +23,7 @@
     "winston": "^3.7.2"
   },
   "scripts": {
-    "dev": "cross-env-shell DEBUG=express-http-proxy NAIS_CLUSTER_NAME=labs-gcp USE_MSW=true IDPORTEN_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration TOKEN_X_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration API_URL=http://localhost:8083/api ts-node-dev -P tsconfig.json -T -r dotenv/config src/server.ts",
+    "dev": "cross-env-shell DEBUG=express-http-proxy NAIS_CLUSTER_NAME=dev-gcp USE_MSW=true IDPORTEN_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration TOKEN_X_WELL_KNOWN_URL=http://host.docker.internal:8080/default/.well-known/openid-configuration API_URL=http://localhost:8083/api ts-node-dev -P tsconfig.json -T -r dotenv/config src/server.ts",
     "build": "tsc -p ."
   },
   "devDependencies": {

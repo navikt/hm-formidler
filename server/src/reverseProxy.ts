@@ -7,7 +7,7 @@ function options(targetAudience: string): ProxyOptions {
   return {
     parseReqBody: false,
     async proxyReqOptDecorator(options, req) {
-      if (process.env.NAIS_CLUSTER_NAME !== 'labs-gcp') {
+      if (!config.isMocked()) {
         const idportenToken = req.headers['authorization']?.split(' ')[1]
         if (auth.tokenIsValid(idportenToken)) {
           const { access_token } = await auth.exchangeToken(idportenToken, targetAudience)
@@ -31,8 +31,8 @@ const envProperties = {
 
 function pathRewriteBasedOnEnvironment(req: Request): string {
   return req.originalUrl
-      .replace('/hjelpemidler/formidler/api', '/api')
-      .replace('/hjelpemidler/formidler/roller-api', '/api')
+    .replace('/hjelpemidler/formidler/api', '/api')
+    .replace('/hjelpemidler/formidler/roller-api', '/api')
 }
 
 function setup() {

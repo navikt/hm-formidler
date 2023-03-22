@@ -34,7 +34,7 @@ spec:
   envFrom:
     - secret: session-encrypt-key
   ingresses:
-    - https://hjelpemidler.dev.nav.no/hjelpemidler/formidler
+    - https://hjelpemidler.intern.dev.nav.no/hjelpemidler/formidler
   tokenx:
     enabled: true
   idporten:
@@ -52,9 +52,9 @@ spec:
     - name: HM_ROLLER_AUDIENCE
       value: dev-gcp:teamdigihot:hm-roller
     - name: SOKNAD_URL
-      value: https://hjelpemidler.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+      value: https://hjelpemidler.intern.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler
     - name: REDIRECT_URL
-      value: https://hjelpemidler.dev.nav.no/hjelpemidler/formidler
+      value: https://hjelpemidler.intern.dev.nav.no/hjelpemidler/formidler
     - name: GIT_COMMIT
       value: {{commit}}
   accessPolicy:

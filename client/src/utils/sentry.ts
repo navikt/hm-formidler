@@ -54,6 +54,7 @@ const maskerPersonopplysninger = (tekst?: string | undefined) => {
 }
 
 const MILJO = window.appSettings?.MILJO
+const USE_MSW = window.appSettings?.USE_MSW
 const GIT_COMMIT = window.appSettings?.GIT_COMMIT
 
 export const initSentry = () => {
@@ -71,7 +72,7 @@ export const initSentry = () => {
       /dekoratoren\/client/,
     ],
     beforeSend: fjernPersonopplysninger,
-    enabled: MILJO === 'dev-gcp' || MILJO === 'prod-gcp',
+    enabled: (MILJO === 'dev-gcp' && USE_MSW === false) || MILJO === 'prod-gcp',
     release: GIT_COMMIT,
   })
   Sentry.setUser({ id: uuid() })
