@@ -21,7 +21,7 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
-          RESOURCE: .nais/nais-prod.yaml
+          RESOURCE: .nais/prod.yaml
           VAR: commit=${{ github.sha }}
       - name: Post-production
         uses: navikt/digihot-deploy/actions/post-production@v1
@@ -32,5 +32,5 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: .nais/nais-dev-ekstern-prod-mirror.yaml
+          RESOURCE: .nais/dev-ekstern-prod-mirror.yaml
           VAR: commit=${{ github.sha }}
