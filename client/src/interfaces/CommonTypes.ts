@@ -28,6 +28,7 @@ export type HjelpemiddelItem = {
   elektriskRullestolInfo?: ElektriskRullestolInfo
   personlofterInfo?: PersonlofterInfo
   appInfo?: AppInfo
+  varmehjelpemiddelInfo?: VarmehjelpemiddelInfo
 }
 
 export type Hjelpemiddeltilbehoer = {
@@ -127,4 +128,10 @@ export type AppInfo = {
   brukerHarProvdProvelisens: boolean
   stottepersonSkalAdministrere: boolean
   stottepersonHarProvdProvelisens?: boolean
+}
+
+export type VarmehjelpemiddelInfo = {
+  harHelseopplysningerFraFør?: boolean
+  legeBekrefterDiagnose?: boolean
+  opplysningerFraLegeOppbevaresIKommune?: boolean
 }

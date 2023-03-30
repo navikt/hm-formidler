@@ -190,5 +190,10 @@
   "hjelpemiddelinfo.kalenderapp.støtteperson.skalIkkeAdministrere": "Ingen støtteperson skal hjelpa brukar med kalenderen.",
   "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.label": "Utprøving for støtteperson:",
   "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harPrøvd": "Støtteperson har hatt ei vellykka utprøving av prøvelisensen.",
-  "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harIkkePrøvd": "Støtteperson har ikkje prøvd ut prøvelisensen. Informasjon er gitt om at støttepersonen vil bli bede om å testa prøvelisensen under behandling av saka."
+  "hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.harIkkePrøvd": "Støtteperson har ikkje prøvd ut prøvelisensen. Informasjon er gitt om at støttepersonen vil bli bede om å testa prøvelisensen under behandling av saka.",
+  "hjelpemiddelinfo.varmehjelpemiddel.opplysingerFraLege.automatiskSjekket": "Det er automatisk sjekka at NAV har opplysningar frå lege frå før, eller at opplysningane blir oppbevarte i kommunen",
+  "hjelpemiddelinfo.varmehjelpemiddel.legeBekrefterDiagnose": "Kommunen har opplysningar frå lege om diagnosen til brukar. Legen stadfestar at diagnosen gir nedsett blodgjennomstrømning i hender eller føter. Når brukar blir utsette for kulde så får hender eller føter unormal bleikheit og cyanose.",
+  "hjelpemiddelinfo.varmehjelpemiddel.opplysningerFraLege.overskrift": "Opplysningar frå lege",
+  "hjelpemiddelinfo.varmehjelpemiddel.opplysningerFraLegeOppbevaresIKommune": "Opplysningane frå lege blir oppbevarte i kommunen.",
+  "hjelpemiddelinfo.varmehjelpemiddel.opplysingerFraLege.formidlerBekrefterAt": "Formidlar stadfestar at"
 }

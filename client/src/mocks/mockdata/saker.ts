@@ -206,4 +206,16 @@ export const sakerMock = [
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
   },
+  {
+    søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',
+    behovsmeldingType: BehovsmeldingType.SØKNAD,
+    datoOpprettet: '2021-02-07T14:06:59.269+00:00',
+    datoOppdatert: '2021-03-08T14:06:59.269+00:00',
+    status: SoknadStatus.VENTER_GODKJENNING,
+    fullmakt: 'true',
+    fnrBruker: '12345678910',
+    navnBruker: 'Berømt Aktivitet',
+    søknadsdata: undefined,
+    valgteÅrsaker: undefined,
+  },
 ]
