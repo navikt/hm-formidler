@@ -5,8 +5,8 @@ metadata:
   namespace: teamdigihot
   labels:
     team: teamdigihot
-  annotations:
-    snorlax.nais.io/enabled: "true"
+#  annotations:
+#    snorlax.nais.io/enabled: "true"
 spec:
   image: {{image}}
   team: teamdigihot
