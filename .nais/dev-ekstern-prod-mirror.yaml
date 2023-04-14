@@ -44,3 +44,5 @@ spec:
       value: "true"
     - name: SOKNAD_URL
       value: https://hjelpemidler-prod-mirror.ekstern.dev.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+    - name: SESSION_SECRET
+      value: dummysecret
