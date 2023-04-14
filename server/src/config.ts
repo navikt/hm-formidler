@@ -35,8 +35,13 @@ if (process.env.NODE_ENV === 'production' && process.env.USE_MSW !== 'true') {
   )
 }
 
+const secret = process.env.SESSION_SECRET
+if (secret === undefined) {
+  throw new Error('Forventet verdi for process.env.SESSION_SECRET, men var undefined')
+}
+
 const session = {
-  secret: process.env.SESSION_SECRET || 'tullescret',
+  secret: secret,
   maxAgeMs: Number(process.env.SESSION_MAX_AGE_MS) || 12 * 60 * 60 * 1000, // defaults to 12 hours
 }
 
