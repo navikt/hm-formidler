@@ -23,6 +23,7 @@ export function setupSession() {
       maxAge: config.session.maxAgeMs,
       sameSite: 'lax',
       httpOnly: true,
+      secure: true,
     },
     secret: config.session.secret,
     name: 'hjelpemidlerdigitalsoknad',
