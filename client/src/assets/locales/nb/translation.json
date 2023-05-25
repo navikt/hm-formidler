@@ -152,7 +152,6 @@
   "leggTilEllerEndre.elRullestol.kabin.oppfyllerKravForKabin.nei": "Bruker har <italic>ikke</italic> en varig funksjonsnedsettelse som gir kuldeintoleranse, og som fører til at rullestolen ikke kan benyttes uten kabin",
   "leggTilEllerEndre.elRullestol.kabin.behovForKabin": "Behov for kabin",
   "leggTilEllerEndre.elRullestol.kabin.enklereLøsningErVurdert": "Enklere løsning er vurdert",
-  "leggTilEllerEndre.elRullestol.kabin.årsakForBehovForKabin": "Årsak for behvor for kabin",
   "leggTilEllerEndre.elRullestol.kabin.arsak.HAR_LUFTVEISPROBLEMER": "Brukeren har luftveisproblemer og kan ikke bruke varmemaske",
   "leggTilEllerEndre.elRullestol.kabin.arsak.BEGRENSNING_VED_FUNKSJONSNEDSETTELSE": "Brukerens funksjonsnedsettelse gjør at hen ikke selv kan benytte varmepose eller ha på seg varme klær",
   "leggTilEllerEndre.bruker.kroppsmaal": "Kroppsmål: ",
@@ -182,6 +181,7 @@
   "soknadsoversikt.soknadVisningFeil.skrivUt": "Skriv ut sak",
   "frist.for.å.bekrefte": "Frist for å bekrefte",
   "oppdatert": "Oppdatert",
+  "grunnenTilBehovet": "Grunnen til behovet",
   "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.label": "Utprøving for bruker:",
   "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.harPrøvd": "Bruker har hatt en vellykket utprøving av prøvelisensen.",
   "hjelpemiddelinfo.kalenderapp.utprøvingForBruker.harIkkePrøvd": "Bruker har ikke testet prøvelisensen. Informasjon er gitt om at bruker vil bli bedt om å teste prøvelisensen under behandling av saken.",
@@ -195,5 +195,12 @@
   "hjelpemiddelinfo.varmehjelpemiddel.legeBekrefterDiagnose": "Kommunen har opplysninger fra lege om diagnosen til bruker. Legen bekrefter at diagnosen gir nedsatt blodgjennomstrømning i hender eller føtter. Når bruker utsettes for kulde så får hender eller føtter unormal blekhet og cyanose.",
   "hjelpemiddelinfo.varmehjelpemiddel.opplysningerFraLege.overskrift": "Opplysninger fra lege",
   "hjelpemiddelinfo.varmehjelpemiddel.opplysningerFraLegeOppbevaresIKommune": "Opplysningene fra lege oppbevares i kommunen.",
-  "hjelpemiddelinfo.varmehjelpemiddel.opplysingerFraLege.formidlerBekrefterAt": "Formidler bekrefter at"
+  "hjelpemiddelinfo.varmehjelpemiddel.opplysingerFraLege.formidlerBekrefterAt": "Formidler bekrefter at",
+  "hjelpemiddelinfo.seng.behovForSeng": "Behov for seng",
+  "hjelpemiddelinfo.seng.påkrevdBehov.dysfunkSøvnmønster.oppfylt": "Barnet har en varig funksjonsnedsettelse som gir et dysfunksjonelt søvnmønster slik at barnet får for lite søvn. Dette fører til at barnet får nedsatt funksjonsevne på dagtid.",
+  "hjelpemiddelinfo.seng.påkrevdBehov.dysfunkSøvnmønster.ikkeOppfylt": "Barnet har <italic>ikke</italic> en varig funksjonsnedsettelse som gir et dysfunksjonelt søvnmønster slik at barnet får for lite søvn.",
+  "hjelpemiddelinfo.seng.påkrevdBehov.sterkeUfrivilligeBevegelser.oppfylt": "Barnet har behov for sengen på grunn av sterke ufrivillige bevegelser.",
+  "hjelpemiddelinfo.seng.påkrevdBehov.sterkeUfrivilligeBevegelser.ikkeOppfylt": "Barnet har <italic>ikke</italic> behov for sengen på grunn av sterke ufrivillige bevegelser.",
+  "hjelpemiddelinfo.seng.behov.dysfunkSøvnmønster": "Barnet har en varig funksjonsnedsettelse som gir et dysfunksjonelt søvnmønster slik at barnet får for lite søvn. Dette fører til at barnet får nedsatt funksjonsevne på dagtid.",
+  "hjelpemiddelinfo.seng.behov.risikoForFallUtAvSeng": "Barnet har varig nedsatt funksjonsevne som gir økt risiko for å falle ut av seng."
 }

@@ -29,6 +29,21 @@ export type HjelpemiddelItem = {
   personlofterInfo?: PersonlofterInfo
   appInfo?: AppInfo
   varmehjelpemiddelInfo?: VarmehjelpemiddelInfo
+  sengeInfo?: SengeInfo
+}
+
+export type SengeInfo = {
+  påkrevdBehov?: BehovForSeng
+  brukerOppfyllerPåkrevdBehov?: boolean
+  behovForSeng?: BehovForSeng
+  behovForSengBegrunnelse?: string
+}
+
+export enum BehovForSeng {
+  DYSFUNKSJONELT_SØVNMØNSTER = 'DYSFUNKSJONELT_SØVNMØNSTER',
+  RISIKO_FOR_FALL_UT_AV_SENG = 'RISIKO_FOR_FALL_UT_AV_SENG',
+  STERKE_UFRIVILLIGE_BEVEGELSER = 'STERKE_UFRIVILLIGE_BEVEGELSER',
+  ANNET_BEHOV = 'ANNET_BEHOV',
 }
 
 export type Hjelpemiddeltilbehoer = {

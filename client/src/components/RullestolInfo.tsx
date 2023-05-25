@@ -77,9 +77,7 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
                   </div>
 
                   <div style={{ marginBottom: '0.5rem' }}>
-                    <Label style={{ display: 'inline' }}>
-                      {t('leggTilEllerEndre.elRullestol.kabin.årsakForBehovForKabin')}:{' '}
-                    </Label>
+                    <Label style={{ display: 'inline' }}>{t('grunnenTilBehovet')}: </Label>
                     <BodyShort style={{ display: 'inline' }}>
                       {hm.elektriskRullestolInfo.kabin.arsakForBehovBegrunnelse}
                     </BodyShort>
