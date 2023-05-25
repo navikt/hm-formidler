@@ -15,10 +15,7 @@ const SengeInfo = ({ hm }: Props) => {
       {hm.sengeInfo?.påkrevdBehov ? (
         <>
           <div style={{ marginBottom: '0.5rem' }}>
-            <Label>
-              {t('hjelpemiddelinfo.seng.behovForSeng')}
-              <br />
-            </Label>
+            <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
             <BodyShort style={{ display: 'inline' }}>
               {hm.sengeInfo.påkrevdBehov === BehovForSeng.DYSFUNKSJONELT_SØVNMØNSTER && (
                 <>
