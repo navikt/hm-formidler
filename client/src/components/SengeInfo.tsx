@@ -16,7 +16,7 @@ const SengeInfo = ({ hm }: Props) => {
         <>
           <div style={{ marginBottom: '0.5rem' }}>
             <Label>
-              {t('hjelpemiddelinfo.seng.behovForSeng.overskrift')}
+              {t('hjelpemiddelinfo.seng.behovForSeng')}
               <br />
             </Label>
             <BodyShort style={{ display: 'inline' }}>
@@ -38,10 +38,10 @@ const SengeInfo = ({ hm }: Props) => {
               {hm.sengeInfo.påkrevdBehov === BehovForSeng.STERKE_UFRIVILLIGE_BEVEGELSER && (
                 <>
                   {hm.sengeInfo.brukerOppfyllerPåkrevdBehov ? (
-                    <>{t('hjelpemiddelinfo.påkrevdBehov.sterkeUfrivilligeBevegelser.oppfylt')}</>
+                    <>{t('hjelpemiddelinfo.seng.påkrevdBehov.sterkeUfrivilligeBevegelser.oppfylt')}</>
                   ) : (
                     <Trans
-                      i18nKey="hjelpemiddelinfo.påkrevdBehov.sterkeUfrivilligeBevegelser.ikkeOppfylt"
+                      i18nKey="hjelpemiddelinfo.seng.påkrevdBehov.sterkeUfrivilligeBevegelser.ikkeOppfylt"
                       components={{
                         italic: <em />,
                       }}
@@ -54,7 +54,7 @@ const SengeInfo = ({ hm }: Props) => {
           <div style={{ marginBottom: '0.5rem' }}>
             {hm.sengeInfo.behovForSengBegrunnelse && (
               <BodyShort>
-                <b>{t('leggTilEllerEndre.grunnenTilBehovet')}: </b> {hm.sengeInfo.behovForSengBegrunnelse}
+                <b>{t('grunnenTilBehovet')}: </b> {hm.sengeInfo.behovForSengBegrunnelse}
               </BodyShort>
             )}
           </div>
