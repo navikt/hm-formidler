@@ -20,14 +20,14 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
             {hm.posisjoneringssystemInfo.skalIkkeBrukesSomBehandlingshjelpemiddel && (
               <li>
                 <BodyShort>
-                  {t('leggTilEllerEndre.posisjoneringssystem.skalIkkeBrukesSomBehandlingshjelpemiddel')}
+                  {t('hjelpemiddelinfo.posisjoneringssystem.skalIkkeBrukesSomBehandlingshjelpemiddel')}
                 </BodyShort>
               </li>
             )}
             {hm.posisjoneringssystemInfo.skalIkkeBrukesTilRenSmertelindring && (
               <li>
                 <BodyShort>
-                  {t('leggTilEllerEndre.posisjoneringssystem.skalIkkeBrukesTilRenSmertelindring')}
+                  {t('hjelpemiddelinfo.posisjoneringssystem.skalIkkeBrukesTilRenSmertelindring')}
                 </BodyShort>
               </li>
             )}
@@ -38,7 +38,7 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
           <b>{t('felles.behov')}: </b>
-          {t('leggTilEllerEndre.posisjoneringssystem.STORE_LAMMELSER')}
+          {t('hjelpemiddelinfo.posisjoneringssystem.STORE_LAMMELSER')}
         </BodyShort>
       </div>
     )}
@@ -47,13 +47,13 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
           <b>{t('felles.behov')}: </b>
-          {t('leggTilEllerEndre.posisjoneringssystem.DIREKTE_AVHJELPE_I_DAGLIGLIVET')}{' '}
-          {t('handlekurv.posisjoneringssystem.oppgaverIDagliglivet')}
+          {t('hjelpemiddelinfo.posisjoneringssystem.DIREKTE_AVHJELPE_I_DAGLIGLIVET')}{' '}
+          {t('hjelpemiddelinfo.posisjoneringssystem.oppgaverIDagliglivet')}
           {hm.posisjoneringssystemInfo.oppgaverIDagliglivet?.map((oppgave) =>
             oppgave === PosisjoneringsputeOppgaverIDagligliv.ANNET ? (
               ` ${hm.posisjoneringssystemInfo?.oppgaverIDagliglivetAnnet}`
             ) : (
-              <> {t(`leggTilEllerEndre.posisjoneringssystem.behov.${oppgave}`)}</>
+              <> {t(`hjelpemiddelinfo.posisjoneringssystem.behov.${oppgave}`)}</>
             )
           )}
         </BodyShort>

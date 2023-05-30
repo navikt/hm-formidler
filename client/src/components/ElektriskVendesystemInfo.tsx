@@ -13,7 +13,7 @@ const ElektriskVendesystemInfo = ({ hm }: Props) => {
     {hm.elektriskVendesystemInfo?.sengForMontering?.hmsnr && (
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
-          <b>{t('hjelpemiddelinfo.seng.behovForSeng')}</b>
+          <b>{t('hjelpemiddelinfo.elektriskVendesystem')}</b>
           {hm.elektriskVendesystemInfo.sengForMontering?.hmsnr}{' '}
           {hm.elektriskVendesystemInfo.sengForMontering?.navn}
         </BodyShort>
@@ -23,14 +23,14 @@ const ElektriskVendesystemInfo = ({ hm }: Props) => {
     {hm.elektriskVendesystemInfo?.sengForMontering?.madrassbredde && (<>
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
-          <b>{t('handlekurv.elektriskVendesystem.madrassBredde')}</b>
+          <b>{t('hjelpemiddelinfo.elektriskVendesystem.madrassBredde')}</b>
           {hm.elektriskVendesystemInfo.sengForMontering?.madrassbredde} cm
         </BodyShort>
       </div>
       {hm.elektriskVendesystemInfo.standardLakenByttesTilRiktigStørrelseAvNav && (
         <div style={{ marginBottom: '0.5rem' }}>
           <Alert variant="info" inline>
-            {t('handlekurv.elektriskVendesystem.standardLakenByttesAvNAV', {
+            {t('hjelpemiddelinfo.elektriskVendesystem.standardLakenByttesAvNAV', {
               bredde: hm.elektriskVendesystemInfo.sengForMontering?.madrassbredde,
             })}
           </Alert>

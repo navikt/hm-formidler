@@ -15,7 +15,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
           <b>{t('felles.bruksområde')}: </b>
-          {t('leggTilEllerEndre.posisjoneringsputeForBarn.bruk.TILRETTELEGGE_UTGANGSSTILLING')}
+          {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TILRETTELEGGE_UTGANGSSTILLING')}
         </BodyShort>
       </div>
     )}
@@ -25,7 +25,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
         <div style={{ marginBottom: '0.5rem' }}>
           <BodyShort>
             <b>{t('felles.bruksområde')}: </b>
-            {t('leggTilEllerEndre.posisjoneringsputeForBarn.bruk.TRENING_AKTIVITET_STIMULERING')}
+            {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TRENING_AKTIVITET_STIMULERING')}
           </BodyShort>
         </div>
         {(hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan ||
@@ -39,14 +39,14 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
                   {hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan && (
                     <li>
                       <BodyShort>
-                        {t('leggTilEllerEndre.posisjoneringssystem.detErLagetEnMålrettetPlan')}
+                        {t('hjelpemiddelinfo.posisjoneringssystem.detErLagetEnMålrettetPlan')}
                       </BodyShort>
                     </li>
                   )}
                   {hm.posisjoneringsputeForBarnInfo.planenOppbevaresIKommunen && (
                     <li>
                       <BodyShort>
-                        {t('leggTilEllerEndre.posisjoneringssystem.planenOppbevaresIKommunen')}
+                        {t('hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen')}
                       </BodyShort>
                     </li>
                   )}
@@ -59,7 +59,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
     {hm.posisjoneringsputeForBarnInfo?.brukerErOver26År && (
       <div style={{ marginBottom: '0.5rem' }}>
         <Alert variant="warning" inline>
-          {t('handlekurv.posisjoneringsputeForBarn.personOver26År')}
+          {t('hjelpemiddelinfo.posisjoneringsputeForBarn.personOver26År')}
         </Alert>
       </div>
     )}
