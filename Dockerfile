@@ -8,6 +8,8 @@ RUN yarn install --frozen-lockfile --silent
 
 COPY client .
 
+# Upgrade grep to support the --include option, required for i18n tests
+RUN apk add --no-cache --upgrade grep
 RUN yarn build
 
 FROM node:16.15.0-alpine as server-builder
