@@ -29,6 +29,68 @@ export type HjelpemiddelItem = {
   personlofterInfo?: PersonlofterInfo
   appInfo?: AppInfo
   varmehjelpemiddelInfo?: VarmehjelpemiddelInfo
+  sengeInfo?: SengeInfo
+  elektriskVendesystemInfo?: ElektriskVendesystemInfo
+  posisjoneringssystemInfo?: PosisjoneringssystemInfo
+  posisjoneringsputeForBarnInfo?: PosisjoneringsputeForBarnInfo
+}
+
+export type PosisjoneringsputeForBarnInfo = {
+  bruksområde?: PosisjoneringsputeForBarnBruk
+  brukerErOver26År?: boolean
+  detErLagetEnMålrettetPlan?: boolean
+  planenOppbevaresIKommunen?: boolean
+}
+
+export enum PosisjoneringsputeForBarnBruk {
+  TILRETTELEGGE_UTGANGSSTILLING = 'TILRETTELEGGE_UTGANGSSTILLING',
+  TRENING_AKTIVITET_STIMULERING = 'TRENING_AKTIVITET_STIMULERING',
+}
+
+export type PosisjoneringssystemInfo = {
+  skalIkkeBrukesSomBehandlingshjelpemiddel?: boolean
+  skalIkkeBrukesTilRenSmertelindring?: boolean
+  behov?: PosisjoneringsputeBehov
+  oppgaverIDagliglivet?: PosisjoneringsputeOppgaverIDagligliv[]
+  oppgaverIDagliglivetAnnet?: string
+}
+
+export enum PosisjoneringsputeBehov {
+  STORE_LAMMELSER = 'STORE_LAMMELSER',
+  DIREKTE_AVHJELPE_I_DAGLIGLIVET = 'DIREKTE_AVHJELPE_I_DAGLIGLIVET',
+}
+
+export enum PosisjoneringsputeOppgaverIDagligliv {
+  SPISE_DRIKKE_OL = 'SPISE_DRIKKE_OL',
+  BRUKE_DATAUTSTYR = 'BRUKE_DATAUTSTYR',
+  FØLGE_OPP_BARN = 'FØLGE_OPP_BARN',
+  HOBBY_FRITID_U26 = 'HOBBY_FRITID_U26',
+  ANNET = 'ANNET',
+}
+
+export type ElektriskVendesystemInfo = {
+  sengForMontering?: SengForVendesystemMontering
+  standardLakenByttesTilRiktigStørrelseAvNav?: boolean
+}
+
+export type SengForVendesystemMontering = {
+  hmsnr?: string
+  navn?: string
+  madrassbredde?: number
+}
+
+export type SengeInfo = {
+  påkrevdBehov?: BehovForSeng
+  brukerOppfyllerPåkrevdBehov?: boolean
+  behovForSeng?: BehovForSeng
+  behovForSengBegrunnelse?: string
+}
+
+export enum BehovForSeng {
+  DYSFUNKSJONELT_SØVNMØNSTER = 'DYSFUNKSJONELT_SØVNMØNSTER',
+  RISIKO_FOR_FALL_UT_AV_SENG = 'RISIKO_FOR_FALL_UT_AV_SENG',
+  STERKE_UFRIVILLIGE_BEVEGELSER = 'STERKE_UFRIVILLIGE_BEVEGELSER',
+  ANNET_BEHOV = 'ANNET_BEHOV',
 }
 
 export type Hjelpemiddeltilbehoer = {

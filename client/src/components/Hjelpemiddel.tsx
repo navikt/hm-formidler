@@ -8,6 +8,10 @@ import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { Kategori } from '../soknad/kategorier'
 import { AppInfo } from './AppInfo'
 import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
+import SengeInfo from './SengeInfo'
+import ElektriskVendesystemInfo from './ElektriskVendesystemInfo'
+import PosisjoneringssystemInfo from './PosisjoneringssystemInfo'
+import PosisjoneringsputerForBarnInfo from './PosisjoneringsputerForBarnInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
@@ -34,6 +38,10 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       )}
       {hm.appInfo && <AppInfo hm={hm} />}
       {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
+      {hm.sengeInfo && <SengeInfo hm={hm} />}
+      {hm.elektriskVendesystemInfo && <ElektriskVendesystemInfo hm={hm} />}
+      {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
+      {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
     </>
   )
 }
