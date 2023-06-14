@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { BehovsmeldingType } from '../../interfaces/SoknadInfo'
 import { SoknadStatus } from '../../statemanagement/SoknadStatus'
 
@@ -41,8 +42,8 @@ export const sakerMock = [
   {
     søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: '2021-03-08T18:59:13.992+00:00',
-    datoOppdatert: '2021-03-08T18:59:13.992+00:00',
+    datoOpprettet: moment(),
+    datoOppdatert: moment(),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'false',
     fnrBruker: '12345678910',
@@ -197,8 +198,8 @@ export const sakerMock = [
   {
     søknadId: 'fc8ee79a-b234-4201-8735-129c9cff8d0b',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: '2021-02-07T14:06:59.269+00:00',
-    datoOppdatert: '2021-03-08T14:06:59.269+00:00',
+    datoOpprettet: moment().subtract(3, 'days'),
+    datoOppdatert: moment().subtract(3, 'days'),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'true',
     fnrBruker: '12345678910',
@@ -209,8 +210,8 @@ export const sakerMock = [
   {
     søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: '2021-02-07T14:06:59.269+00:00',
-    datoOppdatert: '2021-03-08T14:06:59.269+00:00',
+    datoOpprettet: moment().subtract(12, 'days'),
+    datoOppdatert: moment().subtract(12, 'days'),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'true',
     fnrBruker: '12345678910',
