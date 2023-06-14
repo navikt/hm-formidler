@@ -1,7 +1,7 @@
 import { BodyShort, Label } from '@navikt/ds-react'
 import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { BehovForSeng, HjelpemiddelItem } from '../interfaces/CommonTypes'
+import {BehovForSeng, HjelpemiddelItem, MadrassValg} from '../interfaces/CommonTypes'
 
 interface Props {
   hm: HjelpemiddelItem
@@ -73,6 +73,16 @@ const SengeInfo = ({ hm }: Props) => {
             </>
           )}
         </BodyShort>
+      )}
+      {hm.sengeInfo?.madrassValg && (
+          <BodyShort>
+            <b>{t('hjelpemiddelinfo.seng.madrass')}: </b>
+            <>
+              {hm.sengeInfo.madrassValg === MadrassValg.TrengerMadrass
+                  ? t('hjelpemiddelinfo.seng.madrass.trengerMadrass')
+                  : t('hjelpemiddelinfo.seng.madrass.harMadrassFraFør')}
+            </>
+          </BodyShort>
       )}
     </>
   )

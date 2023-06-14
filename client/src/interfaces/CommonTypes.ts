@@ -84,6 +84,7 @@ export type SengeInfo = {
   brukerOppfyllerPåkrevdBehov?: boolean
   behovForSeng?: BehovForSeng
   behovForSengBegrunnelse?: string
+  madrassValg?: MadrassValg
 }
 
 export enum BehovForSeng {
@@ -141,6 +142,12 @@ export enum SitteputeValg {
   StandardSittepute = 'StandardSittepute',
   LeggesTilSeparat = 'LeggesTilSeparat',
 }
+
+export enum MadrassValg {
+  TrengerMadrass = 'TrengerMadrass',
+  HarFraFor = 'HarFraFør',
+}
+
 
 export type ElektriskRullestolInfo = {
   godkjenningskurs?: boolean
