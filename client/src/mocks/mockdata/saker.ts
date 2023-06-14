@@ -42,8 +42,8 @@ export const sakerMock = [
   {
     søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment(),
-    datoOppdatert: moment(),
+    datoOpprettet: moment().toISOString(),
+    datoOppdatert: moment().toISOString(),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'false',
     fnrBruker: '12345678910',
@@ -198,8 +198,8 @@ export const sakerMock = [
   {
     søknadId: 'fc8ee79a-b234-4201-8735-129c9cff8d0b',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment().subtract(3, 'days'),
-    datoOppdatert: moment().subtract(3, 'days'),
+    datoOpprettet: moment().subtract(3, 'days').toISOString(),
+    datoOppdatert: moment().subtract(3, 'days').toISOString(),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'true',
     fnrBruker: '12345678910',
@@ -210,8 +210,8 @@ export const sakerMock = [
   {
     søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment().subtract(12, 'days'),
-    datoOppdatert: moment().subtract(12, 'days'),
+    datoOpprettet: moment().subtract(12, 'days').toISOString(),
+    datoOppdatert: moment().subtract(12, 'days').toISOString(),
     status: SoknadStatus.VENTER_GODKJENNING,
     fullmakt: 'true',
     fnrBruker: '12345678910',
