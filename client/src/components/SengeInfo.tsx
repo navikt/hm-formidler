@@ -10,8 +10,6 @@ interface Props {
 const SengeInfo = ({ hm }: Props) => {
   const { t } = useTranslation()
 
-  console.log('sengeInfo', hm.sengeInfo)
-
   return (
     <>
       {hm.sengeInfo?.påkrevdBehov ? (
