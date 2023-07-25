@@ -1,17 +1,19 @@
+import { BodyShort } from '@navikt/ds-react'
 import React from 'react'
-import Hjelpemiddelinfo from './Hjelpemiddelinfo'
-import Tilbehoerinfo from './Tilbehoerinfo'
-import { HjelpemiddelItem } from '../interfaces/CommonTypes'
-import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
-import { RullestolInfo } from './RullestolInfo'
+import { Trans } from 'react-i18next'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
+import { HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { Kategori } from '../soknad/kategorier'
 import { AppInfo } from './AppInfo'
-import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
-import SengeInfo from './SengeInfo'
 import ElektriskVendesystemInfo from './ElektriskVendesystemInfo'
-import PosisjoneringssystemInfo from './PosisjoneringssystemInfo'
+import Hjelpemiddelinfo from './Hjelpemiddelinfo'
+import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
 import PosisjoneringsputerForBarnInfo from './PosisjoneringsputerForBarnInfo'
+import PosisjoneringssystemInfo from './PosisjoneringssystemInfo'
+import { RullestolInfo } from './RullestolInfo'
+import SengeInfo from './SengeInfo'
+import Tilbehoerinfo from './Tilbehoerinfo'
+import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
@@ -34,14 +36,37 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       </div>
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-        <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
-      )}
+          <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
+        )}
       {hm.appInfo && <AppInfo hm={hm} />}
       {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
       {hm.sengeInfo && <SengeInfo hm={hm} />}
       {hm.elektriskVendesystemInfo && <ElektriskVendesystemInfo hm={hm} />}
       {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
       {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
+
+      {hm.diverseInfo &&
+        Object.entries(hm.diverseInfo).map(([key, value]) => {
+          if (value === undefined) {
+            return null
+          } else {
+            return (
+              <div style={{ marginBottom: '0.5rem' }} key={key}>
+                <BodyShort>
+                  <Trans
+                    i18nKey={`hjelpemiddel.diverseInfo.${key}`}
+                    values={{ value: value }}
+                    components={{
+                      italic: <em />,
+                      bold: <b />,
+                    }}
+                  />
+                </BodyShort>
+              </div>
+
+            )
+          }
+        })}
     </>
   )
 }

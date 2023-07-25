@@ -33,7 +33,9 @@ export type HjelpemiddelItem = {
   elektriskVendesystemInfo?: ElektriskVendesystemInfo
   posisjoneringssystemInfo?: PosisjoneringssystemInfo
   posisjoneringsputeForBarnInfo?: PosisjoneringsputeForBarnInfo
+  diverseInfo?: { [key: string]: string }
 }
+
 
 export type PosisjoneringsputeForBarnInfo = {
   bruksområde?: PosisjoneringsputeForBarnBruk
