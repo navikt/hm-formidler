@@ -1,4 +1,4 @@
-import { BodyShort, Label, LinkPanel, Panel, Tag, TagProps } from '@navikt/ds-react'
+import { BodyShort, Detail, Label, LinkPanel, Panel, Tag, TagProps } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -76,6 +76,8 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
               </BodyShort>
             </div>
           </div>
+          <Detail>Innsendt: {formaterDato(soknad.datoOpprettet)}</Detail>
+          <Detail>Sist oppdatert: {formaterDato(soknad.datoOppdatert)}</Detail>
         </div>
         <div>
           {/* Legger på margin her for å få etikketter for ikke-klikkbare panel inline vertikalt

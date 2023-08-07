@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { Button, Loader } from '@navikt/ds-react'
+import { Button, Detail, Loader } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useParams, Link } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
@@ -17,6 +17,7 @@ import { Soknadsdata } from '../interfaces/SoknadInfo'
 import { Back } from '@navikt/ds-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
+import { formaterDato } from '../Utils'
 
 interface ParamTypes {
   soknadsid: string
@@ -32,6 +33,8 @@ const SoknadVisning: React.FC = () => {
     behovsmeldingType: string | undefined
     status: SoknadStatus | undefined
     valgteÅrsaker?: String[] | undefined
+    datoOpprettet: string
+    datoOppdatert: string
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
@@ -57,7 +60,7 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker } = data
+  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert } = data
 
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
@@ -81,9 +84,13 @@ const SoknadVisning: React.FC = () => {
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
           </Button>
         </div>
+        <div className="customPanel">
+          <Detail>Innsendt: {formaterDato(datoOpprettet)}</Detail>
+          <Detail>Sist oppdatert: {formaterDato(datoOppdatert)}</Detail>
+        </div>
       </header>
 
-      <main style={{ paddingTop: '2rem' }}>
+      <main>
         <div className="customPanel">
           <Soknad
             ref={printRef}
