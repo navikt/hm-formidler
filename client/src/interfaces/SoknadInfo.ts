@@ -14,7 +14,7 @@ export interface SoknadInfo {
   navnBruker?: string
   fnrBruker: string
   søknadsdata?: Soknadsdata
-  valgteÅrsaker?: String[]
+  valgteÅrsaker?: string[]
 }
 
 export interface Soknadsdata {
@@ -28,10 +28,10 @@ export interface Soknadsdata {
 
 export enum ValgtÅrsak {
   ANNET = 'Annet',
-  DUPLIKAT = 'Duplikat av en annen bestilling'
+  DUPLIKAT = 'Duplikat av en annen bestilling',
 }
 
 export enum BehovsmeldingType {
   SØKNAD = 'SØKNAD',
-  BESTILLING = 'BESTILLING'
+  BESTILLING = 'BESTILLING',
 }

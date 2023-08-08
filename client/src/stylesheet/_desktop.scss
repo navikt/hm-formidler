@@ -31,7 +31,7 @@
     margin: 0 auto $lSpacing;
   }
 
-  .customPanel > .nav-veilederpanel--info{
+  .customPanel > .nav-veilederpanel--info {
     background-color: #6ab889;
   }
 
@@ -53,7 +53,7 @@
     width: 20em;
   }
 
-  .soknadKort{
+  .soknadKort {
     align-items: 'center';
     justify-content: 'flex-start';
   }
@@ -72,12 +72,12 @@
   .mobile-only {
     display: none;
   }
-  
+
   .hjelpemiddelinfo-navn {
     flex: 1;
     word-break: break-word;
   }
-  
+
   .hjelpemiddelinfo-antall {
     flex-grow: 0;
     flex-shrink: 0;
@@ -89,7 +89,7 @@
     flex-shrink: 0;
     flex-basis: 7rem;
   }
-  
+
   .hjelpemiddelinfo-utlevert {
     flex-grow: 0;
     flex-shrink: 0;
@@ -100,7 +100,7 @@
     display: flex;
     flex-flow: row wrap;
   }
-  
+
   .tilbehoerinfo-antall {
     flex: 0 0 7rem;
   }
@@ -115,5 +115,3 @@
     width: 40rem;
   }
 }
-
-
