@@ -14,7 +14,7 @@ import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../uti
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
-import { Back } from '@navikt/ds-icons'
+import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
 import { formaterDato, hentTagVariant } from '../Utils'
@@ -73,7 +73,7 @@ const SoknadVisning: React.FC = () => {
       <header>
         <div className="customPanel">
           <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
-            <Back title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
+            <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Link>
         </div>
