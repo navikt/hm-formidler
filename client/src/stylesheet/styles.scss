@@ -134,3 +134,13 @@ html {
 .navds-guide-panel.warning .navds-guide-panel__content {
   border-color: orange;
 }
+
+.veilederWrapperPanel {
+  position: relative;
+}
+
+.veilederWrapperPanel .nysak {
+  position: absolute;
+  right: 0;
+  top: -10px;
+}

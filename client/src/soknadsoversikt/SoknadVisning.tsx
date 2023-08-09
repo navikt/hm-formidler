@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { Button, Loader } from '@navikt/ds-react'
+import { BodyShort, Button, Detail, Loader, Panel, Tag } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useParams, Link } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
@@ -14,9 +14,11 @@ import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../uti
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
 import { Soknadsdata } from '../interfaces/SoknadInfo'
-import { Back } from '@navikt/ds-icons'
+import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
+import { formaterDato, hentTagVariant } from '../Utils'
+import { Avstand } from '../components/Avstand'
 
 interface ParamTypes {
   soknadsid: string
@@ -31,7 +33,9 @@ const SoknadVisning: React.FC = () => {
     navnBruker: string | undefined
     behovsmeldingType: string | undefined
     status: SoknadStatus | undefined
-    valgteÅrsaker?: String[] | undefined
+    valgteÅrsaker?: string[] | undefined
+    datoOpprettet: string
+    datoOppdatert: string
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
@@ -57,7 +61,7 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker } = data
+  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert } = data
 
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
@@ -69,7 +73,7 @@ const SoknadVisning: React.FC = () => {
       <header>
         <div className="customPanel">
           <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
-            <Back title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
+            <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
             {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
           </Link>
         </div>
@@ -81,9 +85,20 @@ const SoknadVisning: React.FC = () => {
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
           </Button>
         </div>
+        <Avstand marginBottom={4} />
+        <div className="customPanel">
+          <Panel style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <BodyShort>
+              {t('dato.innsendt')} {formaterDato(datoOpprettet)}
+              <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
+              {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
+            </BodyShort>
+            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+          </Panel>
+        </div>
       </header>
 
-      <main style={{ paddingTop: '2rem' }}>
+      <main>
         <div className="customPanel">
           <Soknad
             ref={printRef}
