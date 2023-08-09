@@ -18,41 +18,6 @@ interface Props {
 const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const { t } = useTranslation()
 
-  // let etikettType: TagProps['variant']
-  // switch (soknad.status) {
-  //   case SoknadStatus.SLETTET:
-  //   case SoknadStatus.UTLØPT:
-  //     etikettType = 'error'
-  //     break
-  //   case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
-  //     etikettType = 'error'
-  //     break
-  //   case SoknadStatus.VENTER_GODKJENNING:
-  //   case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:
-  //     etikettType = 'warning'
-  //     break
-  //   case SoknadStatus.VEDTAKSRESULTAT_INNVILGET:
-  //   case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
-  //   case SoknadStatus.BESTILLING_FERDIGSTILT:
-  //   case SoknadStatus.UTSENDING_STARTET:
-  //     etikettType = 'success'
-  //     break
-  //   case SoknadStatus.BESTILLING_AVVIST:
-  //     if (soknad.valgteÅrsaker && soknad.valgteÅrsaker.includes(ValgtÅrsak.DUPLIKAT)) {
-  //       etikettType = 'info'
-  //     } else {
-  //       etikettType = 'warning'
-  //     }
-  //     break
-  //   case SoknadStatus.GODKJENT:
-  //   case SoknadStatus.GODKJENT_MED_FULLMAKT:
-  //   case SoknadStatus.ENDELIG_JOURNALFØRT:
-  //   case SoknadStatus.VEDTAKSRESULTAT_HENLAGTBORTFALT:
-  //   case SoknadStatus.VEDTAKSRESULTAT_ANNET:
-  //   default:
-  //     etikettType = 'info'
-  // }
-
   const panelInnhold = (
     <>
       <Heading size="small" level="3">
