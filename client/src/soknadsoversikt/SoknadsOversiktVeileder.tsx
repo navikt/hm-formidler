@@ -106,21 +106,15 @@ const SoknadsOversiktVeileder: React.FC = () => {
                           beskrivelse={t('statuser.slettet.beskrivelse')}
                         />
                       </li>
+
+                      <li>
+                        <StatusBeskrivelse
+                          tittel={t('statuser.slettetFrist.tittel')}
+                          beskrivelse={t('statuser.slettetFrist.beskrivelse')}
+                        />
+                      </li>
                     </>
                   )}
-                  <li>
-                    <StatusBeskrivelse
-                      tittel={t('statuser.slettetFrist.tittel')}
-                      beskrivelse={t('statuser.slettetFrist.beskrivelse')}
-                    />
-                  </li>
-
-                  <li>
-                    <StatusBeskrivelse
-                      tittel={t('statuser.slettetFrist.tittel')}
-                      beskrivelse={t('statuser.slettetFrist.beskrivelse')}
-                    />
-                  </li>
                 </>
               )}
               <li>
