@@ -41,9 +41,9 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       )}
 
       <BodyShort>
-        Innsendt {formaterDato(soknad.datoOpprettet)}
+        {t('dato.innsendt')} {formaterDato(soknad.datoOpprettet)}
         <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
-        Sist oppdatert {formaterDato(soknad.datoOppdatert)}
+        {t('dato.oppdatert')} {formaterDato(soknad.datoOppdatert)}
       </BodyShort>
     </>
   )

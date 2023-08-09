@@ -89,9 +89,9 @@ const SoknadVisning: React.FC = () => {
         <div className="customPanel">
           <Panel style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
             <BodyShort>
-              Innsendt {formaterDato(datoOpprettet)}
+              {t('dato.innsendt')} {formaterDato(datoOpprettet)}
               <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
-              Sist oppdatert {formaterDato(datoOppdatert)}
+              {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>
             <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
           </Panel>
