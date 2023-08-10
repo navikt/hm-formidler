@@ -87,13 +87,14 @@ const SoknadVisning: React.FC = () => {
         </div>
         <Avstand marginBottom={4} />
         <div className="customPanel">
-          <Panel style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <Panel>
+            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+            <Avstand marginBottom={3} />
             <BodyShort>
               {t('dato.innsendt')} {formaterDato(datoOpprettet)}
               <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
               {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>
-            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
           </Panel>
         </div>
       </header>
