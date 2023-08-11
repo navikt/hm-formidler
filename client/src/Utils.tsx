@@ -25,7 +25,7 @@ export const formaterDato = (opprettetDato: string): string => {
 }
 
 export const formaterMomentDato = (opprettetDato: moment.Moment): string => {
-  return opprettetDato.format('DD. MMMM YYYY')
+  return opprettetDato.format('D. MMMM YYYY')
 }
 
 export const checkForErrors = (potentialErrorMessages: ValidationError): boolean => {
