@@ -63,7 +63,6 @@ spec:
         - host: www.nav.no
         - host: loginservice.nav.no
         - host: dekoratoren.nav.no
-        - host: tokendings.prod-gcp.nais.io
       rules:
         - application: hm-soknadsbehandling-db
         - application: hm-roller
