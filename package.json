@@ -10,5 +10,6 @@
   "scripts": {
     "dev": "yarn --cwd ./client dev",
     "build": "concurrently --kill-others-on-fail \"yarn --cwd ./client build\" \"yarn --cwd ./server build\""
-  }
+  },
+  "dependencies": {}
 }
