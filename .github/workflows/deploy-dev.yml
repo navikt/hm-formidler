@@ -31,8 +31,9 @@ jobs:
         run: |
           echo "SVISKE"
           ls
-          echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> client/.npmrc
-          echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> server/.npmrc
+          echo '//npm.pkg.github.com/:_authToken='${{ secrets.DUMMY_TOKEN }} >> client/.npmrc
+          echo '//npm.pkg.github.com/:_authToken='${{ secrets.DUMMY_TOKEN }} >> server/.npmrc
+          cat client/.npmrc
 
       - name: Build and push docker image
         uses: nais/docker-build-push@v0
