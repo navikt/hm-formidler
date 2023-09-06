@@ -33,6 +33,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           registry-url: "https://npm.pkg.github.com"
+        
+      - run: cp $NPM_CONFIG_USERCONFIG .npmrc
 
       - name: Pre-deploy
         uses: navikt/digihot-deploy/actions/pre-deploy@v3
