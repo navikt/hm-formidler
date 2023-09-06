@@ -22,10 +22,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup node.js
+      - name: Login to GitHub Package Repository
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up .npmrc to use in Docker build
         uses: actions/setup-node@v3
         with:
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: "https://npm.pkg.github.com"
 
       - name: Pre-deploy
         uses: navikt/digihot-deploy/actions/pre-deploy@v3
@@ -41,7 +48,7 @@ jobs:
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           tag: ${{ env.VERSION_TAG }}
           build_secrets: |
-            READER_TOKEN=${{ secrets.READER_TOKEN }}
+            NODE_AUTH_TOKEN=${{ secrets.READER_TOKEN }}
 
       - name: Deploy to dev-gcp (intern)
         uses: nais/deploy/actions/deploy@v1

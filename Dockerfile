@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY client/package.json client/yarn.lock ./
 
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
+RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
+    echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
 
 RUN yarn install --frozen-lockfile --silent
 
@@ -21,10 +21,9 @@ WORKDIR /app
 
 COPY server/package.json server/yarn.lock ./
 
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
-
-RUN yarn install --frozen-lockfile --silent
+RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
+    NODE_AUTH_TOKEN=$(cat /run/secrets/NODE_AUTH_TOKEN) \
+    yarn install --frozen-lockfile --silent
 
 COPY server .
 
@@ -35,9 +34,6 @@ FROM node:18-alpine as server-dependencies
 WORKDIR /app
 
 COPY server/package.json server/yarn.lock ./
-
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
 
 RUN yarn install --frozen-lockfile --production --silent
 
