@@ -35,7 +35,9 @@ WORKDIR /app
 
 COPY server/package.json server/yarn.lock ./
 
-RUN yarn install --frozen-lockfile --production --silent
+RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
+    NODE_AUTH_TOKEN=$(cat /run/secrets/NODE_AUTH_TOKEN) \
+    yarn install --frozen-lockfile --production --silent
 
 FROM gcr.io/distroless/nodejs:18 as runtime
 
