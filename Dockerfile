@@ -21,6 +21,8 @@ RUN npm run build
 FROM node:18-alpine as server-dependencies
 WORKDIR /app
 COPY server/package.json server/package-lock.json ./
+RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
+    echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
 RUN npm ci
 
 FROM gcr.io/distroless/nodejs:18 as runtime
