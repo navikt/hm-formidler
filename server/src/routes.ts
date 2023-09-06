@@ -50,18 +50,6 @@ export const routes = {
     }
     return router
   },
-  session(): Router {
-    const router = Router()
-    router.get('/exp', (req, res) => {
-      const idportenToken = req.headers['authorization']?.split(' ')[1]
-      if (!idportenToken) {
-        return res.sendStatus(401)
-      }
-      return res.json({ exp: auth.getExp(idportenToken) })
-    })
-
-    return router
-  },
 }
 
 const spaHandler: RequestHandler = async (req, res) => {

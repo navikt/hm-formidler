@@ -65,9 +65,6 @@ export default defineConfig((env) => ({
               target: 'http://localhost:5000',
               changeOrigin: true,
             },
-            '/hjelpemidler/formidler/session/exp': {
-              target: 'http://localhost:5000',
-            },
           },
   },
   test: {

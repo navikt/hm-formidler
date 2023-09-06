@@ -2,8 +2,6 @@ import i18next from 'i18next'
 import { Locale, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
 import { BASE_PATH } from '../App'
 import Cookies from 'universal-cookie'
-import restService from '../services/rest-service'
-import * as Sentry from '@sentry/browser'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 export interface Params {
@@ -22,6 +20,7 @@ export interface Params {
   shareScreen?: boolean
   utloggingsvarsel?: boolean
   logoutUrl?: string
+  logoutWarning?: boolean
 }
 
 const DECORATOR_LANGUAGE_COOKIE = 'decorator-language'
@@ -30,6 +29,7 @@ const DEFAULT_PARAMS: Params = {
   simple: false,
   feedback: false,
   context: 'samarbeidspartner',
+  logoutWarning: true,
 }
 const SPRAAK = ['nb', 'nn']
 
