@@ -3,10 +3,7 @@ WORKDIR /app
 COPY client/package.json client/yarn.lock ./
 RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
     echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
-RUN str="1234"
-RUN length=${#str}
-RUN echo "NODE_AUTH_TOKEN length: $length"
-RUN yarn install --frozen-lockfile --silent
+RUN npm ci
 COPY client .
 RUN apk add --no-cache --upgrade grep
 RUN yarn build
@@ -16,7 +13,7 @@ WORKDIR /app
 COPY server/package.json server/yarn.lock ./
 RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
     NODE_AUTH_TOKEN=$(cat /run/secrets/NODE_AUTH_TOKEN) \
-    yarn install --frozen-lockfile --silent
+    npm ci
 COPY server .
 RUN yarn build
 
