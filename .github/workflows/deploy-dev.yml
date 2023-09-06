@@ -40,6 +40,8 @@ jobs:
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           tag: ${{ env.VERSION_TAG }}
+          build_secrets: |
+            READER_TOKEN=${{ secrets.READER_TOKEN }}
 
       - name: Deploy to dev-gcp (intern)
         uses: nais/deploy/actions/deploy@v1

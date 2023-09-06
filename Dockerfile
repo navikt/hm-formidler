@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY client/package.json client/yarn.lock ./
 
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
+# RUN --mount=type=secret,id=READER_TOKEN \
+#   echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
 
 RUN yarn install --frozen-lockfile --silent
 
@@ -21,8 +21,8 @@ WORKDIR /app
 
 COPY server/package.json server/yarn.lock ./
 
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
+# RUN --mount=type=secret,id=READER_TOKEN \
+#   echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
 
 RUN yarn install --frozen-lockfile --silent
 
@@ -36,8 +36,8 @@ WORKDIR /app
 
 COPY server/package.json server/yarn.lock ./
 
-RUN --mount=type=secret,id=READER_TOKEN \
-  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
+# RUN --mount=type=secret,id=READER_TOKEN \
+#   echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/READER_TOKEN)" >> ~/.npmrc
 
 RUN yarn install --frozen-lockfile --production --silent
 
