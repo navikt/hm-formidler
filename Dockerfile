@@ -1,8 +1,7 @@
 FROM node:18-alpine as client-builder
 WORKDIR /app
 COPY client/package.json client/package-lock.json client/.npmrc ./
-RUN ls
-RUN cat .npmrc
+RUN ls -al
 RUN npm ci
 COPY client .
 RUN apk add --no-cache --upgrade grep
