@@ -1,4 +1,5 @@
-name: Build, deploy to dev-gcp
+name: Build, deploy to & dev-gcp and create release
+
 on:
   push:
     paths-ignore:
@@ -10,62 +11,63 @@ on:
       - main
       - dekoratørvarsel
 
-env:
-  IMAGE: 'ghcr.io/navikt/hm-formidler:${{ github.sha }}'
-
 jobs:
-
-  build:
+  deploy:
+    name: Build and deploy
+    permissions:
+      contents: write
+      id-token: write
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: pre-deploy
-        uses: navikt/digihot-deploy/actions/pre-deploy@v2
+
+      - name: Pre-deploy
+        uses: navikt/digihot-deploy/actions/pre-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_IMAGE: ghcr.io/navikt/hm-formidler
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      
+      - name: Tilgjengeliggjør READER_TOKEN for npm
+        run: |
+          echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> client/.npmrc
+          echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> server/.npmrc
 
-      - name: Login to GitHub Package Repository
-        uses: docker/login-action@v2
+      - name: Build and push docker image
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          team: teamdigihot
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          tag: ${{ env.VERSION_TAG }}
 
-      - name: Set up .npmrc to use in Docker build
-        uses: actions/setup-node@v3
-        with:
-          registry-url: "https://npm.pkg.github.com"
-
-      - run: cp $NPM_CONFIG_USERCONFIG .npmrc
-
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          tags: ${{ env.IMAGE }}
-          push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          secrets: |
-            "NODE_AUTH_TOKEN=${{ secrets.READER_TOKEN }}"
-      - name: deploy to dev-intern
+      - name: Deploy to dev-gcp (intern)
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/dev-intern.yaml
-          VAR: image=${{ env.IMAGE }},commit=${{ github.sha }}
+          PRINT_PAYLOAD: true
+          VAR: commit=${{ github.sha }}
+          IMAGE: ${{steps.docker-build-push.outputs.image}}
+
+      - name: Deploy to dev-gcp (ekstern)
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/dev-ekstern.yaml
+          PRINT_PAYLOAD: true
+          VAR: commit=${{ github.sha }}
+          IMAGE: ${{steps.docker-build-push.outputs.image}}
+
       - name: post-deploy
         if: github.ref == 'refs/heads/main'
-        uses: navikt/digihot-deploy/actions/post-deploy@v2
+        uses: navikt/digihot-deploy/actions/post-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: draft release
+
+      - name: Create release
         if: github.ref == 'refs/heads/main'
         uses: actions/create-release@latest
         env:
@@ -76,10 +78,3 @@ jobs:
           body: ${{ env.CHANGE_LOG }}
           draft: true
           prerelease: false
-      - name: deploy to dev-ekstern
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .nais/dev-ekstern.yaml
-          VAR: image=${{ env.IMAGE }},commit=${{ github.sha }}
