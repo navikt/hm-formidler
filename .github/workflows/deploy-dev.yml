@@ -29,6 +29,8 @@ jobs:
       
       - name: Tilgjengeliggjør READER_TOKEN for npm
         run: |
+          echo "SVISKE"
+          ls
           echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> client/.npmrc
           echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> server/.npmrc
 
