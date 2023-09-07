@@ -6,7 +6,6 @@
     "dev": "vite",
     "test": "vitest --dir ./src",
     "test:ci": "vitest --run --dir ./src",
-    "prebuild": "yarn test:ci",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

@@ -8,8 +8,8 @@
     "prettier": "^2.6.2"
   },
   "scripts": {
-    "dev": "yarn --cwd ./client dev",
-    "build": "concurrently --kill-others-on-fail \"yarn --cwd ./client build\" \"yarn --cwd ./server build\""
+    "dev": "npm run --prefix client dev",
+    "build": "concurrently --kill-others-on-fail \"npm run --prefix client build\" \"npm run --prefix server build\""
   },
   "dependencies": {}
 }
