@@ -1,9 +1,9 @@
 FROM node:18-alpine as client-builder
 WORKDIR /app
 COPY client/package.json client/package-lock.json .npmrc ./
-RUN ls -al
 RUN npm ci
 COPY client .
+# Upgrade grep to support the --include option, required for i18n tests
 RUN apk add --no-cache --upgrade grep
 RUN npm run build
 
@@ -25,7 +25,7 @@ FROM gcr.io/distroless/nodejs:18 as runtime
 WORKDIR /app
 
 ENV NODE_ENV=production
-EXPOSE 5000
+EXPOSE 3000
 
 COPY --from=client-builder /app/dist ./client/dist
 COPY --from=server-builder /app/dist ./server/dist

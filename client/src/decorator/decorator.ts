@@ -11,7 +11,6 @@ const DEFAULT_PARAMS: DecoratorParams = {
   simple: false,
   feedback: false,
   context: 'samarbeidspartner',
-  logoutWarning: true,
 }
 const SPRAAK = ['nb', 'nn']
 
