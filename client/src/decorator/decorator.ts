@@ -1,31 +1,12 @@
 import i18next from 'i18next'
-import { Locale, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
+import { DecoratorParams, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
 import { BASE_PATH } from '../App'
 import Cookies from 'universal-cookie'
-import restService from '../services/rest-service'
-import * as Sentry from '@sentry/browser'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
-export interface Params {
-  context?: 'privatperson' | 'arbeidsgiver' | 'samarbeidspartner'
-  simple?: boolean
-  enforceLogin?: boolean
-  redirectToApp?: boolean
-  redirectToUrl?: string
-  level?: string
-  language?: Locale
-  utilsBackground?: 'white' | 'gray' | 'transparent'
-  feedback?: boolean
-  chatbot?: boolean
-  taSurveys?: string
-  urlLookupTable?: boolean
-  shareScreen?: boolean
-  utloggingsvarsel?: boolean
-  logoutUrl?: string
-}
 
 const DECORATOR_LANGUAGE_COOKIE = 'decorator-language'
-const DEFAULT_PARAMS: Params = {
+const DEFAULT_PARAMS: DecoratorParams = {
   chatbot: false,
   simple: false,
   feedback: false,
