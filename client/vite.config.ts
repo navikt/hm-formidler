@@ -10,7 +10,10 @@ const htmlPlugin = ({ development }: { development?: boolean }): Plugin => ({
     if (development) {
       const decorator = await fetchDecoratorHtml({
         env: 'dev',
-        context: 'samarbeidspartner',
+        params: {
+          context: 'samarbeidspartner',
+          logoutWarning: true,
+        }
       })
       return {
         html: render(html, decorator),
@@ -64,9 +67,6 @@ export default defineConfig((env) => ({
             '/hjelpemidler/formidler/roller-api': {
               target: 'http://localhost:5000',
               changeOrigin: true,
-            },
-            '/hjelpemidler/formidler/session/exp': {
-              target: 'http://localhost:5000',
             },
           },
   },

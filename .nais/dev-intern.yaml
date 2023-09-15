@@ -62,7 +62,8 @@ spec:
       external:
         - host: www-q0.nav.no
         - host: www.nav.no
-        - host: dekoratoren.nav.no
       rules:
         - application: hm-soknadsbehandling-db
         - application: hm-roller
+        - application: nav-dekoratoren
+          namespace: personbruker

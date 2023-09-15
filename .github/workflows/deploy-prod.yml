@@ -5,17 +5,33 @@ on:
 
 jobs:
   deploy-prod:
-    name: Deploy to prod-gcp
+    name: Deploy to prod-gcp and prod-mirror
+    permissions:
+      contents: "write"
+      id-token: "write"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get release tag
+        uses: actions/checkout@v3
+
+      - uses: nais/login@v0
+        name: get image registry
+        id: nais-login
+        with:
+          team: teamdigihot
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+
+      - name: get image
+        env:
+          VERSION_TAG: ${{ github.event.release.tag_name }}
+          REGISTRY: ${{ steps.nais-login.outputs.registry }}
+          APP: ${{ github.event.repository.name }}
         run: |
-          APPLICATION=$(echo $GITHUB_REPOSITORY | cut -d "/" -f 2)
-          IMAGE=docker.pkg.github.com/$GITHUB_REPOSITORY/$APPLICATION:$GITHUB_SHA
+          IMAGE=$REGISTRY/$APP:$VERSION_TAG
           echo "IMAGE=${IMAGE}" >> $GITHUB_ENV
           echo $IMAGE
+
       - name: Deploy to prod-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
@@ -23,14 +39,18 @@ jobs:
           CLUSTER: prod-gcp
           RESOURCE: .nais/prod.yaml
           VAR: commit=${{ github.sha }}
+
       - name: Post-production
         uses: navikt/digihot-deploy/actions/post-production@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy to dev-ekstern-prod-mirror
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/dev-ekstern-prod-mirror.yaml
+          PRINT_PAYLOAD: true
           VAR: commit=${{ github.sha }}
+

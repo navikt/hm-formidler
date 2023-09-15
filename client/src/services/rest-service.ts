@@ -22,18 +22,3 @@ export const fetcher = async (url: string): Promise<any> => {
     return Promise.reject(new ApiError('Ukjent feil mot baksystem', response.status))
   }
 }
-
-const getSessionExp = async (): Promise<Response> => {
-  const response = await fetchGet(`${BASE_PATH}/session/exp`)
-  return response
-}
-
-export interface RestService {
-  getSessionExp: () => Promise<Response>
-}
-
-const restService: RestService = {
-  getSessionExp,
-}
-
-export default restService
