@@ -1,6 +1,6 @@
-import { Alert, BodyShort } from '@navikt/ds-react'
+import { BodyShort } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { HjelpemiddelItem, PosisjoneringsputeForBarnBruk } from '../interfaces/CommonTypes'
+import { HjelpemiddelItem } from '../interfaces/CommonTypes'
 
 interface Props {
   hm: HjelpemiddelItem
@@ -23,6 +23,16 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
           )}
         </BodyShort>
       </div>
+
+      {oppreisningsStolInfo.bruksområde && (
+        <div style={{ marginBottom: '0.5rem' }}>
+          <BodyShort>
+            <b>{t('hjelpemiddelinfo.oppreisningsStol.bruksområde.label')}: </b>
+            {t(`hjelpemiddelinfo.oppreisningsStol.bruksområde.${oppreisningsStolInfo.bruksområde}`)}
+          </BodyShort>
+        </div>
+      )}
+
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
           {oppreisningsStolInfo.behovForStolBegrunnelse ? (

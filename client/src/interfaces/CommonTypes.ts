@@ -210,7 +210,13 @@ export type OppreisningsStolValgInfo = {
   kanBrukerReiseSegSelvFraVanligStol?: boolean
   behov?: OppreisningsStolBehov[]
   behovForStolBegrunnelse?: string
+  bruksområde?: Bruksområde
   sideBetjeningsPanel?: OppreisningsStolSideBetjeningspanelvalg
+}
+
+export enum Bruksområde {
+  EGEN_BOENHET = 'EGEN_BOENHET',
+  FELLESAREAL = 'FELLESAREAL',
 }
 
 export enum OppreisningsStolBehov {
