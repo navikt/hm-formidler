@@ -33,9 +33,9 @@ export type HjelpemiddelItem = {
   elektriskVendesystemInfo?: ElektriskVendesystemInfo
   posisjoneringssystemInfo?: PosisjoneringssystemInfo
   posisjoneringsputeForBarnInfo?: PosisjoneringsputeForBarnInfo
+  oppreisningsStolInfo?: OppreisningsStolValgInfo
   diverseInfo?: { [key: string]: string }
 }
-
 
 export type PosisjoneringsputeForBarnInfo = {
   bruksområde?: PosisjoneringsputeForBarnBruk
@@ -150,7 +150,6 @@ export enum MadrassValg {
   HarFraFor = 'HarFraFør',
 }
 
-
 export type ElektriskRullestolInfo = {
   godkjenningskurs?: boolean
   kanBetjeneManuellStyring?: boolean
@@ -205,4 +204,28 @@ export type VarmehjelpemiddelInfo = {
   harHelseopplysningerFraFør?: boolean
   legeBekrefterDiagnose?: boolean
   opplysningerFraLegeOppbevaresIKommune?: boolean
+}
+
+export type OppreisningsStolValgInfo = {
+  kanBrukerReiseSegSelvFraVanligStol?: boolean
+  behov?: OppreisningsStolBehov[]
+  behovForStolBegrunnelse?: string
+  bruksområde?: Bruksområde
+  sideBetjeningsPanel?: OppreisningsStolSideBetjeningspanelvalg
+}
+
+export enum Bruksområde {
+  EGEN_BOENHET = 'EGEN_BOENHET',
+  FELLESAREAL = 'FELLESAREAL',
+}
+
+export enum OppreisningsStolBehov {
+  OPPGAVER_I_DAGLIGLIVET = 'OPPGAVER_I_DAGLIGLIVET',
+  PLEID_I_HJEMMET = 'PLEID_I_HJEMMET',
+  FLYTTE_MELLOM_STOL_OG_RULLESTOL = 'FLYTTE_MELLOM_STOL_OG_RULLESTOL',
+}
+
+export enum OppreisningsStolSideBetjeningspanelvalg {
+  HØYRE = 'HØYRE',
+  VENSTRE = 'VENSTRE',
 }

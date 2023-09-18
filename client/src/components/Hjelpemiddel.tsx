@@ -14,6 +14,7 @@ import { RullestolInfo } from './RullestolInfo'
 import SengeInfo from './SengeInfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
+import OppreisningsStolInfo from './OppreisningsStolInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
@@ -36,14 +37,15 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       </div>
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-          <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
-        )}
+        <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
+      )}
       {hm.appInfo && <AppInfo hm={hm} />}
       {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
       {hm.sengeInfo && <SengeInfo hm={hm} />}
       {hm.elektriskVendesystemInfo && <ElektriskVendesystemInfo hm={hm} />}
       {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
       {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
+      {hm.oppreisningsStolInfo && <OppreisningsStolInfo hm={hm} />}
 
       {hm.diverseInfo &&
         Object.entries(hm.diverseInfo).map(([key, value]) => {
@@ -63,7 +65,6 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
                   />
                 </BodyShort>
               </div>
-
             )
           }
         })}
