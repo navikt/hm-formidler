@@ -241,7 +241,7 @@
   "hjelpemiddelinfo.oppreisningsStol.behov.FLYTTE_MELLOM_STOL_OG_RULLESTOL": "Personen har ikke ståfunksjon og skal flytte seg selv mellom rullestol og stol med oppreisningsfunksjon.",
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label": "Trekk",
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.ja": "Annet trekk kan benyttes",
-  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei": "Annet trekk ikke kan benyttes",
+  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei": "Annet trekk kan ikke benyttes",
   "dato.innsendt": "Innsendt",
   "dato.oppdatert": "Sist oppdatert"
 }
