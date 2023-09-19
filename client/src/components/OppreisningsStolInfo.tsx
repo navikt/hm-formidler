@@ -63,6 +63,18 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
           </BodyShort>
         </div>
       )}
+
+      <div style={{ marginBottom: '0.5rem' }}>
+        <BodyShort>
+          <b>{t('hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label')}: </b>
+          {oppreisningsStolInfo.annetTrekkKanBenyttes === true && (
+            <>{t('hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.ja')}</>
+          )}
+          {oppreisningsStolInfo.annetTrekkKanBenyttes === false && (
+            <>{t('hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei')}</>
+          )}
+        </BodyShort>
+      </div>
     </>
   )
 }

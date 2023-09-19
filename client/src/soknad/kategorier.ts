@@ -14,4 +14,7 @@ export enum Kategori {
   SkliVendeOgFlytte = 'Skli, vende og flytte',
   TerskeleliminatorerOgRamper = 'Terskeleliminatorer og ramper',
   ElektriskeRullestoler = 'Elektriske rullestoler',
+  Varmehjelpemidler = 'Varmehjelpemidler',
+  OverflyttingVendingOgPosisjonering = 'Overflytting, vending og posisjonering',
+  StolerMedOppreisingsfunksjon = 'Stoler med oppreisingsfunksjon',
 }

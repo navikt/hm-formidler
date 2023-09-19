@@ -212,6 +212,7 @@ export type OppreisningsStolValgInfo = {
   behovForStolBegrunnelse?: string
   bruksområde?: Bruksområde
   sideBetjeningsPanel?: OppreisningsStolSideBetjeningspanelvalg
+  annetTrekkKanBenyttes: boolean
 }
 
 export enum Bruksområde {

@@ -1,18 +1,16 @@
 import React from 'react'
 import { HendelPlassering, HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { BodyShort, Label } from '@navikt/ds-react'
-import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { Trans, useTranslation } from 'react-i18next'
 import { Kategori } from '../soknad/kategorier'
 
 type RullestolInfoProps = {
   hm: HjelpemiddelItem
-  kroppsmaal: Kroppsmaal | undefined
 }
 
 export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfoProps) => {
   const { t } = useTranslation()
-  const { hm, kroppsmaal } = props
+  const { hm  } = props
   return (
     <>
       {hm.rullestolInfo?.skalBrukesIBil && (
@@ -166,13 +164,6 @@ export const RullestolInfo: React.FC<RullestolInfoProps> = (props: RullestolInfo
             </div>
           )}
         </>
-      )}
-      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-        <div>
-          <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
-          <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
-        </div>
       )}
     </>
   )

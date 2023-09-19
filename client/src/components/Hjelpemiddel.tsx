@@ -1,6 +1,6 @@
-import { BodyShort } from '@navikt/ds-react'
+import { BodyShort, Label } from '@navikt/ds-react'
 import React from 'react'
-import { Trans } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
 import { Kategori } from '../soknad/kategorier'
@@ -24,6 +24,8 @@ type HjelpemiddelProps = {
 const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
   const { hm, kroppsmaal } = props
 
+  const { t } = useTranslation()
+
   return (
     <>
       <div>
@@ -37,8 +39,8 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       </div>
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-        <RullestolInfo hm={hm} kroppsmaal={kroppsmaal} />
-      )}
+          <RullestolInfo hm={hm} />
+        )}
       {hm.appInfo && <AppInfo hm={hm} />}
       {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
       {hm.sengeInfo && <SengeInfo hm={hm} />}
@@ -46,6 +48,15 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
       {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
       {hm.oppreisningsStolInfo && <OppreisningsStolInfo hm={hm} />}
+
+      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
+        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
+        hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
+          <div>
+            <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
+            <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
+          </div>
+        )}
 
       {hm.diverseInfo &&
         Object.entries(hm.diverseInfo).map(([key, value]) => {
