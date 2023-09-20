@@ -78,7 +78,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
 
       <div style={{ marginBottom: '0.5rem' }}>
         <BodyShort>
-          <b>{t('hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label')}: </b>
+          <b>{t('hjelpemiddelinfo.oppreisningsStol.løftType.label')}: </b>
           {oppreisningsStolInfo.løftType === OppreisningsStolLøftType.SKRÅLØFT && (
             <>{t('hjelpemiddelinfo.oppreisningsStol.løftType.skråløft')}</>
           )}
