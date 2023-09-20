@@ -242,6 +242,9 @@
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label": "Trekk",
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.ja": "Stol i anna trekk kan nyttast",
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei": "Stol i anna trekk kan ikkje nyttast",
+  "hjelpemiddelinfo.oppreisningsStol.løftType.label": "Skråløft eller rettløft",
+  "hjelpemiddelinfo.oppreisningsStol.løftType.skråløft": "Skråløft",
+  "hjelpemiddelinfo.oppreisningsStol.løftType.rettløft": "Rettløft",
   "dato.innsendt": "Innsendt",
   "dato.oppdatert": "Sist oppdatert"
 }

@@ -213,6 +213,12 @@ export type OppreisningsStolValgInfo = {
   bruksområde?: Bruksområde
   sideBetjeningsPanel?: OppreisningsStolSideBetjeningspanelvalg
   annetTrekkKanBenyttes: boolean
+  løftType: OppreisningsStolLøftType
+}
+
+export enum OppreisningsStolLøftType {
+  'SKRÅLØFT' = 'SKRÅLØFT',
+  'RETTLØFT' = 'RETTLØFT',
 }
 
 export enum Bruksområde {
