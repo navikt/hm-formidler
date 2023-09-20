@@ -240,8 +240,8 @@
   "hjelpemiddelinfo.oppreisningsStol.behov.PLEID_I_HJEMMET": "Oppreisingsfunksjonen er nødvendig for at personen skal bli pleidd i heimen.",
   "hjelpemiddelinfo.oppreisningsStol.behov.FLYTTE_MELLOM_STOL_OG_RULLESTOL": "Personen har ikkje ståfunksjon og skal flytta seg sjølv mellom rullestol og stol med oppreisingsfunksjon.",
   "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label": "Trekk",
-  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.ja": "Anna trekk kan nyttast",
-  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei": "Anna trekk kan ikkje nyttast",
+  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.ja": "Stol i anna trekk kan nyttast",
+  "hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.nei": "Stol i anna trekk kan ikkje nyttast",
   "dato.innsendt": "Innsendt",
   "dato.oppdatert": "Sist oppdatert"
 }
