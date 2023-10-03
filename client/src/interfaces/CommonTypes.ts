@@ -87,6 +87,14 @@ export type SengeInfo = {
   behovForSeng?: BehovForSeng
   behovForSengBegrunnelse?: string
   madrassValg?: MadrassValg
+  høyGrindValg?: HøyGrindValg
+}
+
+export interface HøyGrindValg {
+  erKjentMedTvangsAspekt?: boolean
+  harForsøktOpptrening?: boolean
+  harIkkeForsøktOpptreningBegrunnelse?: string
+  erLagetPlanForOppfølging?: boolean
 }
 
 export enum BehovForSeng {
