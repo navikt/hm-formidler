@@ -91,10 +91,10 @@ export type SengeInfo = {
 }
 
 export interface HøyGrindValg {
-  erKjentMedTvangsAspekt?: boolean
-  harForsøktOpptrening?: boolean
+  erKjentMedTvangsAspekt: boolean
+  harForsøktOpptrening: boolean
   harIkkeForsøktOpptreningBegrunnelse?: string
-  erLagetPlanForOppfølging?: boolean
+  erLagetPlanForOppfølging: boolean
 }
 
 export enum BehovForSeng {
