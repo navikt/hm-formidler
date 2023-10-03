@@ -12,7 +12,7 @@ const SengeInfo = ({ hm }: Props) => {
 
   return (
     <>
-      {hm.sengeInfo?.påkrevdBehov && (
+      {hm.sengeInfo?.påkrevdBehov ? (
         <>
           <div style={{ marginBottom: '0.5rem' }}>
             <BodyShort style={{ display: 'inline' }}>
@@ -56,24 +56,29 @@ const SengeInfo = ({ hm }: Props) => {
             )}
           </div>
         </>
-      )}
-      {hm.sengeInfo?.behovForSeng && (
-        <BodyShort>
-          <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
-          {hm.sengeInfo?.behovForSengBegrunnelse ? (
-            <>{hm.sengeInfo.behovForSengBegrunnelse}</>
-          ) : (
-            <>
-              {hm.sengeInfo?.behovForSeng === BehovForSeng.DYSFUNKSJONELT_SØVNMØNSTER && (
-                <>{t('hjelpemiddelinfo.seng.behov.dysfunkSøvnmønster')}</>
-              )}
+      ) : (
+        <>
+          {hm.sengeInfo?.behovForSeng && (
+            <div style={{ marginBottom: '0.5rem' }}>
+              <BodyShort>
+                <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
+                {hm.sengeInfo?.behovForSengBegrunnelse ? (
+                  <>{hm.sengeInfo.behovForSengBegrunnelse}</>
+                ) : (
+                  <>
+                    {hm.sengeInfo?.behovForSeng === BehovForSeng.DYSFUNKSJONELT_SØVNMØNSTER && (
+                      <>{t('hjelpemiddelinfo.seng.behov.dysfunkSøvnmønster')}</>
+                    )}
 
-              {hm.sengeInfo?.behovForSeng === BehovForSeng.RISIKO_FOR_FALL_UT_AV_SENG && (
-                <>{t('hjelpemiddelinfo.seng.behov.risikoForFallUtAvSeng')}</>
-              )}
-            </>
+                    {hm.sengeInfo?.behovForSeng === BehovForSeng.RISIKO_FOR_FALL_UT_AV_SENG && (
+                      <>{t('hjelpemiddelinfo.seng.behov.risikoForFallUtAvSeng')}</>
+                    )}
+                  </>
+                )}
+              </BodyShort>
+            </div>
           )}
-        </BodyShort>
+        </>
       )}
 
       {hm.sengeInfo?.høyGrindValg && (
