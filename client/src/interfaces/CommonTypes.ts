@@ -35,6 +35,24 @@ export type HjelpemiddelItem = {
   posisjoneringsputeForBarnInfo?: PosisjoneringsputeForBarnInfo
   oppreisningsStolInfo?: OppreisningsStolValgInfo
   diverseInfo?: { [key: string]: string }
+  bytter: Bytte[]
+}
+
+export type Bytte = {
+  hmsnr: string
+  serienr: string | null
+  hjmNavn: string
+  hjmKategori: string
+  årsak: BytteÅrsak | undefined
+  erTilsvarende: boolean
+}
+
+export enum BytteÅrsak {
+  'UTSLITT' = 'UTSLITT',
+  'VOKST_FRA' = 'VOKST_FRA',
+  'ENDRINGER_I_INNBYGGERS_FUNKSJON' = 'ENDRINGER_I_INNBYGGERS_FUNKSJON',
+  'FEIL_STØRRELSE' = 'FEIL_STØRRELSE',
+  'VURDERT_SOM_ØDELAGT_AV_LOKAL_TEKNIKER' = 'VURDERT_SOM_ØDELAGT_AV_LOKAL_TEKNIKER',
 }
 
 export type PosisjoneringsputeForBarnInfo = {
