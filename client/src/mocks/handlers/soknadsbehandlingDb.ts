@@ -23,10 +23,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'BESTILLING_AVVIST',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Vegard Beider',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: ['Duplikat av en annen bestilling'],
         søknadsdata: {
@@ -96,10 +94,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'BESTILLING_AVVIST',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Trude Luth',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: ['Annet'],
         søknadsdata: {
@@ -169,10 +165,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'GODKJENT',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Nasse Nøff',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: [],
         søknadsdata: {
@@ -243,7 +237,6 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2023-03-30T10:08:05.551+00:00',
         datoOppdatert: '2023-03-30T10:08:05.551+00:00',
         status: 'GODKJENT_MED_FULLMAKT',
-        fullmakt: true,
         fnrBruker: '26848497710',
         navnBruker: 'Giovanni Varmevotti',
         søknadsdata: {
@@ -379,7 +372,6 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2023-02-22T11:10:03.481+00:00',
         datoOppdatert: '2023-02-22T11:10:06.639+00:00',
         status: 'GODKJENT_MED_FULLMAKT',
-        fullmakt: true,
         fnrBruker: '26848497710',
         navnBruker: 'Rulle Stolbakken',
         søknadsdata: {
@@ -666,10 +658,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'VENTER_GODKJENNING',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Arne Arnesen',
-        er_digital: true,
         søknadsdata: {
           bruker: {
             etternavn: 'Arnesen',
