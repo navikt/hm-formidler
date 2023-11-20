@@ -104,6 +104,7 @@
   "StandardSittepute": "Ønsker standard sittepute",
   "LeggesTilSeparat": "Trykkavlastende sittepute legges til separat",
   "HarFraFor": "Bruker har sittepute fra før",
+  "soknadvisning.tittel.undefined": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.SØKNAD": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.BESTILLING": "Bestilling for {{navnBruker}}",
   "soknadvisning.tittel.BYTTE": "Bytte for {{navnBruker}}",

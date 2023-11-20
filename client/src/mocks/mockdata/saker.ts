@@ -4,6 +4,18 @@ import { SoknadStatus } from '../../statemanagement/SoknadStatus'
 
 export const sakerMock = [
   {
+    søknadId: '85be32d6-052e-49e5-84c3-3e8de24687c7',
+    behovsmeldingType: BehovsmeldingType.BYTTE,
+    datoOpprettet: '2023-11-20T18:59:13.992+00:00',
+    datoOppdatert: '2023-11-20T18:59:13.992+00:00',
+    status: SoknadStatus.GODKJENT_MED_FULLMAKT, // TODO reelle verdier
+    fullmakt: 'true', // TODO reelle verdier
+    fnrBruker: '12345678910',
+    navnBruker: 'Byttelise Bøttesen',
+    søknadsdata: undefined,
+    valgteÅrsaker: undefined,
+  },
+  {
     søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7cd73hf',
     behovsmeldingType: BehovsmeldingType.BESTILLING,
     datoOpprettet: '2022-06-07T18:59:13.992+00:00',
@@ -203,7 +215,7 @@ export const sakerMock = [
     status: SoknadStatus.GODKJENT_MED_FULLMAKT,
     fullmakt: 'true',
     fnrBruker: '12345678910',
-    navnBruker: 'Berømt Aktivitet',
+    navnBruker: 'Rulle Stolbakken',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
   },
@@ -215,7 +227,7 @@ export const sakerMock = [
     status: SoknadStatus.GODKJENT_MED_FULLMAKT,
     fullmakt: 'true',
     fnrBruker: '12345678910',
-    navnBruker: 'Berømt Aktivitet',
+    navnBruker: 'Giovanni Varmevotti',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
   },
