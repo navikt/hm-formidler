@@ -49,6 +49,7 @@
   "felles.behov": "Behov",
   "felles.bruksområde": "Bruksområde",
   "felles.bekreftetAvFormidler": "Bekrefta av formidler",
+  "felles.serienummer": "Serienummer",
   "handlekurv.labels.begrunnelseForKanIkkeHaTilsvarende": "Kan ikkje ha tilsvarande fordi: ",
   "handlekurv.labels.begrunnelseForLavereRangering": "Grunngjeving for lågare rangering: ",
   "handlekurv.tilbehoer.antall": "{{antall}} stk.",

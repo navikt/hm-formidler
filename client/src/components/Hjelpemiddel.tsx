@@ -52,7 +52,7 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
         hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-          <div>
+          <div style={{ marginBottom: '0.5rem' }}>
             <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
             <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
           </div>
