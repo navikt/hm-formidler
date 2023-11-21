@@ -42,11 +42,12 @@ const SoknadVisning: React.FC = () => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
   }, [])
 
+  
   const printRef = useRef(null)
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
     documentTitle:
-      data && (data.behovsmeldingType === 'BESTILLING' ? `Bestilling` : `Søknad` + ` for ${data.navnBruker}`),
+      data && (t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker })),
     onBeforePrint: () => logKlikkPåSkrivUt(soknadsid),
   })
 
@@ -79,7 +80,7 @@ const SoknadVisning: React.FC = () => {
         </div>
         <div className="banner" style={{ display: 'flex' }}>
           <Heading level="1" size="xlarge">
-            {t('soknadvisning.tittel' + (behovsmeldingType === 'BESTILLING' ? '.bestilling' : ''), { navnBruker })}
+            {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
           </Heading>
           <Button variant="secondary" onClick={handlePrint}>
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}

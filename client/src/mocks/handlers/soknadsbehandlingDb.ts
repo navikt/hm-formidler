@@ -23,10 +23,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'BESTILLING_AVVIST',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Vegard Beider',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: ['Duplikat av en annen bestilling'],
         søknadsdata: {
@@ -74,6 +72,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: null,
               kanIkkeTilsvarande: false,
               navn: 'Topro Terskeleliminator',
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 1,
@@ -95,10 +94,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'BESTILLING_AVVIST',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Trude Luth',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: ['Annet'],
         søknadsdata: {
@@ -146,6 +143,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: null,
               kanIkkeTilsvarande: false,
               navn: 'Topro Terskeleliminator',
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 1,
@@ -167,10 +165,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'GODKJENT',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Nasse Nøff',
-        er_digital: true,
         behovsmeldingType: 'BESTILLING',
         valgteÅrsaker: [],
         søknadsdata: {
@@ -217,6 +213,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: null,
               kanIkkeTilsvarande: false,
               navn: 'Topro Terskeleliminator',
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 1,
@@ -240,14 +237,13 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2023-03-30T10:08:05.551+00:00',
         datoOppdatert: '2023-03-30T10:08:05.551+00:00',
         status: 'GODKJENT_MED_FULLMAKT',
-        fullmakt: true,
         fnrBruker: '26848497710',
-        navnBruker: 'Berømt Aktivitet',
+        navnBruker: 'Giovanni Varmevotti',
         søknadsdata: {
           bruker: {
-            etternavn: 'Aktivitet',
+            etternavn: 'Varmevotti',
             fnummer: '26848497710',
-            fornavn: 'Berømt',
+            fornavn: 'Giovanni',
             telefonNummer: '12121212',
             adresse: 'Kirkeveien 7',
             postnummer: '9590',
@@ -297,6 +293,7 @@ const soknadsbehandlingDbHandlers = [
               utlevertInfo: { utlevertType: null, overførtFraBruker: null, annenKommentar: null },
               appInfo: null,
               varmehjelpemiddelInfo: null,
+              bytter: [],
             },
             {
               antall: 1,
@@ -323,6 +320,7 @@ const soknadsbehandlingDbHandlers = [
                 legeBekrefterDiagnose: null,
                 opplysningerFraLegeOppbevaresIKommune: null,
               },
+              bytter: [],
             },
             {
               antall: 1,
@@ -349,6 +347,7 @@ const soknadsbehandlingDbHandlers = [
                 legeBekrefterDiagnose: true,
                 opplysningerFraLegeOppbevaresIKommune: true,
               },
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 3,
@@ -373,14 +372,13 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2023-02-22T11:10:03.481+00:00',
         datoOppdatert: '2023-02-22T11:10:06.639+00:00',
         status: 'GODKJENT_MED_FULLMAKT',
-        fullmakt: true,
         fnrBruker: '26848497710',
-        navnBruker: 'Berømt Aktivitet',
+        navnBruker: 'Rulle Stolbakken',
         søknadsdata: {
           bruker: {
-            etternavn: 'Aktivitet',
+            etternavn: 'Stolbakken',
             fnummer: '26848497710',
-            fornavn: 'Berømt',
+            fornavn: 'Rulle',
             telefonNummer: '12121212',
             adresse: 'Kirkeveien 7',
             postnummer: '9590',
@@ -426,6 +424,7 @@ const soknadsbehandlingDbHandlers = [
               elektriskRullestolInfo: null,
               personlofterInfo: null,
               utlevertInfo: { utlevertType: null, overførtFraBruker: null, annenKommentar: null },
+              bytter: [],
             },
             {
               antall: 1,
@@ -456,6 +455,7 @@ const soknadsbehandlingDbHandlers = [
               },
               personlofterInfo: null,
               utlevertInfo: { utlevertType: null, overførtFraBruker: null, annenKommentar: null },
+              bytter: [],
             },
             {
               antall: 1,
@@ -491,6 +491,7 @@ const soknadsbehandlingDbHandlers = [
               },
               personlofterInfo: null,
               utlevertInfo: { utlevertType: null, overførtFraBruker: null, annenKommentar: null },
+              bytter: [],
             },
             {
               antall: 1,
@@ -518,6 +519,7 @@ const soknadsbehandlingDbHandlers = [
                 stottepersonSkalAdministrere: true,
                 stottepersonHarProvdProvelisens: false,
               },
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 4,
@@ -533,6 +535,122 @@ const soknadsbehandlingDbHandlers = [
       })
     )
   }),
+  rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/85be32d6-052e-49e5-84c3-3e8de24687c7`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        "søknadId": "85be32d6-052e-49e5-84c3-3e8de24687c7",
+        "behovsmeldingType": "BYTTE",
+        "datoOpprettet": "2023-11-20T11:25:23.209+00:00",
+        "datoOppdatert": "2023-11-20T11:25:28.610+00:00",
+        "status": "GODKJENT_MED_FULLMAKT",
+        "fullmakt": true,
+        "fnrBruker": "26848497710",
+        "navnBruker": "Byttelise Bøttesen",
+        "søknadsdata": {
+            "bruker": {
+                "etternavn": "Bøttesen",
+                "fnummer": "26848497710",
+                "fornavn": "Byttelise",
+                "telefonNummer": "12321321",
+                "adresse": "Kirkeveien 7",
+                "postnummer": "9590",
+                "poststed": "Hasvik",
+                "boform": "Hjemme i egen bolig",
+                "bruksarena": "DAGLIGLIVET",
+                "funksjonsnedsettelser": [
+                    "BEVEGELSE"
+                ],
+                "signatur": "IKKE_INNHENTET_FORDI_BYTTE",
+                "kroppsmaal": {
+                    "setebredde": 42,
+                    "laarlengde": 45,
+                    "legglengde": 38,
+                    "hoyde": 175,
+                    "kroppsvekt": 72
+                },
+                "brukernummer": "25657599",
+                "bekreftedeVilkår": [
+                    "PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1",
+                    "VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1",
+                    "KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1",
+                    "I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1"
+                ]
+            },
+            "formidler": {
+                "navn": "Berømt Aktivitet",
+                "arbeidssted": "NAV Oslo",
+                "stilling": "Fysioterapeut",
+                "adresse": "Oslo Kommune 0484 OSLO",
+                "telefon": "12345678",
+                "treffesEnklest": "Mandag og tirsdag",
+                "epost": "urokkelig@mail.no",
+                "kommunenavn": null
+            },
+            "hjelpemidler": [
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Cross 6 allround sb35 sd35-50 kort",
+                    "hjelpemiddelkategori": "Manuelle rullestoler",
+                    "hmsNr": "278331",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Cross 6 allround sb35 sd35-50 kort",
+                    "rullestolInfo": {
+                        "skalBrukesIBil": true,
+                        "sitteputeValg": "TrengerSittepute"
+                    },
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [
+                        {
+                            "erTilsvarende": true,
+                            "hmsnr": "236958",
+                            "serienr": "821948",
+                            "hjmNavn": "Panthera U3 Light sb33",
+                            "hjmKategori": "Manuelle armdrevne rullestoler",
+                            "årsak": "UTSLITT"
+                        }
+                    ]
+                }
+            ],
+            "hjelpemiddelTotalAntall": 1,
+            "oppfolgingsansvarlig": null,
+            "levering": {
+                "kontaktPerson": {
+                    "navn": null,
+                    "telefon": null,
+                    "kontaktpersonType": "HJELPEMIDDELBRUKER"
+                },
+                "leveringsmaate": "FOLKEREGISTRERT_ADRESSE",
+                "adresse": null,
+                "merknad": "",
+                "tilleggsinfo": []
+            }
+        },
+        "valgteÅrsaker": []
+    })
+    )
+  }),
   rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/:id`, (req, res, ctx) => {
     return res(
       ctx.json({
@@ -540,10 +658,8 @@ const soknadsbehandlingDbHandlers = [
         datoOpprettet: '2021-04-28T18:59:13.992+00:00',
         datoOppdatert: '2021-04-28T18:59:13.992+00:00',
         status: 'VENTER_GODKJENNING',
-        fullmakt: 'false',
         fnrBruker: '12345678910',
         navnBruker: 'Arne Arnesen',
-        er_digital: true,
         søknadsdata: {
           bruker: {
             etternavn: 'Arnesen',
@@ -584,6 +700,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: null,
               kanIkkeTilsvarande: false,
               navn: 'Topro Terskeleliminator',
+              bytter: [],
             },
             {
               antall: 1,
@@ -598,6 +715,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: null,
               kanIkkeTilsvarande: false,
               navn: 'ROHO Quadtro Select lavprofil sb 56',
+              bytter: [],
             },
             {
               antall: 1,
@@ -612,6 +730,7 @@ const soknadsbehandlingDbHandlers = [
               begrunnelse: 'Bruker veier nærmere 100 kg',
               kanIkkeTilsvarande: false,
               navn: 'Maxi 550',
+              bytter: [],
             },
           ],
           hjelpemiddelTotalAntall: 4,

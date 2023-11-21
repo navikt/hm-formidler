@@ -52,7 +52,7 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
         hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-          <div>
+          <div style={{ marginBottom: '0.5rem' }}>
             <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
             <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
           </div>
@@ -79,6 +79,37 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
             )
           }
         })}
+
+      {(hm.bytter.map((bytte) => {
+        return (
+          <>
+            <div style={{ marginBottom: '0.5rem' }}>
+              {bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>)}
+              {!bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>)}
+              <br />
+              <BodyShort>
+                {bytte.hmsnr} {bytte.hjmNavn}
+                {bytte.serienr && (
+                  <>
+                    <br />
+                    {t('felles.serienummer')}: {bytte.serienr}
+                  </>
+                )}
+              </BodyShort>
+            </div>
+            {bytte.årsak && (
+              <div style={{ marginBottom: '0.5rem' }}>
+                <Label>{t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}</Label>
+                <br />
+                <BodyShort>
+                  {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
+                  {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
+                </BodyShort>
+              </div>
+            )}
+          </>
+        )
+      }))}
     </>
   )
 }

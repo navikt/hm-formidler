@@ -34,4 +34,5 @@ export enum ValgtÅrsak {
 export enum BehovsmeldingType {
   SØKNAD = 'SØKNAD',
   BESTILLING = 'BESTILLING',
+  BYTTE = 'BYTTE',
 }
