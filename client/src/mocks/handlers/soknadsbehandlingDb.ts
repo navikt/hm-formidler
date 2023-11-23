@@ -542,7 +542,7 @@ const soknadsbehandlingDbHandlers = [
         "behovsmeldingType": "BYTTE",
         "datoOpprettet": "2023-11-20T11:25:23.209+00:00",
         "datoOppdatert": "2023-11-20T11:25:28.610+00:00",
-        "status": "GODKJENT_MED_FULLMAKT",
+        "status": "INNSENDT_FULLMAKT_IKKE_PÅKREVD",
         "fullmakt": true,
         "fnrBruker": "26848497710",
         "navnBruker": "Byttelise Bøttesen",
