@@ -9,6 +9,7 @@
   "GODKJENT": "Innsendt av bruker",
   "SLETTET": "Slettet av bruker",
   "GODKJENT_MED_FULLMAKT": "Innsendt av deg",
+  "INNSENDT_FULLMAKT_IKKE_PÅKREVD": "Innsendt av deg",
   "VEDTAKSRESULTAT_INNVILGET": "Innvilget",
   "VEDTAKSRESULTAT_MUNTLIG_INNVILGET": "Innvilget",
   "VEDTAKSRESULTAT_DELVIS_INNVILGET": "Delvis innvilget",

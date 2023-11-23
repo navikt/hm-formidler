@@ -108,6 +108,7 @@ export const hentTagVariant = (
       break
     case SoknadStatus.GODKJENT:
     case SoknadStatus.GODKJENT_MED_FULLMAKT:
+    case SoknadStatus.INNSENDT_FULLMAKT_IKKE_PÅKREVD:
     case SoknadStatus.ENDELIG_JOURNALFØRT:
     case SoknadStatus.VEDTAKSRESULTAT_HENLAGTBORTFALT:
     case SoknadStatus.VEDTAKSRESULTAT_ANNET:

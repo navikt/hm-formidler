@@ -8,7 +8,7 @@ export const sakerMock = [
     behovsmeldingType: BehovsmeldingType.BYTTE,
     datoOpprettet: '2023-11-20T18:59:13.992+00:00',
     datoOppdatert: '2023-11-20T18:59:13.992+00:00',
-    status: SoknadStatus.GODKJENT_MED_FULLMAKT, // TODO reelle verdier
+    status: SoknadStatus.INNSENDT_FULLMAKT_IKKE_PÅKREVD,
     fnrBruker: '12345678910',
     navnBruker: 'Byttelise Bøttesen',
     søknadsdata: undefined,
