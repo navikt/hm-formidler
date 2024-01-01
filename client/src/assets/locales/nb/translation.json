@@ -240,6 +240,7 @@
   "hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen": "Planen oppbevares i kommunen.",
   "hjelpemiddelinfo.posisjoneringsputeForBarn.personOver26År": "Personen er over 26 år.",
   "hjelpemiddel.diverseInfo.takhoydeStottestangCm": "<bold>Takhøyde:</bold> {{value}} cm.",
+  "hjelpemiddel.diverseInfo.sitteputeSkalBrukesIRullestolFraNav": "<bold>Formidler bekrefter at:</bold> Sitteputen skal kun brukes i en rullestol som er utlånt fra NAV.",
   "hjelpemiddelinfo.oppreisningsStol.oppfyllerKravForStol.label": "Funksjon",
   "hjelpemiddelinfo.oppreisningsStol.oppfyllerKravForStol.ja": "Personen kan ikke reise seg selv fra vanlige stoler ved bruk av enklere tiltak som for eksempel forhøyningsklosser, puter, støttestang, støttehåndtak og lignende.",
   "hjelpemiddelinfo.oppreisningsStol.oppfyllerKravForStol.nei": "Personen kan reise seg selv fra vanlige stoler ved bruk av enklere tiltak som for eksempel forhøyningsklosser, puter, støttestang, støttehåndtak og lignende.",
@@ -267,6 +268,15 @@
   "hjelpemiddelinfo.bytte.årsak.ENDRINGER_I_INNBYGGERS_FUNKSJON": "endringer i innbyggers funksjon slik at hjelpemidlet ikke lenger dekker behovet",
   "hjelpemiddelinfo.bytte.årsak.FEIL_STØRRELSE": "feil størrelse",
   "hjelpemiddelinfo.bytte.årsak.VURDERT_SOM_ØDELAGT_AV_LOKAL_TEKNIKER": "vurdert som ødelagt av lokal tekniker",
+  "hjelpemiddelinfo.bruksarena": "Bruksarena",
+  "hjelpemiddelinfo.bruksarena.EGET_HJEM": "I eget hjem.",
+  "hjelpemiddelinfo.bruksarena.EGET_HJEM_IKKE_AVLASTNING": "I eget hjem. Ikke avlastningsbolig.",
+  "hjelpemiddelinfo.bruksarena.OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG": "I omsorgsbolig, bofellesskap eller servicebolig.",
+  "hjelpemiddelinfo.bruksarena.INSTITUSJON": "På institusjon som sykehjem.",
+  "hjelpemiddelinfo.bruksarena.INSTITUSJON_BARNEBOLIG": "På institusjon som sykehjem eller barnebolig.",
+  "hjelpemiddelinfo.bruksarena.BARNEHAGE": "I barnehage.",
+  "hjelpemiddelinfo.bruksarena.GRUNN_ELLER_VIDEREGÅENDESKOLE": "På skolen som grunnskole eller videregående skole.",
+  "hjelpemiddelinfo.bruksarena.SKOLEFRITIDSORDNING": "På skolefritidsordning.",
   "dato.innsendt": "Innsendt",
   "dato.oppdatert": "Sist oppdatert"
 }

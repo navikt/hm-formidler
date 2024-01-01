@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - INNSENDT_FULLMAKT_IKKE_PÅKREVD
+      - bruksarena
 
 jobs:
   deploy:

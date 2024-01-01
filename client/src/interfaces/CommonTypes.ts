@@ -36,6 +36,18 @@ export type HjelpemiddelItem = {
   oppreisningsStolInfo?: OppreisningsStolValgInfo
   diverseInfo?: { [key: string]: string }
   bytter: Bytte[]
+  bruksarena?: Bruksarena[]
+}
+
+export enum Bruksarena {
+  EGET_HJEM = 'EGET_HJEM',
+  EGET_HJEM_IKKE_AVLASTNING = 'EGET_HJEM_IKKE_AVLASTNING',
+  OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG = 'OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG',
+  BARNEHAGE = 'BARNEHAGE',
+  GRUNN_ELLER_VIDEREGÅENDESKOLE = 'GRUNN_ELLER_VIDEREGÅENDESKOLE',
+  SKOLEFRITIDSORDNING = 'SKOLEFRITIDSORDNING',
+  INSTITUSJON = 'INSTITUSJON',
+  INSTITUSJON_BARNEBOLIG = 'INSTITUSJON_BARNEBOLIG',
 }
 
 export type Bytte = {

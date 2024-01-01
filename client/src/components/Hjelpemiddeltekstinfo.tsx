@@ -15,6 +15,18 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
 
   return (
     <>
+      {hm.bruksarena && (
+        <div style={{ marginBottom: '0.5rem' }}>
+          <BodyShort>
+            <b>{t('hjelpemiddelinfo.bruksarena')}</b>
+            <ul>
+              {hm.bruksarena.map((bruksarena) => (
+                <li>{t(`hjelpemiddelinfo.bruksarena.${bruksarena}`)}</li>
+              ))}
+            </ul>
+          </BodyShort>
+        </div>
+      )}
       {hm?.vilkarliste && produktHarVilkar && (
         <div>
           <Label style={{ display: 'inline' }}>Behov:&nbsp;</Label>
