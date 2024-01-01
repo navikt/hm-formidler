@@ -47,16 +47,20 @@ function BrukerOppsummering(props: BrukerProps) {
             <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
             <BodyShort className={'infoRowCell'}>{bruker.telefonNummer}</BodyShort>
           </div>
-          <div className={'infoRow'}>
-            <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.boform')}</Label>
-            <BodyShort className={'infoRowCell'}>{bruker.boform}</BodyShort>
-          </div>
-          <div className={'infoRow'}>
-            <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.bruksarena')}</Label>
-            <BodyShort className={'infoRowCell'}>
-              {bruker.bruksarena === 'DAGLIGLIVET' ? t('oppsummering.dagliglivet') : ''}
-            </BodyShort>
-          </div>
+          {bruker.boform && (
+            <div className={'infoRow'}>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.boform')}</Label>
+              <BodyShort className={'infoRowCell'}>{bruker.boform}</BodyShort>
+            </div>
+          )}
+          {bruker.bruksarena !== "UKJENT" && (
+            <div className={'infoRow'}>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.bruksarena')}</Label>
+              <BodyShort className={'infoRowCell'}>
+                {bruker.bruksarena === 'DAGLIGLIVET' ? t('oppsummering.dagliglivet') : ''}
+              </BodyShort>
+            </div>
+          )}
           <div className={'infoRow'}>
             <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.funksjonsnedsettelser')}</Label>
             <BodyShort className={'infoRowCell'}>
