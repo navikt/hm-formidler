@@ -9,7 +9,6 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - INNSENDT_FULLMAKT_IKKE_PÅKREVD
       - ganghjelpemidler-nye-poster
 
 jobs:
