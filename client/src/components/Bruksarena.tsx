@@ -16,7 +16,7 @@ const BruksArena = ({ hm }: Props) => {
       <InfoLinje
         overskrift={t('hjelpemiddelinfo.bruksarena.label')}
         info={bruksarenaListe.length === 1 ? (
-          <>{t(`hjelpemiddelinfo.ganghjelpemiddel.bruksarena.${bruksarenaListe[0]}`)}</>
+          <>{t(`hjelpemiddelinfo.bruksarena.${bruksarenaListe[0]}`)}</>
         ) : (
           <ul>
             {bruksarenaListe.map((bruksarena) => (
