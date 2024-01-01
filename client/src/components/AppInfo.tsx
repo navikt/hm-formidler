@@ -13,7 +13,7 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForBruker.label')} </Label>
         <BodyShort style={{ display: 'inline' }}>
           {hm.appInfo?.brukerHarProvdProvelisens
@@ -22,7 +22,7 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
         </BodyShort>
       </div>
 
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.støtteperson.label')} </Label>
         <BodyShort style={{ display: 'inline' }}>
           {hm.appInfo?.stottepersonSkalAdministrere
@@ -32,7 +32,7 @@ export const AppInfo: React.FC<Props> = (props: Props) => {
       </div>
 
       {hm.appInfo?.stottepersonSkalAdministrere && hm.appInfo.stottepersonHarProvdProvelisens != null && (
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <Label style={{ display: 'inline' }}>{t('hjelpemiddelinfo.kalenderapp.utprøvingForStøtteperson.label')} </Label>
           <BodyShort style={{ display: 'inline' }}>
             {hm.appInfo.stottepersonHarProvdProvelisens

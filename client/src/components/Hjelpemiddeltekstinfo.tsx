@@ -2,6 +2,7 @@ import React from 'react'
 import { BodyShort, Label } from '@navikt/ds-react'
 import { HjelpemiddelItem, HjelpemiddelVilkar } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
+import BruksArena from "./Bruksarena";
 
 type HjelpemiddeltekstinfoProps = {
   hm: HjelpemiddelItem
@@ -15,18 +16,7 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
 
   return (
     <>
-      {hm.bruksarena && (
-        <div style={{ marginBottom: '0.5rem' }}>
-          <BodyShort>
-            <b>{t('hjelpemiddelinfo.bruksarena')}</b>
-            <ul>
-              {hm.bruksarena.map((bruksarena) => (
-                <li>{t(`hjelpemiddelinfo.bruksarena.${bruksarena}`)}</li>
-              ))}
-            </ul>
-          </BodyShort>
-        </div>
-      )}
+      {hm.bruksarena && <BruksArena hm={hm} />}
       {hm?.vilkarliste && produktHarVilkar && (
         <div>
           <Label style={{ display: 'inline' }}>Behov:&nbsp;</Label>

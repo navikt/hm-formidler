@@ -12,7 +12,7 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
   return (<>
     {(hm.posisjoneringssystemInfo?.skalIkkeBrukesSomBehandlingshjelpemiddel ||
       hm.posisjoneringssystemInfo?.skalIkkeBrukesTilRenSmertelindring) && (
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <BodyShort>
             <b>{t('felles.formidlerBekrefterAt')}:</b>
           </BodyShort>
@@ -35,7 +35,7 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
         </div>
       )}
     {hm.posisjoneringssystemInfo?.behov === PosisjoneringsputeBehov.STORE_LAMMELSER && (
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('felles.behov')}: </b>
           {t('hjelpemiddelinfo.posisjoneringssystem.STORE_LAMMELSER')}
@@ -44,7 +44,7 @@ const PosisjoneringssystemInfo = ({ hm }: Props) => {
     )}
 
     {hm.posisjoneringssystemInfo?.behov === PosisjoneringsputeBehov.DIREKTE_AVHJELPE_I_DAGLIGLIVET && (
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('felles.behov')}: </b>
           {t('hjelpemiddelinfo.posisjoneringssystem.DIREKTE_AVHJELPE_I_DAGLIGLIVET')}{' '}

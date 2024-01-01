@@ -12,7 +12,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
 
   return (
     <>
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('hjelpemiddelinfo.oppreisningsStol.oppfyllerKravForStol.label')}: </b>
           {oppreisningsStolInfo.kanBrukerReiseSegSelvFraVanligStol === false && (
@@ -25,7 +25,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
       </div>
 
       {oppreisningsStolInfo.bruksområde && (
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <BodyShort>
             <b>{t('hjelpemiddelinfo.oppreisningsStol.bruksområde.label')}: </b>
             {t(`hjelpemiddelinfo.oppreisningsStol.bruksområde.${oppreisningsStolInfo.bruksområde}`)}
@@ -33,7 +33,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
         </div>
       )}
 
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           {oppreisningsStolInfo.behovForStolBegrunnelse ? (
             <>
@@ -54,7 +54,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
       </div>
 
       {oppreisningsStolInfo.sideBetjeningsPanel && (
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <BodyShort>
             <b>{t('hjelpemiddelinfo.oppreisningsStol.betjeningspanel.label')}: </b>
             {t(
@@ -64,7 +64,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
         </div>
       )}
 
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('hjelpemiddelinfo.oppreisningsStol.annetTrekkKanBenyttes.label')}: </b>
           {oppreisningsStolInfo.annetTrekkKanBenyttes === true && (
@@ -76,7 +76,7 @@ const OppreisningsStolInfo = ({ hm }: Props) => {
         </BodyShort>
       </div>
 
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('hjelpemiddelinfo.oppreisningsStol.løftType.label')}: </b>
           {oppreisningsStolInfo.løftType === OppreisningsStolLøftType.SKRÅLØFT && (

@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - bruksarena
+      - ganghjelpemidler-nye-poster
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
         uses: navikt/digihot-deploy/actions/pre-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Tilgjengeliggjør READER_TOKEN for npm
         run: |
           echo '//npm.pkg.github.com/:_authToken='${{ secrets.READER_TOKEN }} >> .npmrc

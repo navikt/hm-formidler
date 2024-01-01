@@ -12,7 +12,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
   return (<>
 
     {hm.posisjoneringsputeForBarnInfo?.bruksområde === PosisjoneringsputeForBarnBruk.TILRETTELEGGE_UTGANGSSTILLING && (
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <BodyShort>
           <b>{t('felles.bruksområde')}: </b>
           {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TILRETTELEGGE_UTGANGSSTILLING')}
@@ -22,7 +22,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
 
     {hm.posisjoneringsputeForBarnInfo?.bruksområde === PosisjoneringsputeForBarnBruk.TRENING_AKTIVITET_STIMULERING && (
       <>
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <BodyShort>
             <b>{t('felles.bruksområde')}: </b>
             {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TRENING_AKTIVITET_STIMULERING')}
@@ -31,7 +31,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
         {(hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan ||
           hm.posisjoneringsputeForBarnInfo.planenOppbevaresIKommunen) && (
             <>
-              <div style={{ marginBottom: '0.5rem' }}>
+              <div>
                 <BodyShort>
                   <b>{t('felles.formidlerBekrefterAt')}:</b>
                 </BodyShort>
@@ -57,7 +57,7 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
       </>
     )}
     {hm.posisjoneringsputeForBarnInfo?.brukerErOver26År && (
-      <div style={{ marginBottom: '0.5rem' }}>
+      <div>
         <Alert variant="warning" inline>
           {t('hjelpemiddelinfo.posisjoneringsputeForBarn.personOver26År')}
         </Alert>
