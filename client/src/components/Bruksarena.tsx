@@ -1,5 +1,4 @@
 import {useTranslation} from "react-i18next";
-import {ReactNode} from "react";
 import {Bruksarena, HjelpemiddelItem} from "../interfaces/CommonTypes";
 import {Detail} from "@navikt/ds-react";
 import InfoLinje from "./InfoLinje";

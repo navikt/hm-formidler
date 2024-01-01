@@ -52,7 +52,6 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
             <Hjelpemiddeltekstinfo hm={hm} />
           </div>
         ))}
-      {hm.bruksarena && <BruksArena hm={hm} />}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
           <RullestolInfo hm={hm} />
