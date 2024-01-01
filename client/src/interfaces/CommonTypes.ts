@@ -31,11 +31,27 @@ export type HjelpemiddelItem = {
   varmehjelpemiddelInfo?: VarmehjelpemiddelInfo
   sengeInfo?: SengeInfo
   elektriskVendesystemInfo?: ElektriskVendesystemInfo
+  ganghjelpemiddelInfo?: GanghjelpemiddelInfo
   posisjoneringssystemInfo?: PosisjoneringssystemInfo
   posisjoneringsputeForBarnInfo?: PosisjoneringsputeForBarnInfo
   oppreisningsStolInfo?: OppreisningsStolValgInfo
-  diverseInfo?: { [key: string]: string }
+  diverseInfo?: DiverseInfo
   bytter: Bytte[]
+  bruksarena?: Bruksarena[]
+}
+
+export type GanghjelpemiddelInfo = {
+  brukerErFylt26År?: boolean
+  hovedformålErForflytning?: boolean
+  kanIkkeBrukeMindreAvansertGanghjelpemiddel?: boolean
+  bruksområde?: BruksområdeGanghjelpemiddel
+  detErLagetEnMålrettetPlan?: boolean
+  planenOppbevaresIKommunen?: boolean
+}
+
+export type DiverseInfo = {
+  takhoydeStottestangCm?: number | undefined
+  sitteputeSkalBrukesIRullestolFraNav?: boolean | undefined
 }
 
 export type Bytte = {
@@ -86,6 +102,22 @@ export enum PosisjoneringsputeOppgaverIDagligliv {
   FØLGE_OPP_BARN = 'FØLGE_OPP_BARN',
   HOBBY_FRITID_U26 = 'HOBBY_FRITID_U26',
   ANNET = 'ANNET',
+}
+
+export enum BruksområdeGanghjelpemiddel {
+  TIL_FORFLYTNING = 'TIL_FORFLYTNING',
+  TIL_TRENING_OG_ANNET = 'TIL_TRENING_OG_ANNET',
+}
+
+export enum Bruksarena {
+  EGET_HJEM = 'EGET_HJEM',
+  EGET_HJEM_IKKE_AVLASTNING = 'EGET_HJEM_IKKE_AVLASTNING',
+  OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG = 'OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG',
+  BARNEHAGE = 'BARNEHAGE',
+  GRUNN_ELLER_VIDEREGÅENDESKOLE = 'GRUNN_ELLER_VIDEREGÅENDESKOLE',
+  SKOLEFRITIDSORDNING = 'SKOLEFRITIDSORDNING',
+  INSTITUSJON = 'INSTITUSJON',
+  INSTITUSJON_BARNEBOLIG = 'INSTITUSJON_BARNEBOLIG',
 }
 
 export type ElektriskVendesystemInfo = {

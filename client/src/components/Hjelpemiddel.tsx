@@ -15,6 +15,15 @@ import SengeInfo from './SengeInfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
 import OppreisningsStolInfo from './OppreisningsStolInfo'
+import GanghjelpemiddelInfo from "./GanghjelpemiddelInfo";
+import BruksArena from "./Bruksarena";
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
@@ -27,16 +36,23 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
   const { t } = useTranslation()
 
   return (
-    <>
+    <Container>
       <div>
         <Hjelpemiddelinfo hjelpemiddel={hm} />
       </div>
-      <div style={{ marginTop: hm.tilbehorListe?.length ? '0.5rem' : '' }}>
-        <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />
-      </div>
-      <div style={{ marginTop: hm.vilkarliste || hm.tilleggsinformasjon || hm.begrunnelse ? '0.5rem' : '' }}>
-        <Hjelpemiddeltekstinfo hm={hm} />
-      </div>
+      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && (
+        <div>
+          <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />
+        </div>
+      )}
+      {hm.vilkarliste ||
+        hm.tilleggsinformasjon ||
+        (hm.begrunnelse && (
+          <div>
+            <Hjelpemiddeltekstinfo hm={hm} />
+          </div>
+        ))}
+      {hm.bruksarena && <BruksArena hm={hm} />}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
           <RullestolInfo hm={hm} />
@@ -48,6 +64,7 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
       {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
       {hm.oppreisningsStolInfo && <OppreisningsStolInfo hm={hm} />}
+      {hm.ganghjelpemiddelInfo && <GanghjelpemiddelInfo hm={hm} />}
 
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
@@ -110,7 +127,7 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
           </>
         )
       }))}
-    </>
+    </Container>
   )
 }
 

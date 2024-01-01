@@ -13,7 +13,7 @@ const VarmehjelpemiddelInfo = ({ hm }: Props) => {
   return (
     <>
       {hm.varmehjelpemiddelInfo?.harHelseopplysningerFraFør ? (
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div>
           <Label>
             {t('hjelpemiddelinfo.varmehjelpemiddel.opplysningerFraLege.overskrift')}
             <br />

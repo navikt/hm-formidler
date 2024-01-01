@@ -521,6 +521,34 @@ const soknadsbehandlingDbHandlers = [
               },
               bytter: [],
             },
+            {
+              hmsNr: "234982",
+              beskrivelse: "Grillo liten",
+              navn: "Grillo liten",
+              antall: 1,
+              rangering: "2",
+              utlevertFraHjelpemiddelsentralen: false,
+              tilleggsinformasjon: "",
+              hjelpemiddelkategori: "Ganghjelpemidler",
+              vilkaroverskrift: "",
+              tilbehorListe: [],
+              begrunnelse: "derfor",
+              kanIkkeTilsvarande: true,
+              ganghjelpemiddelInfo: {
+                brukerErFylt26År: true,
+                detErLagetEnMålrettetPlan: true,
+                planenOppbevaresIKommunen: true,
+                bruksområde: "TIL_FORFLYTNING",
+                hovedformålErForflytning: true
+              },
+              utlevertInfo: {},
+              bruksarena: [
+                "EGET_HJEM_IKKE_AVLASTNING",
+                "OMSORGSBOLIG_BOFELLESKAP_SERVICEBOLIG",
+                "INSTITUSJON"
+              ],
+              bytter: []
+            }
           ],
           hjelpemiddelTotalAntall: 4,
           oppfolgingsansvarlig: null,

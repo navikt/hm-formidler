@@ -14,7 +14,7 @@ const SengeInfo = ({ hm }: Props) => {
     <>
       {hm.sengeInfo?.påkrevdBehov ? (
         <>
-          <div style={{ marginBottom: '0.5rem' }}>
+          <div>
             <BodyShort style={{ display: 'inline' }}>
               <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
               {hm.sengeInfo.påkrevdBehov === BehovForSeng.DYSFUNKSJONELT_SØVNMØNSTER && (
@@ -48,7 +48,7 @@ const SengeInfo = ({ hm }: Props) => {
               )}
             </BodyShort>
           </div>
-          <div style={{ marginBottom: '0.5rem' }}>
+          <div>
             {hm.sengeInfo.behovForSengBegrunnelse && (
               <BodyShort>
                 <b>{t('grunnenTilBehovet')}: </b> {hm.sengeInfo.behovForSengBegrunnelse}
@@ -59,7 +59,7 @@ const SengeInfo = ({ hm }: Props) => {
       ) : (
         <>
           {hm.sengeInfo?.behovForSeng && (
-            <div style={{ marginBottom: '0.5rem' }}>
+            <div>
               <BodyShort>
                 <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
                 {hm.sengeInfo?.behovForSengBegrunnelse ? (
@@ -84,14 +84,14 @@ const SengeInfo = ({ hm }: Props) => {
       {hm.sengeInfo?.høyGrindValg && (
         <>
           {hm.sengeInfo.høyGrindValg.erKjentMedTvangsAspekt && (
-            <div style={{ marginBottom: '0.5rem' }}>
+            <div>
               <BodyShort>
                 <b>{t('felles.bekreftetAvFormidler')}: </b>
                 {t('hjelpemiddelinfo.seng.høyGrind.erKjentMedTvangsAspekt')}
               </BodyShort>
             </div>
           )}
-          <div style={{ marginBottom: '0.5rem' }}>
+          <div>
             <BodyShort>
               <b>{t('hjelpemiddelinfo.seng.høyGrind.andreTiltak.label')}: </b>
               {hm.sengeInfo.høyGrindValg.harForsøktOpptrening ? (
@@ -108,14 +108,14 @@ const SengeInfo = ({ hm }: Props) => {
           </div>
 
           {hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse && (
-            <div style={{ marginBottom: '0.5rem' }}>
+            <div>
               <BodyShort>
                 <b>{t('hjelpemiddelinfo.seng.høyGrind.harIkkeForsøktOpptreningBegrunnelse.label')}: </b>
                 {hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse}
               </BodyShort>
             </div>
           )}
-          <div style={{ marginBottom: '0.5rem' }}>
+          <div>
             <BodyShort>
               <b>Plan: </b>
               {hm.sengeInfo.høyGrindValg.erLagetPlanForOppfølging ? (
