@@ -45,13 +45,13 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
           <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />
         </div>
       )}
-      {hm.vilkarliste ||
-        hm.tilleggsinformasjon ||
-        (hm.begrunnelse && (
+      {(!!hm.vilkarliste ||
+        !!hm.tilleggsinformasjon ||
+        !!hm.begrunnelse) && (
           <div>
             <Hjelpemiddeltekstinfo hm={hm} />
           </div>
-        ))}
+        )}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
           <RullestolInfo hm={hm} />
