@@ -15,12 +15,12 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
     <>
       {bruksområde && (
         <>
-          {type !== undefined && (
+          {typeof type === 'string' && (
             <InfoLinje
               overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}`)} />
           )}
-          {type === undefined && (
+          {typeof type !== 'string' && (
             <InfoLinje
               overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${bruksområde}`)} />
@@ -29,12 +29,12 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
       )}
       {kanIkkeBrukeMindreAvansertGanghjelpemiddel && (
         <>
-          {type !== undefined && (
+          {typeof type === 'string' && (
             <InfoLinje
               overskrift={t('felles.formidlerBekrefterAt')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text.${type}`)} />
           )}
-          {type === undefined && (
+          {typeof type !== 'string' && (
             <InfoLinje
               overskrift={t('felles.formidlerBekrefterAt')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text`)} />
