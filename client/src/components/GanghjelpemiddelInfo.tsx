@@ -11,8 +11,6 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
   const { t } = useTranslation()
   const { bruksområde, type, brukerErFylt26År, kanIkkeBrukeMindreAvansertGanghjelpemiddel } = hm.ganghjelpemiddelInfo!
 
-  console.log('kreverGodkjenningType', type, 'kanIkkeBrukeMindreAvansertGanghjelpemiddel', kanIkkeBrukeMindreAvansertGanghjelpemiddel)
-
   return (
     <>
       {bruksområde && (
