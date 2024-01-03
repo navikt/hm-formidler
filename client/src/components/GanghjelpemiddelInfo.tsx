@@ -1,4 +1,4 @@
-import {GanghjelpemiddelSomTrengerGodkjenning, HjelpemiddelItem} from "../interfaces/CommonTypes";
+import {HjelpemiddelItem} from "../interfaces/CommonTypes";
 import {useTranslation} from "react-i18next";
 import InfoLinje from "./InfoLinje";
 import {Alert} from "@navikt/ds-react";
@@ -32,7 +32,6 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
           )}
         </>
       )}
-
       {brukerErFylt26År && (
         <Alert inline variant="warning">
           {t('hjelpemiddelinfo.ganghjelpemiddel.brukerErFylt26År')}

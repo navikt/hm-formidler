@@ -240,6 +240,7 @@
   "hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen": "Planen oppbevares i kommunen.",
   "hjelpemiddelinfo.posisjoneringsputeForBarn.personOver26År": "Personen er over 26 år.",
   "hjelpemiddel.diverseInfo.takhoydeStottestangCm": "<bold>Takhøyde:</bold> {{value}} cm.",
+  "hjelpemiddel.diverseInfo.sitteputeSkalBrukesIRullestolFraNav": "<bold>Formidler bekrefter at:</bold> Sitteputen skal kun brukes i en rullestol som er utlånt fra NAV.",
   "hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label": "Hovedformål",
   "hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.TIL_FORFLYTNING": "Til forflytning",
   "hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.TIL_TRENING_OG_ANNET": "Til trening, aktivisering og stimulering",
