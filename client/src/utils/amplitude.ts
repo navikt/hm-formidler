@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import amplitude from 'amplitude-js'
+import * as amplitude from '@amplitude/analytics-browser'
 
 export enum amplitude_taxonomy {
   SKJEMA_START = 'skjema startet',
@@ -26,12 +25,13 @@ const SKJEMANAVN = 'formidler'
 
 export const initAmplitude = (): void => {
   if (amplitude) {
-    amplitude.getInstance().init('default', '', {
-      apiEndpoint: 'amplitude.nav.no/collect-auto',
-      saveEvents: false,
-      includeUtm: true,
-      includeReferrer: true,
-      platform: window.location.toString(),
+    amplitude.init('default', '', {
+      useBatch: false,
+      serverUrl: 'https://amplitude.nav.no/collect-auto',
+      defaultTracking: false,
+      ingestionMetadata: {
+        sourceName: window.location.toString(),
+      },
     })
   }
 }
@@ -46,7 +46,7 @@ export function logAmplitudeEvent(eventName: string, data?: any): void {
     }
     try {
       if (amplitude) {
-        amplitude.getInstance().logEvent(eventName, data)
+        amplitude.track(eventName, data)
       }
     } catch (error) {
       console.error(error)
