@@ -40,7 +40,6 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
           ) : (
             <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.begrunnelsen.label2')}</Label>
           )}
-
           <BodyShort style={{ display: 'inline' }}>{hm.begrunnelse}</BodyShort>
         </div>
       )}
