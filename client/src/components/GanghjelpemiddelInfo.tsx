@@ -9,23 +9,34 @@ interface Props {
 
 const GanghjelpemiddelInfo = ({ hm }: Props) => {
   const { t } = useTranslation()
-  const { bruksområde, kreverGodkjenningType, brukerErFylt26År, kanIkkeBrukeMindreAvansertGanghjelpemiddel } = hm.ganghjelpemiddelInfo!
+  const { bruksområde, type, brukerErFylt26År, kanIkkeBrukeMindreAvansertGanghjelpemiddel } = hm.ganghjelpemiddelInfo!
+
+  console.log('kreverGodkjenningType', type, 'kanIkkeBrukeMindreAvansertGanghjelpemiddel', kanIkkeBrukeMindreAvansertGanghjelpemiddel)
 
   return (
     <>
       {bruksområde && (
-        <InfoLinje
-          overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
-          info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${bruksområde}`)} />
+        <>
+          {type !== undefined && (
+            <InfoLinje
+              overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
+              info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}`)} />
+          )}
+          {type === undefined && (
+            <InfoLinje
+              overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
+              info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${bruksområde}`)} />
+          )}
+        </>
       )}
       {kanIkkeBrukeMindreAvansertGanghjelpemiddel && (
         <>
-          {kreverGodkjenningType !== undefined && (
+          {type !== undefined && (
             <InfoLinje
               overskrift={t('felles.formidlerBekrefterAt')}
-              info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text.${kreverGodkjenningType}`)} />
+              info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text.${type}`)} />
           )}
-          {kreverGodkjenningType === undefined && (
+          {type === undefined && (
             <InfoLinje
               overskrift={t('felles.formidlerBekrefterAt')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text`)} />

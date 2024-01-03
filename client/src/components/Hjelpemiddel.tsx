@@ -48,10 +48,8 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(!!hm.vilkarliste ||
         !!hm.tilleggsinformasjon ||
         !!hm.begrunnelse) && (
-          <div>
-            <Hjelpemiddeltekstinfo hm={hm} />
-          </div>
-        )}
+        <Hjelpemiddeltekstinfo hm={hm} />
+      )}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
           <RullestolInfo hm={hm} />
