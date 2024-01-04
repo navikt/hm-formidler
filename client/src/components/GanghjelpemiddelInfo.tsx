@@ -13,11 +13,6 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
 
   return (
     <>
-      {bruksområde && (
-        <InfoLinje
-          overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
-          info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}.${bruksområde}`)} />
-      )}
       {kanIkkeBrukeMindreAvansertGanghjelpemiddel && (
         <>
           {typeof type === 'string' && (
@@ -31,6 +26,11 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text`)} />
           )}
         </>
+      )}
+      {bruksområde && (
+        <InfoLinje
+          overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
+          info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}.${bruksområde}`)} />
       )}
       {(detErLagetEnMålrettetPlan ||
         planenOppbevaresIKommunen) && (
