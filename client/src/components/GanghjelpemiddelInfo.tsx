@@ -28,9 +28,11 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
         </>
       )}
       {bruksområde && (
-        <InfoLinje
-          overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
-          info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}.${bruksområde}`)} />
+        <>
+          <InfoLinje
+            overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
+            info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}.${bruksområde}${brukerErFylt26År && type === GanghjelpemiddelType.Sparkesykkel ? '.brukerErFylt26År' : ''}`)} />
+        </>
       )}
       {(detErLagetEnMålrettetPlan ||
         planenOppbevaresIKommunen) && (
@@ -58,7 +60,7 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
           </div>
         </>
       )}
-      {brukerErFylt26År && (
+      {brukerErFylt26År && type === GanghjelpemiddelType.Gåtrening && (
         <Alert inline variant="warning">
           {t('hjelpemiddelinfo.ganghjelpemiddel.brukerErFylt26År')}
         </Alert>
