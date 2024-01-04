@@ -1,7 +1,7 @@
-import {HjelpemiddelItem} from "../interfaces/CommonTypes";
+import {GanghjelpemiddelType, HjelpemiddelItem} from "../interfaces/CommonTypes";
 import {useTranslation} from "react-i18next";
 import InfoLinje from "./InfoLinje";
-import {Alert} from "@navikt/ds-react";
+import {Alert, BodyShort} from "@navikt/ds-react";
 
 interface Props {
   hm: HjelpemiddelItem
@@ -9,25 +9,14 @@ interface Props {
 
 const GanghjelpemiddelInfo = ({ hm }: Props) => {
   const { t } = useTranslation()
-  const { bruksområde, type, brukerErFylt26År, kanIkkeBrukeMindreAvansertGanghjelpemiddel } = hm.ganghjelpemiddelInfo!
-
-  console.log('hm.ganghjelpemiddelInfo', hm.ganghjelpemiddelInfo)
+  const { bruksområde, type, brukerErFylt26År, kanIkkeBrukeMindreAvansertGanghjelpemiddel, detErLagetEnMålrettetPlan, planenOppbevaresIKommunen } = hm.ganghjelpemiddelInfo!
 
   return (
     <>
       {bruksområde && (
-        <>
-          {typeof type === 'string' && (
-            <InfoLinje
-              overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
-              info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}`)} />
-          )}
-          {typeof type !== 'string' && (
-            <InfoLinje
-              overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
-              info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${bruksområde}`)} />
-          )}
-        </>
+        <InfoLinje
+          overskrift={t('hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.label')}
+          info={t(`hjelpemiddelinfo.ganghjelpemiddel.hovedformaal.${type}.${bruksområde}`)} />
       )}
       {kanIkkeBrukeMindreAvansertGanghjelpemiddel && (
         <>
@@ -41,6 +30,32 @@ const GanghjelpemiddelInfo = ({ hm }: Props) => {
               overskrift={t('felles.formidlerBekrefterAt')}
               info={t(`hjelpemiddelinfo.ganghjelpemiddel.kanIkkeBrukeMindreAvansertGanghjelpemiddel.text`)} />
           )}
+        </>
+      )}
+      {(detErLagetEnMålrettetPlan ||
+        planenOppbevaresIKommunen) && (
+        <>
+          <div>
+            <BodyShort>
+              <b>{t('felles.formidlerBekrefterAt')}:</b>
+            </BodyShort>
+            <ul style={{ margin: 0 }}>
+              {detErLagetEnMålrettetPlan && (
+                <li>
+                  <BodyShort>
+                    {t('hjelpemiddelinfo.posisjoneringssystem.detErLagetEnMålrettetPlan')}
+                  </BodyShort>
+                </li>
+              )}
+              {planenOppbevaresIKommunen && (
+                <li>
+                  <BodyShort>
+                    {t('hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen')}
+                  </BodyShort>
+                </li>
+              )}
+            </ul>
+          </div>
         </>
       )}
       {brukerErFylt26År && (

@@ -45,6 +45,7 @@ export enum GanghjelpemiddelType {
   Sparkesykkel = 'SPARKESYKKEL',
   Krykke = 'KRYKKE',
   Gåtrening = 'GÅTRENING',
+  Gåstol = 'GÅSTOL',
 }
 
 export type GanghjelpemiddelInfo = {
