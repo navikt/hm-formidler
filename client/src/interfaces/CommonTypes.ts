@@ -40,10 +40,19 @@ export type HjelpemiddelItem = {
   bruksarena?: Bruksarena[]
 }
 
+export enum GanghjelpemiddelType {
+  Gåbord = 'GÅBORD',
+  Sparkesykkel = 'SPARKESYKKEL',
+  Krykke = 'KRYKKE',
+  Gåtrening = 'GÅTRENING',
+  Gåstol = 'GÅSTOL',
+}
+
 export type GanghjelpemiddelInfo = {
   brukerErFylt26År?: boolean
   hovedformålErForflytning?: boolean
   kanIkkeBrukeMindreAvansertGanghjelpemiddel?: boolean
+  type?: GanghjelpemiddelType
   bruksområde?: BruksområdeGanghjelpemiddel
   detErLagetEnMålrettetPlan?: boolean
   planenOppbevaresIKommunen?: boolean

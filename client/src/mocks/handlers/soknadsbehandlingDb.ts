@@ -539,7 +539,8 @@ const soknadsbehandlingDbHandlers = [
                 detErLagetEnMålrettetPlan: true,
                 planenOppbevaresIKommunen: true,
                 bruksområde: "TIL_FORFLYTNING",
-                hovedformålErForflytning: true
+                hovedformålErForflytning: true,
+                type: "GÅTRENING"
               },
               utlevertInfo: {},
               bruksarena: [
