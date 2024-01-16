@@ -212,4 +212,15 @@ export const sakerMock = [
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
   },
+  {
+    søknadId: 'a293fae9-262a-4fad-b7be-35715b953511',
+    behovsmeldingType: BehovsmeldingType.SØKNAD,
+    datoOpprettet: '2024-01-04T14:06:18.103+00:00',
+    datoOppdatert: '2024-01-04T14:06:22.236+00:00',
+    status: SoknadStatus.GODKJENT_MED_FULLMAKT,
+    fnrBruker: '13820599335',
+    navnBruker: 'Rulla Tor',
+    søknadsdata: undefined,
+    valgteÅrsaker: undefined,
+  },
 ]

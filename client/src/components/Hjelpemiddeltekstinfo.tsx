@@ -3,6 +3,7 @@ import { BodyShort, Label } from '@navikt/ds-react'
 import { HjelpemiddelItem, HjelpemiddelVilkar } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
 import BruksArena from "./Bruksarena";
+import InfoLinje from './InfoLinje';
 
 type HjelpemiddeltekstinfoProps = {
   hm: HjelpemiddelItem
@@ -18,59 +19,53 @@ const Hjelpemiddeltekstinfo: React.FC<HjelpemiddeltekstinfoProps> = (props: Hjel
     <>
       {hm.bruksarena && <BruksArena hm={hm} />}
       {hm?.vilkarliste && produktHarVilkar && (
-        <div>
-          <Label style={{ display: 'inline' }}>Behov:&nbsp;</Label>
-          <BodyShort style={{ display: 'inline' }}>
-            {hm.vilkarliste
-              .map((vilkar: HjelpemiddelVilkar) => {
-                return vilkar.tilleggsinfo ? vilkar.tilleggsinfo : vilkar.vilkaarTekst
-              })
-              .join(', ')}
-          </BodyShort>
-        </div>
+        <InfoLinje
+          overskrift="Behov"
+          info={hm.vilkarliste
+            .map((vilkar: HjelpemiddelVilkar) => {
+              return vilkar.tilleggsinfo ? vilkar.tilleggsinfo : vilkar.vilkaarTekst
+            })
+            .join(', ')}
+        />
       )}
       {hm?.begrunnelse && (
-        <div>
-          {hm.kanIkkeTilsvarande ? (
+        <InfoLinje
+          overskrift={hm.kanIkkeTilsvarande ? (
             hm.rangering && parseInt(hm.rangering) > 1 ? (
-              <Label style={{ display: 'inline' }}>{t('handlekurv.labels.begrunnelseForLavereRangering')}</Label>
+              t('handlekurv.labels.begrunnelseForLavereRangering')
             ) : (
-              <Label style={{ display: 'inline' }}>{t('handlekurv.labels.begrunnelseForKanIkkeHaTilsvarende')}</Label>
+              t('handlekurv.labels.begrunnelseForKanIkkeHaTilsvarende')
             )
           ) : (
-            <Label style={{ display: 'inline' }}>{t('leggTilEllerEndre.begrunnelsen.label2')}</Label>
+            t('leggTilEllerEndre.begrunnelsen.label2')
           )}
-          <BodyShort style={{ display: 'inline' }}>{hm.begrunnelse}</BodyShort>
-        </div>
+          info={hm.begrunnelse}
+        />
       )}
       {hm.tilleggsinformasjon && (
-        <div>
-          <Label style={{ display: 'inline' }}>{t('felles.kommentar')}</Label>
-          <BodyShort style={{ display: 'inline' }}>{hm.tilleggsinformasjon}</BodyShort>
-        </div>
+        <InfoLinje
+          overskrift={t('felles.kommentar')}
+          info={hm.tilleggsinformasjon}
+        />
       )}
       {!!hm.personlofterInfo && (
-        <>
-          <Label style={{ display: 'inline' }}>{t('handlekurv.labels.personloftere.tittel')}:&nbsp;</Label>
-          <BodyShort style={{ display: 'inline' }}>
+        <InfoLinje
+          overskrift={t('handlekurv.labels.personloftere.tittel')}
+          info={<>
             {hm.personlofterInfo.harBehovForSeilEllerSele === true && 'Ja'}
             {hm.personlofterInfo.harBehovForSeilEllerSele === false && 'Nei'}
-          </BodyShort>
-        </>
+          </>}
+        />
       )}
       {!!hm.arsakForAntall && (
-        <>
-          <Label style={{ display: 'inline' }}>
-            <b>{t('leggTilEllerEndre.antallBegrunnelse.label')}:&nbsp;</b>
-          </Label>
-          <BodyShort style={{ display: 'inline' }}>
-            {hm.arsakForAntallBegrunnelse ? (
-              <>{hm.arsakForAntallBegrunnelse}</>
-            ) : (
-              <>{t(`leggTilEllerEndre.antallBegrunnelse.${hm.arsakForAntall}`)}</>
-            )}
-          </BodyShort>
-        </>
+        <InfoLinje
+          overskrift={t('leggTilEllerEndre.antallBegrunnelse.label')}
+          info={hm.arsakForAntallBegrunnelse ? (
+            <>{hm.arsakForAntallBegrunnelse}</>
+          ) : (
+            <>{t(`leggTilEllerEndre.antallBegrunnelse.${hm.arsakForAntall}`)}</>
+          )}
+        />
       )}
     </>
   )

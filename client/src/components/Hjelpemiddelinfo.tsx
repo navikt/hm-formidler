@@ -2,6 +2,7 @@ import React from 'react'
 import { Heading, BodyShort, Label } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem, UtlevertType } from '../interfaces/CommonTypes'
+import InfoLinje from './InfoLinje'
 
 type HjelpemiddelinfoProps = {
   hjelpemiddel: HjelpemiddelItem

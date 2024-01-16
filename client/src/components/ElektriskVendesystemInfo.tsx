@@ -1,6 +1,7 @@
 import { Alert, BodyShort } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
+import InfoLinje from './InfoLinje'
 
 interface Props {
   hm: HjelpemiddelItem
@@ -11,22 +12,19 @@ const ElektriskVendesystemInfo = ({ hm }: Props) => {
 
   return (<>
     {hm.elektriskVendesystemInfo?.sengForMontering?.hmsnr && (
-      <div>
-        <BodyShort>
-          <b>{t('hjelpemiddelinfo.elektriskVendesystem')}</b>
+      <InfoLinje
+        overskrift={t('hjelpemiddelinfo.elektriskVendesystem')}
+        info={<>
           {hm.elektriskVendesystemInfo.sengForMontering?.hmsnr}{' '}
-          {hm.elektriskVendesystemInfo.sengForMontering?.navn}
-        </BodyShort>
-      </div>
+          {hm.elektriskVendesystemInfo.sengForMontering?.navn}</>}
+      />
     )}
 
     {hm.elektriskVendesystemInfo?.sengForMontering?.madrassbredde && (<>
-      <div>
-        <BodyShort>
-          <b>{t('hjelpemiddelinfo.elektriskVendesystem.madrassBredde')}</b>
-          {hm.elektriskVendesystemInfo.sengForMontering?.madrassbredde} cm
-        </BodyShort>
-      </div>
+      <InfoLinje
+        overskrift={t('hjelpemiddelinfo.elektriskVendesystem.madrassBredde')}
+        info={<>{hm.elektriskVendesystemInfo.sengForMontering?.madrassbredde} cm</>}
+      />
       {hm.elektriskVendesystemInfo.standardLakenByttesTilRiktigStørrelseAvNav && (
         <div>
           <Alert variant="info" inline>

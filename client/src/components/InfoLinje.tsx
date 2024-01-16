@@ -10,21 +10,11 @@ const BodyShort = styled(UnstyledBodyShort)`
 interface Props {
   overskrift: string | ReactNode
   info: string | ReactNode
-  gammelStil?: boolean
 }
 const InfoLinje = ({
   overskrift,
   info,
-  gammelStil = true
 }: Props) => {
-  if (gammelStil) {
-    return (
-      <UnstyledBodyShort>
-        <b>{overskrift}</b>:
-        {info}
-      </UnstyledBodyShort>
-    )
-  }
   return (
     <BodyShort>
       <b>{overskrift}</b>

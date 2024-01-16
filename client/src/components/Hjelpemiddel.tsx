@@ -18,6 +18,7 @@ import OppreisningsStolInfo from './OppreisningsStolInfo'
 import GanghjelpemiddelInfo from "./GanghjelpemiddelInfo";
 import BruksArena from "./Bruksarena";
 import styled from 'styled-components'
+import InfoLinje from './InfoLinje'
 
 const Container = styled.div`
   display: flex;
@@ -48,8 +49,8 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(!!hm.vilkarliste ||
         !!hm.tilleggsinformasjon ||
         !!hm.begrunnelse) && (
-        <Hjelpemiddeltekstinfo hm={hm} />
-      )}
+          <Hjelpemiddeltekstinfo hm={hm} />
+        )}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
           <RullestolInfo hm={hm} />
@@ -66,10 +67,10 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
         hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-          <div style={{ marginBottom: '0.5rem' }}>
-            <Label>{t('leggTilEllerEndre.bruker.kroppsmaal')}</Label>
-            <BodyShort>{t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}</BodyShort>
-          </div>
+          <InfoLinje
+            overskrift={t('leggTilEllerEndre.bruker.kroppsmaal')}
+            info={t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}
+          />
         )}
 
       {hm.diverseInfo &&
@@ -78,8 +79,10 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
             return null
           } else {
             return (
-              <div style={{ marginBottom: '0.5rem' }} key={key}>
-                <BodyShort>
+              <InfoLinje
+                key={key}
+                overskrift={t(`hjelpemiddel.diverseInfo.${key}.label`)}
+                info={
                   <Trans
                     i18nKey={`hjelpemiddel.diverseInfo.${key}`}
                     values={{ value: value }}
@@ -88,8 +91,8 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
                       bold: <b />,
                     }}
                   />
-                </BodyShort>
-              </div>
+                }
+              />
             )
           }
         })}
@@ -97,11 +100,12 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(hm.bytter.map((bytte) => {
         return (
           <>
-            <div style={{ marginBottom: '0.5rem' }}>
-              {bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>)}
-              {!bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>)}
-              <br />
-              <BodyShort>
+            <InfoLinje
+              overskrift={<>
+                {bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>)}
+                {!bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>)}
+              </>}
+              info={<>
                 {bytte.hmsnr} {bytte.hjmNavn}
                 {bytte.serienr && (
                   <>
@@ -109,17 +113,17 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
                     {t('felles.serienummer')}: {bytte.serienr}
                   </>
                 )}
-              </BodyShort>
-            </div>
+              </>}
+            />
+
             {bytte.årsak && (
-              <div style={{ marginBottom: '0.5rem' }}>
-                <Label>{t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}</Label>
-                <br />
-                <BodyShort>
+              <InfoLinje
+                overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
+                info={<>
                   {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
                   {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
-                </BodyShort>
-              </div>
+                </>}
+              />
             )}
           </>
         )

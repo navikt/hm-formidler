@@ -2,6 +2,7 @@ import { BodyShort, Label } from '@navikt/ds-react'
 import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { BehovForSeng, HjelpemiddelItem } from '../interfaces/CommonTypes'
+import InfoLinje from './InfoLinje'
 
 interface Props {
   hm: HjelpemiddelItem
@@ -14,9 +15,9 @@ const SengeInfo = ({ hm }: Props) => {
     <>
       {hm.sengeInfo?.påkrevdBehov ? (
         <>
-          <div>
-            <BodyShort style={{ display: 'inline' }}>
-              <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
+          <InfoLinje
+            overskrift={t('hjelpemiddelinfo.seng.behovForSeng')}
+            info={<>
               {hm.sengeInfo.påkrevdBehov === BehovForSeng.DYSFUNKSJONELT_SØVNMØNSTER && (
                 <>
                   {hm.sengeInfo.brukerOppfyllerPåkrevdBehov ? (
@@ -46,22 +47,22 @@ const SengeInfo = ({ hm }: Props) => {
                   )}
                 </>
               )}
-            </BodyShort>
-          </div>
-          <div>
-            {hm.sengeInfo.behovForSengBegrunnelse && (
-              <BodyShort>
-                <b>{t('grunnenTilBehovet')}: </b> {hm.sengeInfo.behovForSengBegrunnelse}
-              </BodyShort>
-            )}
-          </div>
+            </>}
+          />
+
+          {hm.sengeInfo.behovForSengBegrunnelse && (
+            <InfoLinje
+              overskrift={t('grunnenTilBehovet')}
+              info={hm.sengeInfo.behovForSengBegrunnelse}
+            />
+          )}
         </>
       ) : (
         <>
           {hm.sengeInfo?.behovForSeng && (
-            <div>
-              <BodyShort>
-                <b>{t('hjelpemiddelinfo.seng.behovForSeng')}: </b>
+            <InfoLinje
+              overskrift={t('hjelpemiddelinfo.seng.behovForSeng')}
+              info={<>
                 {hm.sengeInfo?.behovForSengBegrunnelse ? (
                   <>{hm.sengeInfo.behovForSengBegrunnelse}</>
                 ) : (
@@ -75,26 +76,25 @@ const SengeInfo = ({ hm }: Props) => {
                     )}
                   </>
                 )}
-              </BodyShort>
-            </div>
+              </>}
+            />
           )}
         </>
-      )}
+      )
+      }
 
-      {hm.sengeInfo?.høyGrindValg && (
-        <>
-          {hm.sengeInfo.høyGrindValg.erKjentMedTvangsAspekt && (
-            <div>
-              <BodyShort>
-                <b>{t('felles.bekreftetAvFormidler')}: </b>
-                {t('hjelpemiddelinfo.seng.høyGrind.erKjentMedTvangsAspekt')}
-              </BodyShort>
-            </div>
-          )}
-          <div>
-            <BodyShort>
-              <b>{t('hjelpemiddelinfo.seng.høyGrind.andreTiltak.label')}: </b>
-              {hm.sengeInfo.høyGrindValg.harForsøktOpptrening ? (
+      {
+        hm.sengeInfo?.høyGrindValg && (
+          <>
+            {hm.sengeInfo.høyGrindValg.erKjentMedTvangsAspekt && (
+              <InfoLinje
+                overskrift={t('felles.bekreftetAvFormidler')}
+                info={t('hjelpemiddelinfo.seng.høyGrind.erKjentMedTvangsAspekt')}
+              />
+            )}
+            <InfoLinje
+              overskrift={t('hjelpemiddelinfo.seng.høyGrind.andreTiltak.label')}
+              info={hm.sengeInfo.høyGrindValg.harForsøktOpptrening ? (
                 <>{t('hjelpemiddelinfo.seng.høyGrind.andreTiltak.ja')}</>
               ) : (
                 <Trans
@@ -104,21 +104,17 @@ const SengeInfo = ({ hm }: Props) => {
                   }}
                 />
               )}
-            </BodyShort>
-          </div>
+            />
 
-          {hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse && (
-            <div>
-              <BodyShort>
-                <b>{t('hjelpemiddelinfo.seng.høyGrind.harIkkeForsøktOpptreningBegrunnelse.label')}: </b>
-                {hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse}
-              </BodyShort>
-            </div>
-          )}
-          <div>
-            <BodyShort>
-              <b>Plan: </b>
-              {hm.sengeInfo.høyGrindValg.erLagetPlanForOppfølging ? (
+            {hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse && (
+              <InfoLinje
+                overskrift={t('hjelpemiddelinfo.seng.høyGrind.harIkkeForsøktOpptreningBegrunnelse.label')}
+                info={hm.sengeInfo.høyGrindValg.harIkkeForsøktOpptreningBegrunnelse}
+              />
+            )}
+            <InfoLinje
+              overskrift="Plan"
+              info={hm.sengeInfo.høyGrindValg.erLagetPlanForOppfølging ? (
                 <>{t('hjelpemiddelinfo.seng.høyGrind.erLagetPlanForOppfølging.ja')}</>
               ) : (
                 <Trans
@@ -128,10 +124,10 @@ const SengeInfo = ({ hm }: Props) => {
                   }}
                 />
               )}
-            </BodyShort>
-          </div>
-        </>
-      )}
+            />
+          </>
+        )
+      }
     </>
   )
 }

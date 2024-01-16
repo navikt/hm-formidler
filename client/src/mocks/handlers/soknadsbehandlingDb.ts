@@ -680,6 +680,347 @@ const soknadsbehandlingDbHandlers = [
     })
     )
   }),
+  rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/a293fae9-262a-4fad-b7be-35715b953511`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        "søknadId": "a293fae9-262a-4fad-b7be-35715b953511",
+        "behovsmeldingType": "SØKNAD",
+        "datoOpprettet": "2024-01-04T14:06:18.103+00:00",
+        "datoOppdatert": "2024-01-04T14:06:22.236+00:00",
+        "status": "GODKJENT_MED_FULLMAKT",
+        "fullmakt": true,
+        "fnrBruker": "13820599335",
+        "navnBruker": "Rulla Tor",
+        "søknadsdata": {
+            "bruker": {
+                "etternavn": "Tor",
+                "fnummer": "13820599335",
+                "fornavn": "Rulla",
+                "telefonNummer": "13820599",
+                "adresse": "Fjellvegen 69",
+                "postnummer": "6770",
+                "poststed": "Nordfjordeid",
+                "boform": null,
+                "bruksarena": "UKJENT",
+                "funksjonsnedsettelser": [
+                    "BEVEGELSE"
+                ],
+                "signatur": "FULLMAKT",
+                "kroppsmaal": {
+                    "setebredde": null,
+                    "laarlengde": null,
+                    "legglengde": null,
+                    "hoyde": null,
+                    "kroppsvekt": null
+                },
+                "brukernummer": null,
+                "bekreftedeVilkår": [
+                    "PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1",
+                    "VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1",
+                    "KAN_IKKE_LOESES_MED_ENKLERE_HJELPEMIDLER_V1",
+                    "I_STAND_TIL_AA_BRUKE_HJELEPMIDLENE_V1"
+                ]
+            },
+            "formidler": {
+                "navn": "Kvadratisk Faktura",
+                "arbeidssted": "Stad Fysioterapi",
+                "stilling": "Fysioterapetut",
+                "adresse": "Fjellvegen 69 6770 NORDFJORDEID",
+                "telefon": "13820599",
+                "treffesEnklest": "man-ons kl 08-15",
+                "epost": "kf@stad.kommune.no",
+                "kommunenavn": null
+            },
+            "hjelpemidler": [
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Topro Taurus E Premium",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "072517",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Topro Taurus E Premium",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": null,
+                        "hovedformålErForflytning": null,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": true,
+                        "type": "GÅBORD",
+                        "bruksområde": null,
+                        "detErLagetEnMålrettetPlan": null,
+                        "planenOppbevaresIKommunen": null
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                },
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Krabat Runner S1 (uten sete)",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Krabat Runner S1 (uten sete)",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": null,
+                        "hovedformålErForflytning": null,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": true,
+                        "type": "SPARKESYKKEL",
+                        "bruksområde": "TIL_FORFLYTNING",
+                        "detErLagetEnMålrettetPlan": null,
+                        "planenOppbevaresIKommunen": null
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                },
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Krabat Runner S2 (uten sete)",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Krabat Runner S2 (uten sete)",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": null,
+                        "hovedformålErForflytning": null,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": true,
+                        "type": "SPARKESYKKEL",
+                        "bruksområde": "TIL_TRENING_OG_ANNET",
+                        "detErLagetEnMålrettetPlan": true,
+                        "planenOppbevaresIKommunen": true
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                },
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Mustang str.4 - grå",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "267621",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Mustang str.4 - grå",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": null,
+                        "hovedformålErForflytning": null,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": null,
+                        "type": "GÅSTOL",
+                        "bruksområde": "TIL_TRENING_OG_ANNET",
+                        "detErLagetEnMålrettetPlan": true,
+                        "planenOppbevaresIKommunen": true
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                },
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Gåtreningshjm Grillo PT medium",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "234983",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Gåtreningshjm Grillo PT medium",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": false,
+                        "hovedformålErForflytning": true,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": null,
+                        "type": "GÅTRENING",
+                        "bruksområde": "TIL_FORFLYTNING",
+                        "detErLagetEnMålrettetPlan": true,
+                        "planenOppbevaresIKommunen": true
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                },
+                {
+                    "antall": 1,
+                    "arsakForAntall": null,
+                    "arsakForAntallBegrunnelse": null,
+                    "beskrivelse": "Albuekrykke Classic med støtdemper, anatomisk soft håndtak. Venstre",
+                    "hjelpemiddelkategori": "Ganghjelpemidler",
+                    "hmsNr": "313242",
+                    "tilleggsinformasjon": "",
+                    "rangering": "1",
+                    "utlevertFraHjelpemiddelsentralen": false,
+                    "vilkarliste": [],
+                    "tilbehorListe": [],
+                    "begrunnelse": "",
+                    "kanIkkeTilsvarande": false,
+                    "navn": "Albuekrykke Classic med støtdemper, anatomisk soft håndtak. Venstre",
+                    "rullestolInfo": null,
+                    "elektriskRullestolInfo": null,
+                    "personlofterInfo": null,
+                    "utlevertInfo": {
+                        "utlevertType": null,
+                        "overførtFraBruker": null,
+                        "annenKommentar": null
+                    },
+                    "appInfo": null,
+                    "varmehjelpemiddelInfo": null,
+                    "sengeInfo": null,
+                    "elektriskVendesystemInfo": null,
+                    "ganghjelpemiddelInfo": {
+                        "brukerErFylt26År": null,
+                        "hovedformålErForflytning": null,
+                        "kanIkkeBrukeMindreAvansertGanghjelpemiddel": true,
+                        "type": "KRYKKE",
+                        "bruksområde": null,
+                        "detErLagetEnMålrettetPlan": null,
+                        "planenOppbevaresIKommunen": null
+                    },
+                    "posisjoneringssystemInfo": null,
+                    "posisjoneringsputeForBarnInfo": null,
+                    "oppreisningsStolInfo": null,
+                    "diverseInfo": {},
+                    "bytter": [],
+                    "bruksarena": [
+                        "GRUNN_ELLER_VIDEREGÅENDESKOLE"
+                    ]
+                }
+            ],
+            "hjelpemiddelTotalAntall": 6,
+            "oppfolgingsansvarlig": null,
+            "levering": {
+                "kontaktPerson": {
+                    "navn": null,
+                    "telefon": null,
+                    "kontaktpersonType": "HJELPEMIDDELBRUKER"
+                },
+                "leveringsmaate": "FOLKEREGISTRERT_ADRESSE",
+                "adresse": null,
+                "merknad": "",
+                "tilleggsinfo": []
+            }
+        },
+        "valgteÅrsaker": []
+    })
+    )
+  }),
   rest.get<{}, {}, {}>(`${API_PATH}/soknad/innsender/:id`, (req, res, ctx) => {
     return res(
       ctx.json({

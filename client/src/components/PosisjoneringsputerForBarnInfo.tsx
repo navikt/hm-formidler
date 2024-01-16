@@ -1,6 +1,7 @@
 import { Alert, BodyShort } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem, PosisjoneringsputeForBarnBruk } from '../interfaces/CommonTypes'
+import InfoLinje from './InfoLinje'
 
 interface Props {
   hm: HjelpemiddelItem
@@ -12,46 +13,42 @@ const PosisjoneringsputerForBarnInfo = ({ hm }: Props) => {
   return (<>
 
     {hm.posisjoneringsputeForBarnInfo?.bruksområde === PosisjoneringsputeForBarnBruk.TILRETTELEGGE_UTGANGSSTILLING && (
-      <div>
-        <BodyShort>
-          <b>{t('felles.bruksområde')}: </b>
-          {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TILRETTELEGGE_UTGANGSSTILLING')}
-        </BodyShort>
-      </div>
+      <InfoLinje
+        overskrift={t('felles.bruksområde')}
+        info={t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TILRETTELEGGE_UTGANGSSTILLING')}
+      />
     )}
 
     {hm.posisjoneringsputeForBarnInfo?.bruksområde === PosisjoneringsputeForBarnBruk.TRENING_AKTIVITET_STIMULERING && (
       <>
-        <div>
-          <BodyShort>
-            <b>{t('felles.bruksområde')}: </b>
-            {t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TRENING_AKTIVITET_STIMULERING')}
-          </BodyShort>
-        </div>
+        <InfoLinje
+          overskrift={t('felles.bruksområde')}
+          info={t('hjelpemiddelinfo.posisjoneringsputeForBarn.bruk.TRENING_AKTIVITET_STIMULERING')}
+        />
         {(hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan ||
           hm.posisjoneringsputeForBarnInfo.planenOppbevaresIKommunen) && (
             <>
-              <div>
-                <BodyShort>
-                  <b>{t('felles.formidlerBekrefterAt')}:</b>
-                </BodyShort>
-                <ul style={{ margin: 0 }}>
-                  {hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan && (
-                    <li>
-                      <BodyShort>
-                        {t('hjelpemiddelinfo.posisjoneringssystem.detErLagetEnMålrettetPlan')}
-                      </BodyShort>
-                    </li>
-                  )}
-                  {hm.posisjoneringsputeForBarnInfo.planenOppbevaresIKommunen && (
-                    <li>
-                      <BodyShort>
-                        {t('hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen')}
-                      </BodyShort>
-                    </li>
-                  )}
-                </ul>
-              </div>
+              <InfoLinje
+                overskrift={t('felles.formidlerBekrefterAt')}
+                info={
+                  <ul style={{ margin: 0 }}>
+                    {hm.posisjoneringsputeForBarnInfo.detErLagetEnMålrettetPlan && (
+                      <li>
+                        <BodyShort>
+                          {t('hjelpemiddelinfo.posisjoneringssystem.detErLagetEnMålrettetPlan')}
+                        </BodyShort>
+                      </li>
+                    )}
+                    {hm.posisjoneringsputeForBarnInfo.planenOppbevaresIKommunen && (
+                      <li>
+                        <BodyShort>
+                          {t('hjelpemiddelinfo.posisjoneringssystem.planenOppbevaresIKommunen')}
+                        </BodyShort>
+                      </li>
+                    )}
+                  </ul>
+                }
+              />
             </>
           )}
       </>
