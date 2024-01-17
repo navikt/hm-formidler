@@ -11,7 +11,7 @@ const BruksArena = ({ hm }: Props) => {
   const { t } = useTranslation()
   const { bruksarena } = hm!
   
-  if (!bruksarena) {
+  if (!bruksarena || bruksarena.length === 0) {
     return null
   }
 
