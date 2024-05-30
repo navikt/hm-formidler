@@ -16,7 +16,6 @@ type LeveringProps = {
 
 const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) => {
   const { t } = useTranslation()
-  console.log('props:', props)
 
   const { levering, formidler, bruker, hast } = props
 
