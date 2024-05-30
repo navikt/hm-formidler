@@ -2,6 +2,7 @@ import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { Brukerinfo } from './Brukerinfo'
 import { HjelpemiddelItem } from './CommonTypes'
 import { Formidlerinfo } from './Formidlerinfo'
+import { Hast } from './Hast'
 import { Leveringsinfo } from './Leveringinfo'
 import { Oppfolgingsansvarliginfo } from './Oppfolgingsansvarliginfo'
 
@@ -24,6 +25,7 @@ export interface Soknadsdata {
   hjelpemiddelTotalAntall: number
   oppfolgingsansvarlig: Oppfolgingsansvarliginfo
   levering: Leveringsinfo
+  hast: Hast | null
 }
 
 export enum ValgtÅrsak {

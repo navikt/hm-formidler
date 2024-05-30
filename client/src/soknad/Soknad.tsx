@@ -56,7 +56,14 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
                 oppfolgingsansvarlig={soknad.oppfolgingsansvarlig}
               />
             }
-            {<UtleveringOppsummering levering={soknad.levering} formidler={soknad.formidler} bruker={soknad.bruker} />}
+            {
+              <UtleveringOppsummering
+                levering={soknad.levering}
+                formidler={soknad.formidler}
+                bruker={soknad.bruker}
+                hast={soknad.hast}
+              />
+            }
             {<FullmaktOgVilkaarOppsummering bruker={soknad.bruker} />}
           </div>
         </Panel>

@@ -5,17 +5,20 @@ import { useTranslation } from 'react-i18next'
 import { KontaktPersonType, Leveringsinfo, Leveringsmaate } from '../interfaces/Leveringinfo'
 import { Formidlerinfo } from '../interfaces/Formidlerinfo'
 import { Brukerinfo } from '../interfaces/Brukerinfo'
+import { Hast, Hasteårsak } from '../interfaces/Hast'
 
 type LeveringProps = {
   levering: Leveringsinfo
   formidler: Formidlerinfo
   bruker: Brukerinfo
+  hast: Hast | null
 }
 
 const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) => {
   const { t } = useTranslation()
+  console.log('props:', props)
 
-  const { levering, formidler, bruker } = props
+  const { levering, formidler, bruker, hast } = props
 
   return (
     <>
@@ -27,11 +30,17 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
         </div>
         <div className="contentBlock">
           <div className={'infoTable'}>
+            {hast && <HastOppsummering hast={hast} />}
+
             {levering.tilleggsinfo?.map((tilleggsinfo) => {
               return (
                 <div className={'infoRow'} key={tilleggsinfo}>
-                  <Label className={'infoRowCell fixedWidthLabel'}>{t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.label`)}</Label>
-                  <BodyShort className={'infoRowCell'}>{t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.tekst`)}</BodyShort>
+                  <Label className={'infoRowCell fixedWidthLabel'}>
+                    {t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.label`)}
+                  </Label>
+                  <BodyShort className={'infoRowCell'}>
+                    {t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.tekst`)}
+                  </BodyShort>
                 </div>
               )
             })}
@@ -88,6 +97,38 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
             ) : null}
           </div>
         </div>
+      </div>
+    </>
+  )
+}
+
+const HastOppsummering = ({ hast }: { hast: Hast }) => {
+  const { t } = useTranslation()
+
+  const årsaker = hast.hasteårsaker
+    .filter((årsak) => årsak !== Hasteårsak.ANNET) // Trenger ikke vise denne i oppsummering
+    .map((årsak) => t(`hasteårsak.${årsak}`))
+
+  if (hast.hastBegrunnelse) {
+    årsaker.push(hast.hastBegrunnelse)
+  }
+
+  return (
+    <>
+      <div className={'infoRow'}>
+        <Label className={'infoRowCell fixedWidthLabel'}>{t('hast.prioritet')}</Label>
+        <BodyShort className={'infoRowCell'}>{t('hast.sakenHaster')}</BodyShort>
+      </div>
+      <div className={'infoRow'}>
+        <Label className={'infoRowCell fixedWidthLabel'}>{t('hast.årsakenTilHast')}</Label>
+        {årsaker.length === 1 && <>{årsaker[0]}</>}
+        {årsaker.length > 1 && (
+          <ul style={{ padding: 0, margin: 0, marginLeft: '20px' }}>
+            {årsaker.map((årsak, i) => (
+              <li key={i}>{årsak}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   )

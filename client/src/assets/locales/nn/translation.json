@@ -295,5 +295,12 @@
   "hjelpemiddelinfo.bytte.årsak.VURDERT_SOM_ØDELAGT_AV_LOKAL_TEKNIKER": "vurdert som øydelagt av lokal teknikar",
   "hjelpemiddelinfo.bruksarena": "Bruksarena",
   "dato.innsendt": "Innsendt",
-  "dato.oppdatert": "Sist oppdatert"
+  "dato.oppdatert": "Sist oppdatert",
+  "hast.prioritet": "Prioritet",
+  "hast.sakenHaster": "Saka haster",
+  "hast.årsakenTilHast": "Årsaken til at det hastar",
+  "hasteårsak.UTVIKLING_AV_TRYKKSÅR": "Det er stor fare for utvikling av trykksår, eller for å hindra vidare utvikling av trykksår.",
+  "hasteårsak.TERMINALPLEIE": "Innbyggjar har behov for terminalpleie.",
+  "hasteårsak.UTSKRIVING_FRA_SYKEHUS_SOM_IKKE_KAN_PLANLEGGES": "Utskriving frå sjukehus som ikkje kan planlegges.",
+  "hasteårsak.ANNET": "Anna, plutseleg oppstått behov på grunn av brukars helsesituasjon."
 }
