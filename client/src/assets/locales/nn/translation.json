@@ -302,5 +302,7 @@
   "hasteårsak.UTVIKLING_AV_TRYKKSÅR": "Det er stor fare for utvikling av trykksår, eller for å hindra vidare utvikling av trykksår.",
   "hasteårsak.TERMINALPLEIE": "Innbyggjar har behov for terminalpleie.",
   "hasteårsak.UTSKRIVING_FRA_SYKEHUS_SOM_IKKE_KAN_PLANLEGGES": "Utskriving frå sjukehus som ikkje kan planlegges.",
+  "hasteårsak.UTSKRIVING_FRA_SYKEHUS_SOM_IKKE_KAN_PLANLEGGES_V2": "Innbyggjar skal skrivast ut frå sjukehus utan at det var mogleg å planleggja. Det er derfor behov for hjelpemiddel til stell og pleie slik at utskrivinga kan gjennomførast.",
+  "hasteårsak.RASK_FORVERRING_AV_ALVORLIG_DIAGNOSE": "Det har skjedd ei rask forverring av ein alvorleg diagnose.",
   "hasteårsak.ANNET": "Anna, plutseleg oppstått behov på grunn av brukars helsesituasjon."
 }
