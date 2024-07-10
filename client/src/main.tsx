@@ -43,10 +43,6 @@ const init = async () => {
 
   const rootElement = document.getElementById('root')
 
-  if (Modal.setAppElement) {
-    Modal.setAppElement(rootElement)
-  }
-
   ReactDOM.render(<App />, rootElement)
 }
 
