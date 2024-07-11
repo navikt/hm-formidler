@@ -1,10 +1,11 @@
 import React from 'react'
-import { Label, Detail } from '@navikt/ds-react'
+import { Label, Detail, BodyShort, VStack, HStack, Spacer } from '@navikt/ds-react'
 import { Hjelpemiddeltilbehoer } from '../interfaces/CommonTypes'
 import { useTranslation } from 'react-i18next'
+import { Avstand } from './Avstand'
 
 type TilbehoerinfoProps = {
-  tilbehoerListe?: Hjelpemiddeltilbehoer[]
+  tilbehoerListe: Hjelpemiddeltilbehoer[]
 }
 
 const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) => {
@@ -12,31 +13,36 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
   const { tilbehoerListe } = props
 
   return (
-    <>
-      {tilbehoerListe && tilbehoerListe?.length > 0 && (
-        <div>
-          <Label className={'fixedWidthLabel'}>{t('leggTilEllerEndre.tilbehor')}</Label>
-        </div>
-      )}
-      {tilbehoerListe && tilbehoerListe?.length > 0 && (
-        <ul style={{ paddingLeft: '0', margin: '0' }}>
-          {tilbehoerListe?.map((tlbhr: Hjelpemiddeltilbehoer, tilbehorIdx: number) => (
-            <li key={tilbehorIdx} className="tilbehoerinfo">
-              <span className="sr-only">HMS nummer</span>
-              <Detail size="small" style={{ flex: '0 0 5rem' }}>
-                {tlbhr.hmsnr}
-              </Detail>
-              <Detail size="small" style={{ flex: '1' }}>
-                {tlbhr.navn}
-              </Detail>
-              <Detail size="small" className="tilbehoerinfo-antall">
-                {t('handlekurv.tilbehoer.antall', { antall: tlbhr.antall })}
-              </Detail>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+    <Avstand marginTop={3} marginBottom={3}>
+      <BodyShort size="large" weight="semibold" spacing>
+        {t('leggTilEllerEndre.tilbehor')}
+      </BodyShort>
+      <ul style={{ paddingLeft: '0', margin: '0' }} data-cy="tilbehør-liste">
+        {tilbehoerListe.map((tlbhr, tilbehorIdx) => (
+          <li key={tilbehorIdx} style={{ display: 'flex' }}>
+            <VStack style={{ width: '100%' }}>
+              <HStack gap="4" justify="space-between" wrap={false}>
+                <BodyShort>{`${tlbhr.hmsnr}`}</BodyShort>
+                <BodyShort>{`${tlbhr.navn}`}</BodyShort>
+                <Spacer />
+                <BodyShort data-cy="tilbehør-antall" align="end" style={{ flex: '0 0 4rem' }}>
+                  {t('handlekurv.tilbehoer.antall', { antall: tlbhr.antall })}
+                </BodyShort>
+              </HStack>
+              {tlbhr.begrunnelse && (
+                <Avstand marginTop={4}>
+                  <BodyShort spacing weight="semibold">
+                    Begrunnelse for tilbehøret
+                  </BodyShort>
+                  <BodyShort data-cy="tilbehør-begrunnelse">{tlbhr.begrunnelse}</BodyShort>
+                </Avstand>
+              )}
+              {tilbehorIdx < tilbehoerListe.length - 1 && <hr style={{ margin: '.8rem 0' }} />}
+            </VStack>
+          </li>
+        ))}
+      </ul>
+    </Avstand>
   )
 }
 

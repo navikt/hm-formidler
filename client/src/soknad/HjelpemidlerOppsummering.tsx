@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, BodyShort } from '@navikt/ds-react'
+import { Heading, BodyShort, Box } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
@@ -26,13 +26,10 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
         </div>
       </div>
 
-      <hr aria-hidden="true" />
-
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: HjelpemiddelItem, hmsIdx) => (
-          <li key={hmsIdx} style={{ width: '95%' }}>
+          <li key={hmsIdx} style={{ width: '95%', marginBottom: '16px' }}>
             <Hjelpemiddel hm={hm} kroppsmaal={kroppsmaal} />
-            <hr aria-hidden="true" style={{ color: '#78706A' }} />
           </li>
         ))}
       </ul>

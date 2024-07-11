@@ -15,10 +15,10 @@ import SengeInfo from './SengeInfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
 import OppreisningsStolInfo from './OppreisningsStolInfo'
-import GanghjelpemiddelInfo from "./GanghjelpemiddelInfo";
-import BruksArena from "./Bruksarena";
+import GanghjelpemiddelInfo from './GanghjelpemiddelInfo'
 import styled from 'styled-components'
 import InfoLinje from './InfoLinje'
+import Panel from './Panel'
 
 const Container = styled.div`
   display: flex;
@@ -37,24 +37,14 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
   const { t } = useTranslation()
 
   return (
-    <Container>
+    <Panel background="surface-subtle">
       <div>
         <Hjelpemiddelinfo hjelpemiddel={hm} />
       </div>
-      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && (
-        <div>
-          <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />
-        </div>
-      )}
-      {(!!hm.vilkarliste ||
-        !!hm.tilleggsinformasjon ||
-        !!hm.begrunnelse) && (
-          <Hjelpemiddeltekstinfo hm={hm} />
-        )}
+      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />}
+      {(!!hm.vilkarliste || !!hm.tilleggsinformasjon || !!hm.begrunnelse) && <Hjelpemiddeltekstinfo hm={hm} />}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && (
-          <RullestolInfo hm={hm} />
-        )}
+        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && <RullestolInfo hm={hm} />}
       {hm.appInfo && <AppInfo hm={hm} />}
       {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
       {hm.sengeInfo && <SengeInfo hm={hm} />}
@@ -67,11 +57,11 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
         hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-          <InfoLinje
-            overskrift={t('leggTilEllerEndre.bruker.kroppsmaal')}
-            info={t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}
-          />
-        )}
+        <InfoLinje
+          overskrift={t('leggTilEllerEndre.bruker.kroppsmaal')}
+          info={t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}
+        />
+      )}
 
       {hm.diverseInfo &&
         Object.entries(hm.diverseInfo).map(([key, value]) => {
@@ -97,38 +87,44 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
           }
         })}
 
-      {(hm.bytter.map((bytte) => {
+      {hm.bytter.map((bytte) => {
         return (
           <>
             <InfoLinje
-              overskrift={<>
-                {bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>)}
-                {!bytte.erTilsvarende && (<Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>)}
-              </>}
-              info={<>
-                {bytte.hmsnr} {bytte.hjmNavn}
-                {bytte.serienr && (
-                  <>
-                    <br />
-                    {t('felles.serienummer')}: {bytte.serienr}
-                  </>
-                )}
-              </>}
+              overskrift={
+                <>
+                  {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
+                  {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
+                </>
+              }
+              info={
+                <>
+                  {bytte.hmsnr} {bytte.hjmNavn}
+                  {bytte.serienr && (
+                    <>
+                      <br />
+                      {t('felles.serienummer')}: {bytte.serienr}
+                    </>
+                  )}
+                </>
+              }
             />
 
             {bytte.årsak && (
               <InfoLinje
                 overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
-                info={<>
-                  {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
-                  {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
-                </>}
+                info={
+                  <>
+                    {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
+                    {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
+                  </>
+                }
               />
             )}
           </>
         )
-      }))}
-    </Container>
+      })}
+    </Panel>
   )
 }
 
