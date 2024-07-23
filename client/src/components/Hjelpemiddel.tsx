@@ -41,7 +41,6 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
       <div>
         <Hjelpemiddelinfo hjelpemiddel={hm} />
       </div>
-      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />}
       {(!!hm.vilkarliste || !!hm.tilleggsinformasjon || !!hm.begrunnelse) && <Hjelpemiddeltekstinfo hm={hm} />}
       {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
         hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && <RullestolInfo hm={hm} />}
@@ -124,6 +123,8 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
           </>
         )
       })}
+
+      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />}
     </Panel>
   )
 }

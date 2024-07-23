@@ -176,6 +176,7 @@ export enum FritakFraBegrunnelseÅrsak {
   ER_PÅ_BESTILLINGSORDNING = 'ER_PÅ_BESTILLINGSORDNING',
   IKKE_I_PILOT = 'IKKE_I_PILOT',
 }
+
 export type AppLenke = {
   lenketekst: string
   lenkeadresse: string
