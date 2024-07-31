@@ -5,16 +5,18 @@ import { useTranslation } from 'react-i18next'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
 import Hjelpemiddel from '../components/Hjelpemiddel'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
+import { HjelpemiddelV2 } from '../interfaces/SoknadInfo'
 
 type HjelpemidlerProps = {
   hjelpemidler: HjelpemiddelItem[]
   hjelpemiddelTotalAntall: number
   kroppsmaal: Kroppsmaal | undefined
+  hjelpemidler2: HjelpemiddelV2[]
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemidler, hjelpemiddelTotalAntall, kroppsmaal } = props
+  const { hjelpemidler, hjelpemiddelTotalAntall, kroppsmaal, hjelpemidler2 } = props
 
   return (
     <>
@@ -29,7 +31,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: HjelpemiddelItem, hmsIdx) => (
           <li key={hmsIdx} style={{ width: '95%', marginBottom: '16px' }}>
-            <Hjelpemiddel hm={hm} kroppsmaal={kroppsmaal} />
+            <Hjelpemiddel hm={hm} kroppsmaal={kroppsmaal} hm2={hjelpemidler2[hmsIdx]} />
           </li>
         ))}
       </ul>

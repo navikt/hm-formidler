@@ -13,7 +13,7 @@ import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
-import { Soknadsdata } from '../interfaces/SoknadInfo'
+import { Formidlerbehovsmelding, Soknadsdata } from '../interfaces/SoknadInfo'
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
@@ -36,18 +36,17 @@ const SoknadVisning: React.FC = () => {
     valgteÅrsaker?: string[] | undefined
     datoOpprettet: string
     datoOppdatert: string
+    behovsmeldingV2: Formidlerbehovsmelding
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
   }, [])
 
-  
   const printRef = useRef(null)
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle:
-      data && (t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker })),
+    documentTitle: data && t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker }),
     onBeforePrint: () => logKlikkPåSkrivUt(soknadsid),
   })
 
@@ -62,7 +61,16 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert } = data
+  const {
+    søknadsdata,
+    navnBruker,
+    behovsmeldingType,
+    status,
+    valgteÅrsaker,
+    datoOpprettet,
+    datoOppdatert,
+    behovsmeldingV2,
+  } = data
 
   if (!søknadsdata) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
@@ -108,6 +116,7 @@ const SoknadVisning: React.FC = () => {
             behovsmeldingType={behovsmeldingType}
             status={status}
             valgteÅrsaker={valgteÅrsaker}
+            formidlerbehovsmelding={behovsmeldingV2}
           />
         </div>
       </main>

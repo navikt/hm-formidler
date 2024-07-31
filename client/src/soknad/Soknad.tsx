@@ -7,7 +7,7 @@ import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
 import UtleveringOppsummering from './UtleveringOppsummering'
 import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
-import { BehovsmeldingType, Soknadsdata, ValgtÅrsak } from '../interfaces/SoknadInfo'
+import { BehovsmeldingType, Formidlerbehovsmelding, Soknadsdata, ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 
 type SoknadProps = {
@@ -16,11 +16,12 @@ type SoknadProps = {
   status: SoknadStatus | undefined
   valgteÅrsaker?: String[] | undefined
   ref: React.ForwardedRef<HTMLDivElement>
+  formidlerbehovsmelding: Formidlerbehovsmelding
 }
 
 const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref) => {
   const { t } = useTranslation()
-  const { soknad, status, valgteÅrsaker } = props
+  const { soknad, status, valgteÅrsaker, formidlerbehovsmelding } = props
 
   const erAvvistBestilling = status === SoknadStatus.BESTILLING_AVVIST
   const varDuplikat = valgteÅrsaker && valgteÅrsaker.includes(ValgtÅrsak.DUPLIKAT)
@@ -48,6 +49,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
                 hjelpemidler={soknad.hjelpemidler}
                 hjelpemiddelTotalAntall={soknad.hjelpemiddelTotalAntall}
                 kroppsmaal={soknad.bruker.kroppsmaal}
+                hjelpemidler2={formidlerbehovsmelding.hjelpemidler?.hjelpemidler!!}
               />
             }
             {

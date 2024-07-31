@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - tilbehørbegrunnelse
+      - behovsmeldingV2
 
 jobs:
   deploy:

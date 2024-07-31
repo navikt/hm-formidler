@@ -1,90 +1,60 @@
-import { BodyShort, Label } from '@navikt/ds-react'
+import { Label } from '@navikt/ds-react'
 import React from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { Kroppsmaal } from '../interfaces/Brukerinfo'
 import { HjelpemiddelItem } from '../interfaces/CommonTypes'
-import { Kategori } from '../soknad/kategorier'
-import { AppInfo } from './AppInfo'
-import ElektriskVendesystemInfo from './ElektriskVendesystemInfo'
 import Hjelpemiddelinfo from './Hjelpemiddelinfo'
-import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
-import PosisjoneringsputerForBarnInfo from './PosisjoneringsputerForBarnInfo'
-import PosisjoneringssystemInfo from './PosisjoneringssystemInfo'
-import { RullestolInfo } from './RullestolInfo'
-import SengeInfo from './SengeInfo'
 import Tilbehoerinfo from './Tilbehoerinfo'
-import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
-import OppreisningsStolInfo from './OppreisningsStolInfo'
-import GanghjelpemiddelInfo from './GanghjelpemiddelInfo'
 import styled from 'styled-components'
 import InfoLinje from './InfoLinje'
 import Panel from './Panel'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
+import { HjelpemiddelV2, I18n } from '../interfaces/SoknadInfo'
 
 type HjelpemiddelProps = {
   hm: HjelpemiddelItem
   kroppsmaal: Kroppsmaal | undefined
+  hm2: HjelpemiddelV2
 }
 
 const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  const { hm, kroppsmaal } = props
+  const { hm, hm2 } = props
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  const getI18nTekst = (i18nTekst: I18n): string => {
+    console.log('current language', i18n.language)
+    if (i18n.language === 'nn') {
+      return i18nTekst.nn
+    }
+    return i18nTekst.nb
+  }
 
   return (
     <Panel background="surface-subtle">
       <div>
         <Hjelpemiddelinfo hjelpemiddel={hm} />
       </div>
-      {(!!hm.vilkarliste || !!hm.tilleggsinformasjon || !!hm.begrunnelse) && <Hjelpemiddeltekstinfo hm={hm} />}
-      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && <RullestolInfo hm={hm} />}
-      {hm.appInfo && <AppInfo hm={hm} />}
-      {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
-      {hm.sengeInfo && <SengeInfo hm={hm} />}
-      {hm.elektriskVendesystemInfo && <ElektriskVendesystemInfo hm={hm} />}
-      {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
-      {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
-      {hm.oppreisningsStolInfo && <OppreisningsStolInfo hm={hm} />}
-      {hm.ganghjelpemiddelInfo && <GanghjelpemiddelInfo hm={hm} />}
 
-      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-        <InfoLinje
-          overskrift={t('leggTilEllerEndre.bruker.kroppsmaal')}
-          info={t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}
-        />
-      )}
-
-      {hm.diverseInfo &&
-        Object.entries(hm.diverseInfo).map(([key, value]) => {
-          if (value === undefined) {
-            return null
-          } else {
-            return (
-              <InfoLinje
-                key={key}
-                overskrift={t(`hjelpemiddel.diverseInfo.${key}.label`)}
-                info={
-                  <Trans
-                    i18nKey={`hjelpemiddel.diverseInfo.${key}`}
-                    values={{ value: value }}
-                    components={{
-                      italic: <em />,
-                      bold: <b />,
-                    }}
-                  />
-                }
-              />
-            )
-          }
-        })}
+      {hm2.opplysninger.map((opplysning) => {
+        const overskrift = getI18nTekst(opplysning.label)
+        if (opplysning.tekster.length > 1) {
+          return (
+            <InfoLinje
+              overskrift={overskrift}
+              info={
+                <ul style={{ margin: 0 }}>
+                  {opplysning.tekster.map((tekst) => {
+                    return <li>{tekst.fritekst ?? getI18nTekst(tekst.i18n!!)}</li>
+                  })}
+                </ul>
+              }
+            />
+          )
+        } else {
+          const tekst = opplysning.tekster[0]
+          return <InfoLinje overskrift={overskrift} info={tekst.fritekst ?? getI18nTekst(tekst.i18n!!)} />
+        }
+      })}
 
       {hm.bytter.map((bytte) => {
         return (
