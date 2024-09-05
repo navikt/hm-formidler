@@ -2,17 +2,17 @@ import React from 'react'
 import { Heading, Label, BodyShort } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Formidlerinfo } from '../interfaces/Formidlerinfo'
-import { Oppfolgingsansvarliginfo } from '../interfaces/Oppfolgingsansvarliginfo'
+import { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
+import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 
 type FormidlerProps = {
-  formidler: Formidlerinfo
-  oppfolgingsansvarlig: Oppfolgingsansvarliginfo
+  hjelpemiddelformidler: Hjelpemiddelformidler
+  annnenOppfølgingsansvarlig: AnnenOppfølgingsansvarlig | undefined
 }
 
 const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: FormidlerProps) => {
   const { t } = useTranslation()
-  const { formidler, oppfolgingsansvarlig } = props
+  const { hjelpemiddelformidler: formidler, annnenOppfølgingsansvarlig: oppfolgingsansvarlig } = props
 
   return (
     <>
@@ -32,7 +32,7 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
           <div className={'infoTable'}>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.navn}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{formaterPersonnavn(formidler.navn)}</BodyShort>
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>
@@ -44,7 +44,7 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.adresse')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.adresse}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{formaterVeiadresse(formidler.adresse)}</BodyShort>
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
@@ -72,14 +72,14 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
               <BodyShort className={'infoRowCell'}>
-                {formidler.navn} {t('oppsummering.hjelpemiddelformidler')}
+                {formaterPersonnavn(formidler.navn)} {t('oppsummering.hjelpemiddelformidler')}
               </BodyShort>
             </div>
           ) : (
             <div className={'infoTable'}>
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.navn}</BodyShort>
+                <BodyShort className={'infoRowCell'}>{formaterPersonnavn(oppfolgingsansvarlig.navn)}</BodyShort>
               </div>
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>

@@ -1,6 +1,6 @@
 import moment from 'moment'
-import { BehovsmeldingType } from '../../interfaces/SoknadInfo'
 import { SoknadStatus } from '../../statemanagement/SoknadStatus'
+import { BehovsmeldingType } from '../../interfaces/CommonTypes'
 
 export const sakerMock = [
   {

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Label, Detail, BodyShort, VStack, HStack, Spacer } from '@navikt/ds-react'
-import { Hjelpemiddeltilbehoer } from '../interfaces/CommonTypes'
+import { BodyShort, VStack, HStack, Spacer } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { Avstand } from './Avstand'
+import { Tilbehør } from '../interfaces/Formidlerbehovsmelding'
 
 type TilbehoerinfoProps = {
-  tilbehoerListe: Hjelpemiddeltilbehoer[]
+  tilbehoerListe: Tilbehør[]
 }
 
 const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) => {
@@ -22,7 +22,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
           <li key={tilbehorIdx} style={{ display: 'flex' }}>
             <VStack style={{ width: '100%' }}>
               <HStack gap="4" justify="space-between" wrap={false}>
-                <BodyShort>{`${tlbhr.hmsnr}`}</BodyShort>
+                <BodyShort>{`${tlbhr.hmsArtNr}`}</BodyShort>
                 <BodyShort>{`${tlbhr.navn}`}</BodyShort>
                 <Spacer />
                 <BodyShort data-cy="tilbehør-antall" align="end" style={{ flex: '0 0 4rem' }}>

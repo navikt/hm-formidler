@@ -3,24 +3,26 @@ import { Label, BodyShort } from '@navikt/ds-react'
 
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Brukerinfo, SignaturType } from '../interfaces/Brukerinfo'
+import { Bruker, Brukersituasjon, Signaturtype } from '../interfaces/Formidlerbehovsmelding'
+import { formaterPersonnavn } from '../interfaces/CommonTypes'
 
 type FullmaktOgVilkaarProps = {
-  bruker: Brukerinfo
+  bruker: Bruker
+  brukersituasjon: Brukersituasjon
 }
 
 const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: FullmaktOgVilkaarProps) => {
   const { t } = useTranslation()
 
-  const { bruker } = props
+  const { bruker, brukersituasjon } = props
 
-  const brukersNavn = `${bruker.fornavn} ${bruker.etternavn}`
+  const brukersNavn = formaterPersonnavn(bruker.navn)
 
   return (
     <>
       <hr aria-hidden="true" />
 
-      {bruker.signatur === SignaturType.FRITAK_FRA_FULLMAKT && (
+      {bruker.signaturtype === Signaturtype.FRITAK_FRA_FULLMAKT && (
         <div className="contentBlock">
           <Label>{t('oppsummering.fritakFraFullmakt.tittel')}</Label>
           <ul>
@@ -46,12 +48,8 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
             lineHeight: '1.375rem',
           }}
         >
-          {bruker.bekreftedeVilkår.map((vilkår) => {
-            return (
-              <li key={vilkår}>
-                {t(`oppsummering.brukervilkår.${vilkår}`, { navn: brukersNavn, })}
-              </li>
-            )
+          {brukersituasjon.bekreftedeVilkår.map((vilkår) => {
+            return <li key={vilkår}>{t(`oppsummering.brukervilkår.${vilkår}`, { navn: brukersNavn })}</li>
           })}
         </ul>
       </div>

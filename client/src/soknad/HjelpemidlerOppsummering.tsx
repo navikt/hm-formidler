@@ -2,19 +2,17 @@ import React from 'react'
 import { Heading, BodyShort, Box } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { HjelpemiddelItem } from '../interfaces/CommonTypes'
-import Hjelpemiddel from '../components/Hjelpemiddel'
-import { Kroppsmaal } from '../interfaces/Brukerinfo'
+import Hjelpemiddelinfo from '../components/Hjelpemiddel'
+import { Hjelpemiddel } from '../interfaces/Formidlerbehovsmelding'
 
 type HjelpemidlerProps = {
-  hjelpemidler: HjelpemiddelItem[]
   hjelpemiddelTotalAntall: number
-  kroppsmaal: Kroppsmaal | undefined
+  hjelpemidler: Hjelpemiddel[]
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemidler, hjelpemiddelTotalAntall, kroppsmaal } = props
+  const { hjelpemiddelTotalAntall, hjelpemidler } = props
 
   return (
     <>
@@ -27,9 +25,9 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       </div>
 
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
-        {hjelpemidler.map((hm: HjelpemiddelItem, hmsIdx) => (
+        {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
           <li key={hmsIdx} style={{ width: '95%', marginBottom: '16px' }}>
-            <Hjelpemiddel hm={hm} kroppsmaal={kroppsmaal} />
+            <Hjelpemiddelinfo hm={hm} />
           </li>
         ))}
       </ul>

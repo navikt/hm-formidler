@@ -1,28 +1,58 @@
-export interface Leveringsinfo {
-  leveringsmaate: Leveringsmaate
-  adresse: string
-  kontaktPerson: KontaktPerson
-  merknad: string
-  tilleggsinfo: LeveringTilleggsinfo[]
+import { Personnavn, Veiadresse } from './CommonTypes'
+import { Hast } from './Hast'
+
+export interface Levering {
+  hjelpemiddelformidler: Hjelpemiddelformidler
+  oppfølgingsansvarlig: Oppfølgingsansvarlig
+  annenOppfølgingsansvarlig: AnnenOppfølgingsansvarlig | undefined
+  utleveringsmåte: Utleveringsmåte | undefined
+  annenUtleveringsadresse: Veiadresse
+  utleveringKontaktperson: Kontaktperson | undefined
+  annenKontaktperson: AnnenKontaktperson | undefined
+  utleveringMerknad: string | undefined
+  hast: Hast | undefined
+  automatiskUtledetTilleggsinfo: LeveringTilleggsinfo[]
 }
 
-export interface KontaktPerson {
-  navn: string
+export interface Hjelpemiddelformidler {
+  navn: Personnavn
+  arbeidssted: string
+  stilling: string
   telefon: string
-  kontaktpersonType: KontaktPersonType
+  adresse: Veiadresse
+  epost: string
+  treffesEnklest: string
 }
 
-export enum Leveringsmaate {
-  ANNEN_ADRESSE = 'ANNEN_ADRESSE',
+export enum Oppfølgingsansvarlig {
+  HJELPEMIDDELFORMIDLER = 'HJELPEMIDDELFORMIDLER',
+  ANNEN_OPPFØLGINGSANSVARLIG = 'ANNEN_OPPFØLGINGSANSVARLIG',
+}
+
+export interface AnnenOppfølgingsansvarlig {
+  navn: Personnavn
+  arbeidssted: string
+  stilling: string
+  telefon: string
+  ansvarFor: string
+}
+
+export enum Utleveringsmåte {
   FOLKEREGISTRERT_ADRESSE = 'FOLKEREGISTRERT_ADRESSE',
-  HJELPEMIDDELSENTRAL = 'HJELPEMIDDELSENTRAL',
-  ALLEREDE_LEVERT = 'ALLEREDE_LEVERT',
+  ANNEN_BRUKSADRESSE = 'ANNEN_BRUKSADRESSE',
+  HJELPEMIDDELSENTRALEN = 'HJELPEMIDDELSENTRALEN',
+  ALLEREDE_UTLEVERT_AV_NAV = 'ALLEREDE_UTLEVERT_AV_NAV',
 }
 
-export enum KontaktPersonType {
+export enum Kontaktperson {
   HJELPEMIDDELBRUKER = 'HJELPEMIDDELBRUKER',
   HJELPEMIDDELFORMIDLER = 'HJELPEMIDDELFORMIDLER',
   ANNEN_KONTAKTPERSON = 'ANNEN_KONTAKTPERSON',
+}
+
+export interface AnnenKontaktperson {
+  navn: Personnavn
+  telefon: string
 }
 
 export enum LeveringTilleggsinfo {

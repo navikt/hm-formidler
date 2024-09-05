@@ -13,12 +13,12 @@ import SoknadVisningFeil from './SoknadVisningFeil'
 import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/browser'
-import { Soknadsdata } from '../interfaces/SoknadInfo'
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
 import { formaterDato, hentTagVariant } from '../Utils'
 import { Avstand } from '../components/Avstand'
+import { Formidlerbehovsmelding } from '../interfaces/Formidlerbehovsmelding'
 
 interface ParamTypes {
   soknadsid: string
@@ -29,30 +29,29 @@ const SoknadVisning: React.FC = () => {
 
   const { soknadsid } = useParams<ParamTypes>()
   const { data, error } = useSWRImmutable<{
-    søknadsdata: Soknadsdata | undefined
     navnBruker: string | undefined
     behovsmeldingType: string | undefined
     status: SoknadStatus | undefined
     valgteÅrsaker?: string[] | undefined
     datoOpprettet: string
     datoOppdatert: string
+    behovsmelding: Formidlerbehovsmelding
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
   }, [])
 
-  
   const printRef = useRef(null)
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle:
-      data && (t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker })),
+    documentTitle: data && t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker }),
     onBeforePrint: () => logKlikkPåSkrivUt(soknadsid),
   })
 
   if (error) {
     Sentry.captureException(new Error(error))
+    console.log('Visning feilet med error:', error)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
   if (!data)
@@ -62,10 +61,11 @@ const SoknadVisning: React.FC = () => {
       </div>
     )
 
-  const { søknadsdata, navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert } = data
+  const { navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert, behovsmelding } = data
 
-  if (!søknadsdata) {
+  if (!behovsmelding) {
     Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
+    console.log('Visning feilet. Mangler behovsmelding. data:', data)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
 
@@ -102,13 +102,7 @@ const SoknadVisning: React.FC = () => {
 
       <main>
         <div className="customPanel">
-          <Soknad
-            ref={printRef}
-            soknad={søknadsdata}
-            behovsmeldingType={behovsmeldingType}
-            status={status}
-            valgteÅrsaker={valgteÅrsaker}
-          />
+          <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
         </div>
       </main>
     </>
