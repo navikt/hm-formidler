@@ -147,7 +147,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '13820599335',
-          innsendersFnr: '13820599335',
           prioritet: 'NORMAL',
         },
       })
@@ -349,7 +348,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '26928698180',
-          innsendersFnr: '13820599335',
           prioritet: 'NORMAL',
         },
       })
@@ -540,7 +538,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '26928698180',
-          innsendersFnr: '13820599335',
           prioritet: 'NORMAL',
         },
       })
@@ -764,7 +761,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '13820599335',
-          innsendersFnr: '13820599335',
           prioritet: 'NORMAL',
         },
         valgteÅrsaker: [],
@@ -1193,7 +1189,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '13820599335',
-          innsendersFnr: '13820599335',
           prioritet: 'HAST',
         },
         valgteÅrsaker: [],
@@ -1363,7 +1358,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '26848497710',
-          innsendersFnr: '26848497710',
           prioritet: 'NORMAL',
         },
         valgteÅrsaker: [],
@@ -1919,7 +1913,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '26848497710',
-          innsendersFnr: '26848497710',
           prioritet: 'NORMAL',
         },
         valgteÅrsaker: [],
@@ -2087,7 +2080,6 @@ const soknadsbehandlingDbHandlers = [
           innsendingsdato: '2024-09-05',
           skjemaversjon: 2,
           hjmBrukersFnr: '26848497710',
-          innsendersFnr: '26848497710',
           prioritet: 'NORMAL',
         },
       })

@@ -6,7 +6,6 @@ export interface Formidlerbehovsmelding {
   type: BehovsmeldingType
   prioritet: Prioritet
   hjmBrukersFnr: string
-  innsendersFnr: string
   innsendingsdato: string
   bruker: Bruker
   brukersituasjon: Brukersituasjon
