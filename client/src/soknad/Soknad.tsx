@@ -7,24 +7,25 @@ import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
 import UtleveringOppsummering from './UtleveringOppsummering'
 import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
-import { BehovsmeldingType, Soknadsdata, ValgtÅrsak } from '../interfaces/SoknadInfo'
+import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { Formidlerbehovsmelding } from '../interfaces/Formidlerbehovsmelding'
+import { formaterPersonnavn } from '../interfaces/CommonTypes'
 
 type SoknadProps = {
-  soknad: Soknadsdata
-  behovsmeldingType: string | undefined
   status: SoknadStatus | undefined
   valgteÅrsaker?: String[] | undefined
+  behovsmelding: Formidlerbehovsmelding
   ref: React.ForwardedRef<HTMLDivElement>
 }
 
 const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref) => {
   const { t } = useTranslation()
-  const { soknad, status, valgteÅrsaker } = props
+  const { status, valgteÅrsaker, behovsmelding } = props
 
   const erAvvistBestilling = status === SoknadStatus.BESTILLING_AVVIST
   const varDuplikat = valgteÅrsaker && valgteÅrsaker.includes(ValgtÅrsak.DUPLIKAT)
-  const brukersNavn = `${soknad.bruker.fornavn} ${soknad.bruker.etternavn}`
+  const brukersNavn = formaterPersonnavn(behovsmelding.bruker.navn)
 
   return (
     <div className="customPanel soknadPanel">
@@ -42,29 +43,32 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
       <div ref={ref}>
         <Panel>
           <div className="contentBlock" data-testid="oppsummering">
-            <BrukerOppsummering bruker={soknad.bruker} />
+            <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
             {
               <HjelpemidlerOppsummering
-                hjelpemidler={soknad.hjelpemidler}
-                hjelpemiddelTotalAntall={soknad.hjelpemiddelTotalAntall}
-                kroppsmaal={soknad.bruker.kroppsmaal}
+                hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
+                hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
               />
             }
             {
               <OppfoelgingOgOpplaeringOppsummering
-                formidler={soknad.formidler}
-                oppfolgingsansvarlig={soknad.oppfolgingsansvarlig}
+                hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
+                annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
               />
             }
             {
               <UtleveringOppsummering
-                levering={soknad.levering}
-                formidler={soknad.formidler}
-                bruker={soknad.bruker}
-                hast={soknad.hast}
+                levering={behovsmelding.levering}
+                formidler={behovsmelding.levering.hjelpemiddelformidler}
+                bruker={behovsmelding.bruker}
               />
             }
-            {<FullmaktOgVilkaarOppsummering bruker={soknad.bruker} />}
+            {
+              <FullmaktOgVilkaarOppsummering
+                bruker={behovsmelding.bruker}
+                brukersituasjon={behovsmelding.brukersituasjon}
+              />
+            }
           </div>
         </Panel>
       </div>

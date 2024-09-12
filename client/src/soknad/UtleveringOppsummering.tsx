@@ -2,22 +2,21 @@ import React from 'react'
 import { Heading, Label, BodyShort } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { KontaktPersonType, Leveringsinfo, Leveringsmaate } from '../interfaces/Leveringinfo'
-import { Formidlerinfo } from '../interfaces/Formidlerinfo'
-import { Brukerinfo } from '../interfaces/Brukerinfo'
 import { Hast, Hasteårsak } from '../interfaces/Hast'
+import { Hjelpemiddelformidler, Kontaktperson, Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'
+import { Bruker } from '../interfaces/Formidlerbehovsmelding'
+import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 
 type LeveringProps = {
-  levering: Leveringsinfo
-  formidler: Formidlerinfo
-  bruker: Brukerinfo
-  hast: Hast | null
+  levering: Levering
+  formidler: Hjelpemiddelformidler
+  bruker: Bruker
 }
 
 const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) => {
   const { t } = useTranslation()
 
-  const { levering, formidler, bruker, hast } = props
+  const { levering, formidler, bruker } = props
 
   return (
     <>
@@ -29,9 +28,9 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
         </div>
         <div className="contentBlock">
           <div className={'infoTable'}>
-            {hast && <HastOppsummering hast={hast} />}
+            {levering.hast && <HastOppsummering hast={levering.hast} />}
 
-            {levering.tilleggsinfo?.map((tilleggsinfo) => {
+            {levering.automatiskUtledetTilleggsinfo?.map((tilleggsinfo) => {
               return (
                 <div className={'infoRow'} key={tilleggsinfo}>
                   <Label className={'infoRowCell fixedWidthLabel'}>
@@ -43,57 +42,60 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
                 </div>
               )
             })}
-            {levering.leveringsmaate === Leveringsmaate.FOLKEREGISTRERT_ADRESSE ? (
+            {levering.utleveringsmåte === Utleveringsmåte.FOLKEREGISTRERT_ADRESSE && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.leveringsadresse')}</Label>
                 <BodyShort className={'infoRowCell'}>{t('oppsummering.FolkeregistrertAdresse')}</BodyShort>
               </div>
-            ) : levering.leveringsmaate === Leveringsmaate.HJELPEMIDDELSENTRAL ? (
+            )}
+            {levering.utleveringsmåte === Utleveringsmåte.HJELPEMIDDELSENTRALEN && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.leveringsadresse')}</Label>
                 <BodyShort className={'infoRowCell'}>{t('oppsummering.hentesHjelpemiddelsentral')}</BodyShort>
               </div>
-            ) : levering.leveringsmaate === Leveringsmaate.ALLEREDE_LEVERT ? (
+            )}
+            {levering.utleveringsmåte === Utleveringsmåte.ALLEREDE_UTLEVERT_AV_NAV && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.obs')}</Label>
                 <BodyShort className={'infoRowCell'}>{t('oppsummering.alleredeUtlevertFraNav')}</BodyShort>
               </div>
-            ) : levering.leveringsmaate === Leveringsmaate.ANNEN_ADRESSE ? (
+            )}
+            {levering.utleveringsmåte === Utleveringsmåte.ANNEN_BRUKSADRESSE && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.leveringsadresse')}</Label>
-                <BodyShort className={'infoRowCell'}>{levering.adresse}</BodyShort>
+                <BodyShort className={'infoRowCell'}>{formaterVeiadresse(levering.annenUtleveringsadresse)}</BodyShort>
               </div>
-            ) : (
-              <></>
             )}
-            {levering.kontaktPerson.kontaktpersonType === KontaktPersonType.HJELPEMIDDELBRUKER ? (
+
+            {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELBRUKER && (
+              <div className={'infoRow'}>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.kontaktperson')}</Label>
+                <BodyShort className={'infoRowCell'}>{formaterPersonnavn(bruker.navn)} (Hjelpemiddelbruker)</BodyShort>
+              </div>
+            )}
+            {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELFORMIDLER && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.kontaktperson')}</Label>
                 <BodyShort className={'infoRowCell'}>
-                  {bruker.fornavn} {bruker.etternavn} (Hjelpemiddelbruker)
+                  {formaterPersonnavn(formidler.navn)} {t('oppsummering.hjelpemiddelformidler')}
                 </BodyShort>
               </div>
-            ) : levering.kontaktPerson.kontaktpersonType === KontaktPersonType.HJELPEMIDDELFORMIDLER ? (
+            )}
+            {levering.utleveringKontaktperson === Kontaktperson.ANNEN_KONTAKTPERSON && levering.annenKontaktperson && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.kontaktperson')}</Label>
                 <BodyShort className={'infoRowCell'}>
-                  {formidler.navn} {t('oppsummering.hjelpemiddelformidler')}
+                  {formaterPersonnavn(levering.annenKontaktperson.navn)} {levering.annenKontaktperson.telefon}
                 </BodyShort>
               </div>
-            ) : levering.kontaktPerson.kontaktpersonType === KontaktPersonType.ANNEN_KONTAKTPERSON ? (
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.kontaktperson')}</Label>
-                <BodyShort className={'infoRowCell'}>
-                  {levering.kontaktPerson.navn} {levering.kontaktPerson.telefon}
-                </BodyShort>
-              </div>
-            ) : null}
-            {levering.merknad ? (
+            )}
+
+            {levering.utleveringMerknad && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.merknadTilUtlevering')}</Label>
-                <BodyShort className={'infoRowCell'}>{levering.merknad}</BodyShort>
+                <BodyShort className={'infoRowCell'}>{levering.utleveringMerknad}</BodyShort>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </div>

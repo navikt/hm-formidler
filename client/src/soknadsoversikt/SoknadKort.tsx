@@ -4,12 +4,13 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { BASE_PATH } from '../App'
-import { BehovsmeldingType, SoknadInfo } from '../interfaces/SoknadInfo'
+import { SoknadInfo } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { beregnFrist, formaterDato, hentTagVariant } from '../Utils'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import './../stylesheet/styles.scss'
 import { Avstand } from '../components/Avstand'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
 interface Props {
   soknad: SoknadInfo

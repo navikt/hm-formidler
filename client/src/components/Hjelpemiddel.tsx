@@ -1,94 +1,70 @@
-import { BodyShort, Label } from '@navikt/ds-react'
-import React from 'react'
-import { Trans, useTranslation } from 'react-i18next'
-import { Kroppsmaal } from '../interfaces/Brukerinfo'
-import { HjelpemiddelItem } from '../interfaces/CommonTypes'
-import { Kategori } from '../soknad/kategorier'
-import { AppInfo } from './AppInfo'
-import ElektriskVendesystemInfo from './ElektriskVendesystemInfo'
-import Hjelpemiddelinfo from './Hjelpemiddelinfo'
-import Hjelpemiddeltekstinfo from './Hjelpemiddeltekstinfo'
-import PosisjoneringsputerForBarnInfo from './PosisjoneringsputerForBarnInfo'
-import PosisjoneringssystemInfo from './PosisjoneringssystemInfo'
-import { RullestolInfo } from './RullestolInfo'
-import SengeInfo from './SengeInfo'
-import Tilbehoerinfo from './Tilbehoerinfo'
-import VarmehjelpemiddelInfo from './VarmehjelpemiddelInfo'
-import OppreisningsStolInfo from './OppreisningsStolInfo'
-import GanghjelpemiddelInfo from './GanghjelpemiddelInfo'
-import styled from 'styled-components'
+import { BodyShort, Heading, Label } from '@navikt/ds-react'
+import React, { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import InfoLinje from './InfoLinje'
 import Panel from './Panel'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
+import Tilbehoerinfo from './Tilbehoerinfo'
+import OpplysningVisning from '../soknad/OpplysningVisning'
+import VarselVisning from '../soknad/VarselVisning'
+import { Hjelpemiddel, UtlevertType } from '../interfaces/Formidlerbehovsmelding'
 
 type HjelpemiddelProps = {
-  hm: HjelpemiddelItem
-  kroppsmaal: Kroppsmaal | undefined
+  hm: Hjelpemiddel
 }
 
-const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  const { hm, kroppsmaal } = props
+const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
+  const { hm } = props
 
   const { t } = useTranslation()
 
   return (
     <Panel background="surface-subtle">
       <div>
-        <Hjelpemiddelinfo hjelpemiddel={hm} />
+        <div>
+          <div className="hjelpemiddelinfo">
+            {/* For store skjermflater */}
+            <Heading
+              level="3"
+              size="small"
+              aria-label={`Hms nummer ${hm.produkt.hmsArtNr}`}
+              className="hjelpemiddelinfo-hmsNr desktop-only"
+            >
+              {hm.produkt.hmsArtNr}
+            </Heading>
+
+            <Heading level="3" size="small" className="hjelpemiddelinfo-navn">
+              {hm.produkt.artikkelnavn}
+            </Heading>
+
+            {/* For små skjermflater */}
+            <span className="sr-only mobile-only">HMS nummer</span>
+            <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
+
+            <Label className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</Label>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
+            <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
+          </div>
+          {hm.produkt.rangering && (
+            <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
+              <Label>{t('oppsummering.rangering')} &nbsp;</Label>
+              <BodyShort>{hm.produkt.rangering}</BodyShort>
+            </div>
+          )}
+        </div>
       </div>
-      {(!!hm.vilkarliste || !!hm.tilleggsinformasjon || !!hm.begrunnelse) && <Hjelpemiddeltekstinfo hm={hm} />}
-      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler) && <RullestolInfo hm={hm} />}
-      {hm.appInfo && <AppInfo hm={hm} />}
-      {hm.varmehjelpemiddelInfo && <VarmehjelpemiddelInfo hm={hm} />}
-      {hm.sengeInfo && <SengeInfo hm={hm} />}
-      {hm.elektriskVendesystemInfo && <ElektriskVendesystemInfo hm={hm} />}
-      {hm.posisjoneringssystemInfo && <PosisjoneringssystemInfo hm={hm} />}
-      {hm.posisjoneringsputeForBarnInfo && <PosisjoneringsputerForBarnInfo hm={hm} />}
-      {hm.oppreisningsStolInfo && <OppreisningsStolInfo hm={hm} />}
-      {hm.ganghjelpemiddelInfo && <GanghjelpemiddelInfo hm={hm} />}
 
-      {(hm.hjelpemiddelkategori === Kategori.ManuelleRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.ElektriskeRullestoler ||
-        hm.hjelpemiddelkategori === Kategori.StolerMedOppreisingsfunksjon) && (
-        <InfoLinje
-          overskrift={t('leggTilEllerEndre.bruker.kroppsmaal')}
-          info={t('leggTilEllerEndre.bruker.kroppsmaal.alleKroppsmaal', { kroppsmaal })}
-        />
-      )}
+      {hm.opplysninger.map((opplysning, index) => {
+        return <OpplysningVisning opplysning={opplysning} key={index} />
+      })}
 
-      {hm.diverseInfo &&
-        Object.entries(hm.diverseInfo).map(([key, value]) => {
-          if (value === undefined) {
-            return null
-          } else {
-            return (
-              <InfoLinje
-                key={key}
-                overskrift={t(`hjelpemiddel.diverseInfo.${key}.label`)}
-                info={
-                  <Trans
-                    i18nKey={`hjelpemiddel.diverseInfo.${key}`}
-                    values={{ value: value }}
-                    components={{
-                      italic: <em />,
-                      bold: <b />,
-                    }}
-                  />
-                }
-              />
-            )
-          }
-        })}
+      {hm.varsler.map((varsel) => {
+        return <VarselVisning varsel={varsel} />
+      })}
 
-      {hm.bytter.map((bytte) => {
+      {hm.bytter.map((bytte, index) => {
         return (
-          <>
+          <div key={index}>
             <InfoLinje
               overskrift={
                 <>
@@ -120,13 +96,13 @@ const Hjelpemiddel: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => 
                 }
               />
             )}
-          </>
+          </div>
         )
       })}
 
-      {hm.tilbehorListe && hm.tilbehorListe.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehorListe} />}
+      {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
     </Panel>
   )
 }
 
-export default Hjelpemiddel
+export default Hjelpemiddelinfo

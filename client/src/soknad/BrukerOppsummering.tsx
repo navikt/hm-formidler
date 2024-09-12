@@ -1,19 +1,20 @@
 import React from 'react'
 import { Heading, Label, BodyShort } from '@navikt/ds-react'
-import { useState } from 'react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Brukerinfo } from '../interfaces/Brukerinfo'
+import EnkelOpplysningVisning from './EnkelOpplysningVisning'
+import { Bruker, Brukersituasjon } from '../interfaces/Formidlerbehovsmelding'
+import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 
 type BrukerProps = {
-  bruker: Brukerinfo
+  bruker: Bruker
+  brukersituasjon: Brukersituasjon
 }
 
 function BrukerOppsummering(props: BrukerProps) {
   const { t } = useTranslation()
-  const [className] = useState<string>('')
 
-  const { bruker } = props
+  const { bruker, brukersituasjon } = props
 
   return (
     <>
@@ -23,20 +24,20 @@ function BrukerOppsummering(props: BrukerProps) {
         </Heading>
       </div>
       <div className="contentBlock">
-        <div className={className}>
+        <div>
           <div className="infoTable">
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-              <BodyShort className={'infoRowCell'}>{`${bruker.fornavn} ${bruker.etternavn}`}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{formaterPersonnavn(bruker.navn)}</BodyShort>
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.fodselsnummer')}</Label>
-              <BodyShort className={'infoRowCell'}>{bruker.fnummer}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{bruker.fnr}</BodyShort>
             </div>
-            {bruker.adresse && (
+            {bruker.veiadresse && (
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.FolkeregistrertAdresse')}</Label>
-                <BodyShort className={'infoRowCell'}>{bruker.adresse}</BodyShort>
+                <BodyShort className={'infoRowCell'}>{formaterVeiadresse(bruker.veiadresse)}</BodyShort>
               </div>
             )}
           </div>
@@ -45,27 +46,25 @@ function BrukerOppsummering(props: BrukerProps) {
         <div className={'infoTable'}>
           <div className={'infoRow'}>
             <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-            <BodyShort className={'infoRowCell'}>{bruker.telefonNummer}</BodyShort>
+            <BodyShort className={'infoRowCell'}>{bruker.telefon}</BodyShort>
           </div>
-          {bruker.boform && (
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.boform')}</Label>
-              <BodyShort className={'infoRowCell'}>{bruker.boform}</BodyShort>
-            </div>
-          )}
-          {bruker.bruksarena !== "UKJENT" && (
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.bruksarena')}</Label>
-              <BodyShort className={'infoRowCell'}>
-                {bruker.bruksarena === 'DAGLIGLIVET' ? t('oppsummering.dagliglivet') : ''}
-              </BodyShort>
-            </div>
-          )}
+
+          {bruker.legacyopplysninger.map((opplysning, index) => {
+            return (
+              <EnkelOpplysningVisning
+                enkelOpplysning={opplysning}
+                key={index}
+                className="infoRow"
+                ledetekstClassName="infoRowCell fixedWidthLabel"
+                innholdClassName="infoRowCell"
+              />
+            )
+          })}
+
           <div className={'infoRow'}>
             <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.funksjonsnedsettelser')}</Label>
             <BodyShort className={'infoRowCell'}>
-              {/* eslint-disable-next-line */} {/* i18n testen knekker uten linjeskift her... */}
-              {bruker.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse.valueOf())).join(', ')}
+              {brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}
             </BodyShort>
           </div>
           {bruker.brukernummer && (

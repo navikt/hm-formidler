@@ -1,10 +1,6 @@
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { Brukerinfo } from './Brukerinfo'
-import { HjelpemiddelItem } from './CommonTypes'
-import { Formidlerinfo } from './Formidlerinfo'
-import { Hast } from './Hast'
-import { Leveringsinfo } from './Leveringinfo'
-import { Oppfolgingsansvarliginfo } from './Oppfolgingsansvarliginfo'
+import { BehovsmeldingType } from './CommonTypes'
+import { Formidlerbehovsmelding } from './Formidlerbehovsmelding'
 
 export interface SoknadInfo {
   søknadId: string
@@ -14,27 +10,11 @@ export interface SoknadInfo {
   datoOppdatert: string
   navnBruker?: string
   fnrBruker: string
-  søknadsdata?: Soknadsdata
   valgteÅrsaker?: string[]
-}
-
-export interface Soknadsdata {
-  bruker: Brukerinfo
-  formidler: Formidlerinfo
-  hjelpemidler: HjelpemiddelItem[]
-  hjelpemiddelTotalAntall: number
-  oppfolgingsansvarlig: Oppfolgingsansvarliginfo
-  levering: Leveringsinfo
-  hast: Hast | null
+  behovsmelding?: Formidlerbehovsmelding
 }
 
 export enum ValgtÅrsak {
   ANNET = 'Annet',
   DUPLIKAT = 'Duplikat av en annen bestilling',
-}
-
-export enum BehovsmeldingType {
-  SØKNAD = 'SØKNAD',
-  BESTILLING = 'BESTILLING',
-  BYTTE = 'BYTTE',
 }
