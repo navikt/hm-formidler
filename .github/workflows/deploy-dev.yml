@@ -10,7 +10,7 @@ on:
     branches:
       - main
       - tilbehørbegrunnelse
-      - behovsmeldingV2
+      - ansatt
 
 jobs:
   deploy:
