@@ -44,31 +44,23 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
         <Panel>
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
-            {
-              <HjelpemidlerOppsummering
-                hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
-                hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
-              />
-            }
-            {
-              <OppfoelgingOgOpplaeringOppsummering
-                hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
-                annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
-              />
-            }
-            {
-              <UtleveringOppsummering
-                levering={behovsmelding.levering}
-                formidler={behovsmelding.levering.hjelpemiddelformidler}
-                bruker={behovsmelding.bruker}
-              />
-            }
-            {
-              <FullmaktOgVilkaarOppsummering
-                bruker={behovsmelding.bruker}
-                brukersituasjon={behovsmelding.brukersituasjon}
-              />
-            }
+            <HjelpemidlerOppsummering
+              hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
+              hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
+            />
+            <OppfoelgingOgOpplaeringOppsummering
+              hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
+              annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
+            />
+            <UtleveringOppsummering
+              levering={behovsmelding.levering}
+              formidler={behovsmelding.levering.hjelpemiddelformidler}
+              bruker={behovsmelding.bruker}
+            />
+            <FullmaktOgVilkaarOppsummering
+              bruker={behovsmelding.bruker}
+              brukersituasjon={behovsmelding.brukersituasjon}
+            />
           </div>
         </Panel>
       </div>
