@@ -58,8 +58,8 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
         return <OpplysningVisning opplysning={opplysning} key={index} />
       })}
 
-      {hm.varsler.map((varsel) => {
-        return <VarselVisning varsel={varsel} />
+      {hm.varsler.map((varsel, index) => {
+        return <VarselVisning varsel={varsel} key={index} />
       })}
 
       {hm.bytter.map((bytte, index) => {
