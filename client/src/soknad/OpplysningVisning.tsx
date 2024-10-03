@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import DOMPurify from 'dompurify'
 import { BodyShort, Detail, List } from '@navikt/ds-react'
-import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Formidlerbehovsmelding'
+import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
 
 const rensHTML = (tekst: string): string => {
   return DOMPurify.sanitize(tekst, { ALLOWED_TAGS: ['em', 'strong'] })

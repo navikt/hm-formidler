@@ -18,7 +18,7 @@ import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { useReactToPrint } from 'react-to-print'
 import { formaterDato, hentTagVariant } from '../Utils'
 import { Avstand } from '../components/Avstand'
-import { Formidlerbehovsmelding } from '../interfaces/Formidlerbehovsmelding'
+import { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 
 interface ParamTypes {
   soknadsid: string
@@ -35,7 +35,7 @@ const SoknadVisning: React.FC = () => {
     valgteÅrsaker?: string[] | undefined
     datoOpprettet: string
     datoOppdatert: string
-    behovsmelding: Formidlerbehovsmelding
+    behovsmelding: Innsenderbehovsmelding
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {

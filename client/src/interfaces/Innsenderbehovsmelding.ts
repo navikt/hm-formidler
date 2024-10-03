@@ -1,7 +1,7 @@
 import { BehovsmeldingType, Bruksarena, Bytte, Personnavn, Veiadresse } from './CommonTypes'
 import { Levering } from './Leveringinfo'
 
-export interface Formidlerbehovsmelding {
+export interface Innsenderbehovsmelding {
   id: string
   type: BehovsmeldingType
   prioritet: Prioritet

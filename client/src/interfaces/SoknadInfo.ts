@@ -1,6 +1,6 @@
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { BehovsmeldingType } from './CommonTypes'
-import { Formidlerbehovsmelding } from './Formidlerbehovsmelding'
+import { Innsenderbehovsmelding } from './Innsenderbehovsmelding'
 
 export interface SoknadInfo {
   søknadId: string
@@ -11,7 +11,7 @@ export interface SoknadInfo {
   navnBruker?: string
   fnrBruker: string
   valgteÅrsaker?: string[]
-  behovsmelding?: Formidlerbehovsmelding
+  behovsmelding?: Innsenderbehovsmelding
 }
 
 export enum ValgtÅrsak {

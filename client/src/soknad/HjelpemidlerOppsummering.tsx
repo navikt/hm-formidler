@@ -3,7 +3,7 @@ import { Heading, BodyShort, Box } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
-import { Hjelpemiddel } from '../interfaces/Formidlerbehovsmelding'
+import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number

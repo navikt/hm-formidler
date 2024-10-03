@@ -9,13 +9,13 @@ import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
 import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { Formidlerbehovsmelding } from '../interfaces/Formidlerbehovsmelding'
+import { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 
 type SoknadProps = {
   status: SoknadStatus | undefined
   valgteÅrsaker?: String[] | undefined
-  behovsmelding: Formidlerbehovsmelding
+  behovsmelding: Innsenderbehovsmelding
   ref: React.ForwardedRef<HTMLDivElement>
 }
 

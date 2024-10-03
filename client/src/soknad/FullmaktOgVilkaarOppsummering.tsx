@@ -3,7 +3,7 @@ import { Label, BodyShort } from '@navikt/ds-react'
 
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Bruker, Brukersituasjon, Signaturtype } from '../interfaces/Formidlerbehovsmelding'
+import { Bruker, Brukersituasjon, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 
 type FullmaktOgVilkaarProps = {

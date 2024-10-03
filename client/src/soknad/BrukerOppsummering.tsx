@@ -3,7 +3,7 @@ import { Heading, Label, BodyShort } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import EnkelOpplysningVisning from './EnkelOpplysningVisning'
-import { Bruker, Brukersituasjon } from '../interfaces/Formidlerbehovsmelding'
+import { Bruker, Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 
 type BrukerProps = {

@@ -6,7 +6,7 @@ import Panel from './Panel'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
-import { Hjelpemiddel, UtlevertType } from '../interfaces/Formidlerbehovsmelding'
+import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { BodyShort } from '@navikt/ds-react'
 import { lokaliser } from './OpplysningVisning'
-import { EnkelOpplysning } from '../interfaces/Formidlerbehovsmelding'
+import { EnkelOpplysning } from '../interfaces/Innsenderbehovsmelding'
 
 type EnkelOpplysningProps = {
   enkelOpplysning: EnkelOpplysning
