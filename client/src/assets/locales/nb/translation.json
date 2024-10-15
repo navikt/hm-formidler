@@ -152,5 +152,12 @@
   "hasteårsak.UTSKRIVING_FRA_SYKEHUS_SOM_IKKE_KAN_PLANLEGGES_V2": "Innbygger skal skrives ut fra sykehus uten at det var mulig å planlegge. Det er derfor behov for hjelpemidler til stell og pleie slik at utskrivingen kan gjennomføres.",
   "hasteårsak.UTSKRIVING_FRA_SYKEHUS_SOM_IKKE_KAN_PLANLEGGES_V3": "Innbygger skal skrives ut fra sykehus eller rehabilitering uten at det var mulig å planlegge. Det er derfor behov for hjelpemidler til stell og pleie slik at utskrivingen kan gjennomføres.",
   "hasteårsak.RASK_FORVERRING_AV_ALVORLIG_DIAGNOSE": "Det har skjedd en rask forverring av en alvorlig diagnose.",
-  "hasteårsak.ANNET": "Annen årsak til plutselig oppstått behov på grunn av brukers helsesituasjon."
+  "hasteårsak.ANNET": "Annen årsak til plutselig oppstått behov på grunn av brukers helsesituasjon.",
+  "funksjonsbeskrivelse.innbyggersFunksjon": "Innbyggers funksjon",
+  "funksjonsbeskrivelse.sykdomSkadeLyte": "Sykdom, skade, lyte",
+  "funksjonsbeskrivelse.diagnose": "Diagnose",
+  "funksjonsbeskrivelse.funksjonsbeskrivelse": "Funksjonsbeskrivelse",
+  "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.ALDERDOMSSVEKKELSE": "Innbygger har alderdomssvekkelse.",
+  "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.ANNEN_VARIG_DIAGNOSE": "Innbygger har en annen varig diagnose.",
+  "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART": "Det er uavklart om innbygger har en varig sykdom, skade eller lyte."
 }

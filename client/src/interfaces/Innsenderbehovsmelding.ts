@@ -46,6 +46,19 @@ export enum Brukerkilde {
 export interface Brukersituasjon {
   bekreftedeVilkår: BrukersituasjonVilkår[]
   funksjonsnedsettelser: Funksjonsnedsettelse[]
+  funksjonsbeskrivelse: Funksjonsbeskrivelse | null
+}
+
+export interface Funksjonsbeskrivelse {
+  innbyggersVarigeFunksjonsnedsettelse: InnbyggersVarigeFunksjonsnedsettelse
+  diagnose: string | null
+  beskrivelse: string
+}
+
+export enum InnbyggersVarigeFunksjonsnedsettelse {
+  ALDERDOMSSVEKKELSE = 'ALDERDOMSSVEKKELSE',
+  ANNEN_VARIG_DIAGNOSE = 'ANNEN_VARIG_DIAGNOSE',
+  UAVKLART = 'UAVKLART',
 }
 
 enum Funksjonsnedsettelse {

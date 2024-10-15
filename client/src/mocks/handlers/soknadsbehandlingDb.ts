@@ -804,6 +804,11 @@ const soknadsbehandlingDbHandlers = [
               'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
+            funksjonsbeskrivelse: {
+              innbyggersVarigeFunksjonsnedsettelse: 'ANNEN_VARIG_DIAGNOSE',
+              diagnose: 'ALS',
+              beskrivelse: 'Har blitt veldig dårlig til beins.',
+            },
           },
           hjelpemidler: {
             hjelpemidler: [

@@ -11,6 +11,7 @@ import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
+import FunksjonsbeskrivelseOppsummering from './FunksjonsbeskrivelseOppsummering'
 
 type SoknadProps = {
   status: SoknadStatus | undefined
@@ -52,6 +53,11 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
               hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
               annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
             />
+            {!!behovsmelding.brukersituasjon.funksjonsbeskrivelse && (
+              <FunksjonsbeskrivelseOppsummering
+                funksjonsbeskrivelse={behovsmelding.brukersituasjon.funksjonsbeskrivelse}
+              />
+            )}
             <UtleveringOppsummering
               levering={behovsmelding.levering}
               formidler={behovsmelding.levering.hjelpemiddelformidler}
