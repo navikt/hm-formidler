@@ -48,11 +48,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },
@@ -183,11 +200,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },
@@ -384,11 +418,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },
@@ -574,11 +625,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },
@@ -797,11 +865,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
             funksjonsbeskrivelse: {
@@ -1231,11 +1316,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },
@@ -1400,11 +1502,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE', 'KOGNISJON'],
           },
@@ -1953,11 +2072,28 @@ const soknadsbehandlingDbHandlers = [
             legacyopplysninger: [],
           },
           brukersituasjon: {
-            bekreftedeVilkår: [
-              'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-              'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
-              'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-              'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
+            vilkår: [
+              {
+                vilkårtype: 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura sitt behov kan ikke løses med enklere og rimeligere hjelpemidler, eller ved andre tiltak som ikke dekkes av NAV.',
+                  nn: 'Kvadratisk Faktura sitt behov kan ikkje løysast med enklare og rimelegare hjelpemiddel, eller ved andre tiltak som ikkje blir dekt av NAV.',
+                },
+              },
+              {
+                vilkårtype: 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
+                tekst: {
+                  nb: 'Hjelpemiddelet er nødvendig for å avhjelpe praktiske problemer i dagliglivet, eller for å bli pleid i hjemmet.',
+                  nn: 'Hjelpemiddelet er naudsynt for å avhjelpa praktiske problem i dagleglivet, eller for å bli pleidd i heimen.',
+                },
+              },
+              {
+                vilkårtype: 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+                tekst: {
+                  nb: 'Kvadratisk Faktura vil være i stand til å bruke hjelpemidlene. Jeg har ansvaret for at hjelpemidlene blir levert, og at nødvendig opplæring, tilpasning og montering blir gjort.',
+                  nn: 'Kvadratisk Faktura vil vera i stand til å bruka hjelpemidla. Eg har ansvaret for at hjelpemidla blir leverte, og at nødvendig opplæring, tilpassing og montering blir gjord.',
+                },
+              },
             ],
             funksjonsnedsettelser: ['BEVEGELSE'],
           },

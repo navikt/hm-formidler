@@ -44,7 +44,7 @@ export enum Brukerkilde {
 }
 
 export interface Brukersituasjon {
-  bekreftedeVilkår: BrukersituasjonVilkår[]
+  vilkår: BrukersituasjonVilkår[]
   funksjonsnedsettelser: Funksjonsnedsettelse[]
   funksjonsbeskrivelse: Funksjonsbeskrivelse | null
 }
@@ -67,14 +67,9 @@ enum Funksjonsnedsettelse {
   KOGNISJON = 'KOGNISJON',
 }
 
-export enum BrukersituasjonVilkår {
-  NEDSATT_FUNKSJON = 'NEDSATT_FUNKSJON',
-  STØRRE_BEHOV = 'STØRRE_BEHOV',
-  PRAKTISKE_PROBLEM = 'PRAKTISKE_PROBLEM',
-  PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1 = 'PRAKTISKE_PROBLEMER_I_DAGLIGLIVET_V1',
-  VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1 = 'VESENTLIG_OG_VARIG_NEDSATT_FUNKSJONSEVNE_V1',
-  KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1 = 'KAN_IKKE_LØSES_MED_ENKLERE_HJELPEMIDLER_V1',
-  I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1 = 'I_STAND_TIL_Å_BRUKE_HJELPEMIDLENE_V1',
+export interface BrukersituasjonVilkår {
+  // vilkårtype: enum
+  tekst: LokalisertTekst
 }
 
 export interface Hjelpemidler {

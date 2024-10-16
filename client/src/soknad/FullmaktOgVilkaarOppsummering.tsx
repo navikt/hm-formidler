@@ -5,6 +5,7 @@ import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Bruker, Brukersituasjon, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
+import { lokaliser } from './OpplysningVisning'
 
 type FullmaktOgVilkaarProps = {
   bruker: Bruker
@@ -48,8 +49,8 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
             lineHeight: '1.375rem',
           }}
         >
-          {brukersituasjon.bekreftedeVilkår.map((vilkår) => {
-            return <li key={vilkår}>{t(`oppsummering.brukervilkår.${vilkår}`, { navn: brukersNavn })}</li>
+          {brukersituasjon.vilkår.map((vilkår, i) => {
+            return <li key={i}>{lokaliser(vilkår.tekst)}</li>
           })}
         </ul>
       </div>
