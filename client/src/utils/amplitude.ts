@@ -9,7 +9,7 @@ export enum amplitude_taxonomy {
   NAVIGERE = 'navigere',
 }
 
-//Events som ikke er i NAV sin taxonomi
+//Events som ikke er i Nav sin taxonomi
 export enum digihot_customevents {
   KLIKK_NY_SAK = 'ny søknad',
   KLIKK_ÅPNE_SØKNAD = 'klikk åpne søknad',
