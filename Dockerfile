@@ -1,4 +1,4 @@
-FROM node:18-alpine as client-builder
+FROM node:20.14.0-alpine as client-builder
 WORKDIR /app
 COPY client/package.json client/package-lock.json .npmrc ./
 RUN npm ci
@@ -7,7 +7,7 @@ COPY client .
 RUN apk add --no-cache --upgrade grep
 RUN npm run build
 
-FROM node:18-alpine as server-builder
+FROM node:20.14.0-alpine as server-builder
 WORKDIR /app
 COPY server/package.json server/package-lock.json .npmrc ./
 RUN npm ci
@@ -15,16 +15,17 @@ COPY server .
 RUN npm run build
 
 
-FROM node:18-alpine as server-dependencies
+FROM node:20.14.0-alpine as server-dependencies
 WORKDIR /app
 COPY server/package.json server/package-lock.json .npmrc ./
 RUN npm ci
 
-FROM gcr.io/distroless/nodejs:18 as runtime
+FROM gcr.io/distroless/nodejs20-debian12  as runtime
 
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV TZ="Europe/Oslo"
 EXPOSE 3000
 
 COPY --from=client-builder /app/dist ./client/dist
