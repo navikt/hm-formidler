@@ -27,7 +27,7 @@ export function Avstand(props: AvstandProps) {
   )
 }
 
-type MarginPadding = Omit<AvstandProps, 'centered' | 'children'> & {
+type MarginPadding = Omit<AvstandProps, 'centered'> & {
   $centered?: boolean
 }
 
