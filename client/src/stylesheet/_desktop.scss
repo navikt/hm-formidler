@@ -1,3 +1,5 @@
+@use "variables";
+
 /* Desktop devices */
 @media only screen and (min-width: 801px) {
   .header {
@@ -9,7 +11,7 @@
   .infoDescBanner {
     width: 50rem;
     background-color: white;
-    padding: $xlSpacing;
+    padding: variables.$xlSpacing;
     margin: 0 auto;
   }
 
@@ -23,12 +25,12 @@
   }
 
   .content {
-    margin-bottom: $lSpacing;
+    margin-bottom: variables.$lSpacing;
   }
 
   .customPanel {
     width: 45rem;
-    margin: 0 auto $lSpacing;
+    margin: 0 auto variables.$lSpacing;
   }
 
   .customPanel > .nav-veilederpanel--info {
@@ -36,12 +38,12 @@
   }
 
   .customPanel .panel {
-    padding: $xlSpacing;
+    padding: variables.$xlSpacing;
   }
 
   .veilederWrapperPanel {
     width: 45rem;
-    margin: 0 auto $lSpacing;
+    margin: 0 auto variables.$lSpacing;
   }
 
   // Soknad
@@ -111,7 +113,7 @@
   }
 
   .customModal {
-    padding: $xlSpacing;
+    padding: variables.$xlSpacing;
     width: 40rem;
   }
 }

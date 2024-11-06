@@ -1,3 +1,5 @@
+@use "variables";
+
 /* Medium devices (landscape tablets, 768px and below) */
 @media only screen and (max-width: 800px) {
   .container {
@@ -13,8 +15,8 @@
 
   .infoDescBanner {
     background-color: white;
-    padding: $xlSpacing;
-    margin-bottom: $xlSpacing;
+    padding: variables.$xlSpacing;
+    margin-bottom: variables.$xlSpacing;
   }
 
   .PanelContent {
@@ -24,7 +26,7 @@
   .infoPanel {
     margin: 0 auto;
     width: 95%;
-    margin-bottom: $sSpacing;
+    margin-bottom: variables.$sSpacing;
   }
 
   .banner {
@@ -41,11 +43,11 @@
   .customPanel {
     margin: 0 auto;
     width: 95%;
-    margin-bottom: $sSpacing;
+    margin-bottom: variables.$sSpacing;
   }
 
   .veilederWrapperPanel {
-    margin: 0 auto $lSpacing;
+    margin: 0 auto variables.$lSpacing;
   }
 
   //Avatar
@@ -54,7 +56,7 @@
   }
 
   .customPanel .panel {
-    padding: $sSpacing;
+    padding: variables.$sSpacing;
   }
 
   // Soknad
@@ -107,7 +109,7 @@
   }
 
   .hjelpemiddelForm .skjemaelement {
-    margin-bottom: $sSpacing;
+    margin-bottom: variables.$sSpacing;
   }
 
   .infoRow {
@@ -133,7 +135,7 @@
   }
 
   .customModal {
-    padding: $sSpacing;
+    padding: variables.$sSpacing;
     width: 18rem;
     margin-top: 3rem;
   }
