@@ -37,7 +37,6 @@ spec:
       external:
         - host: www.nav.no
       rules:
-        - application: hm-mocks
         - application: nav-dekoratoren
           namespace: personbruker
   env:
