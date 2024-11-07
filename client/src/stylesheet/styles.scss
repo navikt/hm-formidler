@@ -1,20 +1,20 @@
 //@import "reset";
 
-@import 'variables';
+@use 'variables';
 
-@import 'mobile';
+@use 'mobile';
 
-@import 'desktop';
+@use 'desktop';
 
 html {
   min-height: 100%;
   background-color: #f2f2f2;
   font-size: 16px;
-  color: $navMorkGra;
+  color: variables.$navMorkGra;
 }
 
 .pagewrapper {
-  padding-bottom: $xlSpacing;
+  padding-bottom: variables.$xlSpacing;
 }
 
 .soknadsKort {
@@ -36,7 +36,7 @@ html {
 }
 
 .banner {
-  padding-top: $lSpacing;
+  padding-top: variables.$lSpacing;
 }
 
 .customPanel.feilside .nav-veileder__frame {
@@ -55,19 +55,19 @@ html {
 
 .titleCenter {
   text-align: center;
-  margin-bottom: $xlSpacing;
+  margin-bottom: variables.$xlSpacing;
 }
 
 .titleCenter.typo-innholdstittel,
 .titleCenter.typo-systemtittel {
-  margin-bottom: $sSpacing;
+  margin-bottom: variables.$sSpacing;
 }
 
 .knappepanel {
   display: flex;
   justify-content: center;
-  margin-top: $lSpacing;
-  margin-bottom: $sSpacing;
+  margin-top: variables.$lSpacing;
+  margin-bottom: variables.$sSpacing;
 }
 
 .customModal {
@@ -105,10 +105,10 @@ html {
 .contentBlock,
 .contentBlock.typo-element,
 .contentBlock.typo-normal {
-  margin-bottom: $lSpacing;
+  margin-bottom: variables.$lSpacing;
 }
 .contentBlock.typo-undertittel {
-  margin-bottom: $mSpacing;
+  margin-bottom: variables.$mSpacing;
 }
 
 .categoryRow {

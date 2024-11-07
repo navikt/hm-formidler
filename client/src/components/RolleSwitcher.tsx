@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   min-width: 220px;
 `
 
-const Rolle = styled.div<{ success: boolean }>`
+const Rolle = styled.div<{ success: boolean; children?: React.ReactNode | undefined }>`
   vertical-align: middle;
   gap: 5px;
   padding: 5px;
