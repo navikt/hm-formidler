@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import DOMPurify from 'dompurify'
-import { BodyShort, Detail, List } from '@navikt/ds-react'
+import { BodyShort, Detail } from '@navikt/ds-react'
 import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
 
 const rensHTML = (tekst: string): string => {

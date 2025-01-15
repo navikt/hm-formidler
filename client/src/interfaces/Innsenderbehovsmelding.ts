@@ -11,6 +11,16 @@ export interface Innsenderbehovsmelding {
   brukersituasjon: Brukersituasjon
   hjelpemidler: Hjelpemidler
   levering: Levering
+  innsender: Innsender
+}
+
+export interface Innsender {
+  rolle: Innsenderrolle
+}
+
+export enum Innsenderrolle {
+  FORMIDLER = 'FORMIDLER',
+  BESTILLER = 'BESTILLER',
 }
 
 export enum Prioritet {

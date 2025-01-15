@@ -66,6 +66,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
             <FullmaktOgVilkaarOppsummering
               bruker={behovsmelding.bruker}
               brukersituasjon={behovsmelding.brukersituasjon}
+              innsender={behovsmelding.innsender}
             />
           </div>
         </Panel>

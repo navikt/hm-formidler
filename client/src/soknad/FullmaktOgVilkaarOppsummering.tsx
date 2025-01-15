@@ -3,19 +3,20 @@ import { Label, BodyShort } from '@navikt/ds-react'
 
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Bruker, Brukersituasjon, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
+import { Bruker, Brukersituasjon, Innsender, Innsenderrolle, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { lokaliser } from './OpplysningVisning'
 
 type FullmaktOgVilkaarProps = {
   bruker: Bruker
   brukersituasjon: Brukersituasjon
+  innsender: Innsender
 }
 
 const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: FullmaktOgVilkaarProps) => {
   const { t } = useTranslation()
 
-  const { bruker, brukersituasjon } = props
+  const { bruker, brukersituasjon, innsender } = props
 
   const brukersNavn = formaterPersonnavn(bruker.navn)
 
@@ -39,10 +40,11 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
 
       <div className="contentBlock">
         <Label>
-          {t('oppsummering.vilkarOppfyllt', {
-            navn: brukersNavn,
-          })}
+          {innsender.rolle === Innsenderrolle.FORMIDLER
+            ? t('oppsummering.formidlerVurdert')
+            : t('oppsummering.bestillerVurdert')}
         </Label>
+
         <ul
           style={{
             fontFamily: '"Source Sans Pro",Arial,sans-serif',
