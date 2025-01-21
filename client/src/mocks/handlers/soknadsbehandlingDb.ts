@@ -123,6 +123,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 2,
         },
         levering: {
@@ -339,6 +340,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 5,
         },
         levering: {
@@ -544,6 +546,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 7,
         },
         levering: {
@@ -781,6 +784,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 2,
         },
         levering: {
@@ -1226,6 +1230,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 2,
         },
         levering: {
@@ -1397,6 +1402,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 1,
         },
         levering: {
@@ -1948,6 +1954,7 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
+          tilbehør: [],
           totaltAntall: 5,
         },
         levering: {
@@ -2149,7 +2156,66 @@ const soknadsbehandlingDbHandlers = [
               varsler: [],
             },
           ],
-          totaltAntall: 1,
+          tilbehør: [
+            {
+              hmsArtNr: '176090',
+              navn: 'Antisklimatte serveringsbrett rullator 4hjul Topro Troja Original M/S/Topro Olympos ATR M',
+              antall: 1,
+              begrunnelse: 'Trenger fordi derfor',
+              fritakFraBegrunnelseÅrsak: null,
+              opplysninger: [
+                {
+                  ledetekst: { nb: 'Skal brukes med', nn: 'Skal brukes med' },
+                  innhold: [
+                    {
+                      fritekst: null,
+                      forhåndsdefinertTekst: {
+                        nb: 'Et allerede utlånt hjelpemiddel',
+                        nn: 'Et allerede utlånt hjelpemiddel',
+                      },
+                      begrepsforklaring: null,
+                    },
+                  ],
+                },
+                {
+                  ledetekst: {
+                    nb: 'Begrunnelse for tilbehøret',
+                    nn: 'Grunngiving for tilbehøyret',
+                  },
+                  innhold: [
+                    {
+                      fritekst: 'Trenger fordi derfor',
+                      forhåndsdefinertTekst: null,
+                      begrepsforklaring: null,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              hmsArtNr: '235407',
+              navn: 'Serveringsbrett rullator 4hjul Topro Olympos ATR M',
+              antall: 1,
+              begrunnelse: null,
+              fritakFraBegrunnelseÅrsak: 'ER_PÅ_BESTILLINGSORDNING',
+              opplysninger: [
+                {
+                  ledetekst: { nb: 'Skal brukes med', nn: 'Skal brukes med' },
+                  innhold: [
+                    {
+                      fritekst: null,
+                      forhåndsdefinertTekst: {
+                        nb: 'Et hjelpemiddel det er søkt om som vi ikke har fått vedtak på og det ble glemt å søke om tilbehøret.',
+                        nn: 'Et hjelpemiddel det er søkt om som vi ikke har fått vedtak på og det ble glemt å søke om tilbehøret.',
+                      },
+                      begrepsforklaring: null,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          totaltAntall: 3,
         },
         levering: {
           hjelpemiddelformidler: {

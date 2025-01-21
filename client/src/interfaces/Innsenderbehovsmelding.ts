@@ -84,6 +84,7 @@ export interface BrukersituasjonVilkår {
 
 export interface Hjelpemidler {
   hjelpemidler: Hjelpemiddel[]
+  tilbehør: Tilbehør[]
   totaltAntall: number
 }
 
@@ -114,6 +115,7 @@ export interface Tilbehør {
   antall: number
   begrunnelse: string | undefined
   fritakFraBegrunnelseÅrsak: FritakFraBegrunnelseÅrsak | undefined
+  opplysninger: Opplysning[]
 }
 
 export enum FritakFraBegrunnelseÅrsak {

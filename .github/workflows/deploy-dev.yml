@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - upgrade-deps
+      - kun-tilbehør
 
 jobs:
   deploy:

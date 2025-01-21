@@ -3,16 +3,18 @@ import { Heading, BodyShort, Box } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
-import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
+import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import TilbehørVisning from '../components/TilbehørVisning'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
   hjelpemidler: Hjelpemiddel[]
+  tilbehør: Tilbehør[]
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler } = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør } = props
 
   return (
     <>
@@ -26,8 +28,13 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
 
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-          <li key={hmsIdx} style={{ width: '95%', marginBottom: '16px' }}>
+          <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ width: '95%', marginBottom: '16px' }}>
             <Hjelpemiddelinfo hm={hm} />
+          </li>
+        ))}
+        {tilbehør.map((tilbehør: Tilbehør, index) => (
+          <li key={`${index}.${tilbehør.hmsArtNr}`} style={{ width: '95%', marginBottom: '16px' }}>
+            <TilbehørVisning tilbehør={tilbehør} />
           </li>
         ))}
       </ul>
