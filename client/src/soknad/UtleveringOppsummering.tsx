@@ -6,6 +6,7 @@ import { Hast, Hasteårsak } from '../interfaces/Hast'
 import { Hjelpemiddelformidler, Kontaktperson, Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'
 import { Bruker } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import { formaterTlf } from '../Utils'
 
 type LeveringProps = {
   levering: Levering
@@ -85,7 +86,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.kontaktperson')}</Label>
                 <BodyShort className={'infoRowCell'}>
-                  {formaterPersonnavn(levering.annenKontaktperson.navn)} {levering.annenKontaktperson.telefon}
+                  {formaterPersonnavn(levering.annenKontaktperson.navn)} {formaterTlf(levering.annenKontaktperson.telefon)}
                 </BodyShort>
               </div>
             )}

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import EnkelOpplysningVisning from './EnkelOpplysningVisning'
 import { Bruker, Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import { formaterFnr, formaterTlf } from '../Utils'
 
 type BrukerProps = {
   bruker: Bruker
@@ -32,7 +33,7 @@ function BrukerOppsummering(props: BrukerProps) {
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.fodselsnummer')}</Label>
-              <BodyShort className={'infoRowCell'}>{bruker.fnr}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{formaterFnr(bruker.fnr)}</BodyShort>
             </div>
             {bruker.veiadresse && (
               <div className={'infoRow'}>
@@ -46,7 +47,7 @@ function BrukerOppsummering(props: BrukerProps) {
         <div className={'infoTable'}>
           <div className={'infoRow'}>
             <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-            <BodyShort className={'infoRowCell'}>{bruker.telefon}</BodyShort>
+            <BodyShort className={'infoRowCell'}>{formaterTlf(bruker.telefon)}</BodyShort>
           </div>
 
           {bruker.legacyopplysninger.map((opplysning, index) => {

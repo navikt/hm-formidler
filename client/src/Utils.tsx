@@ -118,3 +118,25 @@ export const hentTagVariant = (
 
   return etikettType
 }
+
+// Formateringsregler for tall, tid og dato: https://sprakradet.no/godt-og-korrekt-sprak/rettskriving-og-grammatikk/tall-tid-dato/
+export const formaterFnr = (fnr: string): string => {
+  return `${fnr.slice(0, 6)} ${fnr.slice(6)}`
+}
+export const formaterTlf = (tlf: string): string => {
+  if (tlf.length !== 8) {
+    return tlf
+  }
+  if (tlf.startsWith('8')) {
+    const match = tlf.match(/^(\d{3})(\d{2})(\d{3})$/)
+    if (match) {
+      return `${match[1]} ${match[2]} ${match[3]}`
+    }
+  } else {
+    const match = tlf.match(/^(\d{2})(\d{2})(\d{2})(\d{2})$/)
+    if (match) {
+      return `${match[1]} ${match[2]} ${match[3]} ${match[4]}`
+    }
+  }
+  return tlf
+}

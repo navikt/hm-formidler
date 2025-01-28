@@ -4,6 +4,7 @@ import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import { formaterTlf } from '../Utils'
 
 type FormidlerProps = {
   hjelpemiddelformidler: Hjelpemiddelformidler
@@ -48,7 +49,7 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.telefon}</BodyShort>
+              <BodyShort className={'infoRowCell'}>{formaterTlf(formidler.telefon)}</BodyShort>
             </div>
             <div className={'infoRow'}>
               <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.treffesEnklest')}</Label>
@@ -91,7 +92,7 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
               </div>
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.telefon}</BodyShort>
+                <BodyShort className={'infoRowCell'}>{formaterTlf(oppfolgingsansvarlig.telefon)}</BodyShort>
               </div>
               <div className={'infoRow'}>
                 <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.ansvar')}</Label>
