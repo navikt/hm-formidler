@@ -7,23 +7,10 @@ import { ReactComponent as SpotIllustration } from '../assets/svg/information_ci
 import { Button } from '@navikt/ds-react'
 import { useHistory } from 'react-router-dom'
 import { BASE_PATH } from '../App'
-import { useEffect } from 'react'
 
 const Feilside: React.FC = () => {
   const { t } = useTranslation()
   const history = useHistory()
-
-  useEffect(() => {
-    window.hj =
-      window.hj ||
-      function () {
-        // eslint-disable-next-line prefer-rest-params
-        ;(window.hj.q = window.hj.q || []).push(arguments)
-      }
-    if (window.appSettings.MILJO === 'prod-gcp') {
-      window.hj('event', 'digihot_behovsmelding_feilmelding')
-    }
-  }, [])
 
   return (
     <>

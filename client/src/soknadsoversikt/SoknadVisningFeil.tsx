@@ -20,16 +20,6 @@ const SoknadVisningFeil = ({ soknadsid }: Props) => {
 
   useEffect(() => {
     logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
-
-    window.hj =
-      window.hj ||
-      function () {
-        // eslint-disable-next-line prefer-rest-params
-        ;(window.hj.q = window.hj.q || []).push(arguments)
-      }
-    if (window.appSettings.MILJO === 'prod-gcp') {
-      window.hj('event', 'digihot_behovsmelding_feilmelding')
-    }
   }, [])
 
   return (
