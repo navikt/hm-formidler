@@ -24,6 +24,7 @@ export const sakerMock = [
     navnBruker: 'Nasse Nøff',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
+    soknadGjelder: 'Bestilling av: krykker',
   },
   {
     søknadId: 'fec887bc-5a95-49c2-a123-f0e0f7c32df3',
@@ -57,6 +58,7 @@ export const sakerMock = [
     navnBruker: 'Egon Olsen',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
+    soknadGjelder: 'Søknad om: sittepute',
   },
   {
     søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8014b',
@@ -200,6 +202,7 @@ export const sakerMock = [
     navnBruker: 'Rulle Stolbakken',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
+    soknadGjelder: 'Søknad om: krykker, tilbehør ganghjelpemiddel',
   },
   {
     søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',

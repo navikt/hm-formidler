@@ -12,6 +12,7 @@ export interface SoknadInfo {
   fnrBruker: string
   valgteÅrsaker?: string[]
   behovsmelding?: Innsenderbehovsmelding
+  soknadGjelder?: string
 }
 
 export enum ValgtÅrsak {

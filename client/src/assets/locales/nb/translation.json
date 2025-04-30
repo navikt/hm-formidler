@@ -83,6 +83,7 @@
   "oppsummering.levering.tilleggsinfo.UTLEVERING_KALENDERAPP.tekst": "Lisensnummer sendes til Min side på nav.no. For barn under 18 år sendes lisensnummer også til folkeregistrert adresse.",
   "oppsummering.levering.tilleggsinfo.ALLE_HJELPEMIDLER_ER_UTLEVERT.label": "Obs",
   "oppsummering.levering.tilleggsinfo.ALLE_HJELPEMIDLER_ER_UTLEVERT.tekst": "Alle hjelpemidlene er allerede utlevert av Nav",
+  "soknadvisning.tittel.soknadGjelder": "{{soknadGjelder}} for {{navnBruker}}",
   "soknadvisning.tittel.undefined": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.SØKNAD": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.BESTILLING": "Bestilling for {{navnBruker}}",

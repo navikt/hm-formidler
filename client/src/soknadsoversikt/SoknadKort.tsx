@@ -26,7 +26,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       </Heading>
 
       <BodyShort spacing size="small">
-        {t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
+        {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
       </BodyShort>
 
       <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
