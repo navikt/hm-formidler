@@ -10,6 +10,5 @@
   "scripts": {
     "dev": "npm run --prefix client dev",
     "build": "concurrently --kill-others-on-fail \"npm run --prefix client build\" \"npm run --prefix server build\""
-  },
-  "dependencies": {}
+  }
 }

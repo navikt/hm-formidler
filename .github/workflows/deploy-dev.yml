@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - kun-tilbehør
+      - ersatt-moment-med-date-fns
 
 jobs:
   deploy:

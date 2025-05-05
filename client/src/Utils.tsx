@@ -1,12 +1,10 @@
 import { RefObject } from 'react'
 import { ValidationError } from './interfaces/ErrorTypes'
-import moment from 'moment'
-import 'moment/dist/locale/nb'
+import { format, addDays, parseISO } from 'date-fns'
+import { nb } from 'date-fns/locale'
 import { SoknadStatus } from './statemanagement/SoknadStatus'
 import { TagProps } from '@navikt/ds-react'
 import { SoknadInfo, ValgtÅrsak } from './interfaces/SoknadInfo'
-
-moment.locale('nb')
 
 export const sumNumbersInArray = (array: number[]): number => {
   const add = (accumulator: number, a: number) => {
@@ -17,15 +15,17 @@ export const sumNumbersInArray = (array: number[]): number => {
 }
 
 export const beregnFrist = (opprettetDato: string): string => {
-  return formaterMomentDato(moment(opprettetDato).add(14, 'days'))
+  const parsedDate = parseISO(opprettetDato)
+  return formaterDatoObjekt(addDays(parsedDate, 14))
 }
 
 export const formaterDato = (opprettetDato: string): string => {
-  return formaterMomentDato(moment(opprettetDato))
+  const parsedDate = parseISO(opprettetDato)
+  return formaterDatoObjekt(parsedDate)
 }
 
-export const formaterMomentDato = (opprettetDato: moment.Moment): string => {
-  return opprettetDato.format('D. MMMM YYYY')
+export const formaterDatoObjekt = (dato: Date): string => {
+  return format(dato, 'd. MMMM yyyy', { locale: nb })
 }
 
 export const checkForErrors = (potentialErrorMessages: ValidationError): boolean => {
