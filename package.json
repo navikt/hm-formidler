@@ -11,5 +11,7 @@
     "dev": "npm run --prefix client dev",
     "build": "concurrently --kill-others-on-fail \"npm run --prefix client build\" \"npm run --prefix server build\""
   },
-  "dependencies": {}
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
 }

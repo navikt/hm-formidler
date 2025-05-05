@@ -1,4 +1,4 @@
-import moment from 'moment'
+import { formatISO, subDays } from 'date-fns'
 import { SoknadStatus } from '../../statemanagement/SoknadStatus'
 import { BehovsmeldingType } from '../../interfaces/CommonTypes'
 
@@ -51,8 +51,8 @@ export const sakerMock = [
   {
     søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment().toISOString(),
-    datoOppdatert: moment().toISOString(),
+    datoOpprettet: formatISO(new Date()),
+    datoOppdatert: formatISO(new Date()),
     status: SoknadStatus.VENTER_GODKJENNING,
     fnrBruker: '12345678910',
     navnBruker: 'Egon Olsen',
@@ -195,8 +195,8 @@ export const sakerMock = [
   {
     søknadId: 'fc8ee79a-b234-4201-8735-129c9cff8d0b',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment().subtract(3, 'days').toISOString(),
-    datoOppdatert: moment().subtract(3, 'days').toISOString(),
+    datoOpprettet: formatISO(subDays(new Date(), 3)),
+    datoOppdatert: formatISO(subDays(new Date(), 3)),
     status: SoknadStatus.GODKJENT_MED_FULLMAKT,
     fnrBruker: '12345678910',
     navnBruker: 'Rulle Stolbakken',
@@ -207,8 +207,8 @@ export const sakerMock = [
   {
     søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
-    datoOpprettet: moment().subtract(12, 'days').toISOString(),
-    datoOppdatert: moment().subtract(12, 'days').toISOString(),
+    datoOpprettet: formatISO(subDays(new Date(), 12)),
+    datoOppdatert: formatISO(subDays(new Date(), 12)),
     status: SoknadStatus.GODKJENT_MED_FULLMAKT,
     fnrBruker: '12345678910',
     navnBruker: 'Giovanni Varmevotti',
