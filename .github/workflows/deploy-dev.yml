@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - erstatt-moment-med-date-fns
+      - ersatt-moment-med-date-fns
 
 jobs:
   deploy:
