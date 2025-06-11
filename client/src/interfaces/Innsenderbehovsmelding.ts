@@ -32,7 +32,7 @@ export interface Bruker {
   fnr: string
   navn: Personnavn
   signaturtype: Signaturtype
-  telefon: string
+  telefon: string | undefined
   veiadresse: Veiadresse | undefined
   kommunenummer: string | undefined
   brukernummer: string | undefined

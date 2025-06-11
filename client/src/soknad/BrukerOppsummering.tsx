@@ -45,10 +45,12 @@ function BrukerOppsummering(props: BrukerProps) {
         </div>
 
         <div className={'infoTable'}>
-          <div className={'infoRow'}>
-            <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-            <BodyShort className={'infoRowCell'}>{formaterTlf(bruker.telefon)}</BodyShort>
-          </div>
+          {bruker.telefon && (
+            <div className={'infoRow'}>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
+              <BodyShort className={'infoRowCell'}>{formaterTlf(bruker.telefon)}</BodyShort>
+            </div>
+          )}
 
           {bruker.legacyopplysninger.map((opplysning, index) => {
             return (

@@ -847,7 +847,6 @@ const soknadsbehandlingDbHandlers = [
             etternavn: 'Faktura',
           },
           signaturtype: 'FULLMAKT',
-          telefon: '13820599',
           veiadresse: {
             adresse: 'Fjellvegen 69',
             postnummer: '6770',
