@@ -54,7 +54,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   return (
     <div style={{ marginBottom: '0.5rem' }}>
       {erSlettet ? (
-        <Box borderWidth="1" borderRadius="medium" padding="4" background="surface-default">
+        <Box borderWidth="1" borderRadius="small" padding="4" background="surface-default" borderColor="border-default">
           {panelInnhold}
         </Box>
       ) : (
