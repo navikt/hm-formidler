@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - ersatt-moment-med-date-fns
+      - ikke-feilmelding-på-slettet-sak
 
 jobs:
   deploy:

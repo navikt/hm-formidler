@@ -1,4 +1,4 @@
-import { BodyShort, Heading, LinkPanel, Tag, TagProps } from '@navikt/ds-react'
+import { BodyShort, Box, Heading, LinkPanel, Tag } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -18,6 +18,8 @@ interface Props {
 
 const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const { t } = useTranslation()
+
+  const erSlettet = soknad.status === SoknadStatus.SLETTET || soknad.status === SoknadStatus.UTLØPT
 
   const panelInnhold = (
     <>
@@ -51,17 +53,23 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
 
   return (
     <div style={{ marginBottom: '0.5rem' }}>
-      <LinkPanel
-        as={Link}
-        to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
-        onClick={() => {
-          Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
-          logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
-        }}
-        border
-      >
-        {panelInnhold}
-      </LinkPanel>
+      {erSlettet ? (
+        <Box borderWidth="1" borderRadius="small" padding="4" background="surface-default" borderColor="border-default">
+          {panelInnhold}
+        </Box>
+      ) : (
+        <LinkPanel
+          as={Link}
+          to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
+          onClick={() => {
+            Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
+            logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
+          }}
+          border
+        >
+          {panelInnhold}
+        </LinkPanel>
+      )}
     </div>
   )
 }
