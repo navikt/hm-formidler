@@ -28,12 +28,12 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
 
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-          <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ width: '95%', marginBottom: '16px' }}>
+          <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ marginBottom: '16px' }}>
             <Hjelpemiddelinfo hm={hm} />
           </li>
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (
-          <li key={`${index}.${tilbehør.hmsArtNr}`} style={{ width: '95%', marginBottom: '16px' }}>
+          <li key={`${index}.${tilbehør.hmsArtNr}`} style={{ marginBottom: '16px' }}>
             <TilbehørVisning tilbehør={tilbehør} />
           </li>
         ))}

@@ -1,11 +1,6 @@
 import { ReactNode } from 'react'
-import { BodyShort as UnstyledBodyShort } from '@navikt/ds-react'
-import styled from 'styled-components'
-
-const BodyShort = styled(UnstyledBodyShort)`
-  display: flex;
-  flex-direction: column;
-`
+import InfoElement from './InfoElement'
+import { BodyShort } from '@navikt/ds-react'
 
 interface Props {
   overskrift: string | ReactNode
@@ -13,11 +8,14 @@ interface Props {
 }
 const InfoLinje = ({ overskrift, info }: Props) => {
   return (
-    <BodyShort>
-      <b>{overskrift}</b>
-      {info}
-    </BodyShort>
+    <InfoElement label={typeof overskrift === 'string' ? overskrift : undefined}>
+      {typeof overskrift !== 'string' && overskrift}
+      <BodyShort>
+        {info}
+      </BodyShort>
+    </InfoElement>
   )
 }
 
 export default InfoLinje
+

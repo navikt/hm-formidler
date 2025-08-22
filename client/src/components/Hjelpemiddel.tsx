@@ -7,6 +7,8 @@ import Tilbehoerinfo from './Tilbehoerinfo'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
 import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
+import { Avstand } from './Avstand'
+import Rangering from './Rangering'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
@@ -40,16 +42,15 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
             <span className="sr-only mobile-only">HMS nummer</span>
             <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
 
-            <Label className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</Label>
+            <BodyShort className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</BodyShort>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
             <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
           </div>
           {hm.produkt.rangering && (
-            <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
-              <Label>{t('oppsummering.rangering')} &nbsp;</Label>
-              <BodyShort>{hm.produkt.rangering}</BodyShort>
-            </div>
+            <Avstand marginTop={2} marginBottom={4}>
+              <Rangering rangering={hm.produkt.rangering.toString()} />
+            </Avstand>
           )}
         </div>
       </div>

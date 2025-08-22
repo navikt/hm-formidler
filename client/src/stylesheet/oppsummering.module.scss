@@ -1,1 +1,8 @@
 @use 'styles';
+
+@use 'variables';
+
+.oppsummeringsBox {
+  background-color: variables.$backgroundColor;
+  padding: variables.$sSpacing;
+}
