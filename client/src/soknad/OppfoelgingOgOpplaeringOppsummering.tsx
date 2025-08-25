@@ -1,10 +1,11 @@
 import React from 'react'
-import { Heading, Label, BodyShort } from '@navikt/ds-react'
+import { Heading, VStack } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 import { formaterTlf } from '../Utils'
+import InfoRow from '../components/InfoRow'
 
 type FormidlerProps = {
   hjelpemiddelformidler: Hjelpemiddelformidler
@@ -16,93 +17,82 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
   const { hjelpemiddelformidler: formidler, annnenOppfølgingsansvarlig: oppfolgingsansvarlig } = props
 
   return (
-    <>
-      <div className="contentBlock categoryRow">
-        <Heading size="medium" level="2">
-          {' '}
-          {t('oppsummering.leveringOgOpplaring')}
+    <VStack gap="6" style={{ marginBottom: '2rem' }}>
+      <Heading size="medium" level="2">
+        {t('oppsummering.leveringOgOpplaring')}
+      </Heading>
+      <VStack gap="4">
+        <Heading size="small" level="3">
+          {t('felles.hjelpemiddelFormidler')}
         </Heading>
-      </div>
-      <div className="contentBlock">
-        <div className="contentBlock">
-          <Heading size="small" level="3">
-            {t('felles.hjelpemiddelFormidler')}
-          </Heading>
-        </div>
-        <div className="contentBlock">
-          <div className={'infoTable'}>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-              <BodyShort className={'infoRowCell'}>{formaterPersonnavn(formidler.navn)}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.arbeidssted}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.stilling}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.adresse')}</Label>
-              <BodyShort className={'infoRowCell'}>{formaterVeiadresse(formidler.adresse)}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-              <BodyShort className={'infoRowCell'}>{formaterTlf(formidler.telefon)}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.treffesEnklest')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.treffesEnklest}</BodyShort>
-            </div>
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.epost')}</Label>
-              <BodyShort className={'infoRowCell'}>{formidler.epost}</BodyShort>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="contentBlock">
-        <div className="contentBlock">
-          <Heading size="small" level="3">
-            {t('oppsummering.ansvarlig')}
-          </Heading>
-        </div>
-        <div className="contentBlock">
+        <VStack gap="2">
+          <InfoRow
+            label={t('oppsummering.navn')}
+            body={formaterPersonnavn(formidler.navn)}
+          />
+          <InfoRow
+            label={t('felles.arbeidssted')}
+            body={formidler.arbeidssted}
+          />
+          <InfoRow
+            label={t('felles.stilling')}
+            body={formidler.stilling}
+          />
+          <InfoRow
+            label={t('felles.adresse')}
+            body={formaterVeiadresse(formidler.adresse)}
+          />
+          <InfoRow
+            label={t('felles.tlf')}
+            body={formaterTlf(formidler.telefon)}
+          />
+          <InfoRow
+            label={t('felles.treffesEnklest')}
+            body={formidler.treffesEnklest}
+          />
+          <InfoRow
+            label={t('felles.epost')}
+            body={formidler.epost}
+          />
+        </VStack>
+      </VStack>
+      <VStack gap="4">
+        <Heading size="small" level="3">
+          {t('oppsummering.ansvarlig')}
+        </Heading>
+        <VStack gap="2">
           {!oppfolgingsansvarlig ? (
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-              <BodyShort className={'infoRowCell'}>
-                {formaterPersonnavn(formidler.navn)} {t('oppsummering.hjelpemiddelformidler')}
-              </BodyShort>
-            </div>
+            <InfoRow
+              label={t('oppsummering.navn')}
+              body={`${formaterPersonnavn(formidler.navn)} ${t('oppsummering.hjelpemiddelformidler')}`}
+            />
           ) : (
-            <div className={'infoTable'}>
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.navn')}</Label>
-                <BodyShort className={'infoRowCell'}>{formaterPersonnavn(oppfolgingsansvarlig.navn)}</BodyShort>
-              </div>
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.arbeidssted')}</Label>
-                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.arbeidssted}</BodyShort>
-              </div>
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.stilling')}</Label>
-                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.stilling}</BodyShort>
-              </div>
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-                <BodyShort className={'infoRowCell'}>{formaterTlf(oppfolgingsansvarlig.telefon)}</BodyShort>
-              </div>
-              <div className={'infoRow'}>
-                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.ansvar')}</Label>
-                <BodyShort className={'infoRowCell'}>{oppfolgingsansvarlig.ansvarFor}</BodyShort>
-              </div>
-            </div>
+            <>
+              <InfoRow
+                label={t('oppsummering.navn')}
+                body={formaterPersonnavn(oppfolgingsansvarlig.navn)}
+              />
+              <InfoRow
+                label={t('felles.arbeidssted')}
+                body={oppfolgingsansvarlig.arbeidssted}
+              />
+              <InfoRow
+                label={t('felles.stilling')}
+                body={oppfolgingsansvarlig.stilling}
+              />
+              <InfoRow
+                label={t('felles.tlf')}
+                body={formaterTlf(oppfolgingsansvarlig.telefon)}
+              />
+              <InfoRow
+                label={t('oppsummering.ansvar')}
+                body={oppfolgingsansvarlig.ansvarFor}
+              />
+            </>
           )}
-        </div>
-      </div>
-    </>
+        </VStack>
+      </VStack>
+    </VStack>
   )
 }
 

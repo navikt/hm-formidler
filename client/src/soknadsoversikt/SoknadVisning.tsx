@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import './../stylesheet/styles.scss'
 import useSWRImmutable from 'swr/immutable'
 import { API_PATH, fetcher } from '../services/rest-service'
-import { BodyShort, Button, Detail, Loader, Panel, Tag } from '@navikt/ds-react'
+import { BodyShort, Box, Button, Detail, Loader, Tag } from '@navikt/ds-react'
 import { BASE_PATH } from '../App'
 import { useParams, Link } from 'react-router-dom'
 import Soknad from '../soknad/Soknad'
@@ -88,7 +88,7 @@ const SoknadVisning: React.FC = () => {
         </div>
         <Avstand marginBottom={4} />
         <div className="customPanel">
-          <Panel>
+          <Box background='surface-default' padding="4">
             <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
             <Avstand marginBottom={3} />
             <BodyShort>
@@ -96,7 +96,7 @@ const SoknadVisning: React.FC = () => {
               <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
               {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>
-          </Panel>
+          </Box>
         </div>
       </header>
 

@@ -1,8 +1,7 @@
-import { BodyShort, Heading, Label } from '@navikt/ds-react'
+import { BodyShort, Heading, Label, Box } from '@navikt/ds-react'
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import InfoLinje from './InfoLinje'
-import Panel from './Panel'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
@@ -20,7 +19,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
   const { t } = useTranslation()
 
   return (
-    <Panel background="surface-subtle">
+    <Box background='surface-subtle' padding="4">
       <div>
         <div>
           <div className="hjelpemiddelinfo">
@@ -102,7 +101,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
       })}
 
       {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
-    </Panel>
+    </Box>
   )
 }
 
