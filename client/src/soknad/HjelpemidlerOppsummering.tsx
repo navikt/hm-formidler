@@ -5,6 +5,9 @@ import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
 import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import TilbehørVisning from '../components/TilbehørVisning'
+import { Avstand } from '../components/Avstand'
+import { FlexRow } from '../components/FlexRow'
+import FixedWidthLabel from '../components/FixedWidthLabel'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
@@ -39,20 +42,20 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
         ))}
       </ul>
 
-      <div className="contentBlock">
-        <div className={'infoTable'}>
-          <div className={'infoRow infoRowReverse'}>
-            <BodyShort className={'infoRowCell'}>{t('felles.tilsvarendeProdukt')}</BodyShort>
-            <BodyShort className={'alignRight fixedWidthLabel'}>
-              {t('felles.totalt') +
-                ' ' +
-                t('felles.antallHjelpemidler.total', {
-                  antall: hjelpemiddelTotalAntall,
-                })}
-            </BodyShort>
-          </div>
-        </div>
-      </div>
+      <Avstand marginTop={6} marginBottom={6}>
+        <FlexRow>
+          <BodyShort>
+            {t('felles.tilsvarendeProdukt')}
+          </BodyShort>
+          <FixedWidthLabel width={7}>
+            {t('felles.totalt') +
+              ' ' +
+              t('felles.antallHjelpemidler.total', {
+                antall: hjelpemiddelTotalAntall,
+              })}
+          </FixedWidthLabel>
+        </FlexRow>
+      </Avstand>
     </>
   )
 }

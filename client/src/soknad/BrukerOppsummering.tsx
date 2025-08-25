@@ -41,41 +41,36 @@ function BrukerOppsummering(props: BrukerProps) {
                 <BodyShort className={'infoRowCell'}>{formaterVeiadresse(bruker.veiadresse)}</BodyShort>
               </div>
             )}
-          </div>
-        </div>
-
-        <div className={'infoTable'}>
-          {bruker.telefon && (
+            {bruker.telefon && (
+              <div className={'infoRow'}>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
+                <BodyShort className={'infoRowCell'}>{formaterTlf(bruker.telefon)}</BodyShort>
+              </div>
+            )}
+            {bruker.legacyopplysninger.map((opplysning, index) => {
+              return (
+                <EnkelOpplysningVisning
+                  enkelOpplysning={opplysning}
+                  key={index}
+                  className="infoRow"
+                  ledetekstClassName="infoRowCell fixedWidthLabel"
+                  innholdClassName="infoRowCell"
+                />
+              )
+            })}
             <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('felles.tlf')}</Label>
-              <BodyShort className={'infoRowCell'}>{formaterTlf(bruker.telefon)}</BodyShort>
+              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.funksjonsnedsettelser')}</Label>
+              <BodyShort className={'infoRowCell'}>
+                {brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}
+              </BodyShort>
             </div>
-          )}
-
-          {bruker.legacyopplysninger.map((opplysning, index) => {
-            return (
-              <EnkelOpplysningVisning
-                enkelOpplysning={opplysning}
-                key={index}
-                className="infoRow"
-                ledetekstClassName="infoRowCell fixedWidthLabel"
-                innholdClassName="infoRowCell"
-              />
-            )
-          })}
-
-          <div className={'infoRow'}>
-            <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.funksjonsnedsettelser')}</Label>
-            <BodyShort className={'infoRowCell'}>
-              {brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}
-            </BodyShort>
+            {bruker.brukernummer && (
+              <div className={'infoRow'}>
+                <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.brukernummer')}</Label>
+                <BodyShort className={'infoRowCell'}>{bruker.brukernummer}</BodyShort>
+              </div>
+            )}
           </div>
-          {bruker.brukernummer && (
-            <div className={'infoRow'}>
-              <Label className={'infoRowCell fixedWidthLabel'}>{t('oppsummering.brukernummer')}</Label>
-              <BodyShort className={'infoRowCell'}>{bruker.brukernummer}</BodyShort>
-            </div>
-          )}
         </div>
       </div>
       <hr aria-hidden="true" />
