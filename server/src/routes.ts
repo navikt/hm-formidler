@@ -33,9 +33,9 @@ export const routes = {
   public(server: Express): Router {
     const router = Router()
     router.get('/settings.js', settingsHandler)
-    router.get('*', express.static(config.buildPath(), { index: false }))
+    router.get('/{*splat}', express.static(config.buildPath(), { index: false }))
     server.get('/', authMiddleware.requiresLogin(), spaHandler)
-    router.get('*', authMiddleware.requiresLogin(), spaHandler)
+    router.get('/{*splat}', authMiddleware.requiresLogin(), spaHandler)
     return router
   },
   auth(): Router {
