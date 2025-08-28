@@ -1,4 +1,4 @@
-import { BodyShort, Heading, Label, Box } from '@navikt/ds-react'
+import { BodyShort, Heading, Label, Box, Tag } from '@navikt/ds-react'
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import InfoLinje from './InfoLinje'
@@ -8,18 +8,36 @@ import VarselVisning from '../soknad/VarselVisning'
 import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
 import Rangering from './Rangering'
+import { capitalize } from '../Utils'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
 }
 
 const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
+  function tagColor(bytteListe: any[]) {
+    if (bytteListe.length > 0) {
+      return 'warning'
+    }
+
+  if (bytteListe.length == 0) {
+    return 'success'
+  }
+
+  return 'alt1'
+}
   const { hm } = props
 
   const { t } = useTranslation()
 
   return (
     <Box.New background='neutral-soft' padding="4" borderRadius="large">
+      <div style={{ marginTop: '-16px', marginLeft: '-16px' }}>
+        <Tag variant={tagColor(hm.bytter)}> 
+          {hm.bytter.length > 0 ? t('BYTTE') : t('BESTILLING')}
+        </Tag>
+        <Avstand marginBottom={4}></Avstand>
+      </div>
       <div>
         <div>
           <div className="hjelpemiddelinfo">
