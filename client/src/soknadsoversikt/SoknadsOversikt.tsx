@@ -71,14 +71,16 @@ const SoknadsOversikt: React.FC = () => {
 
   return (
     <>
-      <header>
-        <Banner />
-      </header>
+      <div style={{ background: 'var(--a-surface-subtle)' }}>
+        <header>
+          <Banner />
+        </header>
 
-      <main style={{ paddingTop: '2rem' }}>
-        <SoknadsOversiktVeileder />
-        {soknader.length === 0 ? <IngenSoknader /> : <SoknadListe alleSoknader={soknader} />}
-      </main>
+        <main style={{ paddingTop: '2rem' }}>
+          <SoknadsOversiktVeileder />
+          {soknader.length === 0 ? <IngenSoknader /> : <SoknadListe alleSoknader={soknader} />}
+        </main>
+      </div>
     </>
   )
 }

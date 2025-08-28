@@ -14,7 +14,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <Box background="surface-subtle">
+    <Box.New background='neutral-soft' padding="4" borderRadius="large">
       <Detail uppercase>Tilbehør</Detail>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <Heading level="4" size="small" style={{ flex: '0 0 5rem' }}>
@@ -32,7 +32,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
           return <OpplysningVisning opplysning={opplysning} key={index} />
         })}
       </Avstand>
-    </Box>
+    </Box.New>
   )
 }
 

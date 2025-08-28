@@ -42,7 +42,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
         </div>
       )}
       <div ref={ref}>
-        <Box className={styles.oppsummeringsBox}>
+        <Box.New className={styles.oppsummeringsBox} borderRadius="large">
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
             <HjelpemidlerOppsummering
@@ -70,7 +70,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
               innsender={behovsmelding.innsender}
             />
           </div>
-        </Box>
+        </Box.New>
       </div>
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>
     </div>

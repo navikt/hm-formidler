@@ -19,7 +19,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
   const { t } = useTranslation()
 
   return (
-    <Box background='surface-subtle' padding="4">
+    <Box.New background='neutral-soft' padding="4" borderRadius="large">
       <div>
         <div>
           <div className="hjelpemiddelinfo">
@@ -101,7 +101,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
       })}
 
       {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
-    </Box>
+    </Box.New>
   )
 }
 

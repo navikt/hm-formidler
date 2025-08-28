@@ -71,6 +71,7 @@ const SoknadVisning: React.FC = () => {
 
   return (
     <>
+    <div style={{ background: 'var(--a-surface-subtle)' }}>
       <header>
         <div className="customPanel">
           <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
@@ -88,15 +89,15 @@ const SoknadVisning: React.FC = () => {
         </div>
         <Avstand marginBottom={4} />
         <div className="customPanel">
-          <Box background='surface-default' padding="4">
+          <Box.New background='default' padding="4" borderRadius="large">
             <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
             <Avstand marginBottom={3} />
             <BodyShort>
               {t('dato.innsendt')} {formaterDato(datoOpprettet)}
-              <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
+              <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
               {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>
-          </Box>
+          </Box.New>
         </div>
       </header>
 
@@ -105,6 +106,7 @@ const SoknadVisning: React.FC = () => {
           <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
         </div>
       </main>
+    </div>
     </>
   )
 }

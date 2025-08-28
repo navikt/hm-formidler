@@ -22,7 +22,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
 
   return (
     <>
-      <VStack gap="6">
+      <VStack gap="6" style={{ marginBottom: '2rem' }}>
         <Heading size="small" level="3">
           {t('oppsummering.utlevering')}
         </Heading>

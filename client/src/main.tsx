@@ -1,4 +1,4 @@
-import '@navikt/ds-css'
+import '@navikt/ds-css/darkside'
 import { Modal } from '@navikt/ds-react'
 import React from 'react'
 import ReactDOM from 'react-dom'
