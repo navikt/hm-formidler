@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import Routes from './Routes'
 import { ApplicationProvider } from './statemanagement/ApplicationContext'
+import { Theme } from '@navikt/ds-react'
 
 export const BASE_PATH = '/hjelpemidler/formidler'
 
@@ -13,7 +14,9 @@ const App: React.FC = () => {
       <BrowserRouter>
         <ApplicationProvider>
           <ScrollToTop />
+          <Theme theme='light'>
             <Routes />
+          </Theme>
         </ApplicationProvider>
       </BrowserRouter>
     </>

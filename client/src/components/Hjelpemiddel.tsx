@@ -1,24 +1,45 @@
-import { BodyShort, Heading, Label } from '@navikt/ds-react'
+import { BodyShort, Heading, Label, Box, Tag } from '@navikt/ds-react'
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import InfoLinje from './InfoLinje'
-import Panel from './Panel'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
 import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
+import { Avstand } from './Avstand'
+import Rangering from './Rangering'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
+  behovsmeldingType: BehovsmeldingType
 }
 
+function tagColor(type: BehovsmeldingType) {
+    if (type === BehovsmeldingType.BYTTE) {
+      return 'warning'
+    }
+
+    if (type === BehovsmeldingType.BESTILLING) {
+      return 'success'
+    }
+
+    return 'alt1'
+  }
+
 const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  const { hm } = props
+  const { hm, behovsmeldingType} = props
 
   const { t } = useTranslation()
 
   return (
-    <Panel background="surface-subtle">
+    <Box.New background='neutral-soft' padding="4" borderRadius="large">
+      <div style={{ marginTop: '-16px', marginLeft: '-16px' }}>
+        <Tag variant={tagColor(behovsmeldingType)}> 
+          {t(`${behovsmeldingType}`)}
+        </Tag>
+        <Avstand marginBottom={4}></Avstand>
+      </div>
       <div>
         <div>
           <div className="hjelpemiddelinfo">
@@ -40,16 +61,15 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
             <span className="sr-only mobile-only">HMS nummer</span>
             <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
 
-            <Label className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</Label>
+            <BodyShort className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</BodyShort>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
             <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
           </div>
           {hm.produkt.rangering && (
-            <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
-              <Label>{t('oppsummering.rangering')} &nbsp;</Label>
-              <BodyShort>{hm.produkt.rangering}</BodyShort>
-            </div>
+            <Avstand marginTop={2} marginBottom={4}>
+              <Rangering rangering={hm.produkt.rangering.toString()} />
+            </Avstand>
           )}
         </div>
       </div>
@@ -101,7 +121,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
       })}
 
       {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
-    </Panel>
+    </Box.New>
   )
 }
 

@@ -1,4 +1,4 @@
-import { BodyShort, Box, Heading, LinkPanel, Tag } from '@navikt/ds-react'
+import { BodyShort, Box, Heading, LinkCard, Tag } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +23,38 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
 
   const panelInnhold = (
     <>
+      <LinkCard style={{ border: '1px solid' }}>
+        <LinkCard.Title>
+          {soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}
+        </LinkCard.Title>
+
+        <LinkCard.Description>
+          {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
+        </LinkCard.Description>
+
+        <LinkCard.Footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
+            {t(soknad.status)}
+          </Tag>
+
+          {soknad.status === SoknadStatus.VENTER_GODKJENNING && (
+            <BodyShort spacing>
+              {t('frist.for.å.bekrefte')} {beregnFrist(soknad.datoOpprettet)}
+            </BodyShort>
+          )}
+
+          <BodyShort>
+            {t('dato.innsendt')} {formaterDato(soknad.datoOpprettet)}
+            <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
+            {t('dato.oppdatert')} {formaterDato(soknad.datoOppdatert)}
+          </BodyShort>
+        </LinkCard.Footer>
+      </LinkCard>
+    </>
+  )
+
+  const panelInnholdSlettet = (
+    <>
       <Heading size="small" level="3">
         {soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}
       </Heading>
@@ -30,6 +62,8 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       <BodyShort spacing size="small">
         {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
       </BodyShort>
+
+      <Avstand marginBottom={4} />
 
       <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
         {t(soknad.status)}
@@ -54,21 +88,20 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   return (
     <div style={{ marginBottom: '0.5rem' }}>
       {erSlettet ? (
-        <Box borderWidth="1" borderRadius="small" padding="4" background="surface-default" borderColor="border-default">
-          {panelInnhold}
-        </Box>
+        <Box.New borderWidth="1" borderRadius="xlarge" padding="4" background="default">
+          {panelInnholdSlettet}
+        </Box.New>
       ) : (
-        <LinkPanel
-          as={Link}
+        <Link
           to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
           onClick={() => {
             Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
             logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
           }}
-          border
+          style={{ textDecoration: 'none' }}
         >
           {panelInnhold}
-        </LinkPanel>
+        </Link>
       )}
     </div>
   )

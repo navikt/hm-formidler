@@ -1,6 +1,6 @@
 import React from 'react'
-import { Panel, Heading, Alert } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
+import { Box, Heading, Alert } from '@navikt/ds-react'
+import styles from './../stylesheet/oppsummering.module.scss'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
 import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
@@ -42,13 +42,14 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
         </div>
       )}
       <div ref={ref}>
-        <Panel>
+        <Box.New className={styles.oppsummeringsBox} borderRadius="large">
           <div className="contentBlock" data-testid="oppsummering">
             <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
             <HjelpemidlerOppsummering
               hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
               hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
               tilbehør={behovsmelding.hjelpemidler.tilbehør}
+              behovsmeldingType={behovsmelding.type}
             />
             <OppfoelgingOgOpplaeringOppsummering
               hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
@@ -70,7 +71,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
               innsender={behovsmelding.innsender}
             />
           </div>
-        </Panel>
+        </Box.New>
       </div>
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>
     </div>
