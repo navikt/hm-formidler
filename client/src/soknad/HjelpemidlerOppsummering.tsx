@@ -6,7 +6,6 @@ import Hjelpemiddelinfo from '../components/Hjelpemiddel'
 import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import TilbehørVisning from '../components/TilbehørVisning'
 import { Avstand } from '../components/Avstand'
-import { FlexRow } from '../components/FlexRow'
 import FixedWidthLabel from '../components/FixedWidthLabel'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
