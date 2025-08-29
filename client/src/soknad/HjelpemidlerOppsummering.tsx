@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, BodyShort, Box } from '@navikt/ds-react'
+import { Heading, BodyShort, Box, HStack } from '@navikt/ds-react'
 import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
@@ -8,16 +8,18 @@ import TilbehørVisning from '../components/TilbehørVisning'
 import { Avstand } from '../components/Avstand'
 import { FlexRow } from '../components/FlexRow'
 import FixedWidthLabel from '../components/FixedWidthLabel'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
   hjelpemidler: Hjelpemiddel[]
   tilbehør: Tilbehør[]
+  behovsmeldingType: BehovsmeldingType
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør } = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør , behovsmeldingType} = props
 
   return (
     <>
@@ -32,7 +34,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
           <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ marginBottom: '16px' }}>
-            <Hjelpemiddelinfo hm={hm} />
+            <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType}/>
           </li>
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (
@@ -43,7 +45,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       </ul>
 
       <Avstand marginTop={6} marginBottom={6}>
-        <FlexRow>
+        <HStack wrap={false} align={'center'}>
           <BodyShort>
             {t('felles.tilsvarendeProdukt')}
           </BodyShort>
@@ -54,7 +56,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
                 antall: hjelpemiddelTotalAntall,
               })}
           </FixedWidthLabel>
-        </FlexRow>
+        </HStack>
       </Avstand>
     </>
   )

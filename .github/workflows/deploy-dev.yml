@@ -10,6 +10,7 @@ on:
     branches:
       - main
       - ikke-feilmelding-på-slettet-sak
+      - styling-endringer-og-darkside
 
 jobs:
   deploy:

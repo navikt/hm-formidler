@@ -49,6 +49,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
               hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
               hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
               tilbehør={behovsmelding.hjelpemidler.tilbehør}
+              behovsmeldingType={behovsmelding.type}
             />
             <OppfoelgingOgOpplaeringOppsummering
               hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}

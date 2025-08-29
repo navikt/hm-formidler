@@ -8,33 +8,35 @@ import VarselVisning from '../soknad/VarselVisning'
 import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
 import Rangering from './Rangering'
-import { capitalize } from '../Utils'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
+  behovsmeldingType: BehovsmeldingType
 }
 
-const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  function tagColor(bytteListe: any[]) {
-    if (bytteListe.length > 0) {
+function tagColor(type: BehovsmeldingType) {
+    if (type === BehovsmeldingType.BYTTE) {
       return 'warning'
     }
 
-  if (bytteListe.length == 0) {
-    return 'success'
+    if (type === BehovsmeldingType.BESTILLING) {
+      return 'success'
+    }
+
+    return 'alt1'
   }
 
-  return 'alt1'
-}
-  const { hm } = props
+const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
+  const { hm, behovsmeldingType} = props
 
   const { t } = useTranslation()
 
   return (
     <Box.New background='neutral-soft' padding="4" borderRadius="large">
       <div style={{ marginTop: '-16px', marginLeft: '-16px' }}>
-        <Tag variant={tagColor(hm.bytter)}> 
-          {hm.bytter.length > 0 ? t('BYTTE') : t('BESTILLING')}
+        <Tag variant={tagColor(behovsmeldingType)}> 
+          {t(`${behovsmeldingType}`)}
         </Tag>
         <Avstand marginBottom={4}></Avstand>
       </div>
