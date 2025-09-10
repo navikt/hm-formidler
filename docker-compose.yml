@@ -1,13 +1,12 @@
-version: '3'
 services:
   hm-formidler:
     build: .
     image: 'hm-formidler'
     ports:
-      - '5000:5000'
+      - '9000:5000'
     environment:
       NAIS_CLUSTER_NAME: 'dev-gcp'
-      API_URL: 'http://localhost:8083/api'
-      IDPORTEN_WELL_KNOWN_URL: 'http://172.27.88.226:8080/default/.well-known/openid-configuration'
-      TOKEN_X_WELL_KNOWN_URL: 'http://172.27.88.226:8080/default/.well-known/openid-configuration'
+      BIND_ADDRESS: ':5000'
+      API_URL: 'http://localhost:4040'
+      HM_ROLLER_URL: 'http://localhost:4040'
       USE_MSW: 'true'

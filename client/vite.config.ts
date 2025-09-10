@@ -13,7 +13,7 @@ const htmlPlugin = ({ development }: { development?: boolean }): Plugin => ({
         params: {
           context: 'samarbeidspartner',
           logoutWarning: true,
-        }
+        },
       })
       return {
         html: render(html, decorator),
@@ -22,7 +22,7 @@ const htmlPlugin = ({ development }: { development?: boolean }): Plugin => ({
             tag: 'script',
             children: `window.appSettings = {
               USE_MSW: true,
-              MILJO: 'dev-gcp'
+              NAIS_CLUSTER_NAME: 'dev-gcp'
             }`,
           },
         ],

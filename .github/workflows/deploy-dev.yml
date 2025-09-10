@@ -9,8 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - ikke-feilmelding-på-slettet-sak
-      - styling-endringer-og-darkside
+      - hotbff
 
 jobs:
   deploy:
