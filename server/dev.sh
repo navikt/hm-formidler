@@ -14,4 +14,6 @@ export HM_ROLLER_URL=http://localhost:4040
 
 export USE_MSW=true
 
+export DEBUG_LOG=true
+
 go run .

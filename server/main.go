@@ -9,10 +9,18 @@ import (
 	"github.com/navikt/hotbff/texas"
 )
 
+var (
+	useMSW = os.Getenv("USE_MSW") == "true"
+	idp    = texas.IdPorten
+)
+
 func main() {
+	if useMSW {
+		idp = ""
+	}
 	opts := &hotbff.ServerOptions{
 		BasePath: "/hjelpemidler/formidler/",
-		RootDir:  "dist",
+		RootDir:  "../client/dist",
 		DecoratorOpts: &decorator.Options{
 			Context: "samarbeidspartner",
 		},
@@ -30,7 +38,7 @@ func main() {
 				IDPTarget:   os.Getenv("HM_ROLLER_AUDIENCE"),
 			},
 		},
-		IDP: texas.IdPorten,
+		IDP: idp,
 		EnvKeys: &[]string{
 			"SOKNAD_URL",
 		},
