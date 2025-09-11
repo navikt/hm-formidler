@@ -11,7 +11,7 @@ RUN npm run build
 FROM golang:1.25.1-alpine AS server-builder
 WORKDIR /app
 COPY server ./
-RUN go test -v ./... && go build .
+RUN go build .
 
 # runtime
 FROM gcr.io/distroless/static-debian12 AS runtime

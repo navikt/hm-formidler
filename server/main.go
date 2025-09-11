@@ -14,11 +14,14 @@ var (
 	idp    = texas.IdPorten
 )
 
-func main() {
+func init() {
 	if useMSW {
 		idp = ""
 	}
-	opts := &hotbff.ServerOptions{
+}
+
+func main() {
+	opts := &hotbff.Options{
 		BasePath: "/hjelpemidler/formidler/",
 		RootDir:  "dist",
 		DecoratorOpts: &decorator.Options{
@@ -43,5 +46,5 @@ func main() {
 			"SOKNAD_URL",
 		},
 	}
-	hotbff.StartServer(opts)
+	hotbff.Start(opts)
 }
