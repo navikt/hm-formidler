@@ -20,7 +20,7 @@ func main() {
 	}
 	opts := &hotbff.ServerOptions{
 		BasePath: "/hjelpemidler/formidler/",
-		RootDir:  "../client/dist",
+		RootDir:  "dist",
 		DecoratorOpts: &decorator.Options{
 			Context: "samarbeidspartner",
 		},
