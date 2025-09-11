@@ -1,5 +1,5 @@
 import { BodyShort, Heading, Label, Box, Tag } from '@navikt/ds-react'
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import InfoLinje from './InfoLinje'
 import Tilbehoerinfo from './Tilbehoerinfo'
@@ -16,28 +16,26 @@ type HjelpemiddelProps = {
 }
 
 function tagColor(type: BehovsmeldingType) {
-    if (type === BehovsmeldingType.BYTTE) {
-      return 'warning'
-    }
-
-    if (type === BehovsmeldingType.BESTILLING) {
-      return 'success'
-    }
-
-    return 'alt1'
+  if (type === BehovsmeldingType.BYTTE) {
+    return 'warning'
   }
 
+  if (type === BehovsmeldingType.BESTILLING) {
+    return 'success'
+  }
+
+  return 'alt1'
+}
+
 const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  const { hm, behovsmeldingType} = props
+  const { hm, behovsmeldingType } = props
 
   const { t } = useTranslation()
 
   return (
-    <Box.New background='neutral-soft' padding="4" borderRadius="large">
+    <Box.New background="neutral-soft" padding="4" borderRadius="large">
       <div style={{ marginTop: '-16px', marginLeft: '-16px' }}>
-        <Tag variant={tagColor(behovsmeldingType)}> 
-          {t(`${behovsmeldingType}`)}
-        </Tag>
+        <Tag variant={tagColor(behovsmeldingType)}>{t(`${behovsmeldingType}`)}</Tag>
         <Avstand marginBottom={4}></Avstand>
       </div>
       <div>
@@ -61,7 +59,9 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
             <span className="sr-only mobile-only">HMS nummer</span>
             <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
 
-            <BodyShort className="hjelpemiddelinfo-antall">{t('felles.antallHjelpemidler', { antall: hm.antall })}</BodyShort>
+            <BodyShort className="hjelpemiddelinfo-antall">
+              {t('felles.antallHjelpemidler', { antall: hm.antall })}
+            </BodyShort>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
             <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
@@ -74,53 +74,55 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
         </div>
       </div>
 
-      {hm.opplysninger.map((opplysning, index) => {
-        return <OpplysningVisning opplysning={opplysning} key={index} />
-      })}
+      <Box.New maxWidth="600px">
+        {hm.opplysninger.map((opplysning, index) => {
+          return <OpplysningVisning opplysning={opplysning} key={index} />
+        })}
 
-      {hm.varsler.map((varsel, index) => {
-        return <VarselVisning varsel={varsel} key={index} />
-      })}
+        {hm.varsler.map((varsel, index) => {
+          return <VarselVisning varsel={varsel} key={index} />
+        })}
 
-      {hm.bytter.map((bytte, index) => {
-        return (
-          <div key={index}>
-            <InfoLinje
-              overskrift={
-                <>
-                  {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
-                  {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
-                </>
-              }
-              info={
-                <>
-                  {bytte.hmsnr} {bytte.hjmNavn}
-                  {bytte.serienr && (
-                    <>
-                      <br />
-                      {t('felles.serienummer')}: {bytte.serienr}
-                    </>
-                  )}
-                </>
-              }
-            />
-
-            {bytte.årsak && (
+        {hm.bytter.map((bytte, index) => {
+          return (
+            <div key={index}>
               <InfoLinje
-                overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
+                overskrift={
+                  <>
+                    {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
+                    {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
+                  </>
+                }
                 info={
                   <>
-                    {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
-                    {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
+                    {bytte.hmsnr} {bytte.hjmNavn}
+                    {bytte.serienr && (
+                      <>
+                        <br />
+                        {t('felles.serienummer')}: {bytte.serienr}
+                      </>
+                    )}
                   </>
                 }
               />
-            )}
-          </div>
-        )
-      })}
 
-      {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
+              {bytte.årsak && (
+                <InfoLinje
+                  overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
+                  info={
+                    <>
+                      {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
+                      {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
+                    </>
+                  }
+                />
+              )}
+            </div>
+          )
+        })}
+
+        {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
+      </Box.New>
     </Box.New>
   )
 }
