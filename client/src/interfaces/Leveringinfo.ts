@@ -1,5 +1,5 @@
-import { Personnavn, Veiadresse } from './CommonTypes'
-import { Hast } from './Hast'
+import type { Personnavn, Veiadresse } from './CommonTypes'
+import type { Hast } from './Hast'
 
 export interface Levering {
   hjelpemiddelformidler: Hjelpemiddelformidler

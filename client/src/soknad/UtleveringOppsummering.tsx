@@ -1,13 +1,13 @@
+import { Heading, VStack } from '@navikt/ds-react'
 import React from 'react'
-import { Heading, Label, BodyShort, VStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Hast, Hasteårsak } from '../interfaces/Hast'
-import { Hjelpemiddelformidler, Kontaktperson, Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'
-import { Bruker } from '../interfaces/Innsenderbehovsmelding'
-import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
-import { formaterTlf } from '../Utils'
 import InfoRow from '../components/InfoRow'
+import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import { type Hast, Hasteårsak } from '../interfaces/Hast'
+import { type Bruker } from '../interfaces/Innsenderbehovsmelding'
+import { type Hjelpemiddelformidler, Kontaktperson, type Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'
+import { formaterTlf } from '../Utils'
+import './../stylesheet/oppsummering.module.scss'
 
 type LeveringProps = {
   levering: Levering

@@ -1,7 +1,6 @@
-import { ReactNode } from 'react'
 import { Alert } from '@navikt/ds-react'
+import { type Varsel, Varseltype } from '../interfaces/Innsenderbehovsmelding'
 import { lokaliser } from './OpplysningVisning'
-import { Varsel, Varseltype } from '../interfaces/Innsenderbehovsmelding'
 
 type VarselProps = {
   varsel: Varsel

@@ -1,5 +1,3 @@
-import { Levering } from './Leveringinfo'
-
 export enum HttpStatus {
   UNAUTHORIZED = 'Unauthorized',
 }

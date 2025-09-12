@@ -1,8 +1,8 @@
 import { http, HttpResponse } from 'msw'
-import { SoknadInfo } from '../../interfaces/SoknadInfo'
+import { BehovsmeldingType } from '../../interfaces/CommonTypes'
+import type { SoknadInfo } from '../../interfaces/SoknadInfo'
 import { API_PATH } from '../../services/rest-service'
 import { sakerMock } from '../mockdata/saker'
-import { BehovsmeldingType } from '../../interfaces/CommonTypes'
 
 const soknadsbehandlingDbHandlers = [
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {

@@ -1,9 +1,8 @@
 import i18next from 'i18next'
-import { DecoratorParams, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
+import { type DecoratorParams, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
 import { BASE_PATH } from '../App'
 import Cookies from 'universal-cookie'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
-
 
 const DECORATOR_LANGUAGE_COOKIE = 'decorator-language'
 const DEFAULT_PARAMS: DecoratorParams = {

@@ -1,4 +1,3 @@
-import { BASE_PATH } from '../App'
 import { ApiError } from '../types/errors'
 
 export const API_PATH = '/hjelpemidler/formidler/api'

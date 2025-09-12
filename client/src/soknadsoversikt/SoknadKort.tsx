@@ -3,14 +3,13 @@ import * as Sentry from '@sentry/browser'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { BASE_PATH } from '../App'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
+import { Avstand } from '../components/Avstand'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { SoknadInfo } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { beregnFrist, formaterDato, hentTagVariant } from '../Utils'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import './../stylesheet/styles.scss'
-import { Avstand } from '../components/Avstand'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
 interface Props {
   soknad: SoknadInfo
@@ -24,9 +23,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const panelInnhold = (
     <>
       <LinkCard style={{ border: '1px solid' }}>
-        <LinkCard.Title>
-          {soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}
-        </LinkCard.Title>
+        <LinkCard.Title>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</LinkCard.Title>
 
         <LinkCard.Description>
           {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
@@ -93,7 +90,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         </Box.New>
       ) : (
         <Link
-          to={`${BASE_PATH}/soknad/${soknad.søknadId}`}
+          to={`/soknad/${soknad.søknadId}`}
           onClick={() => {
             Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
             logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)

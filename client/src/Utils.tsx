@@ -1,10 +1,10 @@
-import { RefObject } from 'react'
-import { ValidationError } from './interfaces/ErrorTypes'
-import { format, addDays, parseISO } from 'date-fns'
+import type { TagProps } from '@navikt/ds-react'
+import { addDays, format, parseISO } from 'date-fns'
 import { nb } from 'date-fns/locale'
+import type { RefObject } from 'react'
+import type { ValidationError } from './interfaces/ErrorTypes'
+import { ValgtÅrsak } from './interfaces/SoknadInfo'
 import { SoknadStatus } from './statemanagement/SoknadStatus'
-import { TagProps } from '@navikt/ds-react'
-import { SoknadInfo, ValgtÅrsak } from './interfaces/SoknadInfo'
 
 export const sumNumbersInArray = (array: number[]): number => {
   const add = (accumulator: number, a: number) => {

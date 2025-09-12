@@ -1,11 +1,9 @@
+import { GuidePanel, Heading } from '@navikt/ds-react'
 import React from 'react'
-import '../stylesheet/styles.scss'
-import { Heading } from '@navikt/ds-react'
-
-import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
-import Banner from '../components/Banner'
-import { GuidePanel } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
+import SpotIllustration from '../assets/svg/illu_veileder_HMS.svg?react'
+import Banner from '../components/Banner'
+import '../stylesheet/styles.scss'
 
 const ManglerTilgang: React.FC = () => {
   const { t } = useTranslation()

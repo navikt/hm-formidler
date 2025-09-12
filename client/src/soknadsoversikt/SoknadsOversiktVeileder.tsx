@@ -1,12 +1,12 @@
 import { BodyShort, Button, GuidePanel, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
+import SpotIllustration from '../assets/svg/illu_veileder_HMS.svg?react'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
-import { useRoller } from '../statemanagement/ApplicationContext'
-import './../stylesheet/styles.scss'
 import environment from '../environment'
+import { useRoller } from '../statemanagement/ApplicationContext'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import './../stylesheet/styles.scss'
 
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()

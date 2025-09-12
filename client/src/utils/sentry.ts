@@ -1,6 +1,6 @@
+import type { Breadcrumb, BrowserOptions } from '@sentry/browser'
 import * as Sentry from '@sentry/browser'
 import { v4 as uuid } from 'uuid'
-import { Breadcrumb, Event } from '@sentry/browser'
 
 const maskeringsregler = [
   {
@@ -9,8 +9,8 @@ const maskeringsregler = [
   },
 ]
 
-// Exportes kun for å kunne testes
-export const fjernPersonopplysninger = (event: Event): Event => {
+// Eksporteres kun for å kunne testes
+export const fjernPersonopplysninger: BrowserOptions['beforeSend'] = (event) => {
   const url = event.request?.url ? maskerPersonopplysninger(event.request.url) : ''
   return {
     ...event,
@@ -33,7 +33,7 @@ export const fjernPersonopplysninger = (event: Event): Event => {
   }
 }
 
-const maskerPersonoppysningerIObjekt = <T>(data: T): T => {
+const maskerPersonoppysningerIObjekt = <T>(data: T): T | undefined => {
   if (data === undefined) return data
 
   const asText = JSON.stringify(data)

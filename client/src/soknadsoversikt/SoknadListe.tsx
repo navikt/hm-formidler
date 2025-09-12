@@ -1,9 +1,9 @@
-import React from 'react'
-import './../stylesheet/styles.scss'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
-import SoknadKort from './SoknadKort'
-import { useTranslation } from 'react-i18next'
 import { Heading } from '@navikt/ds-react'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import type { SoknadInfo } from '../interfaces/SoknadInfo'
+import './../stylesheet/styles.scss'
+import SoknadKort from './SoknadKort'
 
 interface Props {
   alleSoknader: SoknadInfo[]

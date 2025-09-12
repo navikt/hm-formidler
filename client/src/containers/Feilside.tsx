@@ -1,16 +1,13 @@
+import { Button, GuidePanel, Heading, Ingress } from '@navikt/ds-react'
 import React from 'react'
-import './../stylesheet/styles.scss'
-import { Ingress, Heading } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { GuidePanel } from '@navikt/ds-react'
-import { ReactComponent as SpotIllustration } from '../assets/svg/information_circle.svg'
-import { Button } from '@navikt/ds-react'
-import { useHistory } from 'react-router-dom'
-import { BASE_PATH } from '../App'
+import { useNavigate } from 'react-router-dom'
+import SpotIllustration from '../assets/svg/information_circle.svg?react'
+import './../stylesheet/styles.scss'
 
 const Feilside: React.FC = () => {
   const { t } = useTranslation()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -28,7 +25,7 @@ const Feilside: React.FC = () => {
               </div>
             </div>
             <div className="knappepanel">
-              <Button variant="secondary" onClick={() => history.push({ pathname: `${BASE_PATH}/` })}>
+              <Button variant="secondary" onClick={() => navigate('/')}>
                 {t('kvittering.tilbake')}
               </Button>
             </div>

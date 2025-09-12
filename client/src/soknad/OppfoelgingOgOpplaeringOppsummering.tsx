@@ -1,11 +1,11 @@
-import React from 'react'
 import { Heading, VStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
-import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
-import { formaterTlf } from '../Utils'
 import InfoRow from '../components/InfoRow'
+import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import type { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
+import { formaterTlf } from '../Utils'
+import './../stylesheet/oppsummering.module.scss'
 
 type FormidlerProps = {
   hjelpemiddelformidler: Hjelpemiddelformidler

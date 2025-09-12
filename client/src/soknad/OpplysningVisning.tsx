@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
-import { useTranslation } from 'react-i18next'
-import DOMPurify from 'dompurify'
 import { BodyShort, Detail } from '@navikt/ds-react'
-import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
+import DOMPurify from 'dompurify'
+import React, { type ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import InfoElement from '../components/InfoElement'
+import type { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
 
 const rensHTML = (tekst: string): string => {
   return DOMPurify.sanitize(tekst, { ALLOWED_TAGS: ['em', 'strong'] })
@@ -40,17 +40,19 @@ const renderTextContent = (tekst: Tekst): ReactNode => {
   if (tekst.fritekst) {
     return tekst.fritekst
   }
-  return tekst.forhåndsdefinertTekst ? <span dangerouslySetInnerHTML={{ __html: rensHTML(lokaliser(tekst.forhåndsdefinertTekst)) }}></span> : null
+  return tekst.forhåndsdefinertTekst ? (
+    <span dangerouslySetInnerHTML={{ __html: rensHTML(lokaliser(tekst.forhåndsdefinertTekst)) }}></span>
+  ) : null
 }
 
-const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst, language }) => (
+const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst }) => (
   <>
     <BodyShort>{renderTextContent(tekst)}</BodyShort>
     {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
   </>
 )
 
-const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold, language }) => (
+const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold }) => (
   <ul style={{ margin: 0 }}>
     {innhold.map((tekst, index) => (
       <React.Fragment key={index}>
