@@ -11,7 +11,7 @@ import (
 
 var (
 	useMSW = os.Getenv("USE_MSW") == "true"
-	idp    = texas.IdPorten
+	idp    = texas.IDPorten
 )
 
 func init() {
