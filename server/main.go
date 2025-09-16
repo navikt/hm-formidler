@@ -27,7 +27,7 @@ func main() {
 		DecoratorOpts: &decorator.Options{
 			Context: "samarbeidspartner",
 		},
-		Proxy: &proxy.Map{
+		Proxy: proxy.Map{
 			"/api/": &proxy.Options{
 				Target:      os.Getenv("API_URL"),
 				StripPrefix: false,
@@ -42,7 +42,7 @@ func main() {
 			},
 		},
 		IDP: idp,
-		EnvKeys: &[]string{
+		EnvKeys: []string{
 			"SOKNAD_URL",
 		},
 	}
