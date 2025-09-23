@@ -74,55 +74,53 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
         </div>
       </div>
 
-      <Box.New maxWidth="600px">
-        {hm.opplysninger.map((opplysning, index) => {
-          return <OpplysningVisning opplysning={opplysning} key={index} />
-        })}
+      {hm.opplysninger.map((opplysning, index) => {
+        return <OpplysningVisning opplysning={opplysning} key={index} />
+      })}
 
-        {hm.varsler.map((varsel, index) => {
-          return <VarselVisning varsel={varsel} key={index} />
-        })}
+      {hm.varsler.map((varsel, index) => {
+        return <VarselVisning varsel={varsel} key={index} />
+      })}
 
-        {hm.bytter.map((bytte, index) => {
-          return (
-            <div key={index}>
+      {hm.bytter.map((bytte, index) => {
+        return (
+          <div key={index}>
+            <InfoLinje
+              overskrift={
+                <>
+                  {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
+                  {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
+                </>
+              }
+              info={
+                <>
+                  {bytte.hmsnr} {bytte.hjmNavn}
+                  {bytte.serienr && (
+                    <>
+                      <br />
+                      {t('felles.serienummer')}: {bytte.serienr}
+                    </>
+                  )}
+                </>
+              }
+            />
+
+            {bytte.årsak && (
               <InfoLinje
-                overskrift={
-                  <>
-                    {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
-                    {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
-                  </>
-                }
+                overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
                 info={
                   <>
-                    {bytte.hmsnr} {bytte.hjmNavn}
-                    {bytte.serienr && (
-                      <>
-                        <br />
-                        {t('felles.serienummer')}: {bytte.serienr}
-                      </>
-                    )}
+                    {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
+                    {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
                   </>
                 }
               />
+            )}
+          </div>
+        )
+      })}
 
-              {bytte.årsak && (
-                <InfoLinje
-                  overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
-                  info={
-                    <>
-                      {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
-                      {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
-                    </>
-                  }
-                />
-              )}
-            </div>
-          )
-        })}
-
-        {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
-      </Box.New>
+      {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
     </Box.New>
   )
 }
