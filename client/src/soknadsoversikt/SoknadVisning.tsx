@@ -71,42 +71,42 @@ const SoknadVisning: React.FC = () => {
 
   return (
     <>
-    <div style={{ background: 'var(--a-surface-subtle)' }}>
-      <header>
-        <div className="customPanel">
-          <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
-            <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
-            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
-          </Link>
-        </div>
-        <div className="banner" style={{ display: 'flex' }}>
-          <Heading level="1" size="xlarge">
-            {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
-          </Heading>
-          <Button variant="secondary" onClick={handlePrint}>
-            {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
-          </Button>
-        </div>
-        <Avstand marginBottom={4} />
-        <div className="customPanel">
-          <Box.New background='default' padding="4" borderRadius="large">
-            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
-            <Avstand marginBottom={3} />
-            <BodyShort>
-              {t('dato.innsendt')} {formaterDato(datoOpprettet)}
-              <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
-              {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
-            </BodyShort>
-          </Box.New>
-        </div>
-      </header>
+      <div style={{ background: 'var(--a-surface-subtle)' }}>
+        <header>
+          <div className="customPanel">
+            <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
+              <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
+              {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
+            </Link>
+          </div>
+          <div className="banner" style={{ display: 'flex' }}>
+            <Heading level="1" size="xlarge">
+              {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
+            </Heading>
+            <Button variant="secondary" onClick={handlePrint}>
+              {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+            </Button>
+          </div>
+          <Avstand marginBottom={6} />
+          <div className="customPanel">
+            <Box.New background="default" padding="4" borderRadius="large">
+              <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+              <Avstand marginBottom={3} />
+              <BodyShort>
+                {t('dato.innsendt')} {formaterDato(datoOpprettet)}
+                <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
+                {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
+              </BodyShort>
+            </Box.New>
+          </div>
+        </header>
 
-      <main>
-        <div className="customPanel">
-          <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
-        </div>
-      </main>
-    </div>
+        <main>
+          <div className="customPanel">
+            <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
+          </div>
+        </main>
+      </div>
     </>
   )
 }

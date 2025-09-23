@@ -26,7 +26,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
         </BodyShort>
       </div>
 
-      <Avstand marginTop={2}>
+      <Avstand marginTop={4}>
         {tilbehør.opplysninger.map((opplysning, index) => {
           return <OpplysningVisning opplysning={opplysning} key={index} />
         })}

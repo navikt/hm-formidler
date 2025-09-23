@@ -24,9 +24,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   const panelInnhold = (
     <>
       <LinkCard style={{ border: '1px solid' }}>
-        <LinkCard.Title>
-          {soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}
-        </LinkCard.Title>
+        <LinkCard.Title>{soknad.navnBruker ? soknad.navnBruker : soknad.fnrBruker}</LinkCard.Title>
 
         <LinkCard.Description>
           {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
@@ -63,7 +61,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
       </BodyShort>
 
-      <Avstand marginBottom={4} />
+      <Avstand marginBottom={6} />
 
       <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
         {t(soknad.status)}
