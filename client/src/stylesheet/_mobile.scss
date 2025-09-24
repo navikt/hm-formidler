@@ -32,7 +32,9 @@
   .banner {
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
   }
 
   .customPanel .inputPanel {
