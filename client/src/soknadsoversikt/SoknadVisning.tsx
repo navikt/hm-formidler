@@ -83,7 +83,7 @@ const SoknadVisning: React.FC = () => {
             <Heading level="1" size="xlarge">
               {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
             </Heading>
-            <Button variant="secondary" onClick={handlePrint}>
+            <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
               {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
             </Button>
           </div>
