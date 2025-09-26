@@ -30,7 +30,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
                 </BodyShort>
               </HStack>
               {tlbhr.begrunnelse && (
-                <Avstand marginTop={4}>
+                <Avstand marginTop={6}>
                   <BodyShort spacing weight="semibold">
                     Begrunnelse for tilbehøret
                   </BodyShort>

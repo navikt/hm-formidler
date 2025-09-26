@@ -5,8 +5,6 @@ import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
 import { useRoller } from '../statemanagement/ApplicationContext'
 import './../stylesheet/styles.scss'
-import environment from '../environment'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
@@ -17,17 +15,6 @@ const SoknadsOversiktVeileder: React.FC = () => {
   return (
     <>
       <div className="veilederWrapperPanel">
-        <div className="nysak">
-          <a href={environment.SOKNAD_URL}>
-            <Button
-              onClick={() => {
-                logCustomEvent(digihot_customevents.KLIKK_NY_SAK, { steg: -1 })
-              }}
-            >
-              Ny sak
-            </Button>
-          </a>
-        </div>
         <GuidePanel poster illustration={<SpotIllustration />}>
           <BodyShort>
             {t('hoved.veilederpanel.p0')}

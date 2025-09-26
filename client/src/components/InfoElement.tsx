@@ -9,10 +9,8 @@ type InfoElementProps = {
 
 const InfoElement: React.FC<InfoElementProps> = ({ label, children }) => {
   return (
-    <Avstand marginBottom={4}>
-      <BodyShort weight='semibold'>
-        {label}
-      </BodyShort>
+    <Avstand marginBottom={6}>
+      <BodyShort weight="semibold">{label}</BodyShort>
       {children}
     </Avstand>
   )

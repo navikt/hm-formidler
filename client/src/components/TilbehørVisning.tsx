@@ -1,10 +1,8 @@
-import React from 'react'
 import { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
-import { BodyShort, Detail, Heading, Tag, Box } from '@navikt/ds-react'
+import { BodyShort, Detail, Heading, Box } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { Avstand } from './Avstand'
 import OpplysningVisning from '../soknad/OpplysningVisning'
-
 
 type Props = {
   tilbehør: Tilbehør
@@ -14,7 +12,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <Box.New background='neutral-soft' padding="4" borderRadius="large">
+    <Box.New background="neutral-soft" padding="4" borderRadius="large">
       <Detail uppercase>Tilbehør</Detail>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <Heading level="4" size="small" style={{ flex: '0 0 5rem' }}>
@@ -27,7 +25,8 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
           {t('felles.antallHjelpemidler', { antall: tilbehør.antall })}
         </BodyShort>
       </div>
-      <Avstand marginTop={2}>
+
+      <Avstand marginTop={4}>
         {tilbehør.opplysninger.map((opplysning, index) => {
           return <OpplysningVisning opplysning={opplysning} key={index} />
         })}
