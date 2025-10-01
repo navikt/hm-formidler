@@ -1,7 +1,6 @@
 import React from 'react'
 import { Label, BodyShort, Box } from '@navikt/ds-react'
 
-import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Bruker, Brukersituasjon, Innsender, Innsenderrolle, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'

@@ -8,7 +8,7 @@
 
 html {
   min-height: 100%;
-  background: var(--a-surface-subtle) ;
+  background: variables.$backgroundColor;
   font-size: 16px;
   color: variables.$navMorkGra;
 }
@@ -24,7 +24,7 @@ html {
   width: 100%;
 }
 
-.soknadsKort > div:last-child {
+.soknadsKort>div:last-child {
   margin-left: auto;
   padding-right: 1rem;
 }
@@ -44,9 +44,10 @@ html {
   height: 100%;
 }
 
-.fontBold > .typo-normal {
+.fontBold>.typo-normal {
   font-weight: bold;
 }
+
 .centeredElement {
   align-items: center;
   justify-content: center;
@@ -107,6 +108,7 @@ html {
 .contentBlock.typo-normal {
   margin-bottom: variables.$lSpacing;
 }
+
 .contentBlock.typo-undertittel {
   margin-bottom: variables.$mSpacing;
 }

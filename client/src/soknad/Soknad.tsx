@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Heading, Alert } from '@navikt/ds-react'
-import styles from './../stylesheet/oppsummering.module.scss'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
 import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
@@ -42,36 +41,34 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
         </div>
       )}
       <div ref={ref}>
-        <Box.New className={styles.oppsummeringsBox} borderRadius="large">
-          <div className="contentBlock" data-testid="oppsummering">
-            <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
-            <HjelpemidlerOppsummering
-              hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
-              hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
-              tilbehør={behovsmelding.hjelpemidler.tilbehør}
-              behovsmeldingType={behovsmelding.type}
+        <div className="contentBlock" data-testid="oppsummering">
+          <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
+          <HjelpemidlerOppsummering
+            hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
+            hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
+            tilbehør={behovsmelding.hjelpemidler.tilbehør}
+            behovsmeldingType={behovsmelding.type}
+          />
+          <OppfoelgingOgOpplaeringOppsummering
+            hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
+            annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
+          />
+          {!!behovsmelding.brukersituasjon.funksjonsbeskrivelse && (
+            <FunksjonsbeskrivelseOppsummering
+              funksjonsbeskrivelse={behovsmelding.brukersituasjon.funksjonsbeskrivelse}
             />
-            <OppfoelgingOgOpplaeringOppsummering
-              hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
-              annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
-            />
-            {!!behovsmelding.brukersituasjon.funksjonsbeskrivelse && (
-              <FunksjonsbeskrivelseOppsummering
-                funksjonsbeskrivelse={behovsmelding.brukersituasjon.funksjonsbeskrivelse}
-              />
-            )}
-            <UtleveringOppsummering
-              levering={behovsmelding.levering}
-              formidler={behovsmelding.levering.hjelpemiddelformidler}
-              bruker={behovsmelding.bruker}
-            />
-            <FullmaktOgVilkaarOppsummering
-              bruker={behovsmelding.bruker}
-              brukersituasjon={behovsmelding.brukersituasjon}
-              innsender={behovsmelding.innsender}
-            />
-          </div>
-        </Box.New>
+          )}
+          <UtleveringOppsummering
+            levering={behovsmelding.levering}
+            formidler={behovsmelding.levering.hjelpemiddelformidler}
+            bruker={behovsmelding.bruker}
+          />
+          <FullmaktOgVilkaarOppsummering
+            bruker={behovsmelding.bruker}
+            brukersituasjon={behovsmelding.brukersituasjon}
+            innsender={behovsmelding.innsender}
+          />
+        </div>
       </div>
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>
     </div>

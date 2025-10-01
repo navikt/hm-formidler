@@ -1,6 +1,5 @@
 import React from 'react'
 import { Heading, BodyShort, Box, HStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
 import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
@@ -18,7 +17,7 @@ type HjelpemidlerProps = {
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør , behovsmeldingType} = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør, behovsmeldingType } = props
 
   return (
     <>
@@ -33,7 +32,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
       <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
           <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ marginBottom: '16px' }}>
-            <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType}/>
+            <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType} />
           </li>
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (

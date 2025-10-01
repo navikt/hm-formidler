@@ -1,6 +1,5 @@
 import React from 'react'
 import { Heading, VStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
 import { AnnenOppfølgingsansvarlig, Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'

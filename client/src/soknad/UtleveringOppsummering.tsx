@@ -1,6 +1,5 @@
 import React from 'react'
-import { Heading, Label, BodyShort, VStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
+import { Heading, VStack } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { Hast, Hasteårsak } from '../interfaces/Hast'
 import { Hjelpemiddelformidler, Kontaktperson, Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'

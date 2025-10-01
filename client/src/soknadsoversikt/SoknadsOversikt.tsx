@@ -17,7 +17,7 @@ import { useRoller } from '../statemanagement/ApplicationContext'
 
 const SoknadsOversikt: React.FC = () => {
 
-  const {erFormidler} = useRoller()
+  const { erFormidler } = useRoller()
 
   let mswQuery = ''
   if (window.appSettings.USE_MSW) {
@@ -71,7 +71,7 @@ const SoknadsOversikt: React.FC = () => {
 
   return (
     <>
-      <div style={{ background: 'var(--a-surface-subtle)' }}>
+      <div>
         <header>
           <Banner />
         </header>
