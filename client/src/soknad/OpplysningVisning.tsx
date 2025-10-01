@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import DOMPurify from 'dompurify'
-import { BodyShort, Detail } from '@navikt/ds-react'
+import { BodyShort, Detail, FormSummary } from '@navikt/ds-react'
 import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
-import InfoElement from '../components/InfoElement'
 
 const rensHTML = (tekst: string): string => {
   return DOMPurify.sanitize(tekst, { ALLOWED_TAGS: ['em', 'strong'] })
@@ -26,13 +25,16 @@ const OpplysningVisning: React.FC<OpplysningProps> = ({ opplysning }) => {
   const localizedLabel = lokaliser(opplysning.ledetekst)
 
   return (
-    <InfoElement label={localizedLabel}>
-      {opplysning.innhold.length === 1 ? (
-        <SingleContentView tekst={opplysning.innhold[0]} language={i18n.language} />
-      ) : (
-        <MultiContentView innhold={opplysning.innhold} language={i18n.language} />
-      )}
-    </InfoElement>
+    <FormSummary.Answer>
+      <FormSummary.Label>{localizedLabel}</FormSummary.Label>
+      <FormSummary.Value>
+        {opplysning.innhold.length === 1 ? (
+          <SingleContentView tekst={opplysning.innhold[0]} language={i18n.language} />
+        ) : (
+          <MultiContentView innhold={opplysning.innhold} language={i18n.language} />
+        )}
+      </FormSummary.Value>
+    </FormSummary.Answer>
   )
 }
 
@@ -51,16 +53,14 @@ const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst
 )
 
 const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold, language }) => (
-  <ul style={{ margin: 0 }}>
+  <>
     {innhold.map((tekst, index) => (
       <React.Fragment key={index}>
-        <li>
-          <BodyShort>{renderTextContent(tekst)}</BodyShort>
-        </li>
+        <BodyShort>{renderTextContent(tekst)}</BodyShort>
         {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
       </React.Fragment>
     ))}
-  </ul>
+  </>
 )
 
 export default OpplysningVisning

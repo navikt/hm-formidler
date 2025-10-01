@@ -1,10 +1,9 @@
 import React from 'react'
-import { Heading, BodyShort, Box, HStack } from '@navikt/ds-react'
+import { BodyShort, HStack, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
 import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import TilbehørVisning from '../components/TilbehørVisning'
-import { Avstand } from '../components/Avstand'
 import FixedWidthLabel from '../components/FixedWidthLabel'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
 
@@ -21,33 +20,21 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
 
   return (
     <>
-      <div className="contentBlock">
-        <div className="contentBlock categoryRow">
-          <Heading size="medium" level="2">
-            {t('felles.hjelpemidler')}
-          </Heading>
-        </div>
-      </div>
-
-      <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
-        {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-          <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ marginBottom: '16px' }}>
+      <FormSummary>
+        <FormSummary.Header><FormSummary.Heading level="2">{t('felles.hjelpemidler')}</FormSummary.Heading></FormSummary.Header>
+        <FormSummary.Answers>
+          {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
             <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType} />
-          </li>
-        ))}
-        {tilbehør.map((tilbehør: Tilbehør, index) => (
-          <li key={`${index}.${tilbehør.hmsArtNr}`} style={{ marginBottom: '16px' }}>
+          ))}
+          {tilbehør.map((tilbehør: Tilbehør, index) => (
             <TilbehørVisning tilbehør={tilbehør} />
-          </li>
-        ))}
-      </ul>
-
-      <Avstand marginTop={6} marginBottom={6}>
-        <HStack wrap={false} align={'center'}>
+          ))}
+        </FormSummary.Answers>
+        <HStack wrap={false} gap="2" marginInline="5 5" marginBlock="0 4">
           <BodyShort>
             {t('felles.tilsvarendeProdukt')}
           </BodyShort>
-          <FixedWidthLabel width={7}>
+          <FixedWidthLabel width={6}>
             {t('felles.totalt') +
               ' ' +
               t('felles.antallHjelpemidler.total', {
@@ -55,7 +42,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
               })}
           </FixedWidthLabel>
         </HStack>
-      </Avstand>
+      </FormSummary>
     </>
   )
 }

@@ -1,13 +1,10 @@
 import React from 'react'
-import { Heading, Label, BodyShort, HStack, VStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
+import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import EnkelOpplysningVisning from './EnkelOpplysningVisning'
 import { Bruker, Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
-import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
+import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { formaterFnr, formaterTlf } from '../Utils'
-import FixedWidthLabel from '../components/FixedWidthLabel'
-import InfoRow from '../components/InfoRow'
+import { lokaliser } from './OpplysningVisning'
 
 type BrukerProps = {
   bruker: Bruker
@@ -19,55 +16,48 @@ function BrukerOppsummering(props: BrukerProps) {
   const { bruker, brukersituasjon } = props
 
   return (
-    <>
-    <VStack gap="6" style={{ marginBottom: '2rem' }}>
-      <Heading size="medium" level="2">
-        {t('oppsummering.hjelpemiddelbruker')}
-      </Heading>
-      <VStack gap="2">
-        <InfoRow 
-          label={t('oppsummering.navn')}
-          body={formaterPersonnavn(bruker.navn)}
-        />
-        <InfoRow 
-          label={t('felles.fodselsnummer')}
-          body={formaterFnr(bruker.fnr)}
-        />
+    <FormSummary>
+      <FormSummary.Header><FormSummary.Heading level="2">{t('oppsummering.hjelpemiddelbruker')}</FormSummary.Heading></FormSummary.Header>
+      <FormSummary.Answers>
+        <FormSummary.Answer>
+          <FormSummary.Label>{t('oppsummering.navn')}</FormSummary.Label>
+          <FormSummary.Value>{formaterPersonnavn(bruker.navn)}</FormSummary.Value>
+        </FormSummary.Answer>
+        <FormSummary.Answer>
+          <FormSummary.Label>{t('felles.fodselsnummer')}</FormSummary.Label>
+          <FormSummary.Value>{formaterFnr(bruker.fnr)}</FormSummary.Value>
+        </FormSummary.Answer>
         {bruker.veiadresse && (
-          <InfoRow 
-            label={t('oppsummering.FolkeregistrertAdresse')}
-            body={formaterVeiadresse(bruker.veiadresse)}
-          />
+          <FormSummary.Answer>
+            <FormSummary.Label>{t('oppsummering.FolkeregistrertAdresse')}</FormSummary.Label>
+            <FormSummary.Value>{bruker.veiadresse.adresse}</FormSummary.Value>
+            <FormSummary.Value>{`${bruker.veiadresse.postnummer} ${bruker.veiadresse.poststed}`}</FormSummary.Value>
+          </FormSummary.Answer>
         )}
         {bruker.telefon && (
-          <InfoRow 
-            label={t('felles.tlf')}
-            body={formaterTlf(bruker.telefon)}
-          />
+          <FormSummary.Answer>
+            <FormSummary.Label>{t('felles.tlf')}</FormSummary.Label>
+            <FormSummary.Value>{formaterTlf(bruker.telefon)}</FormSummary.Value>
+          </FormSummary.Answer>
         )}
         {bruker.legacyopplysninger.map((opplysning, index) => (
-          <EnkelOpplysningVisning
-            key={index}
-            enkelOpplysning={opplysning}
-            className=""
-            ledetekstClassName=""
-            innholdClassName=""
-          />
+          <FormSummary.Answer key={index}>
+            <FormSummary.Label>{lokaliser(opplysning.ledetekst)}</FormSummary.Label>
+            <FormSummary.Value>{lokaliser(opplysning.innhold)}</FormSummary.Value>
+          </FormSummary.Answer>
         ))}
-        <InfoRow 
-          label={t('oppsummering.funksjonsnedsettelser')}
-          body={brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}
-        />
+        <FormSummary.Answer>
+          <FormSummary.Label>{t('oppsummering.funksjonsnedsettelser')}</FormSummary.Label>
+          <FormSummary.Value>{brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}</FormSummary.Value>
+        </FormSummary.Answer>
         {bruker.brukernummer && (
-          <InfoRow 
-            label={t('oppsummering.brukernummer')}
-            body={bruker.brukernummer}
-          />
+          <FormSummary.Answer>
+            <FormSummary.Label>{t('oppsummering.brukernummer')}</FormSummary.Label>
+            <FormSummary.Value>{bruker.brukernummer}</FormSummary.Value>
+          </FormSummary.Answer>
         )}
-      </VStack>
-    </VStack>
-    <hr aria-hidden="true" />
-    </>
+      </FormSummary.Answers>
+    </FormSummary>
   )
 }
 

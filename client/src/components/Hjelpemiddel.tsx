@@ -1,7 +1,6 @@
-import { BodyShort, Heading, Label, Box, Tag } from '@navikt/ds-react'
+import { BodyShort, Heading, Label, Box, Tag, FormSummary, Bleed, HStack } from '@navikt/ds-react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import InfoLinje from './InfoLinje'
 import Tilbehoerinfo from './Tilbehoerinfo'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
@@ -9,6 +8,7 @@ import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
 import Rangering from './Rangering'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import sharedStyles from './FormHeaderShared.module.css'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
@@ -33,46 +33,53 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
   const { t } = useTranslation()
 
   return (
-    <Box.New background="neutral-soft" padding="4" borderRadius="large">
-      <div style={{ marginTop: '-16px', marginLeft: '-16px' }}>
-        <Tag variant={tagColor(behovsmeldingType)}>{t(`${behovsmeldingType}`)}</Tag>
-        <Avstand marginBottom={4}></Avstand>
-      </div>
-      <div>
-        <div>
-          <div className="hjelpemiddelinfo">
-            {/* For store skjermflater */}
-            <Heading
-              level="3"
-              size="small"
-              aria-label={`Hms nummer ${hm.produkt.hmsArtNr}`}
-              className="hjelpemiddelinfo-hmsNr desktop-only"
-            >
-              {hm.produkt.hmsArtNr}
-            </Heading>
+    <FormSummary.Answer><FormSummary.Value><FormSummary.Answers>
+      <FormSummary.Answer className={sharedStyles.formheaderAnswer}>
+        <FormSummary.Label className="screenreaderOnly">{t('oppsummering.label')}</FormSummary.Label>
+        <FormSummary.Value className={sharedStyles.formheaderValue}>
+          <Bleed marginInline="4" marginBlock="4 0">
+            <Box.New background="brand-blue-soft" borderRadius="large large 0 0" marginBlock="0 4">
+              <div style={{ marginTop: '-16px' }}>
+                <Tag variant={tagColor(behovsmeldingType)}>{t(`${behovsmeldingType}`)}</Tag>
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <HStack>
+                  {/* For store skjermflater */}
+                  <Heading
+                    level="3"
+                    size="small"
+                    aria-label={`Hms nummer ${hm.produkt.hmsArtNr}`}
+                    className="hjelpemiddelinfo-hmsNr desktop-only"
+                  >
+                    {hm.produkt.hmsArtNr}
+                  </Heading>
 
-            <Heading level="3" size="small" className="hjelpemiddelinfo-navn">
-              {hm.produkt.artikkelnavn}
-            </Heading>
+                  <Heading level="3" size="small" className="hjelpemiddelinfo-navn">
+                    {hm.produkt.artikkelnavn}
+                  </Heading>
 
-            {/* For små skjermflater */}
-            <span className="sr-only mobile-only">HMS nummer</span>
-            <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
+                  {/* For små skjermflater */}
+                  <span className="sr-only mobile-only">HMS nummer</span>
+                  <Label className="hjelpemiddelinfo-hmsNr mobile-only">{hm.produkt.hmsArtNr}</Label>
 
-            <BodyShort className="hjelpemiddelinfo-antall">
-              {t('felles.antallHjelpemidler', { antall: hm.antall })}
-            </BodyShort>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0.5rem' }}>
-            <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
-          </div>
-          {hm.produkt.rangering && (
-            <Avstand marginTop={2} marginBottom={6}>
-              <Rangering rangering={hm.produkt.rangering.toString()} />
-            </Avstand>
-          )}
-        </div>
-      </div>
+                  <Avstand marginTop={8} />
+                  <BodyShort className="hjelpemiddelinfo-antall">
+                    {t('felles.antallHjelpemidler', { antall: hm.antall })}
+                  </BodyShort>
+                </HStack>
+                <HStack>
+                  <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
+                </HStack>
+                {hm.produkt.rangering && (
+                  <Avstand marginTop={2} marginBottom={4}>
+                    <Rangering rangering={hm.produkt.rangering.toString()} />
+                  </Avstand>
+                )}
+              </div>
+            </Box.New>
+          </Bleed>
+        </FormSummary.Value>
+      </FormSummary.Answer>
 
       {hm.opplysninger.map((opplysning, index) => {
         return <OpplysningVisning opplysning={opplysning} key={index} />
@@ -84,44 +91,37 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
 
       {hm.bytter.map((bytte, index) => {
         return (
-          <div key={index}>
-            <InfoLinje
-              overskrift={
-                <>
-                  {bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</Label>}
-                  {!bytte.erTilsvarende && <Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</Label>}
-                </>
-              }
-              info={
-                <>
-                  {bytte.hmsnr} {bytte.hjmNavn}
-                  {bytte.serienr && (
-                    <>
-                      <br />
-                      {t('felles.serienummer')}: {bytte.serienr}
-                    </>
-                  )}
-                </>
-              }
-            />
+          <React.Fragment key={index}>
+            <FormSummary.Answer>
+              {bytte.erTilsvarende && <FormSummary.Label>{t('hjelpemiddelinfo.bytte.skalByttesInn')}</FormSummary.Label>}
+              {!bytte.erTilsvarende && <FormSummary.Label>{t('hjelpemiddelinfo.bytte.skalLeveresTilbake')}</FormSummary.Label>}
+              <FormSummary.Value>
+                {bytte.hmsnr} {bytte.hjmNavn}
+                {bytte.serienr && (
+                  <>
+                    <br />
+                    {t('felles.serienummer')}: {bytte.serienr}
+                  </>
+                )}
+              </FormSummary.Value>
+            </FormSummary.Answer>
 
             {bytte.årsak && (
-              <InfoLinje
-                overskrift={t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}
-                info={
-                  <>
-                    {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
-                    {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
-                  </>
-                }
-              />
+              <FormSummary.Answer>
+                <FormSummary.Label>{t('hjelpemiddelinfo.bytte.begrunnelseForBytte')}</FormSummary.Label>
+                <FormSummary.Value>
+                  {t('hjelpemiddelinfo.bytte.hjelpemiddeletSkalByttesFordi')}{' '}
+                  {t(`hjelpemiddelinfo.bytte.årsak.${bytte.årsak}`)}.
+                </FormSummary.Value>
+              </FormSummary.Answer>
             )}
-          </div>
+          </React.Fragment>
         )
       })}
 
       {hm.tilbehør && hm.tilbehør.length > 0 && <Tilbehoerinfo tilbehoerListe={hm.tilbehør} />}
-    </Box.New>
+
+    </FormSummary.Answers></FormSummary.Value></FormSummary.Answer>
   )
 }
 
