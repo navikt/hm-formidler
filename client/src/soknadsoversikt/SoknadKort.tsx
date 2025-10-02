@@ -1,6 +1,5 @@
 import { BodyShort, Box, Heading, LinkCard, Tag } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Avstand } from '../components/Avstand'
@@ -60,7 +59,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         {soknad.soknadGjelder ?? t(soknad.behovsmeldingType ?? BehovsmeldingType.SØKNAD)}
       </BodyShort>
 
-      <Avstand marginBottom={4} />
+      <Avstand marginBottom={6} />
 
       <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
         {t(soknad.status)}

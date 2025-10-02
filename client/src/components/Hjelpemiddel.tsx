@@ -1,13 +1,13 @@
-import { BodyShort, Heading, Label, Box, Tag } from '@navikt/ds-react'
+import { BodyShort, Box, Heading, Label, Tag } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import InfoLinje from './InfoLinje'
-import Tilbehoerinfo from './Tilbehoerinfo'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
-import type { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
+import InfoLinje from './InfoLinje'
 import Rangering from './Rangering'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import Tilbehoerinfo from './Tilbehoerinfo'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
@@ -66,7 +66,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
             <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
           </div>
           {hm.produkt.rangering && (
-            <Avstand marginTop={2} marginBottom={4}>
+            <Avstand marginTop={2} marginBottom={6}>
               <Rangering rangering={hm.produkt.rangering.toString()} />
             </Avstand>
           )}

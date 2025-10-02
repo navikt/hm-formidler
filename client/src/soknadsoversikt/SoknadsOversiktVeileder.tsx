@@ -1,11 +1,9 @@
-import { BodyShort, Button, GuidePanel, Heading, ReadMore } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import { BodyShort, GuidePanel, Heading, ReadMore } from '@navikt/ds-react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import SpotIllustration from '../assets/svg/illu_veileder_HMS.svg?react'
 import StatusBeskrivelse from '../components/StatusBeskrivelse'
-import environment from '../environment'
 import { useRoller } from '../statemanagement/ApplicationContext'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 import './../stylesheet/styles.scss'
 
 const SoknadsOversiktVeileder: React.FC = () => {
@@ -17,17 +15,6 @@ const SoknadsOversiktVeileder: React.FC = () => {
   return (
     <>
       <div className="veilederWrapperPanel">
-        <div className="nysak">
-          <a href={environment.SOKNAD_URL}>
-            <Button
-              onClick={() => {
-                logCustomEvent(digihot_customevents.KLIKK_NY_SAK, { steg: -1 })
-              }}
-            >
-              Ny sak
-            </Button>
-          </a>
-        </div>
         <GuidePanel poster illustration={<SpotIllustration />}>
           <BodyShort>
             {t('hoved.veilederpanel.p0')}

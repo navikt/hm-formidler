@@ -1,8 +1,7 @@
-import React from 'react'
-import { BodyShort, VStack, HStack, Spacer } from '@navikt/ds-react'
+import { BodyShort, HStack, Spacer, VStack } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Avstand } from './Avstand'
 import type { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import { Avstand } from './Avstand'
 
 type TilbehoerinfoProps = {
   tilbehoerListe: Tilbehør[]
@@ -30,7 +29,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
                 </BodyShort>
               </HStack>
               {tlbhr.begrunnelse && (
-                <Avstand marginTop={4}>
+                <Avstand marginTop={6}>
                   <BodyShort spacing weight="semibold">
                     Begrunnelse for tilbehøret
                   </BodyShort>

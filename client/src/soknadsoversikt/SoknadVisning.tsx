@@ -1,7 +1,7 @@
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { BodyShort, Box, Button, Heading, Loader, Tag } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
@@ -79,7 +79,7 @@ const SoknadVisning: React.FC = () => {
             <Heading level="1" size="xlarge">
               {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
             </Heading>
-            <Button variant="secondary" onClick={handlePrint}>
+            <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
               {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
             </Button>
           </div>

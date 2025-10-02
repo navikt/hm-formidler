@@ -1,9 +1,13 @@
-import { BodyShort, Label } from '@navikt/ds-react'
-import React from 'react'
-
+import { BodyShort, Box, Label } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
-import { type Bruker, type Brukersituasjon, type Innsender, Innsenderrolle, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
+import {
+  type Bruker,
+  type Brukersituasjon,
+  type Innsender,
+  Innsenderrolle,
+  Signaturtype,
+} from '../interfaces/Innsenderbehovsmelding'
 import './../stylesheet/oppsummering.module.scss'
 import { lokaliser } from './OpplysningVisning'
 
@@ -38,29 +42,31 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
         </div>
       )}
 
-      <div className="contentBlock">
-        <Label>
-          {innsender.rolle === Innsenderrolle.FORMIDLER
-            ? t('oppsummering.formidlerVurdert')
-            : t('oppsummering.bestillerVurdert')}
-        </Label>
+      <Box.New maxWidth="600px" className="contentBlock">
+        <div className="contentBlock">
+          <Label>
+            {innsender.rolle === Innsenderrolle.FORMIDLER
+              ? t('oppsummering.formidlerVurdert')
+              : t('oppsummering.bestillerVurdert')}
+          </Label>
 
-        <ul
-          style={{
-            fontFamily: '"Source Sans Pro",Arial,sans-serif',
-            lineHeight: '1.375rem',
-          }}
-        >
-          {brukersituasjon.vilkår.map((vilkår, i) => {
-            return <li key={i}>{lokaliser(vilkår.tekst)}</li>
-          })}
-        </ul>
-      </div>
+          <ul
+            style={{
+              fontFamily: '"Source Sans Pro",Arial,sans-serif',
+              lineHeight: '1.375rem',
+            }}
+          >
+            {brukersituasjon.vilkår.map((vilkår, i) => {
+              return <li key={i}>{lokaliser(vilkår.tekst)}</li>
+            })}
+          </ul>
+        </div>
 
-      <div className="contentBlock">
-        <Label spacing>{t('oppsummering.infoOmRettOgPlikt.tittel')}</Label>
-        <BodyShort>{t('oppsummering.infoOmRettOgPlikt')}</BodyShort>
-      </div>
+        <div className="contentBlock">
+          <Label spacing>{t('oppsummering.infoOmRettOgPlikt.tittel')}</Label>
+          <BodyShort>{t('oppsummering.infoOmRettOgPlikt')}</BodyShort>
+        </div>
+      </Box.New>
     </>
   )
 }

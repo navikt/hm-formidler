@@ -9,8 +9,6 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - hotbff
-      - chore/modernization
 
 jobs:
   deploy:

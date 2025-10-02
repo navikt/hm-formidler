@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
 import { BodyShort } from '@navikt/ds-react'
+import type { ReactNode } from 'react'
 import { Avstand } from './Avstand'
 
 type InfoElementProps = {
@@ -9,7 +9,7 @@ type InfoElementProps = {
 
 const InfoElement: React.FC<InfoElementProps> = ({ label, children }) => {
   return (
-    <Avstand marginBottom={4}>
+    <Avstand marginBottom={6}>
       <BodyShort weight="semibold">{label}</BodyShort>
       {children}
     </Avstand>

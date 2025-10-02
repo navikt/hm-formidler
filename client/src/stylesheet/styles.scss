@@ -124,9 +124,9 @@ html {
   position: relative;
 }
 
-.veilederWrapperPanel .nysak {
-  position: absolute;
-  right: 0;
-  top: -10px;
-  z-index: 1;
+.sakerNySakWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 2rem 0 1rem;
 }
