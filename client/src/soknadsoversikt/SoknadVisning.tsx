@@ -83,7 +83,7 @@ const SoknadVisning: React.FC = () => {
               {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
             </Button>
           </div>
-          <Avstand marginBottom={4} />
+          <Avstand marginBottom={6} />
           <div className="customPanel">
             <Box.New background="default" padding="4" borderRadius="large">
               <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
