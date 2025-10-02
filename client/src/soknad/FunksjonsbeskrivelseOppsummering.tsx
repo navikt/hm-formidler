@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next'
-import { Funksjonsbeskrivelse } from '../interfaces/Innsenderbehovsmelding'
 import { Heading, VStack } from '@navikt/ds-react'
+import { useTranslation } from 'react-i18next'
 import InfoRow from '../components/InfoRow'
+import { type Funksjonsbeskrivelse } from '../interfaces/Innsenderbehovsmelding'
 
 interface Props {
   funksjonsbeskrivelse: Funksjonsbeskrivelse

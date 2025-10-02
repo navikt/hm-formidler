@@ -1,17 +1,17 @@
+import { Alert, Box, Heading } from '@navikt/ds-react'
 import React from 'react'
-import { Box, Heading, Alert } from '@navikt/ds-react'
-import styles from './../stylesheet/oppsummering.module.scss'
-import BrukerOppsummering from './BrukerOppsummering'
-import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
-import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
-import UtleveringOppsummering from './UtleveringOppsummering'
-import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
+import { formaterPersonnavn } from '../interfaces/CommonTypes'
+import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
-import { formaterPersonnavn } from '../interfaces/CommonTypes'
+import styles from './../stylesheet/oppsummering.module.scss'
+import BrukerOppsummering from './BrukerOppsummering'
+import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import FunksjonsbeskrivelseOppsummering from './FunksjonsbeskrivelseOppsummering'
+import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
+import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
+import UtleveringOppsummering from './UtleveringOppsummering'
 
 type SoknadProps = {
   status: SoknadStatus | undefined
@@ -20,7 +20,7 @@ type SoknadProps = {
   ref: React.ForwardedRef<HTMLDivElement>
 }
 
-const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref) => {
+const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
   const { t } = useTranslation()
   const { status, valgteÅrsaker, behovsmelding } = props
 

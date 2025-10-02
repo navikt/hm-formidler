@@ -1,10 +1,14 @@
-import React from 'react'
-import { Label, BodyShort, Box } from '@navikt/ds-react'
-
-import './../stylesheet/oppsummering.module.scss'
+import { BodyShort, Box, Label } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Bruker, Brukersituasjon, Innsender, Innsenderrolle, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
+import {
+  type Bruker,
+  type Brukersituasjon,
+  type Innsender,
+  Innsenderrolle,
+  Signaturtype,
+} from '../interfaces/Innsenderbehovsmelding'
+import './../stylesheet/oppsummering.module.scss'
 import { lokaliser } from './OpplysningVisning'
 
 type FullmaktOgVilkaarProps = {

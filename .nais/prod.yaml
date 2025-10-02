@@ -20,14 +20,14 @@ spec:
       cpu: 50m
       memory: 256Mi
   liveness:
-    path: /hjelpemidler/formidler/internal/isAlive
+    path: /isalive
     initialDelay: 5
   readiness:
-    path: /hjelpemidler/formidler/internal/isReady
+    path: /isready
     initialDelay: 5
   prometheus:
-    enabled: true
-    path: /hjelpemidler/formidler/internal/metrics
+    enabled: false
+    path: /metrics
   envFrom:
     - secret: session-encrypt-key
   ingresses:
@@ -44,8 +44,6 @@ spec:
       value: http://hm-soknadsbehandling-db.teamdigihot.svc.cluster.local
     - name: SOKNADSBEHANDLING_AUDIENCE
       value: prod-gcp:teamdigihot:hm-soknadsbehandling-db
-    - name: LOGINSERVICE_URL
-      value: "https://loginservice.nav.no/login?redirect=https://www.nav.no/hjelpemidler/formidler"
     - name: HM_ROLLER_URL
       value: http://hm-roller.teamdigihot.svc.cluster.local
     - name: HM_ROLLER_AUDIENCE
@@ -60,7 +58,6 @@ spec:
     outbound:
       external:
         - host: www.nav.no
-        - host: loginservice.nav.no
       rules:
         - application: hm-soknadsbehandling-db
         - application: hm-roller

@@ -1,10 +1,9 @@
 import { Loader } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
-import { useEffect } from 'react'
-import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from 'react'
 import useSWRImmutable from 'swr/immutable'
 import Feilside from '../containers/Feilside'
-import { Roller } from '../interfaces/Roller'
+import type { Roller } from '../interfaces/Roller'
 import { fetcher, ROLLER_PATH } from '../services/rest-service'
 
 type ApplicationContextType = {

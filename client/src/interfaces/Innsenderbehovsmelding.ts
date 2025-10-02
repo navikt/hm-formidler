@@ -1,5 +1,5 @@
-import { BehovsmeldingType, Bruksarena, Bytte, Personnavn, Veiadresse } from './CommonTypes'
-import { Levering } from './Leveringinfo'
+import { BehovsmeldingType, Bruksarena, type Bytte, type Personnavn, type Veiadresse } from './CommonTypes'
+import type { Levering } from './Leveringinfo'
 
 export interface Innsenderbehovsmelding {
   id: string

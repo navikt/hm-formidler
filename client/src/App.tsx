@@ -8,13 +8,12 @@ import { Theme } from '@navikt/ds-react'
 export const BASE_PATH = '/hjelpemidler/formidler'
 
 const App: React.FC = () => {
-
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={BASE_PATH}>
         <ApplicationProvider>
           <ScrollToTop />
-          <Theme theme='light'>
+          <Theme theme="light">
             <Routes />
           </Theme>
         </ApplicationProvider>

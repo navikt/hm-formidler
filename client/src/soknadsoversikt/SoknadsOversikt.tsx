@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import './../stylesheet/styles.scss'
-import Banner from '../components/Banner'
-import useSWR from 'swr'
-import { API_PATH, fetcher } from '../services/rest-service'
 import { Loader } from '@navikt/ds-react'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
-import IngenSoknader from './IngenSoknader'
-import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { BASE_PATH } from '../App'
-import { useHistory } from 'react-router-dom'
-import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
-import SoknadListe from './SoknadListe'
 import * as Sentry from '@sentry/browser'
-import { ApiError } from '../types/errors'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useSWR from 'swr'
+import Banner from '../components/Banner'
+import type { SoknadInfo } from '../interfaces/SoknadInfo'
+import { API_PATH, fetcher } from '../services/rest-service'
 import { useRoller } from '../statemanagement/ApplicationContext'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { ApiError } from '../types/errors'
+import './../stylesheet/styles.scss'
+import IngenSoknader from './IngenSoknader'
+import SoknadListe from './SoknadListe'
+import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 
 const SoknadsOversikt: React.FC = () => {
-
-  const {erFormidler} = useRoller()
+  const { erFormidler } = useRoller()
 
   let mswQuery = ''
   if (window.appSettings.USE_MSW) {
@@ -26,7 +24,7 @@ const SoknadsOversikt: React.FC = () => {
   }
 
   const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/innsender${mswQuery}`, fetcher)
-  const history = useHistory()
+  const navigate = useNavigate()
   const [soknader, setSoknader] = useState<SoknadInfo[] | undefined>(undefined)
 
   if (error) {
@@ -34,7 +32,7 @@ const SoknadsOversikt: React.FC = () => {
       // Session expired. Ignore
     } else {
       Sentry.captureException(new Error(error))
-      history.push({ pathname: `${BASE_PATH}/feilside` })
+      navigate('/feilside')
     }
   }
 

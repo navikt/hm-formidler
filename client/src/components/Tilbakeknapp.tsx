@@ -1,6 +1,5 @@
-import React from 'react'
-import { ButtonProps, Button } from '@navikt/ds-react'
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
+import { Button, type ButtonProps } from '@navikt/ds-react'
 
 const Tilbakeknapp = ({ children, title = 'Forrige', ...rest }: ButtonProps) => {
   return (

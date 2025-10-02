@@ -1,13 +1,13 @@
+import { BodyShort, Heading, HStack } from '@navikt/ds-react'
 import React from 'react'
-import { Heading, BodyShort, Box, HStack } from '@navikt/ds-react'
-import './../stylesheet/oppsummering.module.scss'
 import { useTranslation } from 'react-i18next'
-import Hjelpemiddelinfo from '../components/Hjelpemiddel'
-import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
-import TilbehørVisning from '../components/TilbehørVisning'
 import { Avstand } from '../components/Avstand'
 import FixedWidthLabel from '../components/FixedWidthLabel'
+import Hjelpemiddelinfo from '../components/Hjelpemiddel'
+import TilbehørVisning from '../components/TilbehørVisning'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import './../stylesheet/oppsummering.module.scss'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number

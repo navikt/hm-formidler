@@ -1,6 +1,6 @@
+import type { Breadcrumb, BrowserOptions } from '@sentry/browser'
 import * as Sentry from '@sentry/browser'
 import { v4 as uuid } from 'uuid'
-import { Breadcrumb, Event } from '@sentry/browser'
 
 const maskeringsregler = [
   {
@@ -9,8 +9,8 @@ const maskeringsregler = [
   },
 ]
 
-// Exportes kun for å kunne testes
-export const fjernPersonopplysninger = (event: Event): Event => {
+// Eksporteres kun for å kunne testes
+export const fjernPersonopplysninger: BrowserOptions['beforeSend'] = (event) => {
   const url = event.request?.url ? maskerPersonopplysninger(event.request.url) : ''
   return {
     ...event,
@@ -33,7 +33,7 @@ export const fjernPersonopplysninger = (event: Event): Event => {
   }
 }
 
-const maskerPersonoppysningerIObjekt = <T>(data: T): T => {
+const maskerPersonoppysningerIObjekt = <T>(data: T): T | undefined => {
   if (data === undefined) return data
 
   const asText = JSON.stringify(data)
@@ -53,14 +53,14 @@ const maskerPersonopplysninger = (tekst?: string | undefined) => {
   return maskert
 }
 
-const MILJO = window.appSettings?.MILJO
+const NAIS_CLUSTER_NAME = window.appSettings?.NAIS_CLUSTER_NAME
 const USE_MSW = window.appSettings?.USE_MSW
 const GIT_COMMIT = window.appSettings?.GIT_COMMIT
 
 export const initSentry = () => {
   Sentry.init({
     dsn: 'https://a9360c4936d24578b8b06dab06d511fe@sentry.gc.nav.no/56',
-    environment: MILJO,
+    environment: NAIS_CLUSTER_NAME,
     denyUrls: [
       // Chrome extensions
       /extensions\//i,
@@ -72,7 +72,7 @@ export const initSentry = () => {
       /dekoratoren\/client/,
     ],
     beforeSend: fjernPersonopplysninger,
-    enabled: (MILJO === 'dev-gcp' && USE_MSW === false) || MILJO === 'prod-gcp',
+    enabled: (NAIS_CLUSTER_NAME === 'dev-gcp' && USE_MSW === false) || NAIS_CLUSTER_NAME === 'prod-gcp',
     release: GIT_COMMIT,
   })
   Sentry.setUser({ id: uuid() })
