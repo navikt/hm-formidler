@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - justere-tekstlengder
+      - oppsummering-facelift
 
 jobs:
   deploy:
