@@ -71,7 +71,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
                   <BodyShort>{hm.produkt.sortimentkategori.toUpperCase()}</BodyShort>
                 </HStack>
                 {hm.produkt.rangering && (
-                  <Avstand marginTop={2} marginBottom={4}>
+                  <Avstand marginTop={2}>
                     <Rangering rangering={hm.produkt.rangering.toString()} />
                   </Avstand>
                 )}
