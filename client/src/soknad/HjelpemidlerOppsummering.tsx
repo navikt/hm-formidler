@@ -19,31 +19,29 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
   const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør, behovsmeldingType } = props
 
   return (
-    <>
-      <FormSummary>
-        <FormSummary.Header><FormSummary.Heading level="2">{t('felles.hjelpemidler')}</FormSummary.Heading></FormSummary.Header>
-        <FormSummary.Answers>
-          {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-            <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType} />
-          ))}
-          {tilbehør.map((tilbehør: Tilbehør, index) => (
-            <TilbehørVisning tilbehør={tilbehør} />
-          ))}
-        </FormSummary.Answers>
-        <HStack wrap={false} gap="2" marginInline="5 5" marginBlock="0 4">
-          <BodyShort>
-            {t('felles.tilsvarendeProdukt')}
-          </BodyShort>
-          <FixedWidthLabel width={6}>
-            {t('felles.totalt') +
-              ' ' +
-              t('felles.antallHjelpemidler.total', {
-                antall: hjelpemiddelTotalAntall,
-              })}
-          </FixedWidthLabel>
-        </HStack>
-      </FormSummary>
-    </>
+    <FormSummary>
+      <FormSummary.Header><FormSummary.Heading level="2">{t('felles.hjelpemidler')}</FormSummary.Heading></FormSummary.Header>
+      <FormSummary.Answers>
+        {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
+          <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType} key={hmsIdx} />
+        ))}
+        {tilbehør.map((tilbehør: Tilbehør, index) => (
+          <TilbehørVisning tilbehør={tilbehør} key={index} />
+        ))}
+      </FormSummary.Answers>
+      <HStack wrap={false} gap="2" marginInline="5 5" marginBlock="0 4">
+        <BodyShort>
+          {t('felles.tilsvarendeProdukt')}
+        </BodyShort>
+        <FixedWidthLabel width={6}>
+          {t('felles.totalt') +
+            ' ' +
+            t('felles.antallHjelpemidler.total', {
+              antall: hjelpemiddelTotalAntall,
+            })}
+        </FixedWidthLabel>
+      </HStack>
+    </FormSummary>
   )
 }
 

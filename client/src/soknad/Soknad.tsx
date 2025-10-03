@@ -3,7 +3,6 @@ import { Heading, Alert } from '@navikt/ds-react'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
 import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
-import UtleveringOppsummering from './UtleveringOppsummering'
 import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import { useTranslation } from 'react-i18next'
 import { ValgtÅrsak } from '../interfaces/SoknadInfo'
@@ -52,24 +51,21 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
             behovsmeldingType={behovsmelding.type}
           />
           <Avstand marginBottom={6} />
+          <FunksjonsbeskrivelseOppsummering
+            funksjonsbeskrivelse={behovsmelding.brukersituasjon?.funksjonsbeskrivelse ?? undefined}
+            brukersituasjon={behovsmelding.brukersituasjon}
+            innsender={behovsmelding.innsender}
+          />
+          <Avstand marginBottom={6} />
           <OppfoelgingOgOpplaeringOppsummering
             hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
             annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
-          />
-          {!!behovsmelding.brukersituasjon.funksjonsbeskrivelse && (
-            <FunksjonsbeskrivelseOppsummering
-              funksjonsbeskrivelse={behovsmelding.brukersituasjon.funksjonsbeskrivelse}
-            />
-          )}
-          <UtleveringOppsummering
             levering={behovsmelding.levering}
-            formidler={behovsmelding.levering.hjelpemiddelformidler}
             bruker={behovsmelding.bruker}
           />
+          <Avstand marginBottom={6} />
           <FullmaktOgVilkaarOppsummering
             bruker={behovsmelding.bruker}
-            brukersituasjon={behovsmelding.brukersituasjon}
-            innsender={behovsmelding.innsender}
           />
         </div>
       </div>

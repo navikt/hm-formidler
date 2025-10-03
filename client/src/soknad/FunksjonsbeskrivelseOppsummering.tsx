@@ -1,39 +1,59 @@
 import { useTranslation } from 'react-i18next'
-import { Funksjonsbeskrivelse } from '../interfaces/Innsenderbehovsmelding'
-import { Heading, VStack } from '@navikt/ds-react'
-import InfoRow from '../components/InfoRow'
+import { Brukersituasjon, Funksjonsbeskrivelse, Innsender, Innsenderrolle } from '../interfaces/Innsenderbehovsmelding'
+import { FormSummary } from '@navikt/ds-react'
+import { lokaliser } from './OpplysningVisning'
 
 interface Props {
-  funksjonsbeskrivelse: Funksjonsbeskrivelse
+  funksjonsbeskrivelse?: Funksjonsbeskrivelse
+  brukersituasjon: Brukersituasjon
+  innsender: Innsender
 }
 
-const FunksjonsbeskrivelseOppsummering = ({ funksjonsbeskrivelse }: Props) => {
+const FunksjonsbeskrivelseOppsummering = ({ funksjonsbeskrivelse, brukersituasjon, innsender }: Props) => {
   const { t } = useTranslation()
 
-  const { innbyggersVarigeFunksjonsnedsettelse, diagnose, beskrivelse } = funksjonsbeskrivelse
+  const {
+    innbyggersVarigeFunksjonsnedsettelse,
+    diagnose,
+    beskrivelse
+  } = funksjonsbeskrivelse ?? {}
 
   return (
-    <VStack gap="6" style={{ marginBottom: '2rem' }}>
-      <Heading size="small" level="2">
-        {t('funksjonsbeskrivelse.innbyggersFunksjon')}
-      </Heading>
-      <VStack gap="2">
-        <InfoRow
-          label={t('funksjonsbeskrivelse.sykdomSkadeLyte')}
-          body={t(`funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.${innbyggersVarigeFunksjonsnedsettelse}`)}
-        />
-        {diagnose && (
-          <InfoRow
-            label={t('funksjonsbeskrivelse.diagnose')}
-            body={diagnose}
-          />
+    <FormSummary>
+      <FormSummary.Header><FormSummary.Heading level="2">{t('funksjonsbeskrivelse.personensSituasjon')}</FormSummary.Heading></FormSummary.Header>
+      <FormSummary.Answers>
+        {funksjonsbeskrivelse && (
+          <>
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('funksjonsbeskrivelse.sykdomSkadeLyte')}</FormSummary.Label>
+              <FormSummary.Value>{t(`funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.${innbyggersVarigeFunksjonsnedsettelse}`)}</FormSummary.Value>
+            </FormSummary.Answer>
+            {diagnose && (
+              <FormSummary.Answer>
+                <FormSummary.Label>{t('funksjonsbeskrivelse.diagnose')}</FormSummary.Label>
+                <FormSummary.Value>{diagnose}</FormSummary.Value>
+              </FormSummary.Answer>
+            )}
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('funksjonsbeskrivelse.funksjonsbeskrivelse')}</FormSummary.Label>
+              <FormSummary.Value>{beskrivelse}</FormSummary.Value>
+            </FormSummary.Answer>
+          </>
         )}
-        <InfoRow
-          label={t('funksjonsbeskrivelse.funksjonsbeskrivelse')}
-          body={beskrivelse}
-        />
-      </VStack>
-    </VStack>
+        <FormSummary.Answer>
+          <FormSummary.Label>{innsender.rolle === Innsenderrolle.FORMIDLER
+            ? t('oppsummering.formidlerVurdert')
+            : t('oppsummering.bestillerVurdert')}</FormSummary.Label>
+          <FormSummary.Value>
+            <ul>
+              {brukersituasjon.vilkår.map((vilkår, i) => {
+                return <li key={i}>{lokaliser(vilkår.tekst)}</li>
+              })}
+            </ul>
+          </FormSummary.Value>
+        </FormSummary.Answer>
+      </FormSummary.Answers>
+    </FormSummary>
   )
 }
 

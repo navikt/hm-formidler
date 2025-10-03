@@ -1,12 +1,11 @@
 import React from 'react'
-import { Heading, VStack } from '@navikt/ds-react'
+import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { Hast, Hasteårsak } from '../interfaces/Hast'
 import { Hjelpemiddelformidler, Kontaktperson, Levering, Utleveringsmåte } from '../interfaces/Leveringinfo'
 import { Bruker } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 import { formaterTlf } from '../Utils'
-import InfoRow from '../components/InfoRow'
 
 type LeveringProps = {
   levering: Levering
@@ -20,79 +19,76 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
   const { levering, formidler, bruker } = props
 
   return (
-    <>
-      <VStack gap="6" style={{ marginBottom: '2rem' }}>
-        <Heading size="small" level="3">
-          {t('oppsummering.utlevering')}
-        </Heading>
-        <VStack gap="2">
+    <FormSummary.Answer>
+      <FormSummary.Label>{t('oppsummering.utlevering')}</FormSummary.Label>
+      <FormSummary.Value>
+        <FormSummary.Answers>
           {levering.hast && <HastOppsummering hast={levering.hast} />}
 
           {levering.automatiskUtledetTilleggsinfo?.map((tilleggsinfo) => {
             return (
-              <InfoRow
-                label={t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.label`)}
-                body={t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.tekst`)}
-                key={tilleggsinfo}>
-              </InfoRow>
+              <FormSummary.Answer key={tilleggsinfo}>
+                <FormSummary.Label>{t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.label`)}</FormSummary.Label>
+                <FormSummary.Value>{t(`oppsummering.levering.tilleggsinfo.${tilleggsinfo}.tekst`)}</FormSummary.Value>
+              </FormSummary.Answer>
             )
           })}
           {levering.utleveringsmåte === Utleveringsmåte.FOLKEREGISTRERT_ADRESSE && (
-            <InfoRow
-              label={t('oppsummering.leveringsadresse')}
-              body={t('oppsummering.FolkeregistrertAdresse')}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
+              <FormSummary.Value>{t('oppsummering.FolkeregistrertAdresse')}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringsmåte === Utleveringsmåte.HJELPEMIDDELSENTRALEN && (
-            <InfoRow
-              label={t('oppsummering.leveringsadresse')}
-              body={t('oppsummering.hentesHjelpemiddelsentral')}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
+              <FormSummary.Value>{t('oppsummering.hentesHjelpemiddelsentral')}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringsmåte === Utleveringsmåte.ALLEREDE_UTLEVERT_AV_NAV && (
-            <InfoRow
-              label={t('oppsummering.obs')}
-              body={t('oppsummering.alleredeUtlevertFraNav')}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.obs')}</FormSummary.Label>
+              <FormSummary.Value>{t('oppsummering.alleredeUtlevertFraNav')}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringsmåte === Utleveringsmåte.ANNEN_BRUKSADRESSE && (
-            <InfoRow
-              label={t('oppsummering.leveringsadresse')}
-              body={formaterVeiadresse(levering.annenUtleveringsadresse)}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
+              <FormSummary.Value>{formaterVeiadresse(levering.annenUtleveringsadresse)}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
-
           {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELBRUKER && (
-            <InfoRow
-              label={t('oppsummering.kontaktperson')}
-              body={formaterPersonnavn(bruker.navn) + ' (Hjelpemiddelbruker)'}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.kontaktperson')}</FormSummary.Label>
+              <FormSummary.Value>{formaterPersonnavn(bruker.navn) + ' (Hjelpemiddelbruker)'}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELFORMIDLER && (
-            <InfoRow
-              label={t('oppsummering.kontaktperson')}
-              body={formaterPersonnavn(formidler.navn) + ' ' + t('oppsummering.hjelpemiddelformidler')}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.kontaktperson')}</FormSummary.Label>
+              <FormSummary.Value>{formaterPersonnavn(formidler.navn) + ' ' + t('oppsummering.hjelpemiddelformidler')}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringKontaktperson === Kontaktperson.ANNEN_KONTAKTPERSON && levering.annenKontaktperson && (
-            <InfoRow
-              label={t('oppsummering.kontaktperson')}
-              body={
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.kontaktperson')}</FormSummary.Label>
+              <FormSummary.Value>{
                 formaterPersonnavn(levering.annenKontaktperson.navn) +
                 ' ' +
                 formaterTlf(levering.annenKontaktperson.telefon)
               }
-            />
+              </FormSummary.Value>
+            </FormSummary.Answer>
           )}
           {levering.utleveringMerknad && (
-            <InfoRow
-              label={t('felles.merknadTilUtlevering')}
-              body={levering.utleveringMerknad}
-            />
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('felles.merknadTilUtlevering')}</FormSummary.Label>
+              <FormSummary.Value>{levering.utleveringMerknad}</FormSummary.Value>
+            </FormSummary.Answer>
           )}
-        </VStack>
-      </VStack>
-    </>
+        </FormSummary.Answers>
+      </FormSummary.Value>
+    </FormSummary.Answer>
   )
 }
 
@@ -109,14 +105,14 @@ const HastOppsummering = ({ hast }: { hast: Hast }) => {
 
   return (
     <>
-      <InfoRow
-        label={t('hast.prioritet')}
-        body={t('hast.sakenHaster')}
-      />
-      <InfoRow
-        label={t('hast.årsakenTilHast')}
-        body={
-          årsaker.length === 1 ? (
+      <FormSummary.Answer>
+        <FormSummary.Label>{t('hast.prioritet')}</FormSummary.Label>
+        <FormSummary.Value>{t('hast.sakenHaster')}</FormSummary.Value>
+      </FormSummary.Answer>
+      <FormSummary.Answer>
+        <FormSummary.Label>{t('hast.årsakenTilHast')}</FormSummary.Label>
+        <FormSummary.Value>
+          {årsaker.length === 1 ? (
             årsaker[0]
           ) : (
             <ul style={{ padding: 0, margin: 0, marginLeft: '20px' }}>
@@ -124,9 +120,9 @@ const HastOppsummering = ({ hast }: { hast: Hast }) => {
                 <li key={i}>{årsak}</li>
               ))}
             </ul>
-          )
-        }
-      />
+          )}
+        </FormSummary.Value>
+      </FormSummary.Answer>
     </>
   )
 }
