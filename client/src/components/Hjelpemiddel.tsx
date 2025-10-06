@@ -1,4 +1,4 @@
-import { BodyShort, Heading, Label, Box, Tag, FormSummary, Bleed, HStack } from '@navikt/ds-react'
+import { BodyShort, Heading, Label, Box, FormSummary, Bleed, HStack } from '@navikt/ds-react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Tilbehoerinfo from './Tilbehoerinfo'
@@ -39,9 +39,6 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
         <FormSummary.Value className={sharedStyles.formheaderValue}>
           <Bleed marginInline="4" marginBlock="4 0">
             <Box.New background="brand-blue-soft" borderRadius="large large 0 0" marginBlock="0 4">
-              <div style={{ marginTop: '-16px' }}>
-                <Tag variant={tagColor(behovsmeldingType)}>{t(`${behovsmeldingType}`)}</Tag>
-              </div>
               <div style={{ padding: '1rem' }}>
                 <HStack>
                   {/* For store skjermflater */}

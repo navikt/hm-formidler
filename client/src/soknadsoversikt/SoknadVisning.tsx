@@ -89,7 +89,7 @@ const SoknadVisning: React.FC = () => {
           </div>
           <Avstand marginBottom={6} />
           <div className="customPanel">
-            <Box.New background="default" padding="4" borderRadius="large" borderWidth='1'>
+            <Box.New background="default" padding="4" borderRadius="large" borderWidth="1">
               <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
               <Avstand marginBottom={3} />
               <BodyShort>

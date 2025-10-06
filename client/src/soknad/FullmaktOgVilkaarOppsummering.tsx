@@ -23,7 +23,7 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
           <FormSummary.Header><FormSummary.Heading level="2">{t('oppsummering.fritakFraFullmakt.tittel')}</FormSummary.Heading></FormSummary.Header>
           <FormSummary.Answers>
             <FormSummary.Answer>
-              <FormSummary.Label className='screenreaderOnly'>{t('oppsummering.label')}</FormSummary.Label>
+              <FormSummary.Label className="screenreaderOnly">{t('oppsummering.label')}</FormSummary.Label>
               <FormSummary.Value>
                 <ul>
                   <li>

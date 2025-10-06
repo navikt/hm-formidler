@@ -28,7 +28,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
   const brukersNavn = formaterPersonnavn(behovsmelding.bruker.navn)
 
   return (
-    <div className="customPanel soknadPanel">
+    <>
       {erAvvistBestilling && (
         <Avstand marginBottom={6}>
           <Alert variant={varDuplikat ? 'info' : 'warning'} size="medium">
@@ -70,7 +70,7 @@ const Soknad: React.FC<SoknadProps> = React.forwardRef((props: SoknadProps, ref)
         </div>
       </div>
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>
-    </div>
+    </>
   )
 })
 

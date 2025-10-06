@@ -9,11 +9,11 @@ type VarselProps = {
 }
 
 const VarselVisning: React.FC<VarselProps> = ({ varsel }: VarselProps) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <FormSummary.Answer>
-      <FormSummary.Label className='screenreaderOnly'>{t('oppsummering.alert')}</FormSummary.Label>
+      <FormSummary.Label className="screenreaderOnly">{t('oppsummering.alert')}</FormSummary.Label>
       <FormSummary.Value>
         <Alert inline variant={varsel.type === Varseltype.INFO ? 'info' : 'warning'}>
           {lokaliser(varsel.tekst)}
