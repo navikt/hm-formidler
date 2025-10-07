@@ -1,7 +1,6 @@
-import { ReactNode } from 'react'
 import { Alert, FormSummary } from '@navikt/ds-react'
 import { lokaliser } from './OpplysningVisning'
-import { Varsel, Varseltype } from '../interfaces/Innsenderbehovsmelding'
+import { type Varsel, Varseltype } from '../interfaces/Innsenderbehovsmelding'
 import { useTranslation } from 'react-i18next'
 
 type VarselProps = {

@@ -1,38 +1,20 @@
 import { BodyShort, Heading, Label, Box, FormSummary, Bleed, HStack } from '@navikt/ds-react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import Tilbehoerinfo from './Tilbehoerinfo'
-import { BodyShort, Box, Heading, Label, Tag } from '@navikt/ds-react'
-import { useTranslation } from 'react-i18next'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
 import type { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
 import { Avstand } from './Avstand'
-import InfoLinje from './InfoLinje'
 import Rangering from './Rangering'
 import sharedStyles from './FormHeaderShared.module.css'
 import Tilbehoerinfo from './Tilbehoerinfo'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel
-  behovsmeldingType: BehovsmeldingType
-}
-
-function tagColor(type: BehovsmeldingType) {
-  if (type === BehovsmeldingType.BYTTE) {
-    return 'warning'
-  }
-
-  if (type === BehovsmeldingType.BESTILLING) {
-    return 'success'
-  }
-
-  return 'alt1'
 }
 
 const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps) => {
-  const { hm, behovsmeldingType } = props
+  const { hm } = props
 
   const { t } = useTranslation()
 

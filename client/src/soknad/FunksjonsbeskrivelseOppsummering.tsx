@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Brukersituasjon, Funksjonsbeskrivelse, Innsender, Innsenderrolle } from '../interfaces/Innsenderbehovsmelding'
+import { type Brukersituasjon, type Funksjonsbeskrivelse, type Innsender, Innsenderrolle } from '../interfaces/Innsenderbehovsmelding'
 import { FormSummary } from '@navikt/ds-react'
 import { lokaliser } from './OpplysningVisning'
 

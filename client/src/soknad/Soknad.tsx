@@ -1,6 +1,5 @@
-import { Alert, Box, Heading } from '@navikt/ds-react'
+import { Alert, Heading } from '@navikt/ds-react'
 import React from 'react'
-import { Heading, Alert } from '@navikt/ds-react'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
 import HjelpemidlerOppsummering from './HjelpemidlerOppsummering'
@@ -10,9 +9,6 @@ import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import styles from './../stylesheet/oppsummering.module.scss'
-import BrukerOppsummering from './BrukerOppsummering'
-import FullmaktOgVilkaarOppsummering from './FullmaktOgVilkaarOppsummering'
 import FunksjonsbeskrivelseOppsummering from './FunksjonsbeskrivelseOppsummering'
 import { Avstand } from '../components/Avstand'
 
@@ -52,7 +48,6 @@ const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
             hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
             hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
             tilbehør={behovsmelding.hjelpemidler.tilbehør}
-            behovsmeldingType={behovsmelding.type}
           />
           <Avstand marginBottom={6} />
           <FunksjonsbeskrivelseOppsummering

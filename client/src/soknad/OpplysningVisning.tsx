@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import DOMPurify from 'dompurify'
 import { BodyShort, Detail, FormSummary } from '@navikt/ds-react'
-import { LokalisertTekst, Opplysning, Tekst } from '../interfaces/Innsenderbehovsmelding'
+import { type LokalisertTekst, type Opplysning, type Tekst } from '../interfaces/Innsenderbehovsmelding'
 
 const rensHTML = (tekst: string): string => {
   return DOMPurify.sanitize(tekst, { ALLOWED_TAGS: ['em', 'strong'] })
@@ -54,7 +54,7 @@ const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst
   </>
 )
 
-const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold, language }) => (
+const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold }) => (
   <>
     {innhold.map((tekst, index) => (
       <React.Fragment key={index}>

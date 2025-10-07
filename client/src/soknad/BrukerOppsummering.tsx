@@ -1,7 +1,6 @@
-import React from 'react'
 import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Bruker, Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
+import { type Bruker, type Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { formaterFnr, formaterTlf } from '../Utils'
 import { lokaliser } from './OpplysningVisning'

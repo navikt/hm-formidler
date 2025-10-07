@@ -1,8 +1,6 @@
-import { Heading, VStack } from '@navikt/ds-react'
 import React from 'react'
 import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import InfoRow from '../components/InfoRow'
 import { formaterPersonnavn, formaterVeiadresse } from '../interfaces/CommonTypes'
 import { type Hast, Hasteårsak } from '../interfaces/Hast'
 import { type Bruker } from '../interfaces/Innsenderbehovsmelding'

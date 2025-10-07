@@ -1,7 +1,7 @@
 import React from 'react'
 import { Label, BodyShort, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Bruker, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
+import { type Bruker, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { Avstand } from '../components/Avstand'
 

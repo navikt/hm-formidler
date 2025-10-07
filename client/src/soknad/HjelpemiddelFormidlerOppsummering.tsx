@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
+import { type Hjelpemiddelformidler } from '../interfaces/Leveringinfo'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { formaterTlf } from '../Utils'
 

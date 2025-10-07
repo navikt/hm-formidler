@@ -2,30 +2,26 @@ import React from 'react'
 import { BodyShort, HStack, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
-import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import { type Hjelpemiddel, type Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import FixedWidthLabel from '../components/FixedWidthLabel'
 import TilbehørVisning from '../components/TilbehørVisning'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
-import type { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
-import './../stylesheet/oppsummering.module.scss'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
   hjelpemidler: Hjelpemiddel[]
   tilbehør: Tilbehør[]
-  behovsmeldingType: BehovsmeldingType
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør, behovsmeldingType } = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør } = props
 
   return (
     <FormSummary>
       <FormSummary.Header><FormSummary.Heading level="2">{t('felles.hjelpemidler')}</FormSummary.Heading></FormSummary.Header>
       <FormSummary.Answers>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-          <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType} key={hmsIdx} />
+          <Hjelpemiddelinfo hm={hm} key={hmsIdx} />
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (
           <TilbehørVisning tilbehør={tilbehør} key={index} />
