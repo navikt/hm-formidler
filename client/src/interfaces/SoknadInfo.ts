@@ -1,6 +1,6 @@
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { BehovsmeldingType } from './CommonTypes'
-import { Innsenderbehovsmelding } from './Innsenderbehovsmelding'
+import type { Innsenderbehovsmelding } from './Innsenderbehovsmelding'
 
 export interface SoknadInfo {
   søknadId: string

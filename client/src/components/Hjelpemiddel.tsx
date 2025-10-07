@@ -2,13 +2,17 @@ import { BodyShort, Heading, Label, Box, FormSummary, Bleed, HStack } from '@nav
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Tilbehoerinfo from './Tilbehoerinfo'
+import { BodyShort, Box, Heading, Label, Tag } from '@navikt/ds-react'
+import { useTranslation } from 'react-i18next'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import VarselVisning from '../soknad/VarselVisning'
-import { Hjelpemiddel } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
+import InfoLinje from './InfoLinje'
 import Rangering from './Rangering'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
 import sharedStyles from './FormHeaderShared.module.css'
+import Tilbehoerinfo from './Tilbehoerinfo'
 
 type HjelpemiddelProps = {
   hm: Hjelpemiddel

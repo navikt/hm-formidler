@@ -1,33 +1,29 @@
-import React, { useRef } from 'react'
-import './../stylesheet/styles.scss'
-import useSWRImmutable from 'swr/immutable'
-import { API_PATH, fetcher } from '../services/rest-service'
-import { BodyShort, Box, Button, Detail, Loader, Tag } from '@navikt/ds-react'
-import { BASE_PATH } from '../App'
-import { useParams, Link } from 'react-router-dom'
-import Soknad from '../soknad/Soknad'
-import { Heading } from '@navikt/ds-react'
-
-import { useTranslation } from 'react-i18next'
-import SoknadVisningFeil from './SoknadVisningFeil'
-import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
-import { useEffect } from 'react'
-import * as Sentry from '@sentry/browser'
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
-import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { BodyShort, Box, Button, Heading, Loader, Tag } from '@navikt/ds-react'
+import * as Sentry from '@sentry/browser'
+import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
+import useSWRImmutable from 'swr/immutable'
 import { formaterDato, hentTagVariant } from '../Utils'
 import { Avstand } from '../components/Avstand'
-import { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
+import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
+import { API_PATH, fetcher } from '../services/rest-service'
+import Soknad from '../soknad/Soknad'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
+import './../stylesheet/styles.scss'
+import SoknadVisningFeil from './SoknadVisningFeil'
 
-interface ParamTypes {
+interface ParamTypes extends Record<string, string> {
   soknadsid: string
 }
 
 const SoknadVisning: React.FC = () => {
   const { t } = useTranslation()
 
-  const { soknadsid } = useParams<ParamTypes>()
+  const { soknadsid = '' } = useParams<ParamTypes>()
   const { data, error } = useSWRImmutable<{
     navnBruker: string | undefined
     behovsmeldingType: string | undefined
@@ -44,9 +40,9 @@ const SoknadVisning: React.FC = () => {
 
   const printRef = useRef(null)
   const handlePrint = useReactToPrint({
-    content: () => printRef.current,
+    contentRef: printRef,
     documentTitle: data && t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker }),
-    onBeforePrint: () => logKlikkPåSkrivUt(soknadsid),
+    onBeforePrint: async () => logKlikkPåSkrivUt(soknadsid),
   })
 
   if (error) {
@@ -74,7 +70,7 @@ const SoknadVisning: React.FC = () => {
       <div>
         <header>
           <div className="customPanel">
-            <Link to={BASE_PATH} style={{ marginBottom: '0.5rem' }}>
+            <Link to="/" style={{ marginBottom: '0.5rem' }}>
               <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
               {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
             </Link>

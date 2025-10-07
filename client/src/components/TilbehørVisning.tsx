@@ -1,9 +1,10 @@
 import { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import { BodyShort, Detail, Heading, Box, FormSummary, Bleed, HStack } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Avstand } from './Avstand'
+import type { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import sharedStyles from './FormHeaderShared.module.css'
+import { Avstand } from './Avstand'
 
 type Props = {
   tilbehør: Tilbehør

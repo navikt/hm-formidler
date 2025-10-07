@@ -3,9 +3,11 @@ import { BodyShort, HStack, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
 import { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
-import TilbehørVisning from '../components/TilbehørVisning'
 import FixedWidthLabel from '../components/FixedWidthLabel'
+import TilbehørVisning from '../components/TilbehørVisning'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import './../stylesheet/oppsummering.module.scss'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number

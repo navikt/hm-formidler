@@ -22,14 +22,14 @@ spec:
       cpu: 50m
       memory: 256Mi
   liveness:
-    path: /hjelpemidler/formidler/internal/isAlive
+    path: /isalive
     initialDelay: 5
   readiness:
-    path: /hjelpemidler/formidler/internal/isReady
+    path: /isready
     initialDelay: 5
   prometheus:
-    enabled: true
-    path: /hjelpemidler/formidler/internal/metrics
+    enabled: false
+    path: /metrics
   envFrom:
     - secret: session-encrypt-key
   ingresses:

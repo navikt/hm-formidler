@@ -1,11 +1,10 @@
-import React from 'react'
-import './../stylesheet/styles.scss'
-import { SoknadInfo } from '../interfaces/SoknadInfo'
-import SoknadKort from './SoknadKort'
-import { useTranslation } from 'react-i18next'
 import { Button, Heading } from '@navikt/ds-react'
+import { useTranslation } from 'react-i18next'
 import environment from '../environment'
+import type { SoknadInfo } from '../interfaces/SoknadInfo'
 import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import './../stylesheet/styles.scss'
+import SoknadKort from './SoknadKort'
 
 interface Props {
   alleSoknader: SoknadInfo[]

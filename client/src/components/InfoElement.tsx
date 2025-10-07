@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react'
 import { BodyShort } from '@navikt/ds-react'
+import type { ReactNode } from 'react'
 import { Avstand } from './Avstand'
 
 type InfoElementProps = {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { BodyShort, VStack, HStack, Spacer, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
+import type { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import { Avstand } from './Avstand'
-import { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 
 type TilbehoerinfoProps = {
   tilbehoerListe: Tilbehør[]

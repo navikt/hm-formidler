@@ -1,8 +1,8 @@
 import { http, HttpResponse } from 'msw'
-import { SoknadInfo } from '../../interfaces/SoknadInfo'
+import { BehovsmeldingType } from '../../interfaces/CommonTypes'
+import type { SoknadInfo } from '../../interfaces/SoknadInfo'
 import { API_PATH } from '../../services/rest-service'
 import { sakerMock } from '../mockdata/saker'
-import { BehovsmeldingType } from '../../interfaces/CommonTypes'
 
 const soknadsbehandlingDbHandlers = [
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {
@@ -693,8 +693,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Kommunen har opplysninger fra lege om diagnosen til bruker. Legen bekrefter at diagnosen gir nedsatt blodgjennomstrømning i hender eller føtter. Når bruker utsettes for kulde så får hender eller føtter unormal blekhet og cyanose.',
-                        nn: 'Kommunen har opplysningar frå lege om diagnosen til brukar. Legen stadfestar at diagnosen gir nedsett blodgjennomstrømning i hender eller føter. Når brukar blir utsett for kulde så får hender eller føter unormal bleikheit og cyanose.',
+                        nb: 'Kommunen har opplysninger fra lege om diagnosen til personen. Legen bekrefter at diagnosen gir nedsatt blodgjennomstrømning i hender eller føtter. Når personen utsettes for kulde så får hender eller føtter unormal blekhet og cyanose.',
+                        nn: 'Kommunen har opplysningar frå lege om diagnosen til personen. Legen stadfestar at diagnosen gir nedsett blodgjennomstrømning i hender eller føter. Når personen blir utsett for kulde så får hender eller føter unormal bleikheit og cyanose.',
                       },
                       begrepsforklaring: null,
                     },
@@ -765,8 +765,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Kommunen har opplysninger fra lege om diagnosen til bruker. Legen bekrefter at diagnosen gir nedsatt blodgjennomstrømning i hender eller føtter. Når bruker utsettes for kulde så får hender eller føtter unormal blekhet og cyanose.',
-                        nn: 'Kommunen har opplysningar frå lege om diagnosen til brukar. Legen stadfestar at diagnosen gir nedsett blodgjennomstrømning i hender eller føter. Når brukar blir utsett for kulde så får hender eller føter unormal bleikheit og cyanose.',
+                        nb: 'Kommunen har opplysninger fra lege om diagnosen til personen. Legen bekrefter at diagnosen gir nedsatt blodgjennomstrømning i hender eller føtter. Når personen utsettes for kulde så får hender eller føtter unormal blekhet og cyanose.',
+                        nn: 'Kommunen har opplysningar frå lege om diagnosen til personen. Legen stadfestar at diagnosen gir nedsett blodgjennomstrømning i hender eller føter. Når personen blir utsett for kulde så får hender eller føter unormal bleikheit og cyanose.',
                       },
                       begrepsforklaring: null,
                     },
@@ -942,7 +942,7 @@ const soknadsbehandlingDbHandlers = [
                   },
                   innhold: [
                     {
-                      fritekst: 'Bruker får vondt i ryggen av andre rullestoler som hun har prøvd.',
+                      fritekst: 'Personen får vondt i ryggen av andre rullestoler som hun har prøvd.',
                       forhåndsdefinertTekst: null,
                       begrepsforklaring: null,
                     },
@@ -1074,8 +1074,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Bruker har en varig funksjonsnedsettelse som gir kuldeintoleranse, og som fører til at rullestolen ikke kan benyttes uten kabin',
-                        nn: 'Brukar har ei varig funksjonsnedsetjing som gir kuldeintoleranse, og som fører til at rullestolen ikkje kan nyttast utan kabin',
+                        nb: 'Personen har en varig funksjonsnedsettelse som gir kuldeintoleranse, og som fører til at rullestolen ikke kan benyttes uten kabin',
+                        nn: 'Personen har ei varig funksjonsnedsetjing som gir kuldeintoleranse, og som fører til at rullestolen ikkje kan nyttast utan kabin',
                       },
                       begrepsforklaring: null,
                     },
@@ -1090,8 +1090,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Brukeren har luftveisproblemer og kan ikke bruke varmemaske',
-                        nn: 'Brukaren har luftvegsproblem og kan ikkje bruka varmemaske',
+                        nb: 'Personen har luftveisproblemer og kan ikke bruke varmemaske',
+                        nn: 'Personen har luftvegsproblem og kan ikkje bruka varmemaske',
                       },
                       begrepsforklaring: null,
                     },
@@ -1106,8 +1106,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Brukeren er vurdert til å kunne betjene elektrisk rullestol med manuell styring',
-                        nn: 'Brukaren er vurdert til å kunne betene elektrisk rullestol med manuell styring',
+                        nb: 'Personen er vurdert til å kunne betjene elektrisk rullestol med manuell styring',
+                        nn: 'Personen er vurdert til å kunne betene elektrisk rullestol med manuell styring',
                       },
                       begrepsforklaring: null,
                     },
@@ -1122,8 +1122,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Brukeren er vurdert til å kunne ferdes sikkert i trafikken',
-                        nn: 'Brukaren er vurdert til å kunne ferdast sikkert i trafikken',
+                        nb: 'Personen er vurdert til å kunne ferdes sikkert i trafikken',
+                        nn: 'Personen er vurdert til å kunne ferdast sikkert i trafikken',
                       },
                       begrepsforklaring: null,
                     },
@@ -1138,8 +1138,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Brukeren skal benytte den elektriske rullestolen til å avhjelpe en vesentlig nedsatt gangfunksjon. Den skal ikke brukes til et generelt transportbehov.',
-                        nn: 'Brukaren skal benytte den elektriske rullestolen til å avhjelpe ein vesentlig nedsatt gangfunksjon. Den skal ikkje brukes til eit generelt transportbehov.',
+                        nb: 'Personen skal benytte den elektriske rullestolen til å avhjelpe en vesentlig nedsatt gangfunksjon. Den skal ikke brukes til et generelt transportbehov.',
+                        nn: 'Personen skal benytte den elektriske rullestolen til å avhjelpe ein vesentlig nedsatt gangfunksjon. Den skal ikkje brukes til eit generelt transportbehov.',
                       },
                       begrepsforklaring: null,
                     },
@@ -1154,8 +1154,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Bruker har egnet sted for oppbevaring og lading',
-                        nn: 'Brukar har eigna sted for oppbevaring og lading',
+                        nb: 'Personen har egnet sted for oppbevaring og lading',
+                        nn: 'Personen har eigna sted for oppbevaring og lading',
                       },
                       begrepsforklaring: null,
                     },
@@ -1170,8 +1170,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Bruker gjøres kjent med forsikringsvilkårene i forbindelse med opplæringen',
-                        nn: 'Brukar blir gjorde kjent med forsikringsvilkåra i samband med opplæringa',
+                        nb: 'Personen gjøres kjent med forsikringsvilkårene i forbindelse med opplæringen',
+                        nn: 'Personen blir gjort kjent med forsikringsvilkåra i samband med opplæringa',
                       },
                       begrepsforklaring: null,
                     },
@@ -1186,8 +1186,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Bruker har ikke spesialsykkel fra før',
-                        nn: 'Brukar har ikkje spesialsykkel frå før',
+                        nb: 'Personen har ikke spesialsykkel fra før',
+                        nn: 'Personen har ikkje spesialsykkel frå før',
                       },
                       begrepsforklaring: null,
                     },
@@ -1670,7 +1670,7 @@ const soknadsbehandlingDbHandlers = [
                   innhold: [
                     {
                       fritekst:
-                        'Bruker har testet app på 1. rangering, men sliter med å bruke den. Wellbee fungerer mye bedre for bruker',
+                        'Personen har testet app på 1. rangering, men sliter med å bruke den. Wellbee fungerer mye bedre for personen',
                       forhåndsdefinertTekst: null,
                       begrepsforklaring: null,
                     },
@@ -1678,15 +1678,15 @@ const soknadsbehandlingDbHandlers = [
                 },
                 {
                   ledetekst: {
-                    nb: 'Utprøving for bruker',
-                    nn: 'Utprøving for brukar',
+                    nb: 'Utprøving for personen',
+                    nn: 'Utprøving for personen',
                   },
                   innhold: [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Bruker har hatt en vellykket utprøving av prøvelisensen.',
-                        nn: 'Brukar har hatt ei vellykka utprøving av prøvelisensen.',
+                        nb: 'Personen har hatt en vellykket utprøving av prøvelisensen.',
+                        nn: 'Personen har hatt ei vellykka utprøving av prøvelisensen.',
                       },
                       begrepsforklaring: null,
                     },
@@ -1701,8 +1701,8 @@ const soknadsbehandlingDbHandlers = [
                     {
                       fritekst: null,
                       forhåndsdefinertTekst: {
-                        nb: 'Støtteperson skal hjelpe bruker med kalenderen.',
-                        nn: 'Støtteperson skal hjelpa bruker med kalenderen.',
+                        nb: 'Støtteperson skal hjelpe hjelpemiddelbruker med kalenderen.',
+                        nn: 'Støtteperson skal hjelpa hjelpemiddelbruker med kalenderen.',
                       },
                       begrepsforklaring: null,
                     },

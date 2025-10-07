@@ -1,12 +1,9 @@
 import '@navikt/ds-css/darkside'
-import { Modal } from '@navikt/ds-react'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import 'vite/modulepreload-polyfill'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import { initDecorator } from './decorator/decorator'
 import './i18n'
-import { worker } from './mocks/browser'
 import { initAmplitude } from './utils/amplitude'
 import { initSentry } from './utils/sentry'
 
@@ -15,7 +12,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     hj: any
     appSettings: {
-      MILJO?: 'dev-gcp' | 'prod-gcp' | 'local'
+      NAIS_CLUSTER_NAME?: 'dev-gcp' | 'prod-gcp' | 'local'
       SOKNAD_URL?: string
       GIT_COMMIT?: string
       USE_MSW?: boolean
@@ -41,10 +38,11 @@ const init = async () => {
   initAmplitude()
   initDecorator()
 
-  const rootElement = document.getElementById('root')
-
-  ReactDOM.render(<App />, rootElement)
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  )
 }
 
-// noinspection JSIgnoredPromiseFromCall
-init()
+init().catch(console.error)

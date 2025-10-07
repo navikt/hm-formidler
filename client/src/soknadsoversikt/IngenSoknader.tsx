@@ -1,9 +1,8 @@
+import { BodyShort, GuidePanel, Heading } from '@navikt/ds-react'
 import React from 'react'
-import './../stylesheet/styles.scss'
-import { Heading, BodyShort } from '@navikt/ds-react'
-import { ReactComponent as SpotIllustration } from '../assets/svg/ingenSoknader.svg'
-import { GuidePanel } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
+import SpotIllustration from '../assets/svg/ingenSoknader.svg?react'
+import './../stylesheet/styles.scss'
 
 const IngenSoknader: React.FC = () => {
   const { t } = useTranslation()

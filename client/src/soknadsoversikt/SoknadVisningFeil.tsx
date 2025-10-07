@@ -1,21 +1,18 @@
-import React from 'react'
-import '../stylesheet/styles.scss'
-import { Heading, BodyShort } from '@navikt/ds-react'
-import { ReactComponent as SpotIllustration } from '../assets/svg/illu_veileder_HMS.svg'
-import { GuidePanel, Link } from '@navikt/ds-react'
-import Tilbakeknapp from '../components/Tilbakeknapp'
-import { useHistory } from 'react-router-dom'
-import { BASE_PATH } from '../App'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { BodyShort, GuidePanel, Heading, Link } from '@navikt/ds-react'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import SpotIllustration from '../assets/svg/illu_veileder_HMS.svg?react'
+import Tilbakeknapp from '../components/Tilbakeknapp'
+import '../stylesheet/styles.scss'
+import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 interface Props {
   soknadsid: string
 }
 
 const SoknadVisningFeil = ({ soknadsid }: Props) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -28,9 +25,7 @@ const SoknadVisningFeil = ({ soknadsid }: Props) => {
         <div className="customPanel">
           <Tilbakeknapp
             onClick={() => {
-              history.push({
-                pathname: `${BASE_PATH}`,
-              })
+              navigate('/')
             }}
             style={{ marginBottom: '0.5rem' }}
           >

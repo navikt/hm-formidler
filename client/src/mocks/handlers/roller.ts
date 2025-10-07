@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw'
-import { Roller } from '../../interfaces/Roller'
+import type { Roller } from '../../interfaces/Roller'
 import { ROLLER_PATH } from '../../services/rest-service'
 
 const rolleHandlers = [

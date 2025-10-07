@@ -8,14 +8,15 @@ import Feilside from './Feilside'
 import ManglerTilgang from './ManglerTilgang'
 
 const Tilgangside: React.FC = () => {
-
   const { roller } = useContext(ApplicationContext)
   const { harGyldigRolle } = useRoller()
 
   if (!roller) {
-    return <div className="content centeredElement">
-      <Loader size="large" />
-    </div>
+    return (
+      <div className="content centeredElement">
+        <Loader size="large" />
+      </div>
+    )
   }
 
   if (harGyldigRolle) {

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { CheckboxGroup, Checkbox, Loader, Heading, Button } from '@navikt/ds-react'
+import React, { useContext, useState } from 'react'
+import { CheckboxGroup, Checkbox, Heading, Button } from '@navikt/ds-react'
 import styled from 'styled-components'
 import { ApplicationContext, useRoller } from '../statemanagement/ApplicationContext'
 

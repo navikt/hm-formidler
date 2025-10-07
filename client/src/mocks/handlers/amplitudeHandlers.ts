@@ -10,4 +10,5 @@ const amplitudeHandlers = [
     })
   }),
 ]
+
 export default amplitudeHandlers

@@ -42,10 +42,12 @@ const renderTextContent = (tekst: Tekst): ReactNode => {
   if (tekst.fritekst) {
     return tekst.fritekst
   }
-  return tekst.forhåndsdefinertTekst ? <span dangerouslySetInnerHTML={{ __html: rensHTML(lokaliser(tekst.forhåndsdefinertTekst)) }}></span> : null
+  return tekst.forhåndsdefinertTekst ? (
+    <span dangerouslySetInnerHTML={{ __html: rensHTML(lokaliser(tekst.forhåndsdefinertTekst)) }}></span>
+  ) : null
 }
 
-const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst, language }) => (
+const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst }) => (
   <>
     <BodyShort>{renderTextContent(tekst)}</BodyShort>
     {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
