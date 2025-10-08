@@ -1,63 +1,45 @@
-import { BodyShort, Heading, HStack } from '@navikt/ds-react'
 import React from 'react'
+import { BodyShort, HStack, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { Avstand } from '../components/Avstand'
-import FixedWidthLabel from '../components/FixedWidthLabel'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
+import { type Hjelpemiddel, type Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import FixedWidthLabel from '../components/FixedWidthLabel'
 import TilbehørVisning from '../components/TilbehørVisning'
-import { BehovsmeldingType } from '../interfaces/CommonTypes'
-import type { Hjelpemiddel, Tilbehør } from '../interfaces/Innsenderbehovsmelding'
-import './../stylesheet/oppsummering.module.scss'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
   hjelpemidler: Hjelpemiddel[]
   tilbehør: Tilbehør[]
-  behovsmeldingType: BehovsmeldingType
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør , behovsmeldingType} = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør } = props
 
   return (
-    <>
-      <div className="contentBlock">
-        <div className="contentBlock categoryRow">
-          <Heading size="medium" level="2">
-            {t('felles.hjelpemidler')}
-          </Heading>
-        </div>
-      </div>
-
-      <ul style={{ paddingLeft: '0', margin: '0', listStyle: 'none' }}>
+    <FormSummary>
+      <FormSummary.Header><FormSummary.Heading level="2">{t('felles.hjelpemidler')}</FormSummary.Heading></FormSummary.Header>
+      <FormSummary.Answers>
         {hjelpemidler.map((hm: Hjelpemiddel, hmsIdx) => (
-          <li key={`${hmsIdx}.${hm.produkt.hmsArtNr}`} style={{ marginBottom: '16px' }}>
-            <Hjelpemiddelinfo hm={hm} behovsmeldingType={behovsmeldingType}/>
-          </li>
+          <Hjelpemiddelinfo hm={hm} key={hmsIdx} />
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (
-          <li key={`${index}.${tilbehør.hmsArtNr}`} style={{ marginBottom: '16px' }}>
-            <TilbehørVisning tilbehør={tilbehør} />
-          </li>
+          <TilbehørVisning tilbehør={tilbehør} key={index} />
         ))}
-      </ul>
-
-      <Avstand marginTop={6} marginBottom={6}>
-        <HStack wrap={false} align={'center'}>
-          <BodyShort>
-            {t('felles.tilsvarendeProdukt')}
-          </BodyShort>
-          <FixedWidthLabel width={7}>
-            {t('felles.totalt') +
-              ' ' +
-              t('felles.antallHjelpemidler.total', {
-                antall: hjelpemiddelTotalAntall,
-              })}
-          </FixedWidthLabel>
-        </HStack>
-      </Avstand>
-    </>
+      </FormSummary.Answers>
+      <HStack wrap={false} gap="2" marginInline="5 5" marginBlock="0 4">
+        <BodyShort>
+          {t('felles.tilsvarendeProdukt')}
+        </BodyShort>
+        <FixedWidthLabel width={6}>
+          {t('felles.totalt') +
+            ' ' +
+            t('felles.antallHjelpemidler.total', {
+              antall: hjelpemiddelTotalAntall,
+            })}
+        </FixedWidthLabel>
+      </HStack>
+    </FormSummary>
   )
 }
 

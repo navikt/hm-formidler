@@ -69,7 +69,7 @@ const SoknadsOversikt: React.FC = () => {
 
   return (
     <>
-      <div style={{ background: 'var(--a-surface-subtle)' }}>
+      <div>
         <header>
           <Banner />
         </header>
