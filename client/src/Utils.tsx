@@ -97,6 +97,7 @@ export const hentTagVariant = (
     case SoknadStatus.VEDTAKSRESULTAT_MUNTLIG_INNVILGET:
     case SoknadStatus.BESTILLING_FERDIGSTILT:
     case SoknadStatus.UTSENDING_STARTET:
+    case SoknadStatus.BRUKERPASSBYTTE_INNSENDT:
       etikettType = 'success'
       break
     case SoknadStatus.BESTILLING_AVVIST:
