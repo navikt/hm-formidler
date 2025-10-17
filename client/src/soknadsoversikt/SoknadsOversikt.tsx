@@ -43,7 +43,8 @@ const SoknadsOversikt: React.FC = () => {
           return soknad.status === SoknadStatus.VENTER_GODKJENNING
         })
         .sort(function (a, b) {
-          return new Date(b.datoOpprettet).getTime() - new Date(a.datoOpprettet).getTime()
+          // Saker til godkjenning sorteres med kortest frist først (dvs. eldste saker først)
+          return new Date(a.datoOpprettet).getTime() - new Date(b.datoOpprettet).getTime()
         })
 
       const ikkeVenterGodkjenning = data
@@ -51,6 +52,7 @@ const SoknadsOversikt: React.FC = () => {
           return soknad.status !== SoknadStatus.VENTER_GODKJENNING
         })
         .sort(function (a, b) {
+          // Saker som IKKE venter på godkjenning sorteres med sist oppdatert først
           return new Date(b.datoOppdatert).getTime() - new Date(a.datoOppdatert).getTime()
         })
 

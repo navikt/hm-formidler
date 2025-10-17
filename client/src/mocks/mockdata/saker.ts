@@ -2,6 +2,8 @@ import { formatISO, subDays } from 'date-fns'
 import { SoknadStatus } from '../../statemanagement/SoknadStatus'
 import { BehovsmeldingType } from '../../interfaces/CommonTypes'
 
+const toDagerSiden = formatISO(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000))
+
 export const sakerMock = [
   {
     søknadId: '85be32d6-052e-49e5-84c3-3e8de24687c7',
@@ -58,7 +60,19 @@ export const sakerMock = [
     navnBruker: 'Egon Olsen',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
-    soknadGjelder: 'Søknad om: sittepute',
+    soknadGjelder: 'Søknad om: stetoskop',
+  },
+  {
+    søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
+    behovsmeldingType: BehovsmeldingType.SØKNAD,
+    datoOpprettet: toDagerSiden,
+    datoOppdatert: toDagerSiden,
+    status: SoknadStatus.VENTER_GODKJENNING,
+    fnrBruker: '12345678910',
+    navnBruker: 'Egon Olsen Jr.',
+    søknadsdata: undefined,
+    valgteÅrsaker: undefined,
+    soknadGjelder: 'Søknad om: gummihansker',
   },
   {
     søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8014b',
