@@ -60,7 +60,7 @@ export const sakerMock = [
     navnBruker: 'Egon Olsen',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
-    soknadGjelder: 'Søknad om: stetoskop',
+    soknadGjelder: 'Søknad om: personløfter',
   },
   {
     søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
@@ -72,7 +72,7 @@ export const sakerMock = [
     navnBruker: 'Egon Olsen Jr.',
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
-    soknadGjelder: 'Søknad om: gummihansker',
+    soknadGjelder: 'Søknad om: krykke',
   },
   {
     søknadId: '5ef53d43-01ea-4b51-8ddb-0138f8f8014b',
