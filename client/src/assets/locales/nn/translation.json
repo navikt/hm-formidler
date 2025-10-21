@@ -48,6 +48,7 @@
   "felles.tilsvarendeProdukt": "Hjelpemiddelsentralen vil kunne sende ut tilsvarande produkt frå lager. Dersom personen ikkje kan ha tilsvarande produkt må du grunngje kvifor.",
   "felles.serienummer": "Serienummer",
   "handlekurv.tilbehoer.antall": "{{antall}} stk.",
+  "handlekurv.tilbehoer.begrunnelse": "Grunngiving for tilbehøyret",
   "helmet.title.forsiden": "Dine hjelpemiddelsaker",
   "helmet.title.sak": "Sak – Dine hjelpemiddelsaker",
   "helmet.title.feilside": "Feilside – Dine hjelpemiddelsaker",

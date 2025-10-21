@@ -33,7 +33,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
                 {tilbehør.begrunnelse && (
                   <Avstand marginTop={4}>
                     <BodyShort spacing weight="semibold">
-                      {t('handlekurv.tilbehoer.begrunnelse')} {/* Begrunnelse for tilbehøret */}
+                      {t('handlekurv.tilbehoer.begrunnelse')}
                     </BodyShort>
                     <BodyShort data-cy="tilbehør-begrunnelse">{tilbehør.begrunnelse}</BodyShort>
                   </Avstand>
