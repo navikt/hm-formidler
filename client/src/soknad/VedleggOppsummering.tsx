@@ -25,7 +25,7 @@ const VedleggOppsummering: React.FC<VedleggProps> = (props: VedleggProps) => {
           <FormSummary.Answer>
             {vedlegg.map((vedlegg, i) => (
               <Avstand key={i} marginBottom={2}>
-                <Link href={`${SOKNAD_API_PATH}/vedlegg/${vedlegg.id}`} target="_blank">
+                <Link href={`${SOKNAD_API_PATH}/soknad/vedlegg/${vedlegg.id}`} target="_blank">
                   <ExternalLinkIcon aria-hidden="true" />{vedlegg.navn} (PDF åpner i en ny fane)
                 </Link>
               </Avstand>
