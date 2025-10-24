@@ -40,6 +40,12 @@ func main() {
 				IDP:         texas.TokenX,
 				IDPTarget:   os.Getenv("HM_ROLLER_AUDIENCE"),
 			},
+			"/soknad-api/": &proxy.Options{
+				Target:      os.Getenv("HM_SOKNAD_API_URL"),
+				StripPrefix: true,
+				IDP:         texas.TokenX,
+				IDPTarget:   os.Getenv("HM_SOKNAD_API_AUDIENCE"),
+			},
 		},
 		IDP: idp,
 		EnvKeys: []string{

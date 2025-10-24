@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - endre-til-person
+      - vedlegg
 
 jobs:
   deploy:

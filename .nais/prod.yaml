@@ -50,6 +50,10 @@ spec:
       value: prod-gcp:teamdigihot:hm-roller
     - name: SOKNAD_URL
       value: https://www.nav.no/hjelpemidler/digitalsoknadhjelpemidler
+    - name: HM_SOKNAD_API_URL
+      value: http://hm-soknad-api.teamdigihot.svc.cluster.local
+    - name: HM_SOKNAD_API_AUDIENCE
+      value: prod-gcp:teamdigihot:hm-soknad-api
     - name: REDIRECT_URL
       value: https://www.nav.no/hjelpemidler/formidler
     - name: GIT_COMMIT
@@ -61,5 +65,6 @@ spec:
       rules:
         - application: hm-soknadsbehandling-db
         - application: hm-roller
+        - application: hm-soknad-api
         - application: nav-dekoratoren
           namespace: personbruker

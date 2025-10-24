@@ -1,4 +1,4 @@
-import { Alert, Heading } from '@navikt/ds-react'
+import { Alert, BodyShort, Heading, Label } from '@navikt/ds-react'
 import React from 'react'
 import BrukerOppsummering from './BrukerOppsummering'
 import OppfoelgingOgOpplaeringOppsummering from './OppfoelgingOgOpplaeringOppsummering'
@@ -11,6 +11,7 @@ import { ValgtÅrsak } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import FunksjonsbeskrivelseOppsummering from './FunksjonsbeskrivelseOppsummering'
 import { Avstand } from '../components/Avstand'
+import VedleggOppsummering from './VedleggOppsummering'
 
 type SoknadProps = {
   status: SoknadStatus | undefined
@@ -42,30 +43,50 @@ const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
       )}
       <div ref={ref}>
         <div className="contentBlock" data-testid="oppsummering">
-          <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
-          <Avstand marginBottom={6} />
-          <HjelpemidlerOppsummering
-            hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
-            hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
-            tilbehør={behovsmelding.hjelpemidler.tilbehør}
-          />
-          <Avstand marginBottom={6} />
-          <FunksjonsbeskrivelseOppsummering
-            funksjonsbeskrivelse={behovsmelding.brukersituasjon?.funksjonsbeskrivelse ?? undefined}
-            brukersituasjon={behovsmelding.brukersituasjon}
-            innsender={behovsmelding.innsender}
-          />
-          <Avstand marginBottom={6} />
-          <OppfoelgingOgOpplaeringOppsummering
-            hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
-            annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
-            levering={behovsmelding.levering}
-            bruker={behovsmelding.bruker}
-          />
-          <Avstand marginBottom={6} />
-          <FullmaktOgVilkaarOppsummering
-            bruker={behovsmelding.bruker}
-          />
+          <Avstand marginBottom={6}>
+            <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
+          </Avstand>
+
+          <Avstand marginBottom={6}>
+            <HjelpemidlerOppsummering
+              hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
+              hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
+              tilbehør={behovsmelding.hjelpemidler.tilbehør}
+            />
+          </Avstand>
+
+          <Avstand marginBottom={6}>
+            <FunksjonsbeskrivelseOppsummering
+              funksjonsbeskrivelse={behovsmelding.brukersituasjon?.funksjonsbeskrivelse ?? undefined}
+              brukersituasjon={behovsmelding.brukersituasjon}
+              innsender={behovsmelding.innsender}
+            />
+          </Avstand>
+
+          <Avstand marginBottom={6}>
+            <OppfoelgingOgOpplaeringOppsummering
+              hjelpemiddelformidler={behovsmelding.levering.hjelpemiddelformidler}
+              annnenOppfølgingsansvarlig={behovsmelding.levering.annenOppfølgingsansvarlig}
+              levering={behovsmelding.levering}
+              bruker={behovsmelding.bruker}
+            />
+          </Avstand>
+
+          <Avstand marginBottom={6}>
+            <FullmaktOgVilkaarOppsummering bruker={behovsmelding.bruker} />
+          </Avstand>
+
+          {behovsmelding.vedlegg.length > 0 && (
+            <Avstand marginBottom={6}>
+              <VedleggOppsummering vedlegg={behovsmelding.vedlegg} />
+            </Avstand>
+          )}
+
+          <div className="contentBlock">
+            <Avstand marginTop={10} />
+            <Label spacing>{t('oppsummering.infoOmRettOgPlikt.tittel')}</Label>
+            <BodyShort>{t('oppsummering.infoOmRettOgPlikt')}</BodyShort>
+          </div>
         </div>
       </div>
       <span className="sr-only">{t('oppsummering.soknadSlutt')}</span>

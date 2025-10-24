@@ -9,4 +9,5 @@ services:
       BIND_ADDRESS: ':5000'
       API_URL: 'http://localhost:4040'
       HM_ROLLER_URL: 'http://localhost:4040'
+      HM_SOKNAD_API_URL: 'http://localhost:4040'
       USE_MSW: 'true'

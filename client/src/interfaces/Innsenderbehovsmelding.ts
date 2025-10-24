@@ -12,6 +12,17 @@ export interface Innsenderbehovsmelding {
   hjelpemidler: Hjelpemidler
   levering: Levering
   innsender: Innsender
+  vedlegg: Vedlegg[]
+}
+
+export interface Vedlegg {
+  id: string
+  navn: string
+  type: Vedleggtype
+}
+
+export enum Vedleggtype {
+  LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL = 'LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL'
 }
 
 export interface Innsender {
