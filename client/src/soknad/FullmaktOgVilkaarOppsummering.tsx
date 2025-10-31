@@ -1,9 +1,8 @@
 import React from 'react'
-import { Label, BodyShort, FormSummary } from '@navikt/ds-react'
+import { BodyShort, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { type Bruker, Signaturtype } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
-import { Avstand } from '../components/Avstand'
 
 type FullmaktOgVilkaarProps = {
   bruker: Bruker
@@ -84,11 +83,6 @@ const FullmaktOgVilkaarOppsummering: React.FC<FullmaktOgVilkaarProps> = (props: 
           </FormSummary.Answers>
         </FormSummary>
       )}
-      <div className="contentBlock">
-        <Avstand marginTop={10} />
-        <Label spacing>{t('oppsummering.infoOmRettOgPlikt.tittel')}</Label>
-        <BodyShort>{t('oppsummering.infoOmRettOgPlikt')}</BodyShort>
-      </div>
     </>
   )
 }

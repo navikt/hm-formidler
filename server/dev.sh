@@ -11,6 +11,7 @@ export NAIS_CLUSTER_NAME=local
 
 export API_URL=http://localhost:4040
 export HM_ROLLER_URL=http://localhost:4040
+export HM_SOKNAD_API_URL=http://localhost:4040
 
 export USE_MSW=true
 

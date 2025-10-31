@@ -95,6 +95,8 @@
   "oppsummering.ikkeFullmaktFordiTilbehør.tekst": "Formidler må ikke innhente fullmakt for å melde behov om tilbehøret. Nav går ut fra at fullmakt ble hentet inn da det ble meldt behov om hjelpemiddelet tilbehøret skal brukes sammen med.",
   "oppsummering.ikkeFullmaktFordiTilbehør.innbyggerBekrefter": "Formidler bekrefter at innbygger har vært involvert og er enig i at formidler melder behov for tilbehøret. Innbygger er kjent med hvilket tilbehør formidler søker om.",
   "oppsummering.tittel": "Fullmakt",
+  "oppsummering.vedlegg.tittel": "Vedlegg",
+  "oppsummering.vedlegg.åpnerINyFane": "(PDF åpner i en ny fane)",
   "soknadvisning.tittel.soknadGjelder": "{{soknadGjelder}} for {{navnBruker}}",
   "soknadvisning.tittel.undefined": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.SØKNAD": "Søknad for {{navnBruker}}",
