@@ -52,10 +52,28 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
             </FormSummary.Answer>
           )}
           {levering.utleveringsmåte === Utleveringsmåte.ANNEN_BRUKSADRESSE && (
-            <FormSummary.Answer>
-              <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
-              <FormSummary.Value>{formaterVeiadresse(levering.annenUtleveringsadresse)}</FormSummary.Value>
-            </FormSummary.Answer>
+            <>
+              <FormSummary.Answer>
+                <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
+                <FormSummary.Value>{formaterVeiadresse(levering.annenUtleveringsadresse)}</FormSummary.Value>
+              </FormSummary.Answer>
+              {levering.annenUtleveringskommune && (
+                <FormSummary.Answer>
+                  <FormSummary.Label>{t('levering.kommune')}</FormSummary.Label>
+                  <FormSummary.Value>
+                    {levering.annenUtleveringskommune.navn} ({levering.annenUtleveringskommune.nummer})
+                  </FormSummary.Value>
+                </FormSummary.Answer>
+              )}
+              {levering.annenUtleveringsbydel && (
+                <FormSummary.Answer>
+                  <FormSummary.Label>{t('levering.bydel')}</FormSummary.Label>
+                  <FormSummary.Value>
+                    {levering.annenUtleveringsbydel.navn} ({levering.annenUtleveringsbydel.nummer})
+                  </FormSummary.Value>
+                </FormSummary.Answer>
+              )}
+            </>
           )}
           {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELBRUKER && (
             <FormSummary.Answer>
@@ -66,17 +84,18 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
           {levering.utleveringKontaktperson === Kontaktperson.HJELPEMIDDELFORMIDLER && (
             <FormSummary.Answer>
               <FormSummary.Label>{t('oppsummering.kontaktperson')}</FormSummary.Label>
-              <FormSummary.Value>{formaterPersonnavn(formidler.navn) + ' ' + t('oppsummering.hjelpemiddelformidler')}</FormSummary.Value>
+              <FormSummary.Value>
+                {formaterPersonnavn(formidler.navn) + ' ' + t('oppsummering.hjelpemiddelformidler')}
+              </FormSummary.Value>
             </FormSummary.Answer>
           )}
           {levering.utleveringKontaktperson === Kontaktperson.ANNEN_KONTAKTPERSON && levering.annenKontaktperson && (
             <FormSummary.Answer>
               <FormSummary.Label>{t('oppsummering.kontaktperson')}</FormSummary.Label>
-              <FormSummary.Value>{
-                formaterPersonnavn(levering.annenKontaktperson.navn) +
-                ' ' +
-                formaterTlf(levering.annenKontaktperson.telefon)
-              }
+              <FormSummary.Value>
+                {formaterPersonnavn(levering.annenKontaktperson.navn) +
+                  ' ' +
+                  formaterTlf(levering.annenKontaktperson.telefon)}
               </FormSummary.Value>
             </FormSummary.Answer>
           )}
