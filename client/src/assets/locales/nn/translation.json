@@ -67,6 +67,8 @@
   "oppsummering.dagliglivet": "Dagleglivet",
   "oppsummering.FolkeregistrertAdresse": "Folkeregistrert adresse",
   "oppsummering.leveringsadresse": "Leveringsadresse",
+  "oppsummering.kommune": "Kommune",
+  "oppsummering.bydel": "Bydel",
   "oppsummering.hentesHjelpemiddelsentral": "Hentast på hjelpemiddelsentralen (Føreset at din hjelpemiddelsentral har dette tilbodet)",
   "oppsummering.obs": "Obs",
   "oppsummering.alleredeUtlevertFraNav": "Alle hjelpemidla er allereie utlevert av Nav",
