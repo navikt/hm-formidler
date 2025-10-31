@@ -7,11 +7,23 @@ export interface Levering {
   annenOppfølgingsansvarlig: AnnenOppfølgingsansvarlig | undefined
   utleveringsmåte: Utleveringsmåte | undefined
   annenUtleveringsadresse: Veiadresse
+  annenUtleveringskommune: Kommune | undefined
+  annenUtleveringsbydel: Bydel | undefined
   utleveringKontaktperson: Kontaktperson | undefined
   annenKontaktperson: AnnenKontaktperson | undefined
   utleveringMerknad: string | undefined
   hast: Hast | undefined
   automatiskUtledetTilleggsinfo: LeveringTilleggsinfo[]
+}
+
+export interface Kommune {
+  nummer: string
+  navn: string
+}
+
+export interface Bydel {
+  nummer: string
+  navn: string
 }
 
 export interface Hjelpemiddelformidler {
