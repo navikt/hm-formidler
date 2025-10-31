@@ -59,7 +59,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
               </FormSummary.Answer>
               {levering.annenUtleveringskommune && (
                 <FormSummary.Answer>
-                  <FormSummary.Label>{t('levering.kommune')}</FormSummary.Label>
+                  <FormSummary.Label>{t('oppsummering.kommune')}</FormSummary.Label>
                   <FormSummary.Value>
                     {levering.annenUtleveringskommune.navn} ({levering.annenUtleveringskommune.nummer})
                   </FormSummary.Value>
@@ -67,7 +67,7 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
               )}
               {levering.annenUtleveringsbydel && (
                 <FormSummary.Answer>
-                  <FormSummary.Label>{t('levering.bydel')}</FormSummary.Label>
+                  <FormSummary.Label>{t('oppsummering.bydel')}</FormSummary.Label>
                   <FormSummary.Value>
                     {levering.annenUtleveringsbydel.navn} ({levering.annenUtleveringsbydel.nummer})
                   </FormSummary.Value>
