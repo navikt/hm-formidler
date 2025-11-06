@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - annenutelveringskommune-og-bydel
+      - oppdater-beskrivelse-status
 
 jobs:
   deploy:

@@ -111,7 +111,7 @@
   "statuser.innsendtAvDeg.tittel": "Innsendt av deg",
   "statuser.innsendtAvDeg.beskrivelse": "Formidlar har sendt inn saka. Det vil ta opptil eit døgn før saka blir synleg hos personen.",
   "statuser.underBehandling.tittel": "Under behandling",
-  "statuser.underBehandling.beskrivelse": "Saka er under behandling.",
+  "statuser.underBehandling.beskrivelse": "Me har fått saka om hjelpemiddel, og har byrja å behandla henne. Saka blir som regel behandla innan ei veke.",
   "statuser.innvilget.tittel": "Innvilga",
   "statuser.innvilget.beskrivelse": "Saka er innvilga.",
   "statuser.godkjent.tittel": "Godkjend",
