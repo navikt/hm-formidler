@@ -47,7 +47,7 @@ const SettTittel = ({ title, children }: { title: string; children?: React.React
       <Helmet htmlAttributes={{ lang: 'no' }}>
         <title>{t(title)}</title>
       </Helmet>
-      {window.appSettings.USE_MSW && <RolleSwitcher />}
+      {window.appSettings.NAIS_CLUSTER_NAME !== 'prod-gcp' && <RolleSwitcher />}
       {children}
     </>
   )

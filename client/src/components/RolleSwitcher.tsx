@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { CheckboxGroup, Checkbox, Heading, Button } from '@navikt/ds-react'
+import { CheckboxGroup, Checkbox, Heading, Button, Detail, Link } from '@navikt/ds-react'
 import styled from 'styled-components'
 import { ApplicationContext, useRoller } from '../statemanagement/ApplicationContext'
 
@@ -109,6 +109,19 @@ const RolleSwitcher = () => {
           Er pilotkommune
         </Checkbox>
       </CheckboxGroup>
+
+      {!!window.appSettings.GIT_COMMIT && (
+        <Detail>
+          Git-commit:{' '}
+          <Link
+            href={`https://github.com/navikt/hm-formidler/commit/${window.appSettings.GIT_COMMIT}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {window.appSettings.GIT_COMMIT}
+          </Link>
+        </Detail>
+      )}
     </Wrapper>
   )
 }
