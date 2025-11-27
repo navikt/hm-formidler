@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@navikt/ds-react'
-import { logNavigeringLenke } from '../utils/amplitude'
+import { logEvent, NAV_TAXONOMY } from '../utils/analytics'
 
 type LenkeMedLoggingProps = {
   href: string
@@ -19,7 +19,7 @@ const LenkeMedLogging = (props: LenkeMedLoggingProps) => {
         target={props.target}
         className={props.className}
         onClick={() => {
-          logNavigeringLenke(props.skjemaId, props.href)
+          logEvent(NAV_TAXONOMY.NAVIGERE, { destinasjon: props.href })
         }}
       >
         {props.children}

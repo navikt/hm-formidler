@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import { initDecorator } from './decorator/decorator'
 import './i18n'
-import { initAmplitude } from './utils/amplitude'
 import { initSentry } from './utils/sentry'
 
 declare global {
@@ -35,7 +34,6 @@ async function initMsw(): Promise<void> {
 const init = async () => {
   await initMsw()
   initSentry()
-  initAmplitude()
   initDecorator()
 
   createRoot(document.getElementById('root')!).render(

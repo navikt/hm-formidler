@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import SpotIllustration from '../assets/svg/illu_veileder_HMS.svg?react'
 import Tilbakeknapp from '../components/Tilbakeknapp'
 import '../stylesheet/styles.scss'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 
 interface Props {
   soknadsid: string
@@ -16,7 +16,7 @@ const SoknadVisningFeil = ({ soknadsid }: Props) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    logCustomEvent(digihot_customevents.SØKNAD_VISNING_FEILET)
+    logEvent(DIGIHOT_TAXONOMY.SØKNAD_VISNING_FEILET)
   }, [])
 
   return (

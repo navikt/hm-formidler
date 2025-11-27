@@ -7,7 +7,7 @@ import { BehovsmeldingType } from '../interfaces/CommonTypes'
 import type { SoknadInfo } from '../interfaces/SoknadInfo'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { beregnFrist, formaterDato, hentTagVariant } from '../Utils'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 
 interface Props {
@@ -92,7 +92,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
           to={`/soknad/${soknad.søknadId}`}
           onClick={() => {
             Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
-            logCustomEvent(digihot_customevents.KLIKK_ÅPNE_SØKNAD)
+            logEvent(DIGIHOT_TAXONOMY.KLIKK_ÅPNE_SØKNAD)
           }}
           style={{ textDecoration: 'none' }}
         >

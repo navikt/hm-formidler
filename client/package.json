@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@amplitude/analytics-browser": "^2.25.0",
     "@navikt/aksel-icons": "^7.31.0",
     "@navikt/ds-css": "^7.31.0",
     "@navikt/ds-react": "^7.31.0",
@@ -34,7 +33,6 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@testing-library/jest-dom": "^6.8.0",
-    "@types/amplitude-js": "^8.16.5",
     "@types/mustache": "^4.2.6",
     "@types/node": "^22.18.7",
     "@types/react": "19.1.16",

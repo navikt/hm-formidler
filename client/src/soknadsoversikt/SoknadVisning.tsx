@@ -12,7 +12,7 @@ import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmeldin
 import { API_PATH, fetcher } from '../services/rest-service'
 import Soknad from '../soknad/Soknad'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
-import { digihot_customevents, logCustomEvent, logKlikkPåSkrivUt } from '../utils/amplitude'
+import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 import SoknadVisningFeil from './SoknadVisningFeil'
 
@@ -35,14 +35,14 @@ const SoknadVisning: React.FC = () => {
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
   useEffect(() => {
-    logCustomEvent(digihot_customevents.SØKNAD_ÅPNET)
+    logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
   }, [])
 
   const printRef = useRef(null)
   const handlePrint = useReactToPrint({
     contentRef: printRef,
     documentTitle: data && t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker }),
-    onBeforePrint: async () => logKlikkPåSkrivUt(soknadsid),
+    onBeforePrint: async () => logEvent(DIGIHOT_TAXONOMY.KLIKK_SKRIV_UT),
   })
 
   if (error) {

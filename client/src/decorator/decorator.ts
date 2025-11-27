@@ -2,7 +2,6 @@ import i18next from 'i18next'
 import { type DecoratorParams, onLanguageSelect, setParams } from '@navikt/nav-dekoratoren-moduler'
 import { BASE_PATH } from '../App'
 import Cookies from 'universal-cookie'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
 
 const DECORATOR_LANGUAGE_COOKIE = 'decorator-language'
 const DEFAULT_PARAMS: DecoratorParams = {
@@ -37,7 +36,6 @@ export const initDecorator = () => {
 
 const changeLanguage = (language: string) => {
   i18next.changeLanguage(language)
-  logCustomEvent(digihot_customevents.SPRAAK_ENDRET, { språk: language })
 }
 
 export const setLanguage = (language: 'nb' | 'nn' | 'en' | 'se') => {

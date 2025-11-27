@@ -2,7 +2,7 @@ import { Button, Heading } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import environment from '../environment'
 import type { SoknadInfo } from '../interfaces/SoknadInfo'
-import { digihot_customevents, logCustomEvent } from '../utils/amplitude'
+import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 import SoknadKort from './SoknadKort'
 
@@ -23,7 +23,7 @@ const SoknadListe: React.FC<Props> = ({ alleSoknader }: Props) => {
           <Button
             variant="secondary"
             onClick={() => {
-              logCustomEvent(digihot_customevents.KLIKK_NY_SAK, { steg: -1 })
+              logEvent(DIGIHOT_TAXONOMY.KLIKK_NY_SAK, { steg: -1 })
             }}
           >
             Ny sak
