@@ -2,13 +2,17 @@
   "name": "hm-formidler",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.26.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "devDependencies": {
     "concurrently": "^9.2.1",
     "cross-env": "^10.0.0",
     "prettier": "^3.6.2"
   },
   "scripts": {
-    "dev": "npm run --prefix client dev",
-    "build": "concurrently --kill-others-on-fail \"npm run --prefix client build\""
+    "dev": "pnpm run --prefix client dev",
+    "build": "concurrently --kill-others-on-fail \"pnpm run --prefix client build\""
   }
 }

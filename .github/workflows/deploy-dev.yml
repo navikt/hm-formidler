@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - oppdater-beskrivelse-status
+      - npm_til_pnpm
 
 jobs:
   deploy:
