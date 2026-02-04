@@ -140,6 +140,7 @@
   "soknadsoversikt.soknadVisningFeil.vennligstForsok": "Dette kan skyldes treghet i systemet. Vennligst forsøk å ",
   "soknadsoversikt.soknadVisningFeil.lastInnPaNytt": "laste inn siden på nytt.",
   "soknadsoversikt.soknadVisningFeil.skrivUt": "Skriv ut sak",
+  "soknadsoversikt.soknadVisning.sakenErIkkeSendtInn": "Saken er ikke sendt inn til Nav. Personen må bekrefte og sende inn saken før Nav mottar den.",
   "frist.for.å.bekrefte": "Frist for å bekrefte er",
   "oppdatert": "Oppdatert",
   "behov": "Behov",
@@ -174,5 +175,12 @@
   "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART": "Det er uavklart om innbygger har en varig sykdom, skade eller lyte.",
   "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART_V2": "Det er uavklart om personen har en sykdom, skade eller lyte som har ført til varig og vesentlig nedsatt funksjonsevne.",
   "funksjonsbeskrivelse.personensSituasjon": "Personens funksjon",
-  "hjelpemidler.sok.rangering": "Rangering"
+  "hjelpemidler.sok.rangering": "Rangering",
+  "endreSignering.tittel": "Endre hvordan personen skal signere",
+  "endreSignering.informasjon": "Hvis personen ikke kan bekrefte og sende inn digitalt, kan du endre fra digital brukerbekreftelse til signert fullmakt. Når du har innhentet underskrift på fullmakt kan du sende inn saken på personens vegne. Saken sendes da til Nav og det er ikke lengre behov for at personen skal bekrefte.",
+  "endreSignering.informasjon.fullmaktsskjema": "Du må bruke <lenke>fullmaktsskjema fra Nav (åpner i en ny fane)</lenke>. Fullmakten skal ikke sendes inn sammen med saken. Den skal lagres i arkivet til kommunen og Nav kan be om å få se den senere.",
+  "endreSignering.bekrefteSignertFullmakt": "Jeg bekrefter at personen har signert en fullmakt på at jeg kan melde behov for hjelpemidler på personens vegne.",
+  "endreSignering.bekrefteSignertFullmakt.error": "Du må bekrefte at fullmakt er signert",
+  "endreSignering.sendSoknad": "Send søknad til Nav",
+  "endreSignering.avbryt": "Avbryt"
 }

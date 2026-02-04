@@ -140,6 +140,7 @@
   "soknadsoversikt.soknadVisningFeil.vennligstForsok": "Dette kan skuldast treighet i systemet. Ver venleg å forsøk å ",
   "soknadsoversikt.soknadVisningFeil.lastInnPaNytt": "laste inn sida på nytt.",
   "soknadsoversikt.soknadVisningFeil.skrivUt": "Skriv ut sak",
+  "soknadsoversikt.soknadVisning.sakenErIkkeSendtInn": "Saka er ikkje sendt inn til Nav. Personen må stadfesta og senda inn saka før Nav tek imot henne.",
   "frist.for.å.bekrefte": "Frist for å stadfeste er",
   "oppdatert": "Oppdatert",
   "behov": "Behov",
@@ -174,5 +175,12 @@
   "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART": "Det er uavklart om innbygger har en varig sykdom, skade eller lyte.",
   "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART_V2": "Det er uavklart om personen har ein sjukdom, skade eller lyte som har ført til varig og vesentleg nedsett funksjonsevne.",
   "funksjonsbeskrivelse.personensSituasjon": "Funksjonen til personen",
-  "hjelpemidler.sok.rangering": "Rangering"
+  "hjelpemidler.sok.rangering": "Rangering",
+  "endreSignering.tittel": "Endra korleis personen skal signera",
+  "endreSignering.informasjon": "Viss personen ikkje kan stadfesta og senda inn digitalt, kan du endra frå digital brukarstadfesting til signert fullmakt. Når du har innhenta underskrift på fullmakt kan du senda inn saka på vegner av personen. Saka blir då send til Nav og det er ikkje lengre behov for at personen skal stadfesta.",
+  "endreSignering.informasjon.fullmaktsskjema": "Du må bruka <lenke>fullmaktsskjema frå Nav (opnar i ei ny fane)</lenke>. Fullmakta skal ikkje sendast inn saman med saka. Den skal lagrast i arkivet til kommunen og Nav kan be om å få sjå den seinare.",
+  "endreSignering.bekrefteSignertFullmakt": "Eg stadfestar at personen har signert ei fullmakt på at eg kan melda behov for hjelpemiddel på vegner av personen.",
+  "endreSignering.bekrefteSignertFullmakt.error": "Du må stadfesta at fullmakt er signert",
+  "endreSignering.sendSoknad": "Send søknad til Nav",
+  "endreSignering.avbryt": "Avbryt"
 }
