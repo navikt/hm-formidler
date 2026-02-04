@@ -4,7 +4,50 @@ import type { SoknadInfo } from '../../interfaces/SoknadInfo'
 import { API_PATH } from '../../services/rest-service'
 import { sakerMock } from '../mockdata/saker'
 
+const behovsmeldingerUnderEndring = new Map<string, { status: 'PENDING' | 'FULLMAKT'; startedAt: number }>()
+
 const soknadsbehandlingDbHandlers = [
+  http.post<{ behovsmeldingId: string }>(`${API_PATH}/brukerbekreftelse-til-fullmakt`, async ({ request }) => {
+    const body = (await request.json()) as { behovsmeldingId: string }
+    const { behovsmeldingId } = body
+
+    behovsmeldingerUnderEndring.set(behovsmeldingId, {
+      status: 'PENDING',
+      startedAt: Date.now(),
+    })
+
+    setTimeout(() => {
+      const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+      if (entry) {
+        entry.status = 'FULLMAKT'
+      }
+    }, 2000)
+
+    return HttpResponse.json({ message: 'Endring til fullmakt startet' }, { status: 202 })
+  }),
+
+  http.get<{ behovsmeldingId: string }>(
+    `${API_PATH}/brukerbekreftelse-til-fullmakt/:behovsmeldingId/status`,
+    async ({ params }) => {
+      const { behovsmeldingId } = params
+      const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+
+      if (!entry) {
+        return HttpResponse.json({ error: 'Behovsmelding ikke funnet' }, { status: 404 })
+      }
+
+      const elapsedTime = Date.now() - entry.startedAt
+      if (elapsedTime >= 2000) {
+        entry.status = 'FULLMAKT'
+      }
+
+      return HttpResponse.json({
+        behovsmeldingId,
+        status: entry.status,
+        pdfKlar: entry.status === 'FULLMAKT',
+      })
+    }
+  ),
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {
     const rolle = new URL(request.url).searchParams.get('formidler')
 
