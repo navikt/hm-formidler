@@ -108,7 +108,7 @@ const SoknadVisning: React.FC = () => {
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
           </Button>
         </HStack>
-        <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+        <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
       </header>
 
       <main>

@@ -3,16 +3,20 @@ import { Avstand } from '../components/Avstand'
 import { t } from 'i18next'
 import { Trans } from 'react-i18next'
 import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 type EndreSigneringModalProps = {
   isOpen: boolean
   setModalIsOpen(isOpen: boolean): void
+  navnBruker: string | undefined
 }
 
 export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
-  const { isOpen, setModalIsOpen } = props
+  const { isOpen, setModalIsOpen, navnBruker } = props
   const [bekreftetSignertFullmakt, setBekreftetSignertFullmakt] = useState(false)
   const [harForsøktÅSendeInn, setHarForsøktÅSendeInn] = useState(false)
+  const navigate = useNavigate()
+  const { soknadsid } = useParams()
 
   const onClickSendSoknad = () => {
     if (!bekreftetSignertFullmakt) {
@@ -20,6 +24,7 @@ export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
       return
     }
     setModalIsOpen(false)
+    navigate(`/soknad/${soknadsid}/kvittering`, { state: { navnBruker } })
   }
 
   const onClickAvbryt = () => {
@@ -59,7 +64,9 @@ export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
           <CheckboxGroup
             legend={''}
             error={
-              harForsøktÅSendeInn && !bekreftetSignertFullmakt ? t('endreSignering.bekrefteSignertFullmakt.error') : undefined
+              harForsøktÅSendeInn && !bekreftetSignertFullmakt
+                ? t('endreSignering.bekrefteSignertFullmakt.error')
+                : undefined
             }
           >
             <Checkbox

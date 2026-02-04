@@ -182,5 +182,12 @@
   "endreSignering.bekrefteSignertFullmakt": "Jeg bekrefter at personen har signert en fullmakt på at jeg kan melde behov for hjelpemidler på personens vegne.",
   "endreSignering.bekrefteSignertFullmakt.error": "Du må bekrefte at fullmakt er signert",
   "endreSignering.sendSoknad": "Send søknad til Nav",
-  "endreSignering.avbryt": "Avbryt"
+  "endreSignering.avbryt": "Avbryt",
+  "endreSignering.kvittering.tittel": "Kvittering",
+  "endreSignering.kvittering.mottatt": "Vi har mottatt saken om hjelpemidler til {{navnBruker}}",
+  "endreSignering.kvittering.informasjon.saksbehandlingstid": "Forventet saksbehandlingstid hos hjelpemiddelsentralen er maksimalt 4 uker. Bestilling hos leverandør, tilpasning og utlevering kommer i tillegg.",
+  "endreSignering.kvittering.informasjon.pdf": "Hvis du trenger å skrive ut eller laste ned saken som et PDF dokument, så må du gjøre det nå. <lenke>Se innsendt søknad (PDF åpner i en ny fane).</lenke>",
+  "endreSignering.kvittering.informasjon.statusSøknader": "Du kan se status på søknaden på Dine hjelpemiddelsaker. Personen du melder behov på vegne av kan se søknaden på nav.no.",
+  "endreSignering.kvittering.dineSaker.lenke": "Dine hjelpemiddelsaker",
+  "endreSignering.kvittering.startNySak.knapp": "Start ny sak"
 }

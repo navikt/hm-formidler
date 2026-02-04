@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - npm_til_pnpm
+      - brukerbekreftelse-til-fullmakt
 
 jobs:
   deploy:
