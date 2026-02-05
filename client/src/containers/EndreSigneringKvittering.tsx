@@ -1,12 +1,12 @@
 import { Alert, BodyLong, Button, Heading, Link, LinkCard, Loader, VStack } from '@navikt/ds-react'
 import React, { useEffect, useState, useCallback } from 'react'
-import { Link as RouterLink, useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import './../stylesheet/styles.scss'
 import { Avstand } from '../components/Avstand'
 import { Trans, useTranslation } from 'react-i18next'
 import { BASE_PATH } from '../App'
 import environment from '../environment'
-import { API_PATH } from '../services/rest-service'
+import { API_PATH, SOKNAD_API_PATH } from '../services/rest-service'
 
 interface FullmaktStatus {
   behovsmeldingId: string
@@ -125,13 +125,12 @@ const EndreSigneringKvittering: React.FC = () => {
       <Avstand marginTop={6}>
         <BodyLong spacing>{t('endreSignering.kvittering.informasjon.saksbehandlingstid')}</BodyLong>
 
-        {/* TODO: Åpne PDF */}
         <BodyLong spacing>
           <Trans
             i18nKey="endreSignering.kvittering.informasjon.pdf"
             components={{
               lenke: (
-                <Link target="_blank" as={RouterLink} to={`/soknad/${soknadsid}`}>
+                <Link href={`${SOKNAD_API_PATH}/soknad/kvittering/${soknadsid}`} target="_blank">
                   {' '}
                 </Link>
               ),
