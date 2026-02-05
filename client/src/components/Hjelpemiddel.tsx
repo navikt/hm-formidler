@@ -53,7 +53,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
                       </BodyShort>
                     </HStack>
                     <HStack>
-                      <BodyLong>{hm.produkt.sortimentkategori}</BodyLong>
+                      <BodyLong>{hm.produkt.iso8Tittel}</BodyLong>
                     </HStack>
                     {hm.produkt.rangering && (
                       <Avstand marginTop={2}>
