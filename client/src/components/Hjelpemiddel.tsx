@@ -32,14 +32,14 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
                       {/* For store skjermflater */}
                       <Heading
                         level="3"
-                        size="xsmall"
+                        size="small"
                         aria-label={`Hms nummer ${hm.produkt.hmsArtNr}`}
                         className="hjelpemiddelinfo-hmsNr desktop-only"
                       >
                         {hm.produkt.hmsArtNr}
                       </Heading>
 
-                      <Heading level="3" size="xsmall" className="hjelpemiddelinfo-navn">
+                      <Heading level="3" size="small" className="hjelpemiddelinfo-navn">
                         {hm.produkt.artikkelnavn}
                       </Heading>
 
@@ -53,7 +53,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
                       </BodyShort>
                     </HStack>
                     <HStack>
-                      <BodyLong>{hm.produkt.sortimentkategori.toUpperCase()}</BodyLong>
+                      <BodyLong>{hm.produkt.sortimentkategori}</BodyLong>
                     </HStack>
                     {hm.produkt.rangering && (
                       <Avstand marginTop={2}>
