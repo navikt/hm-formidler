@@ -27,14 +27,14 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
                       {/* For store skjermflater */}
                       <Heading
                         level="4"
-                        size="xsmall"
+                        size="small"
                         aria-label={`Hms nummer ${tilbehør.hmsArtNr}`}
                         className="hjelpemiddelinfo-hmsNr desktop-only"
                       >
                         {tilbehør.hmsArtNr}
                       </Heading>
 
-                      <Heading level="4" size="xsmall" className="hjelpemiddelinfo-navn">
+                      <Heading level="4" size="small" className="hjelpemiddelinfo-navn">
                         {tilbehør.navn}
                       </Heading>
 
