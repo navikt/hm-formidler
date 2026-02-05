@@ -189,7 +189,7 @@
   "endreSignering.kvittering.informasjon.pdf": "Om du treng å skriva ut eller lasta ned saka som eit PDF dokument, så må du gjera det no. <lenke>Sjå innsend søknad (PDF opnar i ei ny fane).</lenke>",
   "endreSignering.kvittering.informasjon.statusSøknader": "Du kan sjå status på søknaden på Dine hjelpemiddelsaker. Personen du melder behov på vegner av kan sjå søknaden på nav.no.",
   "endreSignering.kvittering.dineSaker.lenke": "Dine hjelpemiddelsaker",
-  "endreSignering.kvittering.startNySak.knapp": "Start ny sak",
+  "endreSignering.kvittering.gåTilBehovsmelding.knapp": "Gå til behovsmelding",
   "endreSignering.kvittering.genererPdf": "Genererer ny PDF...",
   "endreSignering.kvittering.genererPdfFeil": "Det tok for lang tid å generera PDF. Prøv igjen seinare.",
   "endreSignering.feil.generell": "Noko gjekk gale. Prøv igjen seinare."

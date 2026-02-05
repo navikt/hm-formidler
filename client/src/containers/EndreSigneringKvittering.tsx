@@ -149,7 +149,7 @@ const EndreSigneringKvittering: React.FC = () => {
           </LinkCard>
 
           <a href={environment.SOKNAD_URL}>
-            <Button variant="secondary">{t('endreSignering.kvittering.startNySak.knapp')}</Button>
+            <Button variant="secondary">{t('endreSignering.kvittering.gåTilBehovsmelding.knapp')}</Button>
           </a>
         </VStack>
       </Avstand>

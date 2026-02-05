@@ -26,7 +26,7 @@ const SoknadListe: React.FC<Props> = ({ alleSoknader }: Props) => {
               logEvent(DIGIHOT_TAXONOMY.KLIKK_NY_SAK, { steg: -1 })
             }}
           >
-            Gå til behovsmelding
+            {t('endreSignering.kvittering.gåTilBehovsmelding.knapp')}
           </Button>
         </a>
       </div>
