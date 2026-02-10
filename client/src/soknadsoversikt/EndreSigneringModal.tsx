@@ -32,11 +32,9 @@ export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
     setIsSending(true)
     setError(null)
     try {
-      const response = await fetch(`${API_PATH}/brukerbekreftelse-til-fullmakt`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`${API_PATH}/behovsmelding/${soknadsid}/brukerbekreftelse-til-fullmakt`, {
+        method: 'PATCH',
         credentials: 'same-origin',
-        body: JSON.stringify({ behovsmeldingId: soknadsid }),
       })
 
       if (!response.ok) {

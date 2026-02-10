@@ -91,7 +91,9 @@ const SoknadVisning: React.FC = () => {
           <Box.New>
             <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
             <Avstand marginTop={3} marginBottom={3}>
-              <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+              {status === SoknadStatus.VENTER_GODKJENNING && (
+                <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+              )}
             </Avstand>
             <BodyShort>
               {t('dato.innsendt')} {formaterDato(datoOpprettet)}
@@ -101,14 +103,18 @@ const SoknadVisning: React.FC = () => {
           </Box.New>
         </div>
         <HStack className="customPanel" gap={'4'}>
-          <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
-            {t('endreSignering.tittel')}
-          </Button>
+          {status === SoknadStatus.VENTER_GODKJENNING && (
+            <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
+              {t('endreSignering.tittel')}
+            </Button>
+          )}
           <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
           </Button>
         </HStack>
-        <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
+        {status === SoknadStatus.VENTER_GODKJENNING && (
+          <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
+        )}
       </header>
 
       <main>

@@ -1,17 +1,17 @@
-import { Alert, BodyLong, Button, Heading, Link, LinkCard, Loader, VStack } from '@navikt/ds-react'
-import React, { useEffect, useState, useCallback } from 'react'
+import { Alert, BodyLong, Button, Heading, HStack, Link, LinkCard, Loader, VStack } from '@navikt/ds-react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
+import useSWR from 'swr'
 import './../stylesheet/styles.scss'
 import { Avstand } from '../components/Avstand'
 import { Trans, useTranslation } from 'react-i18next'
 import { BASE_PATH } from '../App'
 import environment from '../environment'
-import { API_PATH, SOKNAD_API_PATH } from '../services/rest-service'
+import { API_PATH, fetcher, SOKNAD_API_PATH } from '../services/rest-service'
 
 interface FullmaktStatus {
   behovsmeldingId: string
-  status: 'PENDING' | 'FULLMAKT'
-  pdfKlar: boolean
+  status: string
 }
 
 const EndreSigneringKvittering: React.FC = () => {
@@ -19,99 +19,65 @@ const EndreSigneringKvittering: React.FC = () => {
   const location = useLocation()
   const { soknadsid } = useParams()
   const { navnBruker, behovsmeldingId } = location.state || {}
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [pdfTimeout, setPdfTimeout] = useState(false)
+  const [startTime] = useState(Date.now())
 
-  const checkStatus = useCallback(async (): Promise<boolean> => {
-    const id = behovsmeldingId || soknadsid
-    if (!id) return false
+  const id = behovsmeldingId || soknadsid
 
-    try {
-      const response = await fetch(`${API_PATH}/brukerbekreftelse-til-fullmakt/${id}/status`, {
-        credentials: 'same-origin',
-      })
-
-      if (!response.ok) {
-        throw new Error('Kunne ikke hente status')
-      }
-
-      const data: FullmaktStatus = await response.json()
-      return data.pdfKlar
-    } catch (err) {
-      console.error('Feil ved statussjekk:', err)
-      return false
+  const { data: statusData } = useSWR<FullmaktStatus>(
+    id ? `${API_PATH}/behovsmelding/${id}/brukerbekreftelse-til-fullmakt/status` : null,
+    fetcher,
+    {
+      refreshInterval: (data) => {
+        if (data?.status && data.status !== 'FULLMAKT_AVVENTER_PDF') return 0
+        return 3000
+      },
+      revalidateOnFocus: false,
+      dedupingInterval: 1000,
     }
-  }, [behovsmeldingId, soknadsid])
+  )
+
+  const pdfKlar = statusData?.status !== undefined && statusData.status !== 'FULLMAKT_AVVENTER_PDF'
 
   useEffect(() => {
-    let isMounted = true
-    let retryCount = 0
-    const maxRetries = 10
-    const retryInterval = 1000
+    if (pdfKlar) return
 
-    const pollStatus = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 3000))
-
-      while (isMounted && retryCount < maxRetries) {
-        const isReady = await checkStatus()
-        if (isReady) {
-          if (isMounted) {
-            setIsLoading(false)
-          }
-          return
-        }
-        retryCount++
-        await new Promise((resolve) => setTimeout(resolve, retryInterval))
+    const timeoutId = setTimeout(() => {
+      if (!pdfKlar) {
+        setPdfTimeout(true)
       }
+    }, 30000)
 
-      if (isMounted) {
-        setError('timeout')
-        setIsLoading(false)
-      }
+    return () => clearTimeout(timeoutId)
+  }, [pdfKlar, startTime])
+
+  const pdfVisning = () => {
+    if (pdfTimeout && !pdfKlar) {
+      return <Alert variant="warning">{t('endreSignering.kvittering.genererPdfFeil')}</Alert>
     }
 
-    pollStatus()
-
-    return () => {
-      isMounted = false
+    if (!pdfKlar) {
+      return (
+        <HStack gap="2" align="center">
+          <Loader size="small" title={t('endreSignering.kvittering.genererPdf')} />
+          <BodyLong>{t('endreSignering.kvittering.genererPdf')}</BodyLong>
+        </HStack>
+      )
     }
-  }, [checkStatus])
 
-  if (isLoading) {
     return (
-      <main className="customPanel">
-        <Heading size="large" level="1" className="titleCenter">
-          {t('endreSignering.kvittering.tittel')}
-        </Heading>
-        <Avstand marginTop={6}>
-          <VStack gap="4" align="center">
-            <Loader size="xlarge" title={t('endreSignering.kvittering.genererPdf')} />
-            <BodyLong>{t('endreSignering.kvittering.genererPdf')}</BodyLong>
-          </VStack>
-        </Avstand>
-      </main>
-    )
-  }
-
-  if (error) {
-    return (
-      <main className="customPanel">
-        <Heading size="large" level="1" className="titleCenter">
-          {t('endreSignering.kvittering.tittel')}
-        </Heading>
-        <Alert variant="warning">{t('endreSignering.kvittering.genererPdfFeil')}</Alert>
-        <Avstand marginTop={4}>
-          <VStack gap="6" align="center">
-            <LinkCard>
-              <LinkCard.Title>
-                <LinkCard.Anchor href={`${BASE_PATH}/`}>
-                  {t('endreSignering.kvittering.dineSaker.lenke')}
-                </LinkCard.Anchor>
-              </LinkCard.Title>
-            </LinkCard>
-          </VStack>
-        </Avstand>
-      </main>
+      <BodyLong spacing>
+        <Trans
+          i18nKey="endreSignering.kvittering.informasjon.pdf"
+          components={{
+            lenke: (
+              <Link href={`${SOKNAD_API_PATH}/soknad/kvittering/${soknadsid}`} target="_blank">
+                {' '}
+              </Link>
+            ),
+          }}
+        ></Trans>
+      </BodyLong>
     )
   }
 
@@ -125,18 +91,7 @@ const EndreSigneringKvittering: React.FC = () => {
       <Avstand marginTop={6}>
         <BodyLong spacing>{t('endreSignering.kvittering.informasjon.saksbehandlingstid')}</BodyLong>
 
-        <BodyLong spacing>
-          <Trans
-            i18nKey="endreSignering.kvittering.informasjon.pdf"
-            components={{
-              lenke: (
-                <Link href={`${SOKNAD_API_PATH}/soknad/kvittering/${soknadsid}`} target="_blank">
-                  {' '}
-                </Link>
-              ),
-            }}
-          ></Trans>
-        </BodyLong>
+        <Avstand marginBottom={6}>{pdfVisning()}</Avstand>
 
         <BodyLong>{t('endreSignering.kvittering.informasjon.statusSøknader')}</BodyLong>
       </Avstand>

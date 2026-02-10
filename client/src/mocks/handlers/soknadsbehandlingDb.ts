@@ -4,30 +4,32 @@ import type { SoknadInfo } from '../../interfaces/SoknadInfo'
 import { API_PATH } from '../../services/rest-service'
 import { sakerMock } from '../mockdata/saker'
 
-const behovsmeldingerUnderEndring = new Map<string, { status: 'PENDING' | 'FULLMAKT'; startedAt: number }>()
+const behovsmeldingerUnderEndring = new Map<string, { status: string; startedAt: number }>()
 
 const soknadsbehandlingDbHandlers = [
-  http.post<{ behovsmeldingId: string }>(`${API_PATH}/brukerbekreftelse-til-fullmakt`, async ({ request }) => {
-    const body = (await request.json()) as { behovsmeldingId: string }
-    const { behovsmeldingId } = body
+  http.patch<{ behovsmeldingId: string }>(
+    `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt`,
+    async ({ params }) => {
+      const { behovsmeldingId } = params
 
-    behovsmeldingerUnderEndring.set(behovsmeldingId, {
-      status: 'PENDING',
-      startedAt: Date.now(),
-    })
+      behovsmeldingerUnderEndring.set(behovsmeldingId, {
+        status: 'FULLMAKT_AVVENTER_PDF',
+        startedAt: Date.now(),
+      })
 
-    setTimeout(() => {
-      const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
-      if (entry) {
-        entry.status = 'FULLMAKT'
-      }
-    }, 2000)
+      setTimeout(() => {
+        const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+        if (entry) {
+          entry.status = 'GODKJENT_MED_FULLMAKT'
+        }
+      }, 6000)
 
-    return HttpResponse.json({ message: 'Endring til fullmakt startet' }, { status: 202 })
-  }),
+      return HttpResponse.json({ message: 'Endring til fullmakt startet' }, { status: 202 })
+    }
+  ),
 
   http.get<{ behovsmeldingId: string }>(
-    `${API_PATH}/brukerbekreftelse-til-fullmakt/:behovsmeldingId/status`,
+    `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt/status`,
     async ({ params }) => {
       const { behovsmeldingId } = params
       const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
@@ -37,14 +39,13 @@ const soknadsbehandlingDbHandlers = [
       }
 
       const elapsedTime = Date.now() - entry.startedAt
-      if (elapsedTime >= 2000) {
-        entry.status = 'FULLMAKT'
+      if (elapsedTime >= 6000) {
+        entry.status = 'GODKJENT_MED_FULLMAKT'
       }
 
       return HttpResponse.json({
         behovsmeldingId,
         status: entry.status,
-        pdfKlar: entry.status === 'FULLMAKT',
       })
     }
   ),
