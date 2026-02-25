@@ -33,7 +33,7 @@ export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
     setError(null)
     try {
       const response = await fetch(`${API_PATH}/behovsmelding/${soknadsid}/brukerbekreftelse-til-fullmakt`, {
-        method: 'PUT',
+        method: 'PATCH',
         credentials: 'same-origin',
       })
 

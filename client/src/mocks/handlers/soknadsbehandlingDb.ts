@@ -7,7 +7,7 @@ import { sakerMock } from '../mockdata/saker'
 const behovsmeldingerUnderEndring = new Map<string, { status: string; startedAt: number }>()
 
 const soknadsbehandlingDbHandlers = [
-  http.put<{ behovsmeldingId: string }>(
+  http.patch<{ behovsmeldingId: string }>(
     `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt`,
     async ({ params }) => {
       const { behovsmeldingId } = params
