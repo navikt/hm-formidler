@@ -25,7 +25,7 @@ const EndreSigneringKvittering: React.FC = () => {
   const id = behovsmeldingId || soknadsid
 
   const { data: statusData } = useSWR<FullmaktStatus>(
-    id ? `${API_PATH}/behovsmelding/${id}/brukerbekreftelse-til-fullmakt/status` : null,
+    id ? `${API_PATH}/behovsmelding/${id}/status` : null,
     fetcher,
     {
       refreshInterval: (data) => {
