@@ -7,7 +7,7 @@ import { sakerMock } from '../mockdata/saker'
 const behovsmeldingerUnderEndring = new Map<string, { status: string; startedAt: number }>()
 
 const soknadsbehandlingDbHandlers = [
-  http.patch<{ behovsmeldingId: string }>(
+  http.put<{ behovsmeldingId: string }>(
     `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt`,
     async ({ params }) => {
       const { behovsmeldingId } = params
@@ -29,18 +29,13 @@ const soknadsbehandlingDbHandlers = [
   ),
 
   http.get<{ behovsmeldingId: string }>(
-    `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt/status`,
+    `${API_PATH}/behovsmelding/:behovsmeldingId/status`,
     async ({ params }) => {
       const { behovsmeldingId } = params
       const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
 
       if (!entry) {
         return HttpResponse.json({ error: 'Behovsmelding ikke funnet' }, { status: 404 })
-      }
-
-      const elapsedTime = Date.now() - entry.startedAt
-      if (elapsedTime >= 6000) {
-        entry.status = 'GODKJENT_MED_FULLMAKT'
       }
 
       return HttpResponse.json({
