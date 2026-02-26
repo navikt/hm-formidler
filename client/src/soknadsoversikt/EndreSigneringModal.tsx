@@ -93,11 +93,7 @@ export const EndreSigneringModal = (props: EndreSigneringModalProps) => {
         <Avstand marginTop={4} marginBottom={4}>
           <CheckboxGroup
             legend={''}
-            error={
-              harForsøktÅSendeInn && !bekreftetSignertFullmakt
-                ? t('endreSignering.bekrefteSignertFullmakt.error')
-                : undefined
-            }
+            error={harForsøktÅSendeInn && !bekreftetSignertFullmakt && t('endreSignering.bekrefteSignertFullmakt.error')}
           >
             <Checkbox
               checked={bekreftetSignertFullmakt}
