@@ -26,7 +26,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
             <FormSummary.Label className="screenreaderOnly">{t('oppsummering.label')}</FormSummary.Label>
             <FormSummary.Value className={sharedStyles.formheaderValue}>
               <Bleed marginInline="4" marginBlock="4 0">
-                <Box.New background="brand-blue-soft" borderRadius="large large 0 0" marginBlock="0 4">
+                <Box background="brand-blue-soft" borderRadius="large large 0 0" marginBlock="0 4">
                   <div style={{ padding: '1rem' }}>
                     <HStack>
                       {/* For store skjermflater */}
@@ -61,7 +61,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
                       </Avstand>
                     )}
                   </div>
-                </Box.New>
+                </Box>
               </Bleed>
             </FormSummary.Value>
           </FormSummary.Answer>
@@ -112,7 +112,7 @@ const Hjelpemiddelinfo: React.FC<HjelpemiddelProps> = (props: HjelpemiddelProps)
         </FormSummary.Answers>
       </FormSummary.Value>
     </FormSummary.Answer>
-  )
+  );
 }
 
 export default Hjelpemiddelinfo

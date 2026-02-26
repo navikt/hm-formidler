@@ -86,9 +86,9 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   return (
     <div style={{ marginBottom: '0.5rem' }}>
       {erSlettet ? (
-        <Box.New borderWidth="1" borderRadius="xlarge" padding="4" background="default">
+        <Box borderWidth="1" borderRadius="xlarge" padding="4" background="default">
           {panelInnholdSlettet}
-        </Box.New>
+        </Box>
       ) : (
         <Link
           to={`/soknad/${soknad.søknadId}`}
@@ -102,7 +102,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         </Link>
       )}
     </div>
-  )
+  );
 }
 
 export default SoknadKort
