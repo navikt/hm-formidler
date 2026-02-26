@@ -1,7 +1,7 @@
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
-import { BodyShort, Box, Button, Heading, Loader, Tag } from '@navikt/ds-react'
+import { BodyShort, Box, Button, Heading, HStack, Loader, Tag } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
@@ -15,6 +15,7 @@ import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 import SoknadVisningFeil from './SoknadVisningFeil'
+import { EndreSigneringModal } from './EndreSigneringModal'
 
 interface ParamTypes extends Record<string, string> {
   soknadsid: string
@@ -39,6 +40,12 @@ const SoknadVisning: React.FC = () => {
   }, [])
 
   const printRef = useRef(null)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  const handleOpenEndreSigneringModal = () => {
+    setModalIsOpen(true)
+  }
+
   const handlePrint = useReactToPrint({
     contentRef: printRef,
     documentTitle: data && t(`soknadvisning.tittel.${data.behovsmeldingType}`, { navnBruker: data.navnBruker }),
@@ -67,42 +74,54 @@ const SoknadVisning: React.FC = () => {
 
   return (
     <>
-      <div>
-        <header>
-          <div className="customPanel">
-            <Link to="/" style={{ marginBottom: '0.5rem' }}>
-              <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
-              {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
-            </Link>
-          </div>
-          <div className="banner" style={{ display: 'flex' }}>
-            <Heading level="1" size="xlarge">
-              {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
-            </Heading>
-            <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
-              {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+      <header>
+        <div className="customPanel">
+          <Link to="/" style={{ marginBottom: '0.5rem' }}>
+            <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
+            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
+          </Link>
+        </div>
+        <div className="banner">
+          <Heading level="1" size="xlarge">
+            {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
+          </Heading>
+        </div>
+        <Avstand marginBottom={6} />
+        <div className="customPanel">
+          <Box.New>
+            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+            <Avstand marginTop={3} marginBottom={3}>
+              {status === SoknadStatus.VENTER_GODKJENNING && (
+                <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+              )}
+            </Avstand>
+            <BodyShort>
+              {t('dato.innsendt')} {formaterDato(datoOpprettet)}
+              <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
+              {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
+            </BodyShort>
+          </Box.New>
+        </div>
+        <HStack className="customPanel" gap={'4'}>
+          {status === SoknadStatus.VENTER_GODKJENNING && (
+            <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
+              {t('endreSignering.tittel')}
             </Button>
-          </div>
-          <Avstand marginBottom={6} />
-          <div className="customPanel">
-            <Box.New background="default" padding="4" borderRadius="large" borderWidth="1">
-              <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
-              <Avstand marginBottom={3} />
-              <BodyShort>
-                {t('dato.innsendt')} {formaterDato(datoOpprettet)}
-                <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
-                {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
-              </BodyShort>
-            </Box.New>
-          </div>
-        </header>
+          )}
+          <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
+            {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+          </Button>
+        </HStack>
+        {status === SoknadStatus.VENTER_GODKJENNING && (
+          <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
+        )}
+      </header>
 
-        <main>
-          <div className="customPanel">
-            <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
-          </div>
-        </main>
-      </div>
+      <main>
+        <div className="customPanel">
+          <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
+        </div>
+      </main>
     </>
   )
 }

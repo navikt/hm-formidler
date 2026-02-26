@@ -4,7 +4,46 @@ import type { SoknadInfo } from '../../interfaces/SoknadInfo'
 import { API_PATH } from '../../services/rest-service'
 import { sakerMock } from '../mockdata/saker'
 
+const behovsmeldingerUnderEndring = new Map<string, { status: string; startedAt: number }>()
+
 const soknadsbehandlingDbHandlers = [
+  http.patch<{ behovsmeldingId: string }>(
+    `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt`,
+    async ({ params }) => {
+      const { behovsmeldingId } = params
+
+      behovsmeldingerUnderEndring.set(behovsmeldingId, {
+        status: 'FULLMAKT_AVVENTER_PDF',
+        startedAt: Date.now(),
+      })
+
+      setTimeout(() => {
+        const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+        if (entry) {
+          entry.status = 'GODKJENT_MED_FULLMAKT'
+        }
+      }, 6000)
+
+      return HttpResponse.json({ message: 'Endring til fullmakt startet' }, { status: 202 })
+    }
+  ),
+
+  http.get<{ behovsmeldingId: string }>(
+    `${API_PATH}/behovsmelding/:behovsmeldingId/status`,
+    async ({ params }) => {
+      const { behovsmeldingId } = params
+      const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+
+      if (!entry) {
+        return HttpResponse.json({ error: 'Behovsmelding ikke funnet' }, { status: 404 })
+      }
+
+      return HttpResponse.json({
+        behovsmeldingId,
+        status: entry.status,
+      })
+    }
+  ),
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {
     const rolle = new URL(request.url).searchParams.get('formidler')
 

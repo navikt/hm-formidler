@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import { Routes as ReactRouterRoutes, Route } from 'react-router-dom'
 import RolleSwitcher from './components/RolleSwitcher'
+import EndreSigneringKvittering from './containers/EndreSigneringKvittering'
 import Feilside from './containers/Feilside'
 import Tilgangside from './containers/Tilgangside'
 import SoknadVisning from './soknadsoversikt/SoknadVisning'
@@ -31,6 +32,14 @@ const Routes: React.FC = () => {
         element={
           <SettTittel title="helmet.title.feilside">
             <Feilside />
+          </SettTittel>
+        }
+      />
+      <Route
+        path="/soknad/:soknadsid/kvittering"
+        element={
+          <SettTittel title="helmet.title.kvittering">
+            <EndreSigneringKvittering />
           </SettTittel>
         }
       />

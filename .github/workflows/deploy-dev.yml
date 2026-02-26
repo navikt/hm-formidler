@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - justering-fontstorrelse
+      - brukerbekreftelse-til-fullmakt
 
 jobs:
   deploy:
