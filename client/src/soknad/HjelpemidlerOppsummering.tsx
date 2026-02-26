@@ -27,7 +27,7 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
           <TilbehørVisning tilbehør={tilbehør} key={index} />
         ))}
       </FormSummary.Answers>
-      <HStack wrap={false} gap="2" marginInline="5 5" marginBlock="0 4">
+      <HStack wrap={false} gap="space-2" marginInline="space-20" marginBlock="space-0 space-16">
         <BodyShort>
           {t('felles.tilsvarendeProdukt')}
         </BodyShort>

@@ -58,7 +58,7 @@ const EndreSigneringKvittering: React.FC = () => {
 
     if (!pdfKlar) {
       return (
-        <HStack gap="2" align="center">
+        <HStack gap="space-8" align="center">
           <Loader size="small" title={t('endreSignering.kvittering.genererPdf')} />
           <BodyLong>{t('endreSignering.kvittering.genererPdf')}</BodyLong>
         </HStack>
@@ -96,7 +96,7 @@ const EndreSigneringKvittering: React.FC = () => {
         <BodyLong>{t('endreSignering.kvittering.informasjon.statusSøknader')}</BodyLong>
       </Avstand>
       <Avstand marginTop={4}>
-        <VStack gap="6" align="center">
+        <VStack gap="space-20" align="center">
           <LinkCard>
             <LinkCard.Title>
               <LinkCard.Anchor href={`${BASE_PATH}/`}>{t('endreSignering.kvittering.dineSaker.lenke')}</LinkCard.Anchor>

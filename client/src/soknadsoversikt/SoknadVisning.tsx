@@ -104,7 +104,7 @@ const SoknadVisning: React.FC = () => {
             </BodyShort>
           </Box>
         </div>
-        <HStack className="customPanel" gap={'4'}>
+        <HStack className="customPanel" gap={'space-16'}>
           {status === SoknadStatus.VENTER_GODKJENNING && (
             <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
               {t('endreSignering.tittel')}

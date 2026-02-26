@@ -22,7 +22,7 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
             </FormSummary.Label>
             <FormSummary.Value>
               <VStack style={{ width: '100%' }} >
-                <HStack gap="4" justify="space-between" wrap={false}>
+                <HStack gap="space-4" justify="space-between" wrap={false}>
                   <BodyShort>{`${tilbehør.hmsArtNr}`}</BodyShort>
                   <BodyShort>{`${tilbehør.navn}`}</BodyShort>
                   <Spacer />
