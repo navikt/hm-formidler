@@ -155,6 +155,7 @@
   "hjelpemiddelinfo.bytte.årsak.FEIL_STØRRELSE": "feil storleik",
   "hjelpemiddelinfo.bytte.årsak.VURDERT_SOM_ØDELAGT_AV_LOKAL_TEKNIKER": "øydelagt, etter vurdering av lokal teknikar",
   "dato.innsendt": "Innsendt",
+  "dato.sendtTilBrukerbekreftelse": "Sendt til stadfesting",
   "dato.oppdatert": "Sist oppdatert",
   "hast.prioritet": "Prioritet",
   "hast.sakenHaster": "Saka haster",

@@ -72,6 +72,8 @@ const SoknadVisning: React.FC = () => {
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
 
+  const innsendtTekst = status === SoknadStatus.VENTER_GODKJENNING ? t('dato.sendtTilBrukerbekreftelse') : t('dato.innsendt')
+
   return (
     <>
       <header>
@@ -96,7 +98,7 @@ const SoknadVisning: React.FC = () => {
               )}
             </Avstand>
             <BodyShort>
-              {t('dato.innsendt')} {formaterDato(datoOpprettet)}
+              {innsendtTekst} {formaterDato(datoOpprettet)}
               <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
               {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>

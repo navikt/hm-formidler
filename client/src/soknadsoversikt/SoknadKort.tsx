@@ -19,6 +19,8 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
 
   const erSlettet = soknad.status === SoknadStatus.SLETTET || soknad.status === SoknadStatus.UTLØPT
 
+  const innsendtTekst = soknad.status === SoknadStatus.VENTER_GODKJENNING ? t('dato.sendtTilBrukerbekreftelse') : t('dato.innsendt')
+
   const panelInnhold = (
     <>
       <LinkCard style={{ border: '1px solid' }}>
@@ -40,7 +42,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
           )}
 
           <BodyShort>
-            {t('dato.innsendt')} {formaterDato(soknad.datoOpprettet)}
+            {innsendtTekst} {formaterDato(soknad.datoOpprettet)}
             <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
             {t('dato.oppdatert')} {formaterDato(soknad.datoOppdatert)}
           </BodyShort>
@@ -74,7 +76,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
       )}
 
       <BodyShort>
-        {t('dato.innsendt')} {formaterDato(soknad.datoOpprettet)}
+        {innsendtTekst} {formaterDato(soknad.datoOpprettet)}
         <span style={{ whiteSpace: 'pre', color: 'var(--a-border-divider)' }}> | </span>
         {t('dato.oppdatert')} {formaterDato(soknad.datoOppdatert)}
       </BodyShort>
