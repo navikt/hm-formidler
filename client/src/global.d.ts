@@ -1,1 +1,1 @@
-declare module '@navikt/ds-css/darkside'
+declare module '@navikt/ds-css'
