@@ -91,7 +91,7 @@ const SoknadVisning: React.FC = () => {
         <Avstand marginBottom={6} />
         <div className="customPanel">
           <Box>
-            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+            <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
             <Avstand marginTop={3} marginBottom={3}>
               {status === SoknadStatus.VENTER_GODKJENNING && (
                 <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>

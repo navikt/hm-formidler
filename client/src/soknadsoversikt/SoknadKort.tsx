@@ -31,7 +31,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         </LinkCard.Description>
 
         <LinkCard.Footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
+          <Tag variant="moderate" data-color={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
             {t(soknad.status)}
           </Tag>
 
@@ -63,7 +63,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
 
       <Avstand marginBottom={6} />
 
-      <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
+      <Tag variant="moderate" data-color={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
         {t(soknad.status)}
       </Tag>
 
