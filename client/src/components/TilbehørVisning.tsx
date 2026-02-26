@@ -19,8 +19,8 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
           <FormSummary.Answer className={sharedStyles.formheaderAnswer}>
             <FormSummary.Label className="screenreaderOnly">{t('oppsummering.label')}</FormSummary.Label>
             <FormSummary.Value className={sharedStyles.formheaderValue}>
-              <Bleed marginInline="4" marginBlock="4 0">
-                <Box.New background="brand-blue-soft" borderRadius="large large 0 0" marginBlock="0 4">
+              <Bleed marginInline="space-4" marginBlock="space-4 space-0">
+                <Box background="info-soft" borderRadius="12 12 0 0" marginBlock="space-0 space-4">
                   <div style={{ padding: '1rem' }}>
                     <Detail uppercase>{t('leggTilEllerEndre.tilbehor')}</Detail>
                     <HStack>
@@ -48,7 +48,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
                       </BodyShort>
                     </HStack>
                   </div>
-                </Box.New>
+                </Box>
               </Bleed>
             </FormSummary.Value>
           </FormSummary.Answer>
@@ -60,7 +60,7 @@ const TilbehørVisning = ({ tilbehør }: Props) => {
         </FormSummary.Answers>
       </FormSummary.Value>
     </FormSummary.Answer>
-  )
+  );
 }
 
 export default TilbehørVisning

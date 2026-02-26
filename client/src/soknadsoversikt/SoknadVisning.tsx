@@ -90,8 +90,8 @@ const SoknadVisning: React.FC = () => {
         </div>
         <Avstand marginBottom={6} />
         <div className="customPanel">
-          <Box.New>
-            <Tag variant={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
+          <Box>
+            <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
             <Avstand marginTop={3} marginBottom={3}>
               {status === SoknadStatus.VENTER_GODKJENNING && (
                 <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
@@ -102,9 +102,9 @@ const SoknadVisning: React.FC = () => {
               <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
               {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
             </BodyShort>
-          </Box.New>
+          </Box>
         </div>
-        <HStack className="customPanel" gap={'4'}>
+        <HStack className="customPanel" gap={'space-16'}>
           {status === SoknadStatus.VENTER_GODKJENNING && (
             <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
               {t('endreSignering.tittel')}
@@ -118,14 +118,13 @@ const SoknadVisning: React.FC = () => {
           <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
         )}
       </header>
-
       <main>
         <div className="customPanel">
           <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
         </div>
       </main>
     </>
-  )
+  );
 }
 
 export default SoknadVisning

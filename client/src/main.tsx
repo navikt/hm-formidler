@@ -1,4 +1,4 @@
-import '@navikt/ds-css/darkside'
+import '@navikt/ds-css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'

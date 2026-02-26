@@ -79,15 +79,15 @@ export const fokusOgScrollTilFeiloppsummering = (feiloppsummeringRef: RefObject<
 export const hentTagVariant = (
   status: SoknadStatus | undefined,
   valgteÅrsaker: string[] | undefined
-): TagProps['variant'] => {
-  let etikettType: TagProps['variant']
+): TagProps['data-color'] => {
+  let etikettType: TagProps['data-color']
   switch (status) {
     case SoknadStatus.SLETTET:
     case SoknadStatus.UTLØPT:
-      etikettType = 'error'
+      etikettType = 'danger'
       break
     case SoknadStatus.VEDTAKSRESULTAT_AVSLÅTT:
-      etikettType = 'error'
+      etikettType = 'danger'
       break
     case SoknadStatus.VENTER_GODKJENNING:
     case SoknadStatus.VEDTAKSRESULTAT_DELVIS_INNVILGET:

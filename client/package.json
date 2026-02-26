@@ -11,9 +11,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@navikt/aksel-icons": "^7.31.0",
-    "@navikt/ds-css": "^7.31.0",
-    "@navikt/ds-react": "^7.31.0",
+    "@navikt/aksel-icons": "^8.6.0",
+    "@navikt/ds-css": "^8.6.0",
+    "@navikt/ds-react": "^8.6.0",
     "@navikt/nav-dekoratoren-moduler": "3.4.0",
     "@sentry/browser": "^10.17.0",
     "@sentry/react": "^10.17.0",

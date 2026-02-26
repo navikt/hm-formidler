@@ -31,7 +31,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         </LinkCard.Description>
 
         <LinkCard.Footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
+          <Tag variant="moderate" data-color={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
             {t(soknad.status)}
           </Tag>
 
@@ -63,7 +63,7 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
 
       <Avstand marginBottom={6} />
 
-      <Tag variant={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
+      <Tag variant="moderate" data-color={hentTagVariant(soknad.status, soknad.valgteÅrsaker)} size="small">
         {t(soknad.status)}
       </Tag>
 
@@ -86,9 +86,9 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
   return (
     <div style={{ marginBottom: '0.5rem' }}>
       {erSlettet ? (
-        <Box.New borderWidth="1" borderRadius="xlarge" padding="4" background="default">
+        <Box borderWidth="1" borderRadius="12" paddingInline="space-20" paddingBlock="space-16">
           {panelInnholdSlettet}
-        </Box.New>
+        </Box>
       ) : (
         <Link
           to={`/soknad/${soknad.søknadId}`}
