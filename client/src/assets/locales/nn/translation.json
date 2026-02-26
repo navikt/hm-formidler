@@ -177,7 +177,7 @@
   "funksjonsbeskrivelse.innbyggersVarigeFunksjonsnedsettelse.UAVKLART_V2": "Det er uavklart om personen har ein sjukdom, skade eller lyte som har ført til varig og vesentleg nedsett funksjonsevne.",
   "funksjonsbeskrivelse.personensSituasjon": "Funksjonen til personen",
   "hjelpemidler.sok.rangering": "Rangering",
-  "endreSignering.tittel": "Endra korleis personen skal signera",
+  "endreSignering.tittel": "Endre frå stadfesting til fullmakt",
   "endreSignering.informasjon": "Viss personen ikkje kan stadfesta og senda inn digitalt, kan du endra frå digital brukarstadfesting til signert fullmakt. Når du har innhenta underskrift på fullmakt kan du senda inn saka på vegner av personen. Saka blir då send til Nav og det er ikkje lengre behov for at personen skal stadfesta.",
   "endreSignering.informasjon.fullmaktsskjema": "Du må bruka <lenke>fullmaktsskjema frå Nav (opnar i ei ny fane)</lenke>. Fullmakta skal ikkje sendast inn saman med saka. Den skal lagrast i arkivet til kommunen og Nav kan be om å få sjå den seinare.",
   "endreSignering.bekrefteSignertFullmakt": "Eg stadfestar at personen har signert ei fullmakt på at eg kan melda behov for hjelpemiddel på vegner av personen.",
