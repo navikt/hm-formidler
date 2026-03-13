@@ -2,6 +2,7 @@ import React from 'react'
 import { BodyShort, VStack, HStack, Spacer, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import type { Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import OpplysningVisning from '../soknad/OpplysningVisning'
 import { Avstand } from './Avstand'
 
 type TilbehoerinfoProps = {
@@ -14,34 +15,43 @@ const Tilbehoerinfo: React.FC<TilbehoerinfoProps> = (props: TilbehoerinfoProps) 
 
   return (
     <>
-      {
-        tilbehoerListe.map((tilbehør, index) => (
-          <FormSummary.Answer key={`tilbehør-${index}`} data-cy="tilbehør-rad">
-            <FormSummary.Label>
-              {t('leggTilEllerEndre.tilbehor')}
-            </FormSummary.Label>
-            <FormSummary.Value>
-              <VStack style={{ width: '100%' }} >
-                <HStack gap="space-4" justify="space-between" wrap={false}>
-                  <BodyShort>{`${tilbehør.hmsArtNr}`}</BodyShort>
-                  <BodyShort>{`${tilbehør.navn}`}</BodyShort>
-                  <Spacer />
-                  <BodyShort data-cy="tilbehør-antall" align="end" style={{ flex: '0 0 4rem' }}>
-                    {t('handlekurv.tilbehoer.antall', { antall: tilbehør.antall })}
-                  </BodyShort>
-                </HStack>
-                {tilbehør.begrunnelse && (
-                  <Avstand marginTop={4}>
-                    <BodyShort spacing weight="semibold">
-                      {t('handlekurv.tilbehoer.begrunnelse')}
+      {tilbehoerListe.map((tilbehør) => {
+        const tilbehoerKey = `${tilbehør.hmsArtNr}-${tilbehør.navn}-${tilbehør.antall}`
+
+        return (
+          <React.Fragment key={tilbehoerKey}>
+            <FormSummary.Answer data-cy="tilbehør-rad">
+              <FormSummary.Label>{t('leggTilEllerEndre.tilbehor')}</FormSummary.Label>
+              <FormSummary.Value>
+                <VStack style={{ width: '100%' }}>
+                  <HStack gap="space-4" justify="space-between" wrap={false}>
+                    <BodyShort>{`${tilbehør.hmsArtNr}`}</BodyShort>
+                    <BodyShort>{`${tilbehør.navn}`}</BodyShort>
+                    <Spacer />
+                    <BodyShort data-cy="tilbehør-antall" align="end" style={{ flex: '0 0 4rem' }}>
+                      {t('handlekurv.tilbehoer.antall', { antall: tilbehør.antall })}
                     </BodyShort>
-                    <BodyShort data-cy="tilbehør-begrunnelse">{tilbehør.begrunnelse}</BodyShort>
-                  </Avstand>
-                )}
-              </VStack>
-            </FormSummary.Value>
-          </FormSummary.Answer>
-        ))}
+                  </HStack>
+                  {tilbehør.begrunnelse && (
+                    <Avstand marginTop={4}>
+                      <BodyShort spacing weight="semibold">
+                        {t('handlekurv.tilbehoer.begrunnelse')}
+                      </BodyShort>
+                      <BodyShort data-cy="tilbehør-begrunnelse">{tilbehør.begrunnelse}</BodyShort>
+                    </Avstand>
+                  )}
+                </VStack>
+              </FormSummary.Value>
+            </FormSummary.Answer>
+            {tilbehør.opplysninger.map((opplysning) => (
+              <OpplysningVisning
+                opplysning={opplysning}
+                key={`${tilbehoerKey}-${opplysning.ledetekst.nb}-${opplysning.ledetekst.nn}`}
+              />
+            ))}
+          </React.Fragment>
+        )
+      })}
     </>
   )
 }
