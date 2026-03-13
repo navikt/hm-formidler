@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - brukerbekreftelse-til-fullmakt
+      - opplysninger-tilbehor
 
 jobs:
   deploy:
