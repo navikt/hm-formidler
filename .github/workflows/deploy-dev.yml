@@ -9,7 +9,7 @@ on:
       - 'CODEOWNERS'
     branches:
       - main
-      - opplysninger-tilbehor
+      - altinn3
 
 jobs:
   deploy:
