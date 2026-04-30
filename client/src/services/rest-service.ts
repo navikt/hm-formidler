@@ -1,7 +1,7 @@
 import { ApiError } from '../types/errors'
 
 export const API_PATH = '/hjelpemidler/formidler/api'
-export const ROLLER_PATH = '/hjelpemidler/formidler/roller-api/api/roller-altinn3'
+export const ROLLER_PATH = '/hjelpemidler/formidler/roller-api/api/roller'
 export const SOKNAD_API_PATH = '/hjelpemidler/formidler/soknad-api/hm'
 
 const fetchGet: (url: string) => Promise<Response> = (url) => {
