@@ -7,6 +7,7 @@ export interface Levering {
   annenOppfølgingsansvarlig: AnnenOppfølgingsansvarlig | undefined
   utleveringsmåte: Utleveringsmåte | undefined
   annenUtleveringsadresse: Veiadresse
+  annenUtleveringMottaker: string | undefined
   annenUtleveringskommune: Kommune | undefined
   annenUtleveringsbydel: Bydel | undefined
   utleveringKontaktperson: Kontaktperson | undefined

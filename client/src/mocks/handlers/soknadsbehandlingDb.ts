@@ -2035,6 +2035,7 @@ const soknadsbehandlingDbHandlers = [
             postnummer: '4550',
             poststed: 'FARSUND',
           },
+          annenUtleveringMottaker: 'Andeby omsorgsbolig',
           utleveringKontaktperson: 'ANNEN_KONTAKTPERSON',
           annenKontaktperson: {
             navn: {
