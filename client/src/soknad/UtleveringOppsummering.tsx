@@ -57,6 +57,12 @@ const UtleveringOppsummering: React.FC<LeveringProps> = (props: LeveringProps) =
                 <FormSummary.Label>{t('oppsummering.leveringsadresse')}</FormSummary.Label>
                 <FormSummary.Value>{formaterVeiadresse(levering.annenUtleveringsadresse)}</FormSummary.Value>
               </FormSummary.Answer>
+              {levering.annenUtleveringMottaker && (
+                <FormSummary.Answer>
+                  <FormSummary.Label>{t('oppsummering.annenUtleveringMottaker')}</FormSummary.Label>
+                  <FormSummary.Value>{levering.annenUtleveringMottaker}</FormSummary.Value>
+                </FormSummary.Answer>
+              )}
               {levering.annenUtleveringskommune && (
                 <FormSummary.Answer>
                   <FormSummary.Label>{t('oppsummering.kommune')}</FormSummary.Label>
