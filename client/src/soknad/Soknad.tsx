@@ -52,6 +52,7 @@ const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
               hjelpemiddelTotalAntall={behovsmelding.hjelpemidler.totaltAntall}
               hjelpemidler={behovsmelding.hjelpemidler.hjelpemidler}
               tilbehør={behovsmelding.hjelpemidler.tilbehør}
+              produktkategorier={behovsmelding.hjelpemidler.produktkategorier}
             />
           </Avstand>
 

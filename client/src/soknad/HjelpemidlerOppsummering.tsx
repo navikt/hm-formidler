@@ -2,19 +2,21 @@ import React from 'react'
 import { BodyShort, HStack, FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import Hjelpemiddelinfo from '../components/Hjelpemiddel'
-import { type Hjelpemiddel, type Tilbehør } from '../interfaces/Innsenderbehovsmelding'
+import { type Hjelpemiddel, type Produktkategori, type Tilbehør } from '../interfaces/Innsenderbehovsmelding'
 import FixedWidthLabel from '../components/FixedWidthLabel'
 import TilbehørVisning from '../components/TilbehørVisning'
+import ProduktkategoriVisning from '../components/ProduktkategoriVisning'
 
 type HjelpemidlerProps = {
   hjelpemiddelTotalAntall: number
   hjelpemidler: Hjelpemiddel[]
   tilbehør: Tilbehør[]
+  produktkategorier: Produktkategori[]
 }
 
 const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: HjelpemidlerProps) => {
   const { t } = useTranslation()
-  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør } = props
+  const { hjelpemiddelTotalAntall, hjelpemidler, tilbehør, produktkategorier } = props
 
   return (
     <FormSummary>
@@ -25,6 +27,9 @@ const HjelpemidlerOppsummering: React.FC<HjelpemidlerProps> = (props: Hjelpemidl
         ))}
         {tilbehør.map((tilbehør: Tilbehør, index) => (
           <TilbehørVisning tilbehør={tilbehør} key={index} />
+        ))}
+        {produktkategorier.map((produktkategori: Produktkategori, index) => (
+          <ProduktkategoriVisning produktkategori={produktkategori} key={index} />
         ))}
       </FormSummary.Answers>
       <HStack wrap={false} gap="space-2" marginInline="space-20" marginBlock="space-0 space-16">

@@ -131,6 +131,7 @@ const soknadsbehandlingDbHandlers = [
                   antall: 1,
                   begrunnelse: null,
                   fritakFraBegrunnelseÅrsak: 'ER_PÅ_BESTILLINGSORDNING',
+                  opplysninger: [],
                 },
               ],
               bytter: [],
@@ -163,7 +164,278 @@ const soknadsbehandlingDbHandlers = [
             },
           ],
           tilbehør: [],
-          totaltAntall: 2,
+          "produktkategorier": [
+            {
+              "id": "8073f190-3b1c-43b8-a5d0-38f224e53605",
+              "type": "LYDOVERFØRINGSANLEGG",
+              "navn": "Lydoverføringsanlegg",
+              "antall": 1,
+              "delkontrakttittel": "8: Samtaleanlegg med høyttaler(e)",
+              "bruksarenaer": [
+                "GRUNN_ELLER_VIDEREGÅENDE_SKOLE"
+              ],
+              "opplysninger": [
+                {
+                  "key": {
+                    "id": "BRUKSARENA",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Bruksarena",
+                    "nn": "Bruksarena"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "På skolen som grunnskole eller videregående skole.",
+                        "nn": "På skulen som grunnskule eller vidaregåande skule."
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_SKOLE_ANTALL_ELEVER_I_KLASSEN",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Hvor mange elever er det i klassen?",
+                    "nn": "Hvor mange elever er det i klassen?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "4",
+                        "nn": "4"
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_SKOLE_HVORDAN_SITTER_ELEVENE",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Hvordan sitter elevene når undervisningen foregår?",
+                    "nn": "Hvordan sitter elevene når undervisningen foregår?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": "på pinebenken",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_SKOLE_ANTALL_LÆRERE",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Hvor mange lærere er det i klassen?",
+                    "nn": "Hvor mange lærere er det i klassen?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "To lærere (eller flere)",
+                        "nn": "To lærere (eller flere)"
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_SKOLE_ANTALL_KLASSEROM",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Bruker eleven ett eler flere klasserom?",
+                    "nn": "Bruker eleven ett eler flere klasserom?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "Eleven bruker daglig flere klasserom",
+                        "nn": "Eleven bruker daglig flere klasserom"
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_SKOLE_KLASSEROM_BESKRIVELSE",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Beskriv hvordan undervisning er organisert.",
+                    "nn": "Beskriv hvordan undervisning er organisert."
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": "bytter klasserom annenhver dag",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_BRUKER_HØREAPPARAT_DAGLIG",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Bruker personen høreapparat daglig?",
+                    "nn": "Bruker personen høreapparat daglig?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "Ja",
+                        "nn": "Ja"
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_HØREAPPARAT_TYPE",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Hvilket høreapparat har personen?",
+                    "nn": "Hvilket høreapparat har personen?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": "Advanced Bionics (CI)",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_HØREAPPARAT_FARGE",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Hvilken farge har apparatet?",
+                    "nn": "Hvilken farge har apparatet?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": "Infrarød",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_HØREAPPARAT_BRUKT_OVER_ETT_ÅR",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Har personen brukt høreapparat i over ett år?",
+                    "nn": "Har personen brukt høreapparat i over ett år?"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": null,
+                      "forhåndsdefinertTekst": {
+                        "nb": "Ja",
+                        "nn": "Ja"
+                      },
+                      "begrepsforklaring": null,
+                      "ledetekst": null
+                    }
+                  ],
+                  "innholdstype": "TEKST"
+                },
+                {
+                  "key": {
+                    "id": "LYDOVEFØRINGSANLEGG_KONTAKTPERSON",
+                    "versjon": 1
+                  },
+                  "ledetekst": {
+                    "nb": "Kontaktperson",
+                    "nn": "Kontaktperson"
+                  },
+                  "innhold": [
+                    {
+                      "fritekst": "Lars Monsen",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": {
+                        "nb": "Navn",
+                        "nn": "Navn"
+                      }
+                    },
+                    {
+                      "fritekst": "Uavhengig",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": {
+                        "nb": "Stilling",
+                        "nn": "Stilling"
+                      }
+                    },
+                    {
+                      "fritekst": "12121212",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": {
+                        "nb": "Telefonnummer",
+                        "nn": "Telefonnummer"
+                      }
+                    },
+                    {
+                      "fritekst": "lars.monsen@hotmail.com",
+                      "forhåndsdefinertTekst": null,
+                      "begrepsforklaring": null,
+                      "ledetekst": {
+                        "nb": "E-post",
+                        "nn": "E-post"
+                      }
+                    }
+                  ],
+                  "innholdstype": "NØKKEL_VERDI"
+                }
+              ]
+            }
+          ],
+          totaltAntall: 3,
         },
         levering: {
           hjelpemiddelformidler: {
@@ -302,6 +574,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -318,6 +591,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -359,6 +633,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -375,6 +650,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -527,6 +803,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
               ],
               varsler: [],
@@ -582,6 +859,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -725,6 +1003,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -749,6 +1028,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
               ],
               varsler: [],
@@ -797,6 +1077,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
                 {
                   ledetekst: {
@@ -821,6 +1102,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
               ],
               varsler: [],
@@ -977,6 +1259,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
                 {
                   ledetekst: {
@@ -990,6 +1273,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1006,6 +1290,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1022,6 +1307,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1038,6 +1324,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1078,6 +1365,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1091,6 +1379,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1107,6 +1396,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1123,6 +1413,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1139,6 +1430,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1155,6 +1447,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1171,6 +1464,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1187,6 +1481,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1203,6 +1498,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1219,6 +1515,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1235,6 +1532,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1251,6 +1549,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1267,6 +1566,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1424,6 +1724,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1440,6 +1741,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1602,6 +1904,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1618,6 +1921,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1658,6 +1962,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1706,6 +2011,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
                 {
                   ledetekst: {
@@ -1720,6 +2026,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1736,6 +2043,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1752,6 +2060,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1768,6 +2077,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1809,6 +2119,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1825,6 +2136,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1841,6 +2153,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -1881,6 +2194,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1897,6 +2211,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1913,6 +2228,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1929,6 +2245,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1961,6 +2278,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'LISTE'
                 },
                 {
                   ledetekst: {
@@ -1977,6 +2295,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -1993,6 +2312,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -2181,6 +2501,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -2197,6 +2518,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -2222,6 +2544,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
                 {
                   ledetekst: {
@@ -2235,6 +2558,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
             },
@@ -2257,6 +2581,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
             },

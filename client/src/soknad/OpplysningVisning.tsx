@@ -1,8 +1,13 @@
 import React, { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import DOMPurify from 'dompurify'
-import { BodyShort, Detail, FormSummary } from '@navikt/ds-react'
-import { type LokalisertTekst, type Opplysning, type Tekst } from '../interfaces/Innsenderbehovsmelding'
+import { BodyShort, Detail, FormSummary, HStack } from '@navikt/ds-react'
+import {
+  type LokalisertTekst,
+  OpplysningInnholdstype,
+  type Opplysning,
+  type Tekst,
+} from '../interfaces/Innsenderbehovsmelding'
 
 const rensHTML = (tekst: string): string => {
   return DOMPurify.sanitize(tekst, { ALLOWED_TAGS: ['em', 'strong'] })
@@ -21,18 +26,13 @@ type OpplysningProps = {
 }
 
 const OpplysningVisning: React.FC<OpplysningProps> = ({ opplysning }) => {
-  const { i18n } = useTranslation()
   const localizedLabel = lokaliser(opplysning.ledetekst)
 
   return (
     <FormSummary.Answer>
       <FormSummary.Label>{localizedLabel}</FormSummary.Label>
       <FormSummary.Value>
-        {opplysning.innhold.length === 1 ? (
-          <SingleContentView tekst={opplysning.innhold[0]} language={i18n.language} />
-        ) : (
-          <MultiContentView innhold={opplysning.innhold} language={i18n.language} />
-        )}
+        <OpplysningInnholdVisning innholdstype={opplysning.innholdstype} innhold={opplysning.innhold} />
       </FormSummary.Value>
     </FormSummary.Answer>
   )
@@ -47,22 +47,40 @@ const renderTextContent = (tekst: Tekst): ReactNode => {
   ) : null
 }
 
-const SingleContentView: React.FC<{ tekst: Tekst; language: string }> = ({ tekst }) => (
-  <>
-    <BodyShort>{renderTextContent(tekst)}</BodyShort>
-    {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
-  </>
-)
-
-const MultiContentView: React.FC<{ innhold: Tekst[]; language: string }> = ({ innhold }) => (
-  <>
-    {innhold.map((tekst, index) => (
-      <React.Fragment key={index}>
-        <BodyShort>{renderTextContent(tekst)}</BodyShort>
-        {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
-      </React.Fragment>
-    ))}
-  </>
-)
+const OpplysningInnholdVisning: React.FC<{ innholdstype: OpplysningInnholdstype; innhold: Tekst[]}> = ({ innholdstype, innhold }) => {
+  switch (innholdstype) {
+    case OpplysningInnholdstype.TEKST:
+      return (
+        <>
+          <BodyShort>{renderTextContent(innhold[0])}</BodyShort>
+          {innhold[0].begrepsforklaring && <Detail>{lokaliser(innhold[0].begrepsforklaring)}</Detail>}
+        </>
+      )
+    case OpplysningInnholdstype.LISTE:
+      return (
+        <ul style={{ margin: 0 }}>
+          {innhold.map((tekst, index) => (
+            <React.Fragment key={index}>
+              <li>
+                <BodyShort>{renderTextContent(tekst)}</BodyShort>
+              </li>
+              {tekst.begrepsforklaring && <Detail>{lokaliser(tekst.begrepsforklaring)}</Detail>}
+            </React.Fragment>
+          ))}
+        </ul>
+      )
+    case OpplysningInnholdstype.NØKKEL_VERDI:
+      return (
+        <>
+          {innhold.map((tekst, index) => (
+            <HStack justify="start" align="start" key={index}>
+              <strong style={{ width: '10rem' }}>{tekst.ledetekst ? lokaliser(tekst.ledetekst) : ''}</strong>
+              {renderTextContent(tekst)}
+            </HStack>
+          ))}
+        </>
+      )
+  }
+}
 
 export default OpplysningVisning

@@ -100,6 +100,7 @@ export interface BrukersituasjonVilkår {
 
 export interface Hjelpemidler {
   hjelpemidler: Hjelpemiddel[]
+  produktkategorier: Produktkategori[]
   tilbehør: Tilbehør[]
   totaltAntall: number
 }
@@ -113,6 +114,15 @@ export interface Hjelpemiddel {
   utlevertinfo: Utlevertinfo
   opplysninger: Opplysning[]
   varsler: Varsel[]
+}
+
+export interface Produktkategori {
+  id: string
+  type: string
+  navn: string
+  antall: number
+  delkontrakttittel: string
+  opplysninger: Opplysning[]
 }
 
 export interface HjelpemiddelProdukt {
@@ -154,8 +164,15 @@ export enum UtlevertType {
 }
 
 export interface Opplysning {
+  innholdstype: OpplysningInnholdstype
   ledetekst: LokalisertTekst
   innhold: Tekst[]
+}
+
+export enum OpplysningInnholdstype {
+  TEKST = 'TEKST',
+  LISTE = 'LISTE',
+  NØKKEL_VERDI = 'NØKKEL_VERDI',
 }
 
 export interface EnkelOpplysning {
@@ -182,4 +199,5 @@ export interface Tekst {
   fritekst?: string
   forhåndsdefinertTekst?: LokalisertTekst
   begrepsforklaring?: LokalisertTekst
+  ledetekst?: LokalisertTekst
 }
