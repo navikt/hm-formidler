@@ -158,6 +158,7 @@ const soknadsbehandlingDbHandlers = [
                       begrepsforklaring: null,
                     },
                   ],
+                  innholdstype: 'TEKST'
                 },
               ],
               varsler: [],
@@ -536,6 +537,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 2,
@@ -758,6 +760,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
@@ -966,6 +969,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
@@ -1214,6 +1218,7 @@ const soknadsbehandlingDbHandlers = [
           },
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
@@ -1678,6 +1683,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
@@ -1866,6 +1872,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE', 'KOGNISJON'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
@@ -2455,6 +2462,7 @@ const soknadsbehandlingDbHandlers = [
           funksjonsnedsettelser: ['BEVEGELSE'],
         },
         hjelpemidler: {
+          produktkategorier: [],
           hjelpemidler: [
             {
               antall: 1,
