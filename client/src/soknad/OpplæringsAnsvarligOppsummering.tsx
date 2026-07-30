@@ -47,6 +47,18 @@ const OpplæringsAnsvarlig: React.FC<OpplæringsAnsvarligProps> = (props: Opplæ
                 <FormSummary.Label>{t('oppsummering.ansvar')}</FormSummary.Label>
                 <FormSummary.Value>{oppfolgingsansvarlig.ansvarFor}</FormSummary.Value>
               </FormSummary.Answer>
+              {oppfolgingsansvarlig.epost && (
+                <FormSummary.Answer>
+                  <FormSummary.Label>{t('felles.epost')}</FormSummary.Label>
+                  <FormSummary.Value>{oppfolgingsansvarlig.epost}</FormSummary.Value>
+                </FormSummary.Answer>
+              )}
+              {oppfolgingsansvarlig.erGjortOppmerksomPåOpplæringsansvar && (
+                <FormSummary.Answer>
+                  <FormSummary.Label>{t('oppsummering.oppmerksom')}</FormSummary.Label>
+                  <FormSummary.Value>Ja</FormSummary.Value>
+                </FormSummary.Answer>
+              )}
             </>
           )}
         </FormSummary.Answers>
