@@ -48,6 +48,8 @@ export interface AnnenOppfølgingsansvarlig {
   stilling: string
   telefon: string
   ansvarFor: string
+  epost?: string
+  erGjortOppmerksomPåOpplæringsansvar?: boolean
 }
 
 export enum Utleveringsmåte {
