@@ -116,6 +116,13 @@ export interface Hjelpemiddel {
   varsler: Varsel[]
 }
 
+export interface ProduktlisteItem {
+  hmsArtNr: string
+  navn: string
+  antall: number
+  opplysninger?: Opplysning[]
+}
+
 export interface Produktkategori {
   id: string
   type: string
@@ -123,6 +130,8 @@ export interface Produktkategori {
   antall: number
   delkontrakttittel: string
   opplysninger: Opplysning[]
+  hjelpemidler?: ProduktlisteItem[]
+  tilbehør?: ProduktlisteItem[]
 }
 
 export interface HjelpemiddelProdukt {
