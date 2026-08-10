@@ -10,3 +10,9 @@ minimumReleaseAge: 10080 # 10080 minutter = 7 dager
 
 minimumReleaseAgeExclude:
   - '@navikt/*'
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  msw: true

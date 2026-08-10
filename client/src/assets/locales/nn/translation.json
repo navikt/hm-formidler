@@ -122,6 +122,8 @@
   "statuser.underBehandling.beskrivelse": "Me har fått saka om hjelpemiddel, og har byrja å behandla henne. Saka blir som regel behandla innan ei veke.",
   "statuser.innvilget.tittel": "Innvilga",
   "statuser.innvilget.beskrivelse": "Saka er innvilga.",
+  "statuser.delvisInnvilget.tittel": "Delvis innvilga",
+  "statuser.delvisInnvilget.beskrivelse": "Saka er delvis innvilga.",
   "statuser.godkjent.tittel": "Godkjend",
   "statuser.godkjent.beskrivelse": "Bestillinga er godkjend.",
   "statuser.slettet.tittel": "Sletta av personen",

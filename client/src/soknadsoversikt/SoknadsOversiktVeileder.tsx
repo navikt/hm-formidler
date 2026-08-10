@@ -75,6 +75,12 @@ const SoknadsOversiktVeileder: React.FC = () => {
                       beskrivelse={t('statuser.innvilget.beskrivelse')}
                     />
                   </li>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.delvisInnvilget.tittel')}
+                      beskrivelse={t('statuser.delvisInnvilget.beskrivelse')}
+                    />
+                  </li>
                 </>
               )}
               <li>
@@ -117,6 +123,16 @@ const SoknadsOversiktVeileder: React.FC = () => {
                   beskrivelse={t('statuser.avvist.beskrivelse')}
                 />
               </li>
+              {erFormidler && (
+                <>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.henlagt.tittel')}
+                      beskrivelse={t('statuser.henlagt.beskrivelse')}
+                    />
+                  </li>
+                </>
+              )}
               <li>
                 <StatusBeskrivelse
                   tittel={t('statuser.lukket.tittel')}
