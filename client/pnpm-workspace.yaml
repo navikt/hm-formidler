@@ -12,7 +12,7 @@ minimumReleaseAgeExclude:
   - '@navikt/*'
 
 allowBuilds:
-  '@parcel/watcher': true
+  '@parcel/watcher': false
   '@swc/core': true
   esbuild: true
   msw: true
