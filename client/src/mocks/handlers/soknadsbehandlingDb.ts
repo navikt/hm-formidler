@@ -6,6 +6,20 @@ import { sakerMock } from '../mockdata/saker'
 
 const behovsmeldingerUnderEndring = new Map<string, { status: string; startedAt: number }>()
 
+const mockPdfBase64 =
+  'JVBERi0xLjEKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFsgMyAwIFIgXSAvQ291bnQgMSA+PgplbmRvYmoKMyAwIG9iago8PCAvVHlwZSAvUGFnZSAvUGFyZW50IDIgMCBSIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdIC9Db250ZW50cyA0IDAgUiAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA1IDAgUiA+PiA+PiA+PgplbmRvYmoKNCAwIG9iago8PCAvTGVuZ3RoIDQ0ID4+CnN0cmVhbQpCVCAvRjEgMTIgVGYgNTAgOTAgVGQgKE1vY2sgUERGIGZvciBmb3Jow6VuZHN2aXNuaW5nKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTAgMDAwMDAgbiAKMDAwMDAwMDA1MyAwMDAwMCBuIAowMDAwMDAwMTA5IDAwMDAwIG4gCjAwMDAwMDAyMjUgMDAwMDAgbiAKMDAwMDAwMDMxOSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjM5NQolJUVPRgo='
+
+const decodeBase64 = (base64: string): Uint8Array => {
+  const binary = atob(base64)
+  const bytes = new Uint8Array(binary.length)
+
+  for (let i = 0; i < binary.length; i += 1) {
+    bytes[i] = binary.charCodeAt(i)
+  }
+
+  return bytes
+}
+
 const soknadsbehandlingDbHandlers = [
   http.patch<{ behovsmeldingId: string }>(
     `${API_PATH}/behovsmelding/:behovsmeldingId/brukerbekreftelse-til-fullmakt`,
@@ -44,6 +58,90 @@ const soknadsbehandlingDbHandlers = [
       })
     }
   ),
+  http.get<{ soknadsid: string }>(`${API_PATH}/soknad/bruker/:soknadsid`, ({ params }) => {
+    const randomFagsakId = String(Math.floor(100000 + Math.random() * 900000))
+
+    return HttpResponse.json({
+      søknadId: params.soknadsid,
+      behovsmeldingType: 'SØKNAD',
+      journalpostId: null,
+      datoOpprettet: '2024-01-01T10:00:00.000+00:00',
+      datoOppdatert: '2024-01-01T10:00:00.000+00:00',
+      status: 'VENTER_GODKJENNING',
+      fullmakt: false,
+      fnrBruker: '12345678910',
+      brukerpassbyttedataV2: null,
+      er_digital: true,
+      soknadGjelder: null,
+      ordrelinjer: [],
+      fagsakId: randomFagsakId,
+      søknadType: 'SØKNAD',
+      valgteÅrsaker: [],
+      innsenderbehovsmelding: null,
+    })
+  }),
+  http.get<{ fagsakId: string }>(`/hjelpemidler/dinehjelpemidler/api/bruker/dokumenter/:fagsakId`, ({ params }) => {
+    return HttpResponse.json([
+      {
+        journalpostId: `jp-${params.fagsakId}`,
+        tittel: 'Vedtaksbrev',
+        journalposttype: 'U',
+        journalstatus: 'JOURNALFOERT',
+        sak: {
+          fagsaksystem: 'HOTSAK',
+          fagsakId: params.fagsakId,
+        },
+        kanal: 'NAV_NO',
+        relevanteDatoer: [
+          {
+            datotype: 'DATO_OPPRETTET',
+            dato: '2024-01-01T10:00:00.000Z',
+          },
+        ],
+        dokumenter: [
+          {
+            tittel: 'Vedtak',
+            dokumentInfoId: 'dokument-1',
+            brevkode: 'vedtaksbrev_hotsak_breveditor',
+            dokumentvarianter: [
+              {
+                variantformat: 'ARKIV',
+                brukerHarTilgang: true,
+                code: ['ok'],
+              },
+            ],
+          },
+        ],
+        dato: '2024-01-01T10:00:00.000Z',
+      },
+    ])
+  }),
+  http.get<{ journalpostId: string; dokumentInfoId: string }>(
+    `${API_PATH}/bruker/arkiv-dokumenter/:journalpostId/:dokumentInfoId/ARKIV`,
+    ({ params }) => {
+      const pdf = decodeBase64(mockPdfBase64)
+
+      return new HttpResponse(pdf, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/pdf',
+          'Content-Disposition': `inline; filename="${params.dokumentInfoId}.pdf"`,
+        },
+      })
+    }
+  ),
+  http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/hjelpemidler/dinehjelpemidler/api/bruker/dokumenter/`, ({ request }) => {
+    const rolle = new URL(request.url).searchParams.get('formidler')
+
+    let saker = sakerMock
+    if (rolle === 'false') {
+      saker = saker.filter((sak) => {
+        return sak.behovsmeldingType === BehovsmeldingType.BESTILLING
+      })
+    }
+
+    return HttpResponse.json(saker)
+  }),
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {
     const rolle = new URL(request.url).searchParams.get('formidler')
 
