@@ -5,7 +5,9 @@ type RelevanteDato = {
   dato: string
 }
 
-type Dokumentvariant = {
+export interface Dokumentvariant {
+  variantformat?: string
+  brukerHarTilgang?: boolean
   [key: string]: unknown
 }
 

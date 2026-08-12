@@ -17,10 +17,10 @@ import { SoknadStatus } from '../statemanagement/SoknadStatus';
 import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics';
 import './../stylesheet/styles.scss';
 import { EndreSigneringModal } from './EndreSigneringModal';
-import ForhandsvisningModal from './ForhåndsvisningModal';
 import type { Journalpost } from './Journalpost';
 import type { SøknadForBruker } from './SoknadForBruker';
 import SoknadVisningFeil from './SoknadVisningFeil';
+import VisVedtaksbrev from './VisVedtaksbrev';
 
 interface ParamTypes extends Record<string, string> {
   soknadsid: string
@@ -50,9 +50,6 @@ const SoknadVisning: React.FC = () => {
   let { data: journalposter } = useSWR<Journalpost[]>(dokumenterKey, fetcher)
   if (!journalposter) journalposter = []
 
-  function filtrerJournalposter(journalposter: Journalpost[]): Journalpost[] {
-    return journalposter.filter(jp => jp.dokumenter.some(dokument => dokument.brevkode === 'vedtaksbrev_hotsak_breveditor'))
-  }
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
@@ -133,24 +130,8 @@ const SoknadVisning: React.FC = () => {
             {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
           </Button>
         </HStack>
-        {erFormidler && (
-          <div className="customPanel">
-            <BodyShort>{t('soknadsoversikt.soknadVisning.forhandsvisning')}</BodyShort>
-            <Avstand marginBottom={3} />
-            <HStack gap={'space-8'}>
-              {filtrerJournalposter(journalposter).flatMap((journalpost) =>
-                journalpost.dokumenter
-                  .filter((dokument) => dokument.brevkode === 'vedtaksbrev_hotsak_breveditor')
-                  .map((vedlegg) => (
-                    <ForhandsvisningModal
-                      key={`${journalpost.journalpostId}-${vedlegg.dokumentInfoId}`}
-                      journalpostId={journalpost.journalpostId}
-                      vedlegg={vedlegg}
-                    />
-                  ))
-              )}
-            </HStack>
-          </div>
+        {erFormidler && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
+          <VisVedtaksbrev journalposter={journalposter} />
         )}
         {status === SoknadStatus.VENTER_GODKJENNING && (
           <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
