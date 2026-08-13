@@ -47,7 +47,7 @@ export default function VisVedtaksbrev({ journalposter }: VisVedtaksbrevProps) {
         <Heading size="small">{t('soknadsoversikt.soknadVisning.forhandsvisning')}</Heading>
         <Avstand marginBottom={3} />
         <HStack gap={'space-8'}>
-          <Box borderRadius="8" padding="space-8" background="default" borderColor="accent-strong" borderWidth="1" width="100%" onClick={() => setIsOpen(true)} style={{ cursor: 'pointer' }}>
+          <Box borderRadius="8" padding="space-16" background="default" borderColor="neutral" borderWidth="1" width="100%" onClick={() => setIsOpen(true)} style={{ cursor: 'pointer' }}>
             <Heading size="small">{tittel(valgtVedtaksbrev.vedlegg)}</Heading>
             <Detail>{valgtVedtaksbrev.dato ? `${formaterDato(valgtVedtaksbrev.dato)} | Fra Nav` : ""}</Detail>
           </Box>
