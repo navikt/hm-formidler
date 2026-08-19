@@ -1,26 +1,25 @@
-import { ChevronLeftIcon } from '@navikt/aksel-icons';
-import { BodyShort, Box, Button, Heading, HStack, Loader, Tag } from '@navikt/ds-react';
-import * as Sentry from '@sentry/browser';
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
-import { useReactToPrint } from 'react-to-print';
-import useSWR from 'swr';
-import useSWRImmutable from 'swr/immutable';
-import { formaterDato, hentTagVariant } from '../Utils';
-import { Avstand } from '../components/Avstand';
-import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding';
-import { API_PATH, fetcher } from '../services/rest-service';
-import Soknad from '../soknad/Soknad';
-import { useRoller } from '../statemanagement/ApplicationContext';
-import { SoknadStatus } from '../statemanagement/SoknadStatus';
-import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics';
-import './../stylesheet/styles.scss';
-import { EndreSigneringModal } from './EndreSigneringModal';
-import type { Journalpost } from './Journalpost';
-import type { SøknadForBruker } from './SoknadForBruker';
-import SoknadVisningFeil from './SoknadVisningFeil';
-import VisVedtaksbrev from './VisVedtaksbrev';
+import { ChevronLeftIcon } from '@navikt/aksel-icons'
+import { BodyShort, Box, Button, Heading, HStack, Loader } from '@navikt/ds-react'
+import * as Sentry from '@sentry/browser'
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
+import { useReactToPrint } from 'react-to-print'
+import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
+import { formaterDato } from '../Utils'
+import { Avstand } from '../components/Avstand'
+import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
+import { API_PATH, fetcher } from '../services/rest-service'
+import Soknad from '../soknad/Soknad'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
+import './../stylesheet/styles.scss'
+import { EndreSigneringModal } from './EndreSigneringModal'
+import type { Journalpost } from './Journalpost'
+import type { SøknadForBruker } from './SoknadForBruker'
+import SoknadVisningFeil from './SoknadVisningFeil'
+import VisVedtaksbrev from './VisVedtaksbrev'
 
 interface ParamTypes extends Record<string, string> {
   soknadsid: string
@@ -28,8 +27,6 @@ interface ParamTypes extends Record<string, string> {
 
 const SoknadVisning: React.FC = () => {
   const { t } = useTranslation()
-
-  const { erFormidler } = useRoller()
 
   const { soknadsid = '' } = useParams<ParamTypes>()
   const { data, error } = useSWRImmutable<{
@@ -40,16 +37,20 @@ const SoknadVisning: React.FC = () => {
     datoOpprettet: string
     datoOppdatert: string
     behovsmelding: Innsenderbehovsmelding
+    soknadGjelder: string
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
 
-  const { data: soknadData } = useSWR<SøknadForBruker>(`${API_PATH}/soknad/bruker/${soknadsid}`, fetcher)
+  const { data: soknadData } = useSWR<SøknadForBruker>(`${API_PATH}/soknad/bruker/${soknadsid}`, fetcher, {
+    revalidateOnFocus: false,
+  })
 
   const dokumenterKey = soknadData?.fagsakId
     ? `/hjelpemidler/dinehjelpemidler/api/bruker/dokumenter/${soknadData.fagsakId}`
     : null
-  let { data: journalposter } = useSWR<Journalpost[]>(dokumenterKey, fetcher)
+  let { data: journalposter } = useSWR<Journalpost[]>(dokumenterKey, fetcher, {
+    revalidateOnFocus: false,
+  })
   if (!journalposter) journalposter = []
-
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
@@ -88,8 +89,16 @@ const SoknadVisning: React.FC = () => {
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
 
-  const innsendtTekst = status === SoknadStatus.VENTER_GODKJENNING ? t('dato.sendtTilBrukerbekreftelse') : t('dato.innsendt')
+  const innsendtTekst =
+    status === SoknadStatus.VENTER_GODKJENNING ? t('dato.sendtTilBrukerbekreftelse') : t('dato.innsendt')
 
+  const tidspunkterTekst = (
+    <BodyShort>
+      {innsendtTekst} {formaterDato(datoOpprettet)}
+      <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
+      {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
+    </BodyShort>
+  )
   return (
     <>
       <header>
@@ -107,43 +116,47 @@ const SoknadVisning: React.FC = () => {
         <Avstand marginBottom={6} />
         <div className="customPanel">
           <Box>
-            <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>{t(status as string)}</Tag>
-            <Avstand marginTop={3} marginBottom={3}>
-              {status === SoknadStatus.VENTER_GODKJENNING && (
-                <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
-              )}
-            </Avstand>
-            <BodyShort>
-              {innsendtTekst} {formaterDato(datoOpprettet)}
-              <span style={{ whiteSpace: 'pre', color: 'var(--ax-border-neutral-subtleA)' }}> | </span>
-              {t('dato.oppdatert')} {formaterDato(datoOppdatert)}
-            </BodyShort>
+            <HStack justify="space-between" align="center">
+              <Heading level="2" size="small">
+                {data.soknadGjelder}
+              </Heading>
+              <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
+                {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+              </Button>
+            </HStack>
           </Box>
         </div>
+        {window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
+          <VisVedtaksbrev
+            journalposter={journalposter}
+            tidspunkterTekst={tidspunkterTekst}
+            status={status}
+            valgteÅrsaker={valgteÅrsaker}
+          />
+        )}
         <HStack className="customPanel" gap={'space-16'}>
+          <Avstand marginTop={3} marginBottom={3}>
+            {status === SoknadStatus.VENTER_GODKJENNING && (
+              <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+            )}
+          </Avstand>
           {status === SoknadStatus.VENTER_GODKJENNING && (
             <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
               {t('endreSignering.tittel')}
             </Button>
           )}
-          <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
-            {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
-          </Button>
         </HStack>
-        {erFormidler && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
-          <VisVedtaksbrev journalposter={journalposter} />
-        )}
         {status === SoknadStatus.VENTER_GODKJENNING && (
           <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
         )}
-      </header >
+      </header>
       <main>
         <div className="customPanel">
           <Soknad ref={printRef} status={status} valgteÅrsaker={valgteÅrsaker} behovsmelding={behovsmelding} />
         </div>
       </main>
     </>
-  );
+  )
 }
 
 export default SoknadVisning
