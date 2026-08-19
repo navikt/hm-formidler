@@ -1,5 +1,5 @@
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
-import { BodyShort, Box, Button, Heading, HStack, Loader } from '@navikt/ds-react'
+import { BodyShort, Box, Button, Heading, HStack, Loader, VStack } from '@navikt/ds-react'
 import * as Sentry from '@sentry/browser'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -8,7 +8,6 @@ import { useReactToPrint } from 'react-to-print'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 import { formaterDato } from '../Utils'
-import { Avstand } from '../components/Avstand'
 import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
 import { API_PATH, fetcher } from '../services/rest-service'
 import Soknad from '../soknad/Soknad'
@@ -19,7 +18,7 @@ import { EndreSigneringModal } from './EndreSigneringModal'
 import type { Journalpost } from './Journalpost'
 import type { SøknadForBruker } from './SoknadForBruker'
 import SoknadVisningFeil from './SoknadVisningFeil'
-import VisVedtaksbrev from './StatusOgBrevBoks'
+import StatusOgBrevBoks from './StatusOgBrevBoks'
 
 interface ParamTypes extends Record<string, string> {
   soknadsid: string
@@ -102,53 +101,52 @@ const SoknadVisning: React.FC = () => {
   return (
     <>
       <header>
-        <div className="customPanel">
-          <Link to="/" style={{ marginBottom: '0.5rem' }}>
-            <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
-            {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
-          </Link>
-        </div>
-        <div className="banner">
-          <Heading level="1" size="xlarge">
-            {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
-          </Heading>
-        </div>
-        <Avstand marginBottom={6} />
-        <div className="customPanel">
-          <Box>
-            <HStack justify="space-between" align="center">
-              <Heading level="2" size="small">
-                {data.soknadGjelder}
+        <div style={{ margin: '0 auto', maxWidth: '600px' }}>
+          <VStack gap="space-8">
+            <Link to="/">
+              <ChevronLeftIcon title={t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')} />
+              {t('soknadsoversikt.soknadVisning.tilbakeTilOversikt')}
+            </Link>
+            <div className="banner">
+              <Heading level="1" size="xlarge">
+                {t(`soknadvisning.tittel.${behovsmeldingType}`, { navnBruker })}
               </Heading>
-              <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
-                {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
-              </Button>
-            </HStack>
-          </Box>
-        </div>
-        {window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
-          <VisVedtaksbrev
-            journalposter={journalposter}
-            tidspunkterTekst={tidspunkterTekst}
-            status={status}
-            valgteÅrsaker={valgteÅrsaker}
-          />
-        )}
-        <HStack className="customPanel" gap={'space-16'}>
-          <Avstand marginTop={3} marginBottom={3}>
-            {status === SoknadStatus.VENTER_GODKJENNING && (
-              <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+            </div>
+            <Box>
+              <HStack justify="space-between" align="center">
+                <Heading level="2" size="small">
+                  {data.soknadGjelder}
+                </Heading>
+                <Button variant="secondary" onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
+                  {t('soknadsoversikt.soknadVisningFeil.skrivUt')}
+                </Button>
+              </HStack>
+            </Box>
+            {window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
+              <StatusOgBrevBoks
+                journalposter={journalposter}
+                tidspunkterTekst={tidspunkterTekst}
+                status={status}
+                valgteÅrsaker={valgteÅrsaker}
+              />
             )}
-          </Avstand>
+            <HStack className="customPanel" gap={'space-16'}>
+              <VStack gap={'space-8'} align="start">
+                {status === SoknadStatus.VENTER_GODKJENNING && (
+                  <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+                )}
+                {status === SoknadStatus.VENTER_GODKJENNING && (
+                  <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
+                    {t('endreSignering.tittel')}
+                  </Button>
+                )}
+              </VStack>
+            </HStack>
+          </VStack>
           {status === SoknadStatus.VENTER_GODKJENNING && (
-            <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
-              {t('endreSignering.tittel')}
-            </Button>
+            <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
           )}
-        </HStack>
-        {status === SoknadStatus.VENTER_GODKJENNING && (
-          <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
-        )}
+        </div>
       </header>
       <main>
         <div className="customPanel">

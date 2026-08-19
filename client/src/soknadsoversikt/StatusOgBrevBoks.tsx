@@ -47,39 +47,37 @@ export default function StatusOgBrevBoks({
 
   return (
     <>
-      <div className="customPanel">
-        <Box
-          borderRadius="8"
-          padding="space-20"
-          background="default"
-          borderColor="neutral"
-          borderWidth="1"
-          width="100%"
-          style={{ cursor: 'pointer' }}
-        >
-          <VStack gap={'space-12'} align="start">
-            <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>
-              {t(status as string)}
-            </Tag>
-            {tidspunkterTekst}
-            {valgtVedtaksbrev && erFormidler && (
-              <>
-                <Link
-                  href={href(valgtVedtaksbrev.journalpostId, valgtVedtaksbrev.vedlegg.dokumentInfoId)}
-                  target="_blank"
-                >
-                  <FilePdfIcon title="a11y-title" fontSize="1.5rem" />
-                  Kopi av vedtaksbrev (PDF åpner i ny fane)
-                </Link>
-                <InlineMessage status="info">
-                  Du har mottat en kopi av vedtaksbrevet. Vedtaksbrevet er også sendt til personen du har søkt på vegne
-                  av.
-                </InlineMessage>
-              </>
-            )}
-          </VStack>
-        </Box>
-      </div>
+      <Box
+        borderRadius="8"
+        padding="space-20"
+        background="default"
+        borderColor="neutral"
+        borderWidth="1"
+        width="100%"
+        style={{ cursor: 'pointer' }}
+      >
+        <VStack gap={'space-12'} align="start">
+          <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>
+            {t(status as string)}
+          </Tag>
+          {tidspunkterTekst}
+          {valgtVedtaksbrev && erFormidler && (
+            <>
+              <Link
+                href={href(valgtVedtaksbrev.journalpostId, valgtVedtaksbrev.vedlegg.dokumentInfoId)}
+                target="_blank"
+              >
+                <FilePdfIcon title="a11y-title" fontSize="1.5rem" />
+                Kopi av vedtaksbrev (PDF åpner i ny fane)
+              </Link>
+              <InlineMessage status="info">
+                Du har mottat en kopi av vedtaksbrevet. Vedtaksbrevet er også sendt til personen du har søkt på vegne
+                av.
+              </InlineMessage>
+            </>
+          )}
+        </VStack>
+      </Box>
     </>
   )
 }
