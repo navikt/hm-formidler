@@ -19,7 +19,7 @@ import { EndreSigneringModal } from './EndreSigneringModal'
 import type { Journalpost } from './Journalpost'
 import type { SøknadForBruker } from './SoknadForBruker'
 import SoknadVisningFeil from './SoknadVisningFeil'
-import VisVedtaksbrev from './VisVedtaksbrev'
+import VisVedtaksbrev from './StatusOgBrevBoks'
 
 interface ParamTypes extends Record<string, string> {
   soknadsid: string
