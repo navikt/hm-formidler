@@ -128,20 +128,9 @@ const SoknadVisning: React.FC = () => {
                 tidspunkterTekst={tidspunkterTekst}
                 status={status}
                 valgteÅrsaker={valgteÅrsaker}
+                handleOpenEndreSigneringModal={handleOpenEndreSigneringModal}
               />
             )}
-            <HStack className="customPanel" gap={'space-16'}>
-              <VStack gap={'space-8'} align="start">
-                {status === SoknadStatus.VENTER_GODKJENNING && (
-                  <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
-                )}
-                {status === SoknadStatus.VENTER_GODKJENNING && (
-                  <Button variant="secondary" onClick={handleOpenEndreSigneringModal} style={{ whiteSpace: 'nowrap' }}>
-                    {t('endreSignering.tittel')}
-                  </Button>
-                )}
-              </VStack>
-            </HStack>
           </VStack>
           {status === SoknadStatus.VENTER_GODKJENNING && (
             <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />

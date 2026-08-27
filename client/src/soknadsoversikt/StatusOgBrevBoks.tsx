@@ -1,10 +1,10 @@
-import { FilePdfIcon } from '@navikt/aksel-icons'
-import { Box, InlineMessage, Link, Tag, VStack } from '@navikt/ds-react'
+import { FilePdfIcon, PencilWritingIcon } from '@navikt/aksel-icons'
+import { BodyShort, Box, Button, InlineMessage, Link, Tag, VStack } from '@navikt/ds-react'
 import { t } from 'i18next'
 import { useMemo } from 'react'
 import { BASE_PATH } from '../App'
 import { useRoller } from '../statemanagement/ApplicationContext'
-import type { SoknadStatus } from '../statemanagement/SoknadStatus'
+import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { hentTagVariant } from '../Utils'
 import type { DokumentInfo, Journalpost } from './Journalpost'
 
@@ -13,6 +13,7 @@ type StatusOgBrevBoksProps = {
   tidspunkterTekst?: React.ReactNode
   status?: SoknadStatus | undefined
   valgteÅrsaker?: string[] | undefined
+  handleOpenEndreSigneringModal: () => void
 }
 
 export default function StatusOgBrevBoks({
@@ -20,6 +21,7 @@ export default function StatusOgBrevBoks({
   tidspunkterTekst,
   status,
   valgteÅrsaker,
+  handleOpenEndreSigneringModal,
 }: StatusOgBrevBoksProps) {
   const { erFormidler } = useRoller()
   const href = (journalpostId: string, dokumentInfoId: string) =>
@@ -54,12 +56,26 @@ export default function StatusOgBrevBoks({
         borderColor="neutral"
         borderWidth="1"
         width="100%"
+        marginBlock="space-0 space-8"
         style={{ cursor: 'pointer' }}
       >
         <VStack gap={'space-12'} align="start">
           <Tag variant="moderate" data-color={hentTagVariant(status, valgteÅrsaker)}>
             {t(status as string)}
           </Tag>
+          {status === SoknadStatus.VENTER_GODKJENNING && (
+            <VStack gap={'space-8'} align="start">
+              <BodyShort>{t('soknadsoversikt.soknadVisning.sakenErIkkeSendtInn')}</BodyShort>
+              <Button
+                variant="tertiary"
+                onClick={handleOpenEndreSigneringModal}
+                icon={<PencilWritingIcon title="a11y-title" />}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('endreSignering.tittel')}
+              </Button>
+            </VStack>
+          )}
           {tidspunkterTekst}
           {valgtVedtaksbrev && erFormidler && (
             <>
