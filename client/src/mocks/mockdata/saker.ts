@@ -285,5 +285,17 @@ export const sakerMock = [
     søknadsdata: undefined,
     valgteÅrsaker: undefined,
   },
+  {
+    søknadId: '6600d6c6-3059-4a52-bcfb-9c5353a78e99',
+    behovsmeldingType: BehovsmeldingType.SØKNAD,
+    datoOpprettet: '2026-09-02T11:17:48.754845',
+    datoOppdatert: '2026-09-02T12:11:38.787256',
+    status: SoknadStatus.GODKJENT_MED_FULLMAKT,
+    fnrBruker: '13820599335',
+    navnBruker: 'Dørauto Matikk',
+    søknadsdata: undefined,
+    valgteÅrsaker: undefined,
+    soknadGjelder: 'Søknad om: dørautomatikk',
+  },
 
 ]
