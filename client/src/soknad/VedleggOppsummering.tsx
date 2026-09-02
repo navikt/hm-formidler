@@ -1,10 +1,8 @@
 import React from 'react'
-import { FormSummary, Link } from '@navikt/ds-react'
+import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import { type Vedlegg } from '../interfaces/Innsenderbehovsmelding'
-import { Avstand } from '../components/Avstand'
-import { ExternalLinkIcon } from '@navikt/aksel-icons'
-import { SOKNAD_API_PATH } from '../services/rest-service'
+import VedleggListe from '../components/VedleggListe'
 
 type VedleggProps = {
   vedlegg: Vedlegg[]
@@ -23,14 +21,7 @@ const VedleggOppsummering: React.FC<VedleggProps> = (props: VedleggProps) => {
         </FormSummary.Header>
         <FormSummary.Answers>
           <FormSummary.Answer>
-            {vedlegg.map((vedlegg, i) => (
-              <Avstand key={i} marginBottom={2}>
-                <Link href={`${SOKNAD_API_PATH}/soknad/vedlegg/formidler/${vedlegg.id}`} target="_blank" inlineText>
-                  <ExternalLinkIcon aria-hidden="true" />
-                  {vedlegg.navn} {t('oppsummering.vedlegg.åpnerINyFane')}
-                </Link>
-              </Avstand>
-            ))}
+            <VedleggListe vedlegg={vedlegg} />
           </FormSummary.Answer>
         </FormSummary.Answers>
       </FormSummary>

@@ -1,9 +1,11 @@
 import { type Produktkategori } from '../interfaces/Innsenderbehovsmelding'
-import { BodyShort, Detail, Heading, Label, Box, FormSummary, Bleed, HStack } from '@navikt/ds-react'
+import { BodyShort, Detail, ExpansionCard, Heading, Label, Box, FormSummary, Bleed, HStack } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
 import OpplysningVisning from '../soknad/OpplysningVisning'
 import sharedStyles from './FormHeaderShared.module.css'
 import { Avstand } from './Avstand'
+import ProduktkategoriKomponentVisning from './ProduktkategoriKomponentVisning'
+import VedleggListe from './VedleggListe'
 
 type Props = {
   produktkategori: Produktkategori
@@ -132,6 +134,36 @@ const ProduktkategoriVisning = ({ produktkategori }: Props) => {
                 </FormSummary.Answer>
               ))}
             </Avstand>
+          )}
+          {produktkategori.komponenter.length > 0 && (
+            <>
+              <Avstand marginTop={2} marginBottom={2}>
+                <Label>{t('oppsummering.dørautomatikk.dører.overskrift')}</Label>
+              </Avstand>
+              {produktkategori.komponenter.map((komponent, index) => (
+                <Avstand
+                  key={komponent.id}
+                  marginBottom={index === produktkategori.komponenter.length - 1 ? 4 : 2}
+                >
+                  <ExpansionCard aria-label={komponent.navn} size="small" data-color="info">
+                    <ExpansionCard.Header>
+                      <ExpansionCard.Title size="small">{komponent.navn}</ExpansionCard.Title>
+                    </ExpansionCard.Header>
+                    <ExpansionCard.Content>
+                      <ProduktkategoriKomponentVisning komponent={komponent} />
+                    </ExpansionCard.Content>
+                  </ExpansionCard>
+                </Avstand>
+              ))}
+            </>
+          )}
+          {produktkategori.vedlegg.length > 0 && (
+            <FormSummary.Answer>
+              <FormSummary.Label>{t('oppsummering.vedlegg.tittel')}</FormSummary.Label>
+              <FormSummary.Value>
+                <VedleggListe vedlegg={produktkategori.vedlegg} />
+              </FormSummary.Value>
+            </FormSummary.Answer>
           )}
         </FormSummary.Answers>
       </FormSummary.Value>

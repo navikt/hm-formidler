@@ -107,6 +107,8 @@
   "oppsummering.tittel": "Fullmakt",
   "oppsummering.vedlegg.tittel": "Vedlegg",
   "oppsummering.vedlegg.åpnerINyFane": "(PDF åpner i en ny fane)",
+  "oppsummering.vedlegg.bilderAvDøren": "Bilder av døren ({{antall}})",
+  "oppsummering.dørautomatikk.dører.overskrift": "Dører som trenger dørautomatikk",
   "soknadvisning.tittel.soknadGjelder": "{{soknadGjelder}} for {{navnBruker}}",
   "soknadvisning.tittel.undefined": "Søknad for {{navnBruker}}",
   "soknadvisning.tittel.SØKNAD": "Søknad for {{navnBruker}}",

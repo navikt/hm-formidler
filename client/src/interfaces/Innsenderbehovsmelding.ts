@@ -22,7 +22,12 @@ export interface Vedlegg {
 }
 
 export enum Vedleggtype {
-  LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL = 'LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL'
+  LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL = 'LEGEERKLÆRING_FOR_VARMEHJELPEMIDDEL',
+  DØRAUTOMATIKK_DØR_BILDE = 'DØRAUTOMATIKK_DØR_BILDE',
+  DØRAUTOMATIKK_DØR_PRODUSENT_DOKUMENTASJON = 'DØRAUTOMATIKK_DØR_PRODUSENT_DOKUMENTASJON',
+  DØRAUTOMATIKK_EKSISTERENDE_DØRAUTOMATIKK_BILDE = 'DØRAUTOMATIKK_EKSISTERENDE_DØRAUTOMATIKK_BILDE',
+  DØRAUTOMATIKK_MÅLSATT_TEGNING = 'DØRAUTOMATIKK_MÅLSATT_TEGNING',
+  DØRAUTOMATIKK_GODKJENNING_MONTERING = 'DØRAUTOMATIKK_GODKJENNING_MONTERING',
 }
 
 export interface Innsender {
@@ -132,6 +137,24 @@ export interface Produktkategori {
   opplysninger: Opplysning[]
   hjelpemidler?: ProduktlisteItem[]
   tilbehør?: ProduktlisteItem[]
+  vedlegg: Vedlegg[]
+  komponenter: ProduktkategoriKomponent[]
+}
+
+export enum ProduktkategoriKomponentType {
+  DØR = 'DØR',
+}
+
+/**
+ * Brukes dersom produktkategorien består av flere komponenter. F.eks. på dørautomatikk legger
+ * formidler til en eller flere dører (komponenter) hvor det er behov for dørautomatikk.
+ */
+export interface ProduktkategoriKomponent {
+  id: string
+  type: ProduktkategoriKomponentType
+  navn: string
+  opplysninger: Opplysning[]
+  vedlegg: Vedlegg[]
 }
 
 export interface HjelpemiddelProdukt {
