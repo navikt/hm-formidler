@@ -77,7 +77,7 @@ export default function StatusOgBrevBoks({
             </VStack>
           )}
           {tidspunkterTekst}
-          {valgtVedtaksbrev && erFormidler && (
+          {valgtVedtaksbrev && erFormidler && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
             <>
               <Link
                 href={href(valgtVedtaksbrev.journalpostId, valgtVedtaksbrev.vedlegg.dokumentInfoId)}

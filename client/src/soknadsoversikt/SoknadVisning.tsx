@@ -122,15 +122,13 @@ const SoknadVisning: React.FC = () => {
                 </Button>
               </HStack>
             </Box>
-            {window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
-              <StatusOgBrevBoks
-                journalposter={journalposter}
-                tidspunkterTekst={tidspunkterTekst}
-                status={status}
-                valgteÅrsaker={valgteÅrsaker}
-                handleOpenEndreSigneringModal={handleOpenEndreSigneringModal}
-              />
-            )}
+            <StatusOgBrevBoks
+              journalposter={journalposter}
+              tidspunkterTekst={tidspunkterTekst}
+              status={status}
+              valgteÅrsaker={valgteÅrsaker}
+              handleOpenEndreSigneringModal={handleOpenEndreSigneringModal}
+            />
           </VStack>
           {status === SoknadStatus.VENTER_GODKJENNING && (
             <EndreSigneringModal isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} navnBruker={navnBruker} />
