@@ -44,7 +44,7 @@ const SoknadVisning: React.FC = () => {
   })
 
   const dokumenterKey = soknadData?.fagsakId
-    ? `/hjelpemidler/dinehjelpemidler/api/bruker/dokumenter/${soknadData.fagsakId}`
+    ? `/hjelpemidler/dinehjelpemidler/api/formidler/dokumenter/${soknadData.fagsakId}`
     : null
   let { data: journalposter } = useSWR<Journalpost[]>(dokumenterKey, fetcher, {
     revalidateOnFocus: false,
