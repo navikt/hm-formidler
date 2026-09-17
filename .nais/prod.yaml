@@ -6,7 +6,7 @@ metadata:
   labels:
     team: teamdigihot
 spec:
-  image: {{image}}
+  image: { { image } }
   port: 5000
   replicas:
     min: 2
@@ -56,8 +56,12 @@ spec:
       value: prod-gcp:teamdigihot:hm-soknad-api
     - name: REDIRECT_URL
       value: https://www.nav.no/hjelpemidler/formidler
+    - name: HOTSAK_API_URL
+      value: http://hm-saksbehandling.teamdigihot.svc.cluster.local
+    - name: HOTSAK_API_SCOPE
+      value: api://prod-gcp.teamdigihot.hm-saksbehandling/.default
     - name: GIT_COMMIT
-      value: {{commit}}
+      value: { { commit } }
   accessPolicy:
     outbound:
       external:

@@ -6,9 +6,9 @@ metadata:
   labels:
     team: teamdigihot
   annotations:
-    snorlax.nais.io/enabled: "true"
+    snorlax.nais.io/enabled: 'true'
 spec:
-  image: {{image}}
+  image: { { image } }
   port: 5000
   replicas:
     min: 1
@@ -59,8 +59,12 @@ spec:
       value: dev-gcp:teamdigihot:hm-soknad-api
     - name: REDIRECT_URL
       value: https://hjelpemidler.intern.dev.nav.no/hjelpemidler/formidler
+    - name: HOTSAK_API_URL
+      value: http://hm-saksbehandling.teamdigihot.svc.cluster.local
+    - name: HOTSAK_API_SCOPE
+      value: api://dev-gcp.teamdigihot.hm-saksbehandling/.default
     - name: GIT_COMMIT
-      value: {{commit}}
+      value: { { commit } }
   accessPolicy:
     outbound:
       external:

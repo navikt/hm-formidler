@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/navikt/hotbff"
@@ -16,7 +17,7 @@ var (
 
 func init() {
 	if useMSW {
-		idp = ""
+		idp = nil
 	}
 }
 
@@ -31,20 +32,22 @@ func main() {
 			"/api/": &proxy.Options{
 				Target:      os.Getenv("API_URL"),
 				StripPrefix: false,
-				IDP:         texas.TokenX,
 				IDPTarget:   os.Getenv("SOKNADSBEHANDLING_AUDIENCE"),
 			},
 			"/roller-api/": &proxy.Options{
 				Target:      os.Getenv("HM_ROLLER_URL"),
 				StripPrefix: true,
-				IDP:         texas.TokenX,
 				IDPTarget:   os.Getenv("HM_ROLLER_AUDIENCE"),
 			},
 			"/soknad-api/": &proxy.Options{
 				Target:      os.Getenv("HM_SOKNAD_API_URL"),
 				StripPrefix: true,
-				IDP:         texas.TokenX,
 				IDPTarget:   os.Getenv("HM_SOKNAD_API_AUDIENCE"),
+			},
+			"/hotsak-api/": &proxy.Options{
+				Target:      os.Getenv("HOTSAK_API_URL"),
+				StripPrefix: true,
+				IDPTarget:   os.Getenv("HOTSAK_API_SCOPE"),
 			},
 		},
 		IDP: idp,
@@ -52,5 +55,6 @@ func main() {
 			"SOKNAD_URL",
 		},
 	}
-	hotbff.Start(opts)
+	mux := http.NewServeMux()
+	hotbff.Start(mux, opts)
 }
