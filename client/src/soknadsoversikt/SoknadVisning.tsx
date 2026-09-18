@@ -47,6 +47,7 @@ const SoknadVisning: React.FC = () => {
     fetcher,
     { revalidateOnFocus: false }
   )
+  console.log('journalposter', journalposter)
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
