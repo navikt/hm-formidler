@@ -3,7 +3,7 @@ import { ApiError } from '../types/errors'
 export const API_PATH = '/hjelpemidler/formidler/api'
 export const ROLLER_PATH = '/hjelpemidler/formidler/roller-api/api/roller'
 export const SOKNAD_API_PATH = '/hjelpemidler/formidler/soknad-api/hm'
-export const HOTSAK_API_PATH = '/hotsak-api'
+export const HOTSAK_API_PATH = '/hjelpemidler/formidler/hotsak-api'
 
 const fetchGet: (url: string) => Promise<Response> = (url) => {
   return fetchWithCredentials(url, { headers: { Pragma: 'no-cache' } })
