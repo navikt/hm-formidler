@@ -74,5 +74,6 @@ spec:
         - application: hm-soknadsbehandling-db
         - application: hm-roller
         - application: hm-soknad-api
+        - application: hm-saksbehandling
         - application: nav-dekoratoren
           namespace: personbruker
