@@ -59,7 +59,7 @@ spec:
     - name: HOTSAK_API_URL
       value: http://hm-saksbehandling.teamdigihot.svc.cluster.local
     - name: HOTSAK_API_SCOPE
-      value: api://prod-gcp.teamdigihot.hm-saksbehandling/.default
+      value: prod-gcp:teamdigihot:hm-saksbehandling
     - name: GIT_COMMIT
       value: {{commit}}
   accessPolicy:
