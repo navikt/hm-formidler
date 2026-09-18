@@ -8,7 +8,7 @@ metadata:
   annotations:
     snorlax.nais.io/enabled: 'true'
 spec:
-  image: { { image } }
+  image: {{image}}
   port: 5000
   replicas:
     min: 1
@@ -64,7 +64,7 @@ spec:
     - name: HOTSAK_API_SCOPE
       value: api://dev-gcp.teamdigihot.hm-saksbehandling/.default
     - name: GIT_COMMIT
-      value: { { commit } }
+      value: {{commit}}
   accessPolicy:
     outbound:
       external:
