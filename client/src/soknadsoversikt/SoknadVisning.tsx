@@ -9,13 +9,12 @@ import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 import { formaterDato } from '../Utils'
 import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
-import { API_PATH, fetcher } from '../services/rest-service'
+import { API_PATH, fetcher, HOTSAK_API_PATH } from '../services/rest-service'
 import Soknad from '../soknad/Soknad'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 import { EndreSigneringModal } from './EndreSigneringModal'
-import type { Journalpost } from './Journalpost'
 import type { SøknadForBruker } from './SoknadForBruker'
 import SoknadVisningFeil from './SoknadVisningFeil'
 import StatusOgBrevBoks from './StatusOgBrevBoks'
@@ -43,13 +42,11 @@ const SoknadVisning: React.FC = () => {
     revalidateOnFocus: false,
   })
 
-  const dokumenterKey = soknadData?.fagsakId
-    ? `/hjelpemidler/dinehjelpemidler/api/formidler/dokumenter/${soknadData.fagsakId}`
-    : null
-  let { data: journalposter } = useSWR<Journalpost[]>(dokumenterKey, fetcher, {
-    revalidateOnFocus: false,
-  })
-  if (!journalposter) journalposter = []
+  const { data: journalposter } = useSWR<string>(
+    soknadData?.fagsakId ? `${HOTSAK_API_PATH}/formidler/${soknadData.fagsakId}/brev` : null,
+    fetcher,
+    { revalidateOnFocus: false }
+  )
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
@@ -123,7 +120,7 @@ const SoknadVisning: React.FC = () => {
               </HStack>
             </Box>
             <StatusOgBrevBoks
-              journalposter={journalposter}
+              journalposter={[]}
               tidspunkterTekst={tidspunkterTekst}
               status={status}
               valgteÅrsaker={valgteÅrsaker}
