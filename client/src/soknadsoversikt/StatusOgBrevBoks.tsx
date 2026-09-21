@@ -5,9 +5,12 @@ import { useEffect, useMemo } from 'react'
 import { useRoller } from '../statemanagement/ApplicationContext'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { hentTagVariant } from '../Utils'
+import useSWR from 'swr'
+import { API_PATH, HOTSAK_API_PATH, fetcher } from '../services/rest-service'
+import type { SøknadForBruker } from './SoknadForBruker'
 
 type StatusOgBrevBoksProps = {
-  brevpdf: Blob | undefined
+  soknadsid: string
   tidspunkterTekst?: React.ReactNode
   status?: SoknadStatus | undefined
   valgteÅrsaker?: string[] | undefined
@@ -15,13 +18,23 @@ type StatusOgBrevBoksProps = {
 }
 
 export default function StatusOgBrevBoks({
-  brevpdf,
+  soknadsid,
   tidspunkterTekst,
   status,
   valgteÅrsaker,
   handleOpenEndreSigneringModal,
 }: StatusOgBrevBoksProps) {
   const { erFormidler } = useRoller()
+
+  const { data: soknadData } = useSWR<SøknadForBruker>(`${API_PATH}/soknad/bruker/${soknadsid}`, fetcher, {
+    revalidateOnFocus: false,
+  })
+
+  const { data: brevpdf } = useSWR<Blob>(
+    soknadData?.fagsakId ? [`${HOTSAK_API_PATH}/formidler/${soknadData.fagsakId}/brev`, 'application/pdf'] : null,
+    fetcher,
+    { revalidateOnFocus: false }
+  )
 
   const brevpdfUrl = useMemo(() => (brevpdf ? URL.createObjectURL(brevpdf) : undefined), [brevpdf])
 

@@ -5,17 +5,15 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
-import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 import { formaterDato } from '../Utils'
 import type { Innsenderbehovsmelding } from '../interfaces/Innsenderbehovsmelding'
-import { API_PATH, fetcher, HOTSAK_API_PATH } from '../services/rest-service'
+import { API_PATH, fetcher } from '../services/rest-service'
 import Soknad from '../soknad/Soknad'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { DIGIHOT_TAXONOMY, logEvent } from '../utils/analytics'
 import './../stylesheet/styles.scss'
 import { EndreSigneringModal } from './EndreSigneringModal'
-import type { SøknadForBruker } from './SoknadForBruker'
 import SoknadVisningFeil from './SoknadVisningFeil'
 import StatusOgBrevBoks from './StatusOgBrevBoks'
 
@@ -37,16 +35,6 @@ const SoknadVisning: React.FC = () => {
     behovsmelding: Innsenderbehovsmelding
     soknadGjelder: string
   }>(`${API_PATH}/soknad/innsender/${soknadsid}`, fetcher)
-
-  const { data: soknadData } = useSWR<SøknadForBruker>(`${API_PATH}/soknad/bruker/${soknadsid}`, fetcher, {
-    revalidateOnFocus: false,
-  })
-
-  const { data: brevpdf } = useSWR<Blob>(
-    soknadData?.fagsakId ? [`${HOTSAK_API_PATH}/formidler/${soknadData.fagsakId}/brev`, 'application/pdf'] : null,
-    fetcher,
-    { revalidateOnFocus: false }
-  )
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
@@ -120,7 +108,7 @@ const SoknadVisning: React.FC = () => {
               </HStack>
             </Box>
             <StatusOgBrevBoks
-              brevpdf={brevpdf}
+              soknadsid={soknadsid}
               tidspunkterTekst={tidspunkterTekst}
               status={status}
               valgteÅrsaker={valgteÅrsaker}
