@@ -17,7 +17,8 @@ const fetchWithCredentials: (url: string, otherParams?: any) => Promise<Response
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const fetcher = async (url: string, accept?: string): Promise<any> => {
+export const fetcher = async (key: string | [string, string?]): Promise<any> => {
+  const [url, accept] = Array.isArray(key) ? key : [key, undefined]
   const response = await fetchGet(url, accept)
   if (response.ok) {
     return accept === 'application/pdf' ? await response.blob() : await response.json()
