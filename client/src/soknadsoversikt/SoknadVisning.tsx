@@ -42,12 +42,11 @@ const SoknadVisning: React.FC = () => {
     revalidateOnFocus: false,
   })
 
-  const { data: journalposter } = useSWR<string>(
-    soknadData?.fagsakId ? `${HOTSAK_API_PATH}/formidler/${soknadData.fagsakId}/brev` : null,
+  const { data: brevpdf } = useSWR<Blob>(
+    soknadData?.fagsakId ? [`${HOTSAK_API_PATH}/formidler/${soknadData.fagsakId}/brev`, 'application/pdf'] : null,
     fetcher,
     { revalidateOnFocus: false }
   )
-  console.log('journalposter', journalposter)
 
   useEffect(() => {
     logEvent(DIGIHOT_TAXONOMY.SØKNAD_ÅPNET)
@@ -121,7 +120,7 @@ const SoknadVisning: React.FC = () => {
               </HStack>
             </Box>
             <StatusOgBrevBoks
-              journalposter={[]}
+              brevpdf={brevpdf}
               tidspunkterTekst={tidspunkterTekst}
               status={status}
               valgteÅrsaker={valgteÅrsaker}
