@@ -44,7 +44,7 @@ const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
       <div ref={ref}>
         <div className="contentBlock" data-testid="oppsummering">
           <Avstand marginBottom={6}>
-            <BrukerOppsummering bruker={behovsmelding.bruker} brukersituasjon={behovsmelding.brukersituasjon} />
+            <BrukerOppsummering bruker={behovsmelding.bruker} />
           </Avstand>
 
           <Avstand marginBottom={6}>

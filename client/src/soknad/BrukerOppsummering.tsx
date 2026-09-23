@@ -1,18 +1,17 @@
 import { FormSummary } from '@navikt/ds-react'
 import { useTranslation } from 'react-i18next'
-import { type Bruker, type Brukersituasjon } from '../interfaces/Innsenderbehovsmelding'
+import { type Bruker } from '../interfaces/Innsenderbehovsmelding'
 import { formaterPersonnavn } from '../interfaces/CommonTypes'
 import { formaterFnr, formaterTlf } from '../Utils'
 import { lokaliser } from './OpplysningVisning'
 
 type BrukerProps = {
   bruker: Bruker
-  brukersituasjon: Brukersituasjon
 }
 
 function BrukerOppsummering(props: BrukerProps) {
   const { t } = useTranslation()
-  const { bruker, brukersituasjon } = props
+  const { bruker } = props
 
   return (
     <FormSummary>
