@@ -45,10 +45,6 @@ function BrukerOppsummering(props: BrukerProps) {
             <FormSummary.Value>{lokaliser(opplysning.innhold)}</FormSummary.Value>
           </FormSummary.Answer>
         ))}
-        <FormSummary.Answer>
-          <FormSummary.Label>{t('oppsummering.funksjonsnedsettelser')}</FormSummary.Label>
-          <FormSummary.Value>{brukersituasjon.funksjonsnedsettelser.map((funksjonsnedsettelse) => t(funksjonsnedsettelse)).join(', ')}</FormSummary.Value>
-        </FormSummary.Answer>
         {bruker.brukernummer && (
           <FormSummary.Answer>
             <FormSummary.Label>{t('oppsummering.brukernummer')}</FormSummary.Label>
