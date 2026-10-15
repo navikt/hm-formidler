@@ -1,5 +1,4 @@
 import { BodyShort, Box, Heading, LinkCard, Tag } from '@navikt/ds-react'
-import * as Sentry from '@sentry/browser'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Avstand } from '../components/Avstand'
@@ -93,7 +92,6 @@ const SoknadKort: React.FC<Props> = ({ soknad }: Props) => {
         <Link
           to={`/soknad/${soknad.søknadId}`}
           onClick={() => {
-            Sentry.addBreadcrumb({ message: `Formidler klikket på åpne søknad ${soknad.søknadId}` })
             logEvent(DIGIHOT_TAXONOMY.KLIKK_ÅPNE_SØKNAD)
           }}
           style={{ textDecoration: 'none' }}

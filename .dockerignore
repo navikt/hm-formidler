@@ -1,7 +1,6 @@
 .github/*
 .nais/*
 .gitignore
-.sentryclirc
 **/dist
 **/node_modules
 *.md

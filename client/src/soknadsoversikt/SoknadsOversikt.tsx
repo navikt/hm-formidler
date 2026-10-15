@@ -1,5 +1,4 @@
 import { Loader } from '@navikt/ds-react'
-import * as Sentry from '@sentry/browser'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useSWR from 'swr'
@@ -31,7 +30,6 @@ const SoknadsOversikt: React.FC = () => {
     if (error instanceof ApiError && error.statusCode == 401) {
       // Session expired. Ignore
     } else {
-      Sentry.captureException(new Error(error))
       navigate('/feilside')
     }
   }
@@ -57,7 +55,6 @@ const SoknadsOversikt: React.FC = () => {
         })
 
       const alleSoknader = venterGodkjenning.concat(ikkeVenterGodkjenning)
-      Sentry.addBreadcrumb({ message: `Filtrerte ut ${alleSoknader.length} søknader som kan vises for formidler` })
       setSoknader(alleSoknader)
     }
   }, [data])

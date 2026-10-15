@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import { initDecorator } from './decorator/decorator'
 import './i18n'
-import { initSentry } from './utils/sentry'
 
 declare global {
   interface Window {
@@ -33,7 +32,6 @@ async function initMsw(): Promise<void> {
 
 const init = async () => {
   await initMsw()
-  initSentry()
   initDecorator()
 
   createRoot(document.getElementById('root')!).render(

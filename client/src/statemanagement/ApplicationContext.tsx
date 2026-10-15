@@ -1,5 +1,4 @@
 import { Loader } from '@navikt/ds-react'
-import * as Sentry from '@sentry/browser'
 import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from 'react'
 import useSWRImmutable from 'swr/immutable'
 import Feilside from '../containers/Feilside'
@@ -28,10 +27,6 @@ export const ApplicationProvider = ({ children }: { children: React.ReactNode })
   }, [data])
 
   if (error) {
-    Sentry.addBreadcrumb({
-      message: `Henting av tilgang fra hm-roller feilet: <${error}>`,
-    })
-    Sentry.captureException(new Error(error))
     return <Feilside />
   }
   if (!data) {

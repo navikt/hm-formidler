@@ -1,6 +1,5 @@
 import { ChevronLeftIcon } from '@navikt/aksel-icons'
 import { BodyShort, Box, Button, Heading, HStack, Loader, VStack } from '@navikt/ds-react'
-import * as Sentry from '@sentry/browser'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
@@ -54,7 +53,6 @@ const SoknadVisning: React.FC = () => {
   })
 
   if (error) {
-    Sentry.captureException(new Error(error))
     console.log('Visning feilet med error:', error)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
@@ -68,7 +66,6 @@ const SoknadVisning: React.FC = () => {
   const { navnBruker, behovsmeldingType, status, valgteÅrsaker, datoOpprettet, datoOppdatert, behovsmelding } = data
 
   if (!behovsmelding) {
-    Sentry.captureMessage(`Vising av søknad ${soknadsid} feilet. Responsen inneholdt ikke søknadsdata.`)
     console.log('Visning feilet. Mangler behovsmelding. data:', data)
     return <SoknadVisningFeil soknadsid={soknadsid} />
   }
