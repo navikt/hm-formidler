@@ -51,22 +51,19 @@ const soknadsbehandlingDbHandlers = [
     }
   ),
 
-  http.get<{ behovsmeldingId: string }>(
-    `${API_PATH}/behovsmelding/:behovsmeldingId/status`,
-    async ({ params }) => {
-      const { behovsmeldingId } = params
-      const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
+  http.get<{ behovsmeldingId: string }>(`${API_PATH}/behovsmelding/:behovsmeldingId/status`, async ({ params }) => {
+    const { behovsmeldingId } = params
+    const entry = behovsmeldingerUnderEndring.get(behovsmeldingId)
 
-      if (!entry) {
-        return HttpResponse.json({ error: 'Behovsmelding ikke funnet' }, { status: 404 })
-      }
-
-      return HttpResponse.json({
-        behovsmeldingId,
-        status: entry.status,
-      })
+    if (!entry) {
+      return HttpResponse.json({ error: 'Behovsmelding ikke funnet' }, { status: 404 })
     }
-  ),
+
+    return HttpResponse.json({
+      behovsmeldingId,
+      status: entry.status,
+    })
+  }),
   http.get<{ soknadsid: string }>(`${API_PATH}/soknad/bruker/:soknadsid`, ({ params }) => {
     const randomFagsakId = String(Math.floor(100000 + Math.random() * 900000))
 
@@ -152,10 +149,10 @@ const soknadsbehandlingDbHandlers = [
     return HttpResponse.json(saker)
   }),
   http.get<{}, {}, SoknadInfo[]>(`${API_PATH}/soknad/innsender`, ({ request }) => {
-    const rolle = new URL(request.url).searchParams.get('formidler')
+    const kanSøke = new URL(request.url).searchParams.get('kanSoke')
 
     let saker = sakerMock
-    if (rolle === 'false') {
+    if (kanSøke === 'false') {
       saker = saker.filter((sak) => {
         return sak.behovsmeldingType === BehovsmeldingType.BESTILLING
       })

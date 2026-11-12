@@ -24,7 +24,7 @@ export default function StatusOgBrevBoks({
   valgteÅrsaker,
   handleOpenEndreSigneringModal,
 }: StatusOgBrevBoksProps) {
-  const { erFormidler } = useRoller()
+  const { kanSøke } = useRoller()
 
   const { data: soknadData } = useSWR<SøknadForBruker>(`${API_PATH}/soknad/bruker/${soknadsid}`, fetcher, {
     revalidateOnFocus: false,
@@ -72,7 +72,7 @@ export default function StatusOgBrevBoks({
           </VStack>
         )}
         {tidspunkterTekst}
-        {brevpdf && erFormidler && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
+        {brevpdf && kanSøke && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
           <>
             <Link href={brevpdfUrl} target="_blank">
               <FilePdfIcon fontSize="1.5rem" />

@@ -2,6 +2,7 @@ import { Loader } from '@navikt/ds-react'
 import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from 'react'
 import useSWRImmutable from 'swr/immutable'
 import Feilside from '../containers/Feilside'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
 import type { Roller } from '../interfaces/Roller'
 import { fetcher, ROLLER_PATH } from '../services/rest-service'
 
@@ -12,7 +13,7 @@ type ApplicationContextType = {
 
 export const ApplicationContext = createContext<ApplicationContextType>({
   roller: undefined,
-  setRoller: () => { }
+  setRoller: () => {},
 })
 
 export const ApplicationProvider = ({ children }: { children: React.ReactNode }) => {
@@ -20,7 +21,7 @@ export const ApplicationProvider = ({ children }: { children: React.ReactNode })
 
   const { data, error } = useSWRImmutable<Roller>(ROLLER_PATH, fetcher)
 
-  useEffect(()=>{
+  useEffect(() => {
     if (data) {
       setRoller(data)
     }
@@ -37,20 +38,14 @@ export const ApplicationProvider = ({ children }: { children: React.ReactNode })
     )
   }
 
-  return (
-    <ApplicationContext.Provider
-      value={{ roller, setRoller }}>
-      {children}
-    </ApplicationContext.Provider>
-  )
+  return <ApplicationContext.Provider value={{ roller, setRoller }}>{children}</ApplicationContext.Provider>
 }
 
 export const useRoller = () => {
   const { roller } = useContext(ApplicationContext)
   return {
-    erFormidler: roller?.formidlerRolle.harFormidlerRolle === true,
-    erBestiller: roller?.bestillerRolle?.harBestillerRolle === true,
-    harGyldigRolle: roller?.formidlerRolle.harFormidlerRolle === true || roller?.bestillerRolle?.harBestillerRolle === true,
-    erFormidlerPilotkommune: roller?.formidlerRolle.harFormidlerRolle === true && roller.formidlerRolle.erPilotkommune === true,
+    harGyldigRolle: (roller?.roller.length ?? 0) > 0,
+    kanSøke: roller?.tillatelser.behovsmeldingstyper.includes(BehovsmeldingType.SØKNAD) === true,
+    kanBrukeDigitalBekreftelse: roller?.tillatelser.digitalBekreftelse === true,
   }
 }

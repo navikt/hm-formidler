@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { CheckboxGroup, Checkbox, Heading, Button, Detail, Link } from '@navikt/ds-react'
 import styled from 'styled-components'
-import { ApplicationContext, useRoller } from '../statemanagement/ApplicationContext'
+import { BehovsmeldingType } from '../interfaces/CommonTypes'
+import type { Rolletype } from '../interfaces/Roller'
+import { ApplicationContext } from '../statemanagement/ApplicationContext'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -26,30 +28,30 @@ const Rolle = styled.div<{ success: boolean; children?: React.ReactNode | undefi
 
 const ROLLESWITCHER_SKJUL_LOCALSTORAGE_KEY = 'hm-soknad-rolleswitcher-skjul'
 
+const ROLLETYPER: { rolle: Rolletype; label: string }[] = [
+  { rolle: 'KOMMUNAL_FORMIDLER', label: 'Er kommunal formidler' },
+  { rolle: 'IKKE_KOMMUNAL_FORMIDLER', label: 'Er ikke-kommunal formidler' },
+  { rolle: 'BESTILLER', label: 'Er bestiller' },
+]
+
 const RolleSwitcher = () => {
   const { setRoller, roller } = useContext(ApplicationContext)
-  const { erFormidler, erBestiller } = useRoller()
   const [erSkjult, setErSkjult] = useState(window.localStorage.getItem(ROLLESWITCHER_SKJUL_LOCALSTORAGE_KEY) === 'true')
 
-  const handleChange = (values: string[]) => {
-    const harFormidlerRolle = values.includes('harFormidlerRolle')
-    const harBestillerRolle = values.includes('harBestillerRolle')
-    const erPilotkommune = values.includes('erPilotkommune')
-
+  const handleChange = (values: Rolletype[]) => {
     setRoller((prev) => {
       if (!prev) return undefined
       return {
-        formidlerRolle: {
-          ...prev.formidlerRolle,
-          harFormidlerRolle,
-          erPilotkommune,
-          feil: [],
-        },
-        bestillerRolle: {
-          ...prev.bestillerRolle,
-          harBestillerRolle,
-          erPilotkommune,
-          feil: [],
+        ...prev,
+        roller: values.map((rolle) => ({ rolle })),
+        // Speiler hm-roller: formidlerroller kan sende alle typer, kun kommunal formidler kan bruke digital bekreftelse.
+        tillatelser: {
+          behovsmeldingstyper: values.some((rolle) => rolle !== 'BESTILLER')
+            ? [BehovsmeldingType.SØKNAD, BehovsmeldingType.BESTILLING, BehovsmeldingType.BYTTE]
+            : values.includes('BESTILLER')
+              ? [BehovsmeldingType.BESTILLING]
+              : [],
+          digitalBekreftelse: values.includes('KOMMUNAL_FORMIDLER'),
         },
       }
     })
@@ -77,9 +79,7 @@ const RolleSwitcher = () => {
     )
   }
 
-  const checkedValues = Object.entries({ ...roller?.formidlerRolle, ...roller?.bestillerRolle }).map(([key, value]) => {
-    if (!!value) return key
-  })
+  const checkedValues = roller?.roller.map(({ rolle }) => rolle) ?? []
 
   return (
     <Wrapper>
@@ -95,19 +95,15 @@ const RolleSwitcher = () => {
         -
       </Button>
       <Heading size="xsmall">[DEBUG]</Heading>
-      <Rolle success={erFormidler || erBestiller}>
-        Aktiv rolle: {erFormidler ? 'Formidler' : erBestiller ? 'Bestiller' : 'Ingen rolle'}
+      <Rolle success={checkedValues.length > 0}>
+        Aktive roller: {checkedValues.length > 0 ? checkedValues.join(', ') : 'Ingen rolle'}
       </Rolle>
       <CheckboxGroup size="small" legend="Tilganger" hideLegend value={checkedValues} onChange={handleChange}>
-        <Checkbox value="harFormidlerRolle" tabIndex={-1}>
-          Er formidler
-        </Checkbox>
-        <Checkbox value="harBestillerRolle" tabIndex={-1}>
-          Er bestiller
-        </Checkbox>
-        <Checkbox value="erPilotkommune" tabIndex={-1}>
-          Er pilotkommune
-        </Checkbox>
+        {ROLLETYPER.map(({ rolle, label }) => (
+          <Checkbox key={rolle} value={rolle} tabIndex={-1}>
+            {label}
+          </Checkbox>
+        ))}
       </CheckboxGroup>
 
       {!!window.appSettings.GIT_COMMIT && (

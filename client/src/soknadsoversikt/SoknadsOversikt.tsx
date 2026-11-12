@@ -14,12 +14,12 @@ import SoknadListe from './SoknadListe'
 import SoknadsOversiktVeileder from './SoknadsOversiktVeileder'
 
 const SoknadsOversikt: React.FC = () => {
-  const { erFormidler } = useRoller()
+  const { kanSøke } = useRoller()
 
   let mswQuery = ''
   if (window.appSettings.USE_MSW) {
-    // MSW må vite hvilken rolle brukeren har for å fungere med RolleSwitcher
-    mswQuery = `?formidler=${erFormidler}`
+    // MSW må vite hvilke tillatelser brukeren har for å fungere med RolleSwitcher
+    mswQuery = `?kanSoke=${kanSøke}`
   }
 
   const { data, error } = useSWR<SoknadInfo[]>(`${API_PATH}/soknad/innsender${mswQuery}`, fetcher)

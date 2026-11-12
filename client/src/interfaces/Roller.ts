@@ -1,16 +1,17 @@
+export type Rolletype = 'BESTILLER' | 'KOMMUNAL_FORMIDLER' | 'IKKE_KOMMUNAL_FORMIDLER'
+
+import type { BehovsmeldingType } from './CommonTypes'
+
+export interface Rolle {
+  rolle: Rolletype
+}
+
+export interface Tillatelser {
+  behovsmeldingstyper: BehovsmeldingType[]
+  digitalBekreftelse: boolean
+}
+
 export interface Roller {
-  formidlerRolle: FormidlerRolle
-  bestillerRolle: BestillerRolle | undefined
-}
-
-export interface FormidlerRolle {
-  harFormidlerRolle: boolean
-  erPilotkommune: boolean
-  feil: ('ALLOWLIST' | 'ALTINN')[]
-}
-
-export interface BestillerRolle {
-  harBestillerRolle: boolean
-  erPilotkommune: boolean
-  feil: ('GODKJENNINGSKURS' | 'ALLOWLIST' | 'AAREG')[]
+  roller: Rolle[]
+  tillatelser: Tillatelser
 }

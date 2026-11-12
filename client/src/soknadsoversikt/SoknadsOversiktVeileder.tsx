@@ -10,7 +10,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { erFormidler, erFormidlerPilotkommune } = useRoller()
+  const { kanSøke, kanBrukeDigitalBekreftelse } = useRoller()
 
   return (
     <>
@@ -18,10 +18,10 @@ const SoknadsOversiktVeileder: React.FC = () => {
         <GuidePanel poster illustration={<SpotIllustration />}>
           <BodyShort>
             {t('hoved.veilederpanel.p0')}
-            {erFormidlerPilotkommune && t('hoved.veilederpanel.p1')}
+            {kanBrukeDigitalBekreftelse && t('hoved.veilederpanel.p1')}
             {t('hoved.veilederpanel.p2')}
           </BodyShort>
-          {erFormidlerPilotkommune && (
+          {kanBrukeDigitalBekreftelse && (
             <BodyShort style={{ marginTop: '0.5rem' }}>{t('hoved.veilederpanel.p3')}</BodyShort>
           )}
 
@@ -35,24 +35,24 @@ const SoknadsOversiktVeileder: React.FC = () => {
             </Heading>
 
             <ul style={{ listStyleType: 'none', padding: '0' }}>
-              {erFormidler && (
+              {kanBrukeDigitalBekreftelse && (
                 <>
-                  {erFormidlerPilotkommune && (
-                    <>
-                      <li>
-                        <StatusBeskrivelse
-                          tittel={t('statuser.venter.tittel')}
-                          beskrivelse={t('statuser.venter.beskrivelse')}
-                        />
-                      </li>
-                      <li>
-                        <StatusBeskrivelse
-                          tittel={t('statuser.innsendtAvBruker.tittel')}
-                          beskrivelse={t('statuser.innsendtAvBruker.beskrivelse')}
-                        />
-                      </li>
-                    </>
-                  )}
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.venter.tittel')}
+                      beskrivelse={t('statuser.venter.beskrivelse')}
+                    />
+                  </li>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.innsendtAvBruker.tittel')}
+                      beskrivelse={t('statuser.innsendtAvBruker.beskrivelse')}
+                    />
+                  </li>
+                </>
+              )}
+              {kanSøke && (
+                <>
                   <li>
                     <StatusBeskrivelse
                       tittel={t('statuser.innsendtAvDeg.tittel')}
@@ -67,7 +67,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
                   beskrivelse={t('statuser.underBehandling.beskrivelse')}
                 />
               </li>
-              {erFormidler && (
+              {kanSøke && (
                 <>
                   <li>
                     <StatusBeskrivelse
@@ -89,25 +89,21 @@ const SoknadsOversiktVeileder: React.FC = () => {
                   beskrivelse={t('statuser.godkjent.beskrivelse')}
                 />
               </li>
-              {erFormidler && (
+              {kanBrukeDigitalBekreftelse && (
                 <>
-                  {erFormidlerPilotkommune && (
-                    <>
-                      <li>
-                        <StatusBeskrivelse
-                          tittel={t('statuser.slettet.tittel')}
-                          beskrivelse={t('statuser.slettet.beskrivelse')}
-                        />
-                      </li>
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.slettet.tittel')}
+                      beskrivelse={t('statuser.slettet.beskrivelse')}
+                    />
+                  </li>
 
-                      <li>
-                        <StatusBeskrivelse
-                          tittel={t('statuser.slettetFrist.tittel')}
-                          beskrivelse={t('statuser.slettetFrist.beskrivelse')}
-                        />
-                      </li>
-                    </>
-                  )}
+                  <li>
+                    <StatusBeskrivelse
+                      tittel={t('statuser.slettetFrist.tittel')}
+                      beskrivelse={t('statuser.slettetFrist.beskrivelse')}
+                    />
+                  </li>
                 </>
               )}
               <li>
@@ -123,7 +119,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
                   beskrivelse={t('statuser.avvist.beskrivelse')}
                 />
               </li>
-              {erFormidler && (
+              {kanSøke && (
                 <>
                   <li>
                     <StatusBeskrivelse
@@ -139,7 +135,7 @@ const SoknadsOversiktVeileder: React.FC = () => {
                   beskrivelse={t('statuser.lukket.beskrivelse')}
                 />
               </li>
-              {erFormidler && (
+              {kanSøke && (
                 <>
                   <li>
                     <StatusBeskrivelse
