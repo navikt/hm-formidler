@@ -63,7 +63,7 @@ export const sakerMock = [
     soknadGjelder: 'Søknad om: personløfter',
   },
   {
-    søknadId: 'fec887bc-5a95-49c2-a098-f0e0f7c32df3',
+    søknadId: '7b07f578-3032-4ab1-b80f-f858ab4b408f',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
     datoOpprettet: toDagerSiden,
     datoOppdatert: toDagerSiden,
@@ -241,7 +241,7 @@ export const sakerMock = [
     valgteÅrsaker: undefined,
   },
   {
-    søknadId: 'a293fae9-262a-4fad-b7be-35715b953511',
+    søknadId: 'e0fb6576-db32-49a2-9fc6-2268ccf2a667',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
     datoOpprettet: '2024-01-04T14:06:18.103+00:00',
     datoOppdatert: '2024-01-04T14:06:22.236+00:00',
@@ -252,7 +252,7 @@ export const sakerMock = [
     valgteÅrsaker: undefined,
   },
    {
-    søknadId: '5839bbf1-8842-45c0-a8fd-71718260fce4',
+    søknadId: 'f0aca867-6c8a-466e-8ab3-fefa8bf151e5',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
     datoOpprettet: formatISO(subDays(new Date(), 12)),
     datoOppdatert: formatISO(subDays(new Date(), 12)),
@@ -263,7 +263,7 @@ export const sakerMock = [
     valgteÅrsaker: undefined,
   },
   {
-    søknadId: 'fc8ee79a-b234-4201-8735-129c9cff8d0b',
+    søknadId: 'a6f8801b-8158-4869-9c56-1a7e2afa3650',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
     datoOpprettet: formatISO(subDays(new Date(), 3)),
     datoOppdatert: formatISO(subDays(new Date(), 3)),
@@ -275,7 +275,7 @@ export const sakerMock = [
     soknadGjelder: 'Søknad om: krykker, tilbehør ganghjelpemiddel',
   },
   {
-    søknadId: '33353d43-01ea-4b51-8ddb-sdfgsabc',
+    søknadId: '5ce3125e-01d5-46fe-80f9-cb8815177259',
     behovsmeldingType: BehovsmeldingType.SØKNAD,
     datoOpprettet: '2021-02-07T14:06:59.269+00:00',
     datoOppdatert: '2021-03-08T14:06:59.269+00:00',

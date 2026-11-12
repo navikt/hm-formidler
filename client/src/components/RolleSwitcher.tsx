@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { CheckboxGroup, Checkbox, Heading, Button, Detail, Link } from '@navikt/ds-react'
 import styled from 'styled-components'
 import { BehovsmeldingType } from '../interfaces/CommonTypes'
@@ -14,16 +14,6 @@ const Wrapper = styled.div`
   background: #ececec;
   border: 2px dashed black;
   min-width: 220px;
-`
-
-const Rolle = styled.div<{ success: boolean; children?: React.ReactNode | undefined }>`
-  vertical-align: middle;
-  gap: 5px;
-  padding: 5px;
-  margin: 8px 0;
-  background: #d1d1d1;
-  background: ${(p) => (p.success ? '#06893A' : '#BA3A26')};
-  color: #fff;
 `
 
 const ROLLESWITCHER_SKJUL_LOCALSTORAGE_KEY = 'hm-soknad-rolleswitcher-skjul'
@@ -95,9 +85,6 @@ const RolleSwitcher = () => {
         -
       </Button>
       <Heading size="xsmall">[DEBUG]</Heading>
-      <Rolle success={checkedValues.length > 0}>
-        Aktive roller: {checkedValues.length > 0 ? checkedValues.join(', ') : 'Ingen rolle'}
-      </Rolle>
       <CheckboxGroup size="small" legend="Tilganger" hideLegend value={checkedValues} onChange={handleChange}>
         {ROLLETYPER.map(({ rolle, label }) => (
           <Checkbox key={rolle} value={rolle} tabIndex={-1}>
