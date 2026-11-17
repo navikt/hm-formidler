@@ -60,7 +60,6 @@ const Soknad = React.forwardRef<HTMLDivElement, SoknadProps>((props, ref) => {
             <FunksjonsbeskrivelseOppsummering
               funksjonsbeskrivelse={behovsmelding.brukersituasjon?.funksjonsbeskrivelse ?? undefined}
               brukersituasjon={behovsmelding.brukersituasjon}
-              innsender={behovsmelding.innsender}
             />
           </Avstand>
 

@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next'
-import { type Brukersituasjon, type Funksjonsbeskrivelse, type Innsender, Innsenderrolle } from '../interfaces/Innsenderbehovsmelding'
+import { type Brukersituasjon, type Funksjonsbeskrivelse } from '../interfaces/Innsenderbehovsmelding'
 import { FormSummary } from '@navikt/ds-react'
 import { lokaliser } from './OpplysningVisning'
 
 interface Props {
   funksjonsbeskrivelse?: Funksjonsbeskrivelse
   brukersituasjon: Brukersituasjon
-  innsender: Innsender
 }
 
-const FunksjonsbeskrivelseOppsummering = ({ funksjonsbeskrivelse, brukersituasjon, innsender }: Props) => {
+const FunksjonsbeskrivelseOppsummering = ({ funksjonsbeskrivelse, brukersituasjon }: Props) => {
   const { t } = useTranslation()
 
   const {
@@ -41,9 +40,7 @@ const FunksjonsbeskrivelseOppsummering = ({ funksjonsbeskrivelse, brukersituasjo
           </>
         )}
         <FormSummary.Answer>
-          <FormSummary.Label>{innsender.rolle === Innsenderrolle.FORMIDLER
-            ? t('oppsummering.formidlerVurdert')
-            : t('oppsummering.bestillerVurdert')}</FormSummary.Label>
+          <FormSummary.Label>{t('oppsummering.innsenderVurdert')}</FormSummary.Label>
           <FormSummary.Value>
             <ul>
               {brukersituasjon.vilkår.map((vilkår, i) => {

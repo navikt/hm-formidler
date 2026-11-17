@@ -11,7 +11,6 @@ export interface Innsenderbehovsmelding {
   brukersituasjon: Brukersituasjon
   hjelpemidler: Hjelpemidler
   levering: Levering
-  innsender: Innsender
   vedlegg: Vedlegg[]
 }
 
@@ -28,15 +27,6 @@ export enum Vedleggtype {
   DØRAUTOMATIKK_EKSISTERENDE_DØRAUTOMATIKK_BILDE = 'DØRAUTOMATIKK_EKSISTERENDE_DØRAUTOMATIKK_BILDE',
   DØRAUTOMATIKK_MÅLSATT_TEGNING = 'DØRAUTOMATIKK_MÅLSATT_TEGNING',
   DØRAUTOMATIKK_GODKJENNING_MONTERING = 'DØRAUTOMATIKK_GODKJENNING_MONTERING',
-}
-
-export interface Innsender {
-  rolle: Innsenderrolle
-}
-
-export enum Innsenderrolle {
-  FORMIDLER = 'FORMIDLER',
-  BESTILLER = 'BESTILLER',
 }
 
 export enum Prioritet {
