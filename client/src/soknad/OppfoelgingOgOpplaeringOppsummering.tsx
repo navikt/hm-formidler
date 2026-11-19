@@ -33,11 +33,13 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
           />
         )}
         <HjelpemiddelFormidler formidler={formidler} />
-        <UtleveringOppsummering
-          levering={levering}
-          formidler={formidler}
-          bruker={bruker}
-        />
+        {levering.oppfølgingsansvarlig && (
+          <UtleveringOppsummering
+            levering={levering}
+            formidler={formidler}
+            bruker={bruker}
+          />
+        )}
       </FormSummary.Answers>
     </FormSummary>
   )
