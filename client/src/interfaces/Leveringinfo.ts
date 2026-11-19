@@ -3,7 +3,7 @@ import type { Hast } from './Hast'
 
 export interface Levering {
   hjelpemiddelformidler: Hjelpemiddelformidler
-  oppfølgingsansvarlig: Oppfølgingsansvarlig
+  oppfølgingsansvarlig: Oppfølgingsansvarlig | undefined
   annenOppfølgingsansvarlig: AnnenOppfølgingsansvarlig | undefined
   utleveringsmåte: Utleveringsmåte | undefined
   annenUtleveringsadresse: Veiadresse

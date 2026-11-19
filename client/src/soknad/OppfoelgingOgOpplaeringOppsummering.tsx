@@ -26,10 +26,12 @@ const OppfoelgingOgOpplaeringOppsummering: React.FC<FormidlerProps> = (props: Fo
         </FormSummary.Heading>
       </FormSummary.Header>
       <FormSummary.Answers>
-        <OpplæringsAnsvarlig
-          formidler={formidler}
-          oppfolgingsansvarlig={oppfolgingsansvarlig}
-        />
+        {levering.oppfølgingsansvarlig && (
+          <OpplæringsAnsvarlig
+            formidler={formidler}
+            oppfolgingsansvarlig={oppfolgingsansvarlig}
+          />
+        )}
         <HjelpemiddelFormidler formidler={formidler} />
         <UtleveringOppsummering
           levering={levering}
