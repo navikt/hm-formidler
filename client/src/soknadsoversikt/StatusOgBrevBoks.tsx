@@ -2,11 +2,11 @@ import { FilePdfIcon, PencilWritingIcon } from '@navikt/aksel-icons'
 import { BodyShort, Box, Button, InlineMessage, Link, Tag, VStack } from '@navikt/ds-react'
 import { t } from 'i18next'
 import { useEffect, useMemo } from 'react'
+import useSWR from 'swr'
+import { API_PATH, HOTSAK_API_PATH, fetcher } from '../services/rest-service'
 import { useRoller } from '../statemanagement/ApplicationContext'
 import { SoknadStatus } from '../statemanagement/SoknadStatus'
 import { hentTagVariant } from '../Utils'
-import useSWR from 'swr'
-import { API_PATH, HOTSAK_API_PATH, fetcher } from '../services/rest-service'
 import type { SøknadForBruker } from './SoknadForBruker'
 
 type StatusOgBrevBoksProps = {
@@ -72,7 +72,7 @@ export default function StatusOgBrevBoks({
           </VStack>
         )}
         {tidspunkterTekst}
-        {brevpdf && kanSøke && window.appSettings.NAIS_CLUSTER_NAME === 'dev-gcp' && (
+        {brevpdf && kanSøke && (
           <>
             <Link href={brevpdfUrl} target="_blank">
               <FilePdfIcon fontSize="1.5rem" />
